@@ -1,12 +1,19 @@
 import { createMuiTheme, fade } from "@material-ui/core/styles";
-import { white, cherryRed, slateGrey, black, toxicGreen } from "./colors";
+import {
+  white,
+  cherryRed,
+  slateGrey,
+  black,
+  toxicGreen,
+  medBlue,
+} from "./colors";
 
 // Create a theme instance.
 const theme = createMuiTheme({
   spacing: (factor: number) => `${0.5 * factor}rem`,
   palette: {
     primary: {
-      main: toxicGreen,
+      main: black,
     },
     secondary: {
       main: slateGrey,
@@ -116,6 +123,11 @@ const theme = createMuiTheme({
       },
       subtitle2: {
         color: slateGrey,
+      },
+    },
+    MuiLink: {
+      root: {
+        color: medBlue,
       },
     },
   },

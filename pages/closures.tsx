@@ -1,38 +1,45 @@
-import React, { useEffect, useState } from "react";
-import Container from "@material-ui/core/Container";
+import React, { useState } from "react";
 import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
-import axios from "axios";
+import { Button, Grid } from "@material-ui/core";
+import ClosuresGood from "../src/components/closures/good";
+import ClosuresBad from "../src/components/closures/bad";
+import AppLink from "../src/components/app-link";
 
 export default function Closures() {
-  const [data, setData] = useState({ result: null, loading: true });
+  const [isBad, setIsBad] = useState(true);
 
-  useEffect(() => {
-    async function getData() {
-      if (data.loading && !data?.result) {
-        console.log("if");
-        const response = await axios.get("https://swapi.dev/api/people/1/");
-        console.log({ response });
-        setData({ result: response?.data, loading: false });
-      }
-    }
-    getData();
-  }, [data.loading]);
-  //   TODO: takeaway: unmount
+  function toggleIsBad() {
+    setIsBad((prev) => !prev);
+  }
 
-  console.log({ data });
   return (
-    <Container maxWidth="sm">
-      <Box my={4}>
-        <Typography
-          variant="h4"
-          component="h1"
-          color={data.loading ? "secondary" : "textPrimary"}
-        >
-          Character name:{" "}
-          {data.loading ? "Loading..." : data?.result?.name || "Not Found"}
+    <Grid container spacing={3} direction="column">
+      <Grid item>
+        <Typography variant="h2">Closures</Typography>
+        <Typography variant="body1">
+          Hooks capture old state due to how javascript closures preserver old
+          values. Either avoid accessing updated state within the same hook, or
+          trigger another iteration of the hook to run with new state.
         </Typography>
-      </Box>
-    </Container>
+      </Grid>
+
+      <Grid item>
+        <AppLink
+          nextProps={{
+            href: "https://dmitripavlutin.com/react-hooks-stale-closures/",
+          }}
+        >
+          Be Aware of Stale Closures when Using React Hooks
+        </AppLink>{" "}
+      </Grid>
+
+      <Grid item>
+        <Button onClick={toggleIsBad}>
+          {isBad ? "Switch to working example" : "Switch to failing example"}
+        </Button>{" "}
+      </Grid>
+
+      <Grid item>{isBad ? <ClosuresBad /> : <ClosuresGood />}</Grid>
+    </Grid>
   );
 }
