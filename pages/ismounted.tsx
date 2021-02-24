@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import Typography from "@material-ui/core/Typography";
-import { Button, Grid } from "@material-ui/core";
+import { Button, Grid, Typography } from "@material-ui/core";
 import IsMounted from "../src/components/ismounted";
 import AppLink from "../src/components/app-link";
 

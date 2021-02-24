@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Typography from "@material-ui/core/Typography";
+import { Typography } from "@material-ui/core";
 import { Button, Grid } from "@material-ui/core";
 import ClosuresGood from "../src/components/closures/good";
 import ClosuresBad from "../src/components/closures/bad";

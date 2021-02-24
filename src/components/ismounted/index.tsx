@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Container from "@material-ui/core/Container";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
+import { Container, Typography, Box } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import LoaderButton from "../loader-button";
 import { useIsMounted } from "../../lib/hooks/use-is-mounted";

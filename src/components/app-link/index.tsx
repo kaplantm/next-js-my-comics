@@ -1,6 +1,7 @@
 import React from "react";
 import NextLink, { LinkProps as NextLinkProps } from "next/link";
-import MatLink, { LinkProps as MatLinkProps } from "@material-ui/core/Link";
+import { Link as MatLink } from "@material-ui/core";
+import { LinkProps as MatLinkProps } from "@material-ui/core/Link";
 
 export type AppLinkProps = {
   children: any;

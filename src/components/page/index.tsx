@@ -48,6 +48,34 @@ function Page({ children }: { children: any }) {
                   Is Mounted
                 </AppLink>
               </ListItem>
+              <ListItem>
+                <AppLink
+                  nextProps={{
+                    href: {
+                      pathname: "/material-cascade",
+                      query: { bad: "false" },
+                    },
+                  }}
+                  color="primary"
+                  className={classes.link}
+                >
+                  Material UI CSS Cascade - Good
+                </AppLink>
+              </ListItem>
+              <ListItem>
+                <AppLink
+                  nextProps={{
+                    href: {
+                      pathname: "/material-cascade",
+                      query: { bad: "true" },
+                    },
+                  }}
+                  color="primary"
+                  className={classes.link}
+                >
+                  Material UI CSS Cascade - Bad
+                </AppLink>
+              </ListItem>
             </List>
           </Box>
         </Toolbar>

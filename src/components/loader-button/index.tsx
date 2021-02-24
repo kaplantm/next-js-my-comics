@@ -4,8 +4,6 @@ import { Button, ButtonProps, CircularProgress } from "@material-ui/core";
 import clsx from "clsx";
 import { green } from "@material-ui/core/colors";
 
-type styleConfigType = { mt: number; mr: number; mb: number; ml: number };
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
