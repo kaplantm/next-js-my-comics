@@ -36,6 +36,8 @@ export type comicVineCharacterType = {
     name: string;
     issue_number: string;
   };
+  site_detail_url?: string;
+  id: string;
 };
 
 export type comicVineIssueType = {

@@ -51,7 +51,7 @@ function ClosuresGood() {
         method: "get",
         url: `api/comics/character/4005-5368`,
         params: {
-          field_list: "name,image,first_appeared_in_issue",
+          field_list: "id,name,image,first_appeared_in_issue",
         },
       });
 
@@ -80,7 +80,6 @@ function ClosuresGood() {
     }
     getCharacter();
   }, []);
-  //   TODO: takeaway: unmount
 
   return (
     <ClosuresBody character={characterState} firstIssue={firstIssueState} />

@@ -29,11 +29,23 @@ function Page({ children }: { children: any }) {
                 Lessons
               </Typography>
             </Box>
-            {/* TODO: add links to pages */}
-            <List>
+            <List className={classes.list}>
               <ListItem>
-                <AppLink nextProps={{ href: "/closures" }} color="primary">
+                <AppLink
+                  nextProps={{ href: "/closures" }}
+                  color="primary"
+                  className={classes.link}
+                >
                   Closures
+                </AppLink>
+              </ListItem>
+              <ListItem>
+                <AppLink
+                  nextProps={{ href: "/ismounted" }}
+                  color="primary"
+                  className={classes.link}
+                >
+                  Is Mounted
                 </AppLink>
               </ListItem>
             </List>
