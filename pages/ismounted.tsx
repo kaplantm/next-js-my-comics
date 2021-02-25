@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Grid, Typography } from "@material-ui/core";
-import IsMounted from "../src/components/ismounted";
+import IsMounted from "../src/page-containers/ismounted";
 import AppLink from "../src/components/app-link";
 
 export default function Closures() {

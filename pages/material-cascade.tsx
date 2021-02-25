@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Typography } from "@material-ui/core";
 import { Button, Grid } from "@material-ui/core";
 import { useRouter } from "next/router";
-import MaterialCascade from "../src/components/material-cascade";
+import MaterialCascade from "../src/page-containers/material-cascade";
 import { pushCurrentPageWithUpdatedQueryParams } from "../src/lib/utils";
 
 const coreImport = 'import {Typography} from "@material-ui/core";';

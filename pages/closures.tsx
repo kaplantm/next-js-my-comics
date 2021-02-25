@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Typography } from "@material-ui/core";
 import { Button, Grid } from "@material-ui/core";
-import ClosuresGood from "../src/components/closures/good";
-import ClosuresBad from "../src/components/closures/bad";
+import ClosuresGood from "../src/page-containers/closures/good";
+import ClosuresBad from "../src/page-containers/closures/bad";
 import AppLink from "../src/components/app-link";
 
 export default function Closures() {
