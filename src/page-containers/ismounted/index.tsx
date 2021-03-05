@@ -61,7 +61,7 @@ function IsMounted({ isBad }: { isBad: boolean }) {
 
   console.log({ charactersState });
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="md">
       <Typography
         variant="h4"
         component="h1"
@@ -78,6 +78,8 @@ function IsMounted({ isBad }: { isBad: boolean }) {
               display="flex"
               justifyContent="space-between"
               key={character.id}
+              mt={1}
+              mb={1}
             >
               <Typography variant="h4" component="h1">
                 Character Name: {characterName}
@@ -87,6 +89,7 @@ function IsMounted({ isBad }: { isBad: boolean }) {
                 onClick={() =>
                   goToComicVine(character.site_detail_url, character.id)
                 }
+                variant="outlined"
               >
                 Open Comic Vine
               </LoaderButton>

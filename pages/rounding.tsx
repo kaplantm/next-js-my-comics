@@ -1,5 +1,15 @@
 import React, { useState } from "react";
-import { Box, Typography, Button, Grid, TextField } from "@material-ui/core";
+import {
+  Box,
+  Typography,
+  Button,
+  Grid,
+  TextField,
+  Table,
+  TableCell,
+  TableRow,
+  TableHead,
+} from "@material-ui/core";
 import { ArrowForward } from "@material-ui/icons";
 import { stableToFixed } from "../src/lib/utils/number-utils";
 import AppLink from "../src/components/app-link";
@@ -10,11 +20,6 @@ const defaultExampleTwo = 92.655;
 export default function RoundingPage() {
   const [exampleOne, setExampleOne] = useState(defaultExampleOne);
   const [exampleTwo, setExampleTwo] = useState(defaultExampleTwo);
-  const [isBad, setIsBad] = useState(true);
-
-  function toggleIsBad() {
-    setIsBad((prev) => !prev);
-  }
 
   function onChangeExampleOne(event: React.ChangeEvent<HTMLInputElement>) {
     setExampleOne(parseFloat(event.target.value));
@@ -26,29 +31,16 @@ export default function RoundingPage() {
     <Grid container spacing={3} direction="column">
       <Grid item>
         <Typography variant="h2">
-          JS Float Rounding using toFixed is a little crazy. Here we demonstrate
-          this and include an alternative method.
+          JS Float Rounding using toFixed is a little crazy.
         </Typography>
-        <Typography variant="body1">
-          Lets round some number using the native javascript{" "}
-          <Typography color="secondary" component="span">
-            <code>Number.prototype.toFixed()</code>
-          </Typography>{" "}
-          method
+        <Typography variant="h4">
+          Here we demonstrate this and include an alternative method.
         </Typography>
-      </Grid>
-
-      <Grid item>
-        <Button onClick={toggleIsBad}>
-          {isBad
-            ? "Switch to working example using custom stableToFixed method"
-            : "Switch to failing example using native toFixed method"}
-        </Button>
       </Grid>
 
       <Grid item>
         <Typography variant="body1" className="bold">
-          Examples using native toFixed method:
+          Examples using native <code>Number.prototype.toFixed()</code> method:
         </Typography>
         <Box display="flex">
           {defaultExampleOne} <ArrowForward /> {defaultExampleOne.toFixed(2)}{" "}
@@ -82,38 +74,41 @@ export default function RoundingPage() {
         <Typography variant="body1" className="bold">
           Try it:
         </Typography>
-        <Box display="flex">
-          <TextField
-            onChange={onChangeExampleOne}
-            value={exampleOne}
-            type="number"
-          />
-          <Box ml={3}>
-            <Typography variant="body1" className="bold">
-              ={" "}
-              {isBad
-                ? `${exampleOne}.toFixed(2)`
-                : `stableToFixed(${exampleOne})`}{" "}
-              = {isBad ? exampleOne.toFixed(2) : stableToFixed(exampleOne)}
-            </Typography>
-          </Box>
-        </Box>
-        <Box display="flex">
-          <TextField
-            onChange={onChangeExampleTwo}
-            value={exampleTwo}
-            type="number"
-          />
-          <Box ml={3}>
-            <Typography variant="body1" className="bold">
-              ={" "}
-              {isBad
-                ? `${exampleTwo}.toFixed(2)`
-                : `stableToFixed(${exampleTwo})`}{" "}
-              {isBad ? exampleTwo.toFixed(2) : stableToFixed(exampleTwo)}
-            </Typography>
-          </Box>
-        </Box>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Example Input</TableCell>
+              <TableCell align="center">
+                Native: <code>Number.prototype.toFixed()</code>
+              </TableCell>
+              <TableCell align="center">
+                Custom: <code>stableToFixed(number)</code>
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableRow>
+            <TableCell>
+              <TextField
+                onChange={onChangeExampleOne}
+                value={exampleOne}
+                type="number"
+              />
+            </TableCell>
+            <TableCell align="center">{exampleOne.toFixed(2)}</TableCell>
+            <TableCell align="center">{stableToFixed(exampleOne)}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>
+              <TextField
+                onChange={onChangeExampleTwo}
+                value={exampleTwo}
+                type="number"
+              />
+            </TableCell>
+            <TableCell align="center">{exampleTwo.toFixed(2)}</TableCell>
+            <TableCell align="center">{stableToFixed(exampleTwo)}</TableCell>
+          </TableRow>
+        </Table>
       </Grid>
       <Grid item>
         <AppLink

@@ -40,7 +40,27 @@ export default function WhenHooksRunPage() {
       </Grid>
 
       <Grid item>
-        <Button onClick={toggleIsBad}>
+        <Typography variant="body1" paragraph>
+          <em>In this example,</em> there is a hook in the DateDisplay component
+          (outlined in dotted pink). Ideally, we want to render this component
+          and rerun this hook only when a value this component cares about
+          changes - in this scenario, whenever we add a day. We do not want it
+          to re-render when the paren't components state changes when we click
+          toggle color.
+        </Typography>
+        <Typography variant="body1" paragraph>
+          Good example - only re-run useDate hook when date changes, not when
+          unrelated state (parent component's color) changes
+        </Typography>
+        <Typography variant="body1" paragraph>
+          Failing example - re-run useDate hook when any of parents state
+          changes. (Note: Sometimes this is desirable, but its important to be
+          aware of when your hooks are running.)
+        </Typography>
+      </Grid>
+
+      <Grid item>
+        <Button className="margin1" onClick={toggleIsBad} variant="outlined">
           {isBad ? "Switch to working example" : "Switch to failing example"}
         </Button>
       </Grid>

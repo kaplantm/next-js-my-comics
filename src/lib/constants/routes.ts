@@ -1,4 +1,5 @@
 import { mappedRouteType } from "../types";
+import { sortObjectArrayAlphabeticallyBy } from "../utils/array-utils";
 
 export const routeMap: { [key: string]: mappedRouteType } = {
   home: {
@@ -17,7 +18,10 @@ export const routeMap: { [key: string]: mappedRouteType } = {
     path: "/rounding",
     name: "Rounding",
   },
-  // Keep this last, since we add the "bad" version for the nav bar
+  whenHooksRun: {
+    path: "/when-hooks-run",
+    name: "When Hooks Run",
+  },
   materialCascadeGood: {
     path: "/material-cascade",
     name: "Material Cascade - Good",
@@ -30,4 +34,7 @@ export const routeMap: { [key: string]: mappedRouteType } = {
   },
 };
 
-export const navRoutes = Object.values(routeMap);
+export const navRoutes = sortObjectArrayAlphabeticallyBy(
+  Object.values(routeMap).slice(1),
+  "name"
+);

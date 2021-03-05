@@ -76,7 +76,8 @@ export default function MaterialCascadePage() {
           </Typography>{" "}
           Build the project and run the built version.
           <br />
-          Go the the home page. <br />
+          Go the the home page. (the home page imports the chip component)
+          <br />
           Click in the menu to navigate to the "Bad" version of this page. Chip
           will display with a red background.
           <br /> Refresh the page. Now the chip will display with a grey
@@ -89,7 +90,7 @@ export default function MaterialCascadePage() {
       </Grid>
 
       <Grid item>
-        <Button onClick={toggleIsBad}>
+        <Button className="margin1" onClick={toggleIsBad} variant="outlined">
           {isBad ? "Switch to working example" : "Switch to failing example"}
         </Button>
       </Grid>

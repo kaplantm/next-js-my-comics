@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Typography, Box, Chip, Divider } from "@material-ui/core";
+import LessonsList from "../src/page-containers/lessons-list";
 
 export default function Index() {
   return (
@@ -11,9 +12,7 @@ export default function Index() {
         <Box m={3}>
           <Divider />
         </Box>
-        <Chip
-          label={"I'm the Chip Component used in the Material Cascade example"}
-        />
+        <LessonsList />
       </Box>
     </Container>
   );

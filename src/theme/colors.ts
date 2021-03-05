@@ -23,6 +23,9 @@ export const survivorPink = "#f95884";
 export const midnightGray = "#35383b";
 export const altRed = "#f33e51";
 export const paleRed = "#F88B97";
-export const facebookBlue = "#3A5997";
-export const facebookBlueHover = "#8B9DC3";
+export const darkBlue = "#3A5997";
+export const purple = "hsla(249, 44%, 41%, 1)";
 export const lightYellow = "#fbd777";
+export const orange = "hsla(17, 88%, 60%, 1)";
+
+// TODO: hsla

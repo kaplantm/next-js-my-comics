@@ -35,7 +35,9 @@ function LoaderButton({
   return (
     <div className={clsx(classes.root, "loaderButtonRoot")}>
       <div className={clsx(classes.wrapper, "loaderButtonWrapper")}>
-        <Button {...props}>{children}</Button>
+        <Button className="margin1" {...props}>
+          {children}
+        </Button>
         {loading && (
           <CircularProgress size={24} className={classes.buttonProgress} />
         )}

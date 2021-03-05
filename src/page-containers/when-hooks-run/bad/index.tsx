@@ -18,8 +18,12 @@ function WhenHooksRunBad() {
     <Box border={`10px solid ${color}`} p={2}>
       <Typography variant="h2">Count: {dayCount}</Typography>
       <DateDisplay dayCount={dayCount} />
-      <Button onClick={incrementCount}>Add</Button>
-      <Button onClick={toggleColor}>Toggle Color</Button>
+      <Button className="margin1" onClick={incrementCount} variant="outlined">
+        Add A Day
+      </Button>
+      <Button className="margin1" onClick={toggleColor} variant="outlined">
+        Toggle Color
+      </Button>
     </Box>
   );
 }

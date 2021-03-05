@@ -16,14 +16,14 @@ function AppLink({
   nextProps,
   ...matProps
 }: AppLinkProps) {
+  const fullIsExternal =
+    isExternal ||
+    (typeof nextProps.href === "string" && nextProps.href.startsWith("http"));
   const combinedMatLinkProps = isExternal
     ? { target: "_blank", ...matProps }
     : matProps;
 
-  if (
-    isExternal ||
-    (typeof nextProps.href === "string" && nextProps.href.startsWith("http"))
-  ) {
+  if (fullIsExternal) {
     const href = nextProps.href as string;
     return (
       <MatLink {...combinedMatLinkProps} href={href}>

@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { toxicGreen } from "../../theme/colors";
+import { toxicGreen, white } from "../../theme/colors";
 
 const drawerWidth = 240;
 
@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
   },
   appBar: {
+    backgroundColor: white,
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -49,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   drawerHeader: {
     display: "flex",
     alignItems: "center",
-    padding: theme.spacing(0, 1),
+    padding: theme.spacing(0, 1, 0, 2),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     justifyContent: "space-between",

@@ -34,14 +34,12 @@ function Page({ children }: { children: any }) {
     <div className={classes.root}>
       <AppBar
         position="fixed"
-        color="transparent"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
       >
         <Toolbar>
           <IconButton
-            color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
@@ -85,7 +83,12 @@ function Page({ children }: { children: any }) {
         <nav>
           <List>
             {navRoutes.map((route: mappedRouteType) => (
-              <ListItem button key={route.path}>
+              <ListItem
+                button
+                key={`${route.path}${
+                  route.query ? JSON.stringify(route.query) : ""
+                }${route.name}`}
+              >
                 <AppLink
                   nextProps={{
                     href: {

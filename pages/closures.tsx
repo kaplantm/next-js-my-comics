@@ -34,7 +34,7 @@ export default function Closures() {
       </Grid>
 
       <Grid item>
-        <Button onClick={toggleIsBad}>
+        <Button className="margin1" onClick={toggleIsBad} variant="outlined">
           {isBad ? "Switch to working example" : "Switch to failing example"}
         </Button>
       </Grid>

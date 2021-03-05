@@ -6,7 +6,6 @@ import theme from "../src/theme";
 import Page from "../src/components/page-layout";
 
 // TODO: useformstate
-// TODO: NODE env
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
     // Remove the server-side injected CSS.
@@ -19,7 +18,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>My page</title>
+        <title>JS Lessons</title>
         <meta
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"

@@ -127,7 +127,13 @@ const theme = createMuiTheme({
       },
     },
     MuiButton: {
-      root: { backgroundColor: iceBlue },
+      root: {
+        backgroundColor: iceBlue,
+        whiteSpace: "nowrap",
+        "&.margin1": {
+          margin: ".5rem",
+        },
+      },
     },
     MuiLink: {
       root: {
