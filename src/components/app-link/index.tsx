@@ -25,7 +25,11 @@ function AppLink({
     (typeof nextProps.href === "string" && nextProps.href.startsWith("http"))
   ) {
     const href = nextProps.href as string;
-    return <MatLink {...combinedMatLinkProps}>{children}</MatLink>;
+    return (
+      <MatLink {...combinedMatLinkProps} href={href}>
+        {children}
+      </MatLink>
+    );
   }
 
   return (

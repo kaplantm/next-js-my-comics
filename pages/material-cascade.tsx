@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Typography } from "@material-ui/core";
+import { List, ListItem, Typography } from "@material-ui/core";
 import { Button, Grid } from "@material-ui/core";
 import { useRouter } from "next/router";
 import MaterialCascade from "../src/page-containers/material-cascade";
@@ -69,6 +69,21 @@ export default function MaterialCascadePage() {
         <Typography variant="body1" paragraph>
           TLDR: Don't pass down classes. Always import components from the same
           source.
+        </Typography>
+        <Typography variant="body1" paragraph>
+          <Typography variant="h5">
+            <em>To experience this example:</em>
+          </Typography>{" "}
+          Build the project and run the built version.
+          <br />
+          Go the the home page. <br />
+          Click in the menu to navigate to the "Bad" version of this page. Chip
+          will display with a grey background.
+          <br /> Refresh the page. Now the chip will display red with a red
+          background. <br />
+          The behavior of the "Bad" version of this page is inconsistent. <br />
+          Note that the "Good" Version of this page always show the chip with a
+          green background, regardless of navigation approach.
         </Typography>
       </Grid>
 

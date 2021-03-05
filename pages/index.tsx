@@ -1,14 +1,19 @@
 import React from "react";
-import { Container, Typography, Box, Chip } from "@material-ui/core";
+import { Container, Typography, Box, Chip, Divider } from "@material-ui/core";
 
 export default function Index() {
   return (
     <Container maxWidth="sm">
-      <Box my={4}>
+      <Box display="flex" flexDirection="column" justifyContent="center">
         <Typography variant="h4" component="h1" gutterBottom>
-          Select an example.
+          A collection of JS takeaways. Select an example.
         </Typography>
-        <Chip label={"I'm a Chip"} />
+        <Box m={3}>
+          <Divider />
+        </Box>
+        <Chip
+          label={"I'm the Chip Component used in the Material Cascade example"}
+        />
       </Box>
     </Container>
   );

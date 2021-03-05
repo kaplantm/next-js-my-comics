@@ -61,3 +61,10 @@ export enum loadingEnum {
   NOT_STARTED = 1,
   LOADING = 2,
 }
+
+export type mappedRouteType = {
+  path: string;
+  name: string;
+  as?: string;
+  query?: { [key: string]: string | boolean | number };
+};

@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Container, Typography, Box } from "@material-ui/core";
-import { Button } from "@material-ui/core";
-import LoaderButton from "../loader-button";
+import LoaderButton from "../../components/loader-button";
 import { useIsMounted } from "../../lib/hooks/use-is-mounted";
 import { appAxios, sleep } from "../../lib/utils";
 import {
   comicVineCharacterType,
-  comicVineIssueType,
   comicVineResponse,
   loadingEnum,
 } from "../../lib/types";

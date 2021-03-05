@@ -3,8 +3,9 @@ import Head from "next/head";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../src/theme";
-import Page from "../src/components/page";
+import Page from "../src/components/page-layout";
 
+// TODO: rounding numbers
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
     // Remove the server-side injected CSS.

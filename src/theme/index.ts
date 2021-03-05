@@ -121,6 +121,14 @@ const theme = createMuiTheme({
     MuiLink: {
       root: {
         color: medBlue,
+        "&.noUnderline": {
+          "&:hover": {
+            textDecoration: "none",
+          },
+        },
+        "&.noWrap": {
+          whiteSpace: "nowrap",
+        },
       },
     },
   },
