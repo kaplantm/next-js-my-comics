@@ -67,3 +67,10 @@ export type mappedRouteType = {
   name: string;
   query?: { [key: string]: string | boolean | number };
 };
+
+export interface FormValidatorConfigType {
+  validator: (value: string | number | boolean, formFields?: any) => boolean;
+  message: string;
+}
+
+export type Nullable<T> = T | null;

@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { useEffect, useState } from "react";
-import { isBlank } from "@lib/utils/string-utils";
+import { isBlank } from "../../utils/string-utils";
 
 type FormFieldKey<T> = keyof T;
 type FormFieldErrors<T> = Partial<{ [key in FormFieldKey<T>]: string }>;
