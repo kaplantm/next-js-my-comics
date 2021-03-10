@@ -11,7 +11,11 @@ export enum categoriesEnum {
   javscript = "JS Fundamentals",
   react = "React Fundamentals",
   other = "Other",
+  resources = "Resources",
 }
+
+export const allCategories = Object.values(categoriesEnum);
+
 export type lessonsListItemType = {
   text: string;
   categories: categoriesEnum[];
@@ -63,7 +67,7 @@ in production, custom classes should be renamed to jss###`,
       routeMap.closures,
       {
         name: "Stale Closures with Hooks",
-        path: "https://dmitripavlutin.com/react-hooks-stale-closures/",
+        pathname: "https://dmitripavlutin.com/react-hooks-stale-closures/",
       },
     ],
   },
@@ -81,5 +85,16 @@ in production, custom classes should be renamed to jss###`,
     text:
       "Don't bring in libraries until you need them. They can bulk up your project, and you inherit their bugs. ",
     categories: [categoriesEnum.other],
+  },
+  {
+    text:
+      "HSLA color format can be more readable and makes it easier to create slight variants of a color.",
+    categories: [categoriesEnum.resources],
+    links: [
+      {
+        name: "HSLA Color Picker",
+        pathname: "https://hslpicker.com/",
+      },
+    ],
   },
 ];

@@ -63,8 +63,7 @@ export enum loadingEnum {
 }
 
 export type mappedRouteType = {
-  path: string;
+  pathname: string;
   name: string;
-  as?: string;
   query?: { [key: string]: string | boolean | number };
 };

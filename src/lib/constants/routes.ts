@@ -3,32 +3,32 @@ import { sortObjectArrayAlphabeticallyBy } from "../utils/array-utils";
 
 export const routeMap: { [key: string]: mappedRouteType } = {
   home: {
-    path: "/",
+    pathname: "/",
     name: "Home",
   },
   closures: {
-    path: "/closures",
+    pathname: "/closures",
     name: "Closures",
   },
   isMounted: {
-    path: "/is-mounted",
+    pathname: "/is-mounted",
     name: "Is Mounted",
   },
   rounding: {
-    path: "/rounding",
+    pathname: "/rounding",
     name: "Rounding",
   },
   whenHooksRun: {
-    path: "/when-hooks-run",
+    pathname: "/when-hooks-run",
     name: "When Hooks Run",
   },
   materialCascadeGood: {
-    path: "/material-cascade",
+    pathname: "/material-cascade",
     name: "Material Cascade - Good",
     query: { bad: false },
   },
   materialCascadeBad: {
-    path: "/material-cascade",
+    pathname: "/material-cascade",
     name: "Material Cascade - Bad",
     query: { bad: true },
   },

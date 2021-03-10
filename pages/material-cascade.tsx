@@ -70,10 +70,13 @@ export default function MaterialCascadePage() {
           TLDR: Don't pass down classes. Always import components from the same
           source.
         </Typography>
-        <Typography variant="body1" paragraph>
-          <Typography variant="h5">
-            <em>To experience this example:</em>
-          </Typography>{" "}
+      </Grid>
+
+      <Grid item>
+        <Typography variant="h5">
+          <em>To experience this example:</em>
+        </Typography>
+        <Typography variant="body1">
           Build the project and run the built version.
           <br />
           Go the the home page. (the home page imports the chip component)

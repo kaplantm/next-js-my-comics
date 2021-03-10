@@ -1,13 +1,5 @@
 import { createMuiTheme } from "@material-ui/core/styles";
-import {
-  white,
-  cherryRed,
-  slateGrey,
-  black,
-  medBlue,
-  offWhite,
-  iceBlue,
-} from "./colors";
+import { white, cherryRed, slateGrey, black, medBlue, iceBlue } from "./colors";
 
 // Create a theme instance.
 const theme = createMuiTheme({

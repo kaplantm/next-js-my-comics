@@ -50,7 +50,7 @@ function Page({ children }: { children: any }) {
           <AppLink
             nextProps={{
               href: {
-                pathname: routeMap.home.path,
+                pathname: routeMap.home.pathname,
               },
             }}
             color="primary"
@@ -85,14 +85,14 @@ function Page({ children }: { children: any }) {
             {navRoutes.map((route: mappedRouteType) => (
               <ListItem
                 button
-                key={`${route.path}${
+                key={`${route.pathname}${
                   route.query ? JSON.stringify(route.query) : ""
                 }${route.name}`}
               >
                 <AppLink
                   nextProps={{
                     href: {
-                      pathname: route.path,
+                      pathname: route.pathname,
                       query: route.query,
                     },
                   }}
