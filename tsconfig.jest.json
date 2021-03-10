@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "target": "es5",
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["./src/components/*"],
+      "@hoc-components/*": ["./src/hoc-components/*"],
+      "@page-containers/*": ["./src/page-containers/*"],
+      "@page-layouts/*": ["./src/page-layouts/*"],
+      "@lib/*": ["./src/lib/*"],
+      "@redux/*": ["./src/redux/*"],
+      "@app-types": ["./src/types"],
+      "@app-types/*": ["./src/types/*"],
+      "@mocks/*": ["./src/mocks/*"]
+    }
+  }
+}

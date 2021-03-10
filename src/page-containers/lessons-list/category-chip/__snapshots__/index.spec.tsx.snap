@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Category Chip should match snapshot 1`] = `
+<div>
+  <CategoryChip
+    active={false}
+    category="NextJS"
+    key="NextJS"
+    toggleActive={[MockFunction]}
+  />
+  <CategoryChip
+    active={false}
+    category="Material UI"
+    key="Material UI"
+    toggleActive={[MockFunction]}
+  />
+  <CategoryChip
+    active={false}
+    category="Hooks"
+    key="Hooks"
+    toggleActive={[MockFunction]}
+  />
+  <CategoryChip
+    active={false}
+    category="TinyMCE"
+    key="TinyMCE"
+    toggleActive={[MockFunction]}
+  />
+  <CategoryChip
+    active={false}
+    category="Axios"
+    key="Axios"
+    toggleActive={[MockFunction]}
+  />
+  <CategoryChip
+    active={false}
+    category="Utils"
+    key="Utils"
+    toggleActive={[MockFunction]}
+  />
+  <CategoryChip
+    active={false}
+    category="JS Fundamentals"
+    key="JS Fundamentals"
+    toggleActive={[MockFunction]}
+  />
+  <CategoryChip
+    active={false}
+    category="React Fundamentals"
+    key="React Fundamentals"
+    toggleActive={[MockFunction]}
+  />
+  <CategoryChip
+    active={false}
+    category="Other"
+    key="Other"
+    toggleActive={[MockFunction]}
+  />
+  <CategoryChip
+    active={false}
+    category="Resources"
+    key="Resources"
+    toggleActive={[MockFunction]}
+  />
+  <CategoryChip
+    active={true}
+    category="NextJS"
+    key="NextJS"
+    toggleActive={[MockFunction]}
+  />
+  <CategoryChip
+    active={true}
+    category="Material UI"
+    key="Material UI"
+    toggleActive={[MockFunction]}
+  />
+  <CategoryChip
+    active={true}
+    category="Hooks"
+    key="Hooks"
+    toggleActive={[MockFunction]}
+  />
+  <CategoryChip
+    active={true}
+    category="TinyMCE"
+    key="TinyMCE"
+    toggleActive={[MockFunction]}
+  />
+  <CategoryChip
+    active={true}
+    category="Axios"
+    key="Axios"
+    toggleActive={[MockFunction]}
+  />
+  <CategoryChip
+    active={true}
+    category="Utils"
+    key="Utils"
+    toggleActive={[MockFunction]}
+  />
+  <CategoryChip
+    active={true}
+    category="JS Fundamentals"
+    key="JS Fundamentals"
+    toggleActive={[MockFunction]}
+  />
+  <CategoryChip
+    active={true}
+    category="React Fundamentals"
+    key="React Fundamentals"
+    toggleActive={[MockFunction]}
+  />
+  <CategoryChip
+    active={true}
+    category="Other"
+    key="Other"
+    toggleActive={[MockFunction]}
+  />
+  <CategoryChip
+    active={true}
+    category="Resources"
+    key="Resources"
+    toggleActive={[MockFunction]}
+  />
+</div>
+`;

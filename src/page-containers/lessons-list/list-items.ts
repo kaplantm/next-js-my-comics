@@ -88,6 +88,17 @@ in production, custom classes should be renamed to jss###`,
   },
   {
     text:
+      "Use Node Version Manager .nvmrc file to make sure all developers on your project are using the same version of npm",
+    categories: [categoriesEnum.other],
+    links: [
+      {
+        name: "Node Version Manager",
+        pathname: "https://github.com/nvm-sh/nvm",
+      },
+    ],
+  },
+  {
+    text:
       "HSLA color format can be more readable and makes it easier to create slight variants of a color.",
     categories: [categoriesEnum.resources],
     links: [
