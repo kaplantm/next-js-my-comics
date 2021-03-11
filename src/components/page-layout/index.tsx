@@ -57,7 +57,7 @@ function Page({ children }: { children: any }) {
             className="noWrap noUnderline"
           >
             <Typography variant="h3" component="h1" className={classes.title}>
-              JS Lessons
+              JS Lessons!
             </Typography>
           </AppLink>
         </Toolbar>
