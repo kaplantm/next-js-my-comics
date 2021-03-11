@@ -11,7 +11,6 @@ const useStyles = makeStyles((theme) => ({
   },
   wrapper: {
     position: "relative",
-    width: "100%",
   },
   buttonProgress: {
     color: green[500],

@@ -1,3 +1,4 @@
+import { differenceInYears, isAfter, isValid } from "date-fns";
 import { FormValidatorConfigType, Nullable } from "../../types";
 
 export const passwordRequirementsNotMetError =
@@ -89,9 +90,39 @@ export function curriedValueIsLessThanOrEqual(maximumValue: number) {
     value === 0 || (value && value <= maximumValue) || false;
 }
 
-export function isWholeNumber(number: number) {
+export function isWholeNumber(number: number | string) {
+  if (typeof number === "string") {
+    return !number.includes(".");
+  }
   return number % 1 === 0;
 }
+
+export function isDateValid(date: string | number) {
+  return isValid(typeof date === "string" ? Date.parse(date as string) : date);
+}
+
+export function getYearsSinceNow(date: string) {
+  return differenceInYears(Date.now(), Date.parse(date));
+}
+
+export const curriedIsAtLeastYearsOld = (years: number) => (date: string) => {
+  if (!isDateValid(date)) {
+    return true;
+  }
+  console.log({ years, date });
+  return getYearsSinceNow(date) >= years;
+};
+
+export const isAtLeastEighteenYearsOld = curriedIsAtLeastYearsOld(18);
+
+export const isAtLeastFourteenYearsOld = curriedIsAtLeastYearsOld(14);
+
+export const isInPast = (date: string) => {
+  if (!isDateValid(date)) {
+    return true;
+  }
+  return isAfter(new Date(), new Date(date));
+};
 
 /**
  * Returns an error message of the first validator in the validators param (or null)

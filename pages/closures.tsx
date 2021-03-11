@@ -40,6 +40,13 @@ export default function Closures() {
       </Grid>
 
       <Grid item>{isBad ? <ClosuresBad /> : <ClosuresGood />}</Grid>
+      <Typography>
+        <em>
+          Note: This example relies on an internal api endpoint that is not
+          available in the static build hosted on github pages. To see this
+          demo, pull the repo down and run locally.
+        </em>
+      </Typography>
     </Grid>
   );
 }

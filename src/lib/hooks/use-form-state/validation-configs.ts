@@ -6,6 +6,7 @@ import {
   doesMeetPasswordRequirements,
   curriedLengthIsLessThan,
   isValidEmailList,
+  isWholeNumber,
 } from "./validator-functions";
 
 export function getLengthMustBeLessThanNumberConfig(
@@ -56,6 +57,11 @@ export const emailValidationConfigs: FormValidatorConfigType[] = [
     message: "Must be less than 320 characters.",
   },
 ];
+
+export const isWholeNumberConfig: FormValidatorConfigType = {
+  validator: isWholeNumber,
+  message: "Must be whole number.",
+};
 
 export const zipCodeIsValidConfig: FormValidatorConfigType = {
   validator: isValidZipCode,

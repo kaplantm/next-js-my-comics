@@ -108,4 +108,10 @@ in production, custom classes should be renamed to jss###`,
       },
     ],
   },
+  {
+    text: `Consider borrowing the useFormState hook for minimal form state management.
+You may find it beneficial to fully own the form management code in your project rather than use a library so it is fully extensible.`,
+    categories: [categoriesEnum.utils, categoriesEnum.hooks],
+    links: [routeMap.useFormState],
+  },
 ];

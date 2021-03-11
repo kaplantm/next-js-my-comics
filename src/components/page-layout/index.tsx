@@ -83,25 +83,21 @@ function Page({ children }: { children: any }) {
         <nav>
           <List>
             {navRoutes.map((route: mappedRouteType) => (
-              <ListItem
-                button
+              <AppLink
+                nextProps={{
+                  href: {
+                    pathname: route.pathname,
+                    query: route.query,
+                  },
+                }}
+                color="primary"
+                className={classes.link}
                 key={`${route.pathname}${
                   route.query ? JSON.stringify(route.query) : ""
                 }${route.name}`}
               >
-                <AppLink
-                  nextProps={{
-                    href: {
-                      pathname: route.pathname,
-                      query: route.query,
-                    },
-                  }}
-                  color="primary"
-                  className={classes.link}
-                >
-                  {route.name}
-                </AppLink>
-              </ListItem>
+                <ListItem button>{route.name}</ListItem>
+              </AppLink>
             ))}
           </List>
         </nav>

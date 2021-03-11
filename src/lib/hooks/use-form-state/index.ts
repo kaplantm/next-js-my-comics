@@ -87,6 +87,16 @@ export function useFormState<T>(
   );
   const disableNextButton =
     !hasAllRequiredFields || submissionInProgress || hasFormFieldErrors;
+
+  const getPropsForFormField = (fieldName: FormFieldKey<T>) => {
+    return {
+      name: fieldName,
+      value: formFieldValues[fieldName],
+      error: !!formFieldErrors[fieldName],
+      helperText: formFieldErrors[fieldName],
+      onChange: onFormFieldUpdate,
+    };
+  };
   return {
     onFormFieldUpdate,
     formFieldValues,
@@ -100,5 +110,6 @@ export function useFormState<T>(
     hasAllRequiredFields,
     hasFormFieldErrors,
     disableNextButton,
+    getPropsForFormField,
   };
 }

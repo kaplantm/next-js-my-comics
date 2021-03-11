@@ -62,7 +62,7 @@ function ClosuresGood() {
 
       // Directly referencing response vaue here since if we reference state now if will have old value
       const firstIssueId =
-        result?.response.data?.results?.first_appeared_in_issue?.id;
+        result?.response?.data?.results?.first_appeared_in_issue?.id;
       if (firstIssueId) {
         getFirstIssue(firstIssueId);
       }

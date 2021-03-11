@@ -32,6 +32,10 @@ export const routeMap: { [key: string]: mappedRouteType } = {
     name: "Material Cascade - Bad",
     query: { bad: true },
   },
+  useFormState: {
+    pathname: "/use-form-state",
+    name: "Use Form State",
+  },
 };
 
 export const navRoutes = sortObjectArrayAlphabeticallyBy(
