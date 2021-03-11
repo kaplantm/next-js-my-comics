@@ -1,0 +1,1570 @@
+<!DOCTYPE html><html lang="en"><head><meta name="theme-color" content="hsla(0, 0%, 0%, 1)"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap"/><meta charSet="utf-8"/><title>JS Lessons</title><meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width"/><meta name="next-head-count" content="3"/><noscript data-n-css=""></noscript><link rel="preload" href="/_next/static/chunks/main-0647464f3121454225a1.js" as="script"/><link rel="preload" href="/_next/static/chunks/webpack-50bee04d1dc61f8adf5b.js" as="script"/><link rel="preload" href="/_next/static/chunks/framework.114f113ec24c188975ca.js" as="script"/><link rel="preload" href="/_next/static/chunks/commons.baac3d43d6abcc927f24.js" as="script"/><link rel="preload" href="/_next/static/chunks/e48cc8f35c4eeaaf0adb3c7725278c5629c73a75.6ade3a413b7e4a317f75.js" as="script"/><link rel="preload" href="/_next/static/chunks/58eee0157721ce6242f8a76a462869f6c5240a10.1448a9e5a38e3f33fbce.js" as="script"/><link rel="preload" href="/_next/static/chunks/8f61e787c27c2ed2d4cb0f442cec7f9350979845.4198ecc1a5bb72a9e5f2.js" as="script"/><link rel="preload" href="/_next/static/chunks/baa7e52d9b30337e865d13495973dbcd7b57b9b2.24f0abcc214129d7d934.js" as="script"/><link rel="preload" href="/_next/static/chunks/5846589f7252149010eedc2dd0404a11cc85cdeb.308c3e1f7e416d0fc260.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/_app-346df9ed78cc9e47b0ca.js" as="script"/><link rel="preload" href="/_next/static/chunks/pages/index-cb85277c0778b5209644.js" as="script"/><style id="jss-server-side">html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+strong, b {
+  font-weight: 700;
+}
+body {
+  color: hsla(0, 0%, 0%, 1);
+  margin: 0;
+  font-size: 0.875rem;
+  font-family: Din,Roboto,"Helvetica Neue",sans-serif;
+  font-weight: 400;
+  line-height: 1.43;
+  background-color: hsla(0, 100%, 100%, 1);
+}
+@media print {
+  body {
+    background-color: #fff;
+  }
+}
+body::backdrop {
+  background-color: hsla(0, 100%, 100%, 1);
+}
+.MuiContainer-root {
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media (min-width:600px) {
+  .MuiContainer-root {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+  .MuiContainer-disableGutters {
+    padding-left: 0;
+    padding-right: 0;
+  }
+@media (min-width:600px) {
+  .MuiContainer-fixed {
+    max-width: 600px;
+  }
+}
+@media (min-width:960px) {
+  .MuiContainer-fixed {
+    max-width: 960px;
+  }
+}
+@media (min-width:1280px) {
+  .MuiContainer-fixed {
+    max-width: 1280px;
+  }
+}
+@media (min-width:1920px) {
+  .MuiContainer-fixed {
+    max-width: 1920px;
+  }
+}
+@media (min-width:0px) {
+  .MuiContainer-maxWidthXs {
+    max-width: 444px;
+  }
+}
+@media (min-width:600px) {
+  .MuiContainer-maxWidthSm {
+    max-width: 600px;
+  }
+}
+@media (min-width:960px) {
+  .MuiContainer-maxWidthMd {
+    max-width: 960px;
+  }
+}
+@media (min-width:1280px) {
+  .MuiContainer-maxWidthLg {
+    max-width: 1280px;
+  }
+}
+@media (min-width:1920px) {
+  .MuiContainer-maxWidthXl {
+    max-width: 1920px;
+  }
+}
+
+  .jss14 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  .jss15 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .jss40 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .jss41 {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+  .jss46 {
+    display: flex;
+    flex-direction: column;
+  }
+  .jss47 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .jss48 {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+  .jss53 {
+    display: flex;
+    flex-direction: column;
+  }
+  .jss54 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .jss55 {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+  .jss58 {
+    display: flex;
+    flex-direction: column;
+  }
+  .jss59 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .jss60 {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+  .jss63 {
+    display: flex;
+    flex-direction: column;
+  }
+  .jss64 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .jss65 {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+  .jss70 {
+    display: flex;
+    flex-direction: column;
+  }
+  .jss71 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .jss72 {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+  .jss75 {
+    display: flex;
+    flex-direction: column;
+  }
+  .jss76 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .jss77 {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+  .jss82 {
+    display: flex;
+    flex-direction: column;
+  }
+  .jss83 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .jss84 {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+  .jss91 {
+    display: flex;
+    flex-direction: column;
+  }
+  .jss92 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .jss93 {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+  .jss96 {
+    display: flex;
+    flex-direction: column;
+  }
+  .jss97 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .jss98 {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+  .jss101 {
+    display: flex;
+    flex-direction: column;
+  }
+  .jss102 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .jss103 {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+  .jss106 {
+    display: flex;
+    flex-direction: column;
+  }
+  .jss107 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .jss108 {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+  .jss113 {
+    display: flex;
+    flex-direction: column;
+  }
+  .MuiPaper-root {
+    color: hsla(0, 0%, 0%, 1);
+    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    background-color: #fff;
+  }
+  .MuiPaper-rounded {
+    border-radius: 4px;
+  }
+  .MuiPaper-outlined {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+  }
+  .MuiPaper-elevation0 {
+    box-shadow: none;
+  }
+  .MuiPaper-elevation1 {
+    box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
+  }
+  .MuiPaper-elevation2 {
+    box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2),0px 2px 2px 0px rgba(0,0,0,0.14),0px 1px 5px 0px rgba(0,0,0,0.12);
+  }
+  .MuiPaper-elevation3 {
+    box-shadow: 0px 3px 3px -2px rgba(0,0,0,0.2),0px 3px 4px 0px rgba(0,0,0,0.14),0px 1px 8px 0px rgba(0,0,0,0.12);
+  }
+  .MuiPaper-elevation4 {
+    box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.14),0px 1px 10px 0px rgba(0,0,0,0.12);
+  }
+  .MuiPaper-elevation5 {
+    box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),0px 5px 8px 0px rgba(0,0,0,0.14),0px 1px 14px 0px rgba(0,0,0,0.12);
+  }
+  .MuiPaper-elevation6 {
+    box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);
+  }
+  .MuiPaper-elevation7 {
+    box-shadow: 0px 4px 5px -2px rgba(0,0,0,0.2),0px 7px 10px 1px rgba(0,0,0,0.14),0px 2px 16px 1px rgba(0,0,0,0.12);
+  }
+  .MuiPaper-elevation8 {
+    box-shadow: 0px 5px 5px -3px rgba(0,0,0,0.2),0px 8px 10px 1px rgba(0,0,0,0.14),0px 3px 14px 2px rgba(0,0,0,0.12);
+  }
+  .MuiPaper-elevation9 {
+    box-shadow: 0px 5px 6px -3px rgba(0,0,0,0.2),0px 9px 12px 1px rgba(0,0,0,0.14),0px 3px 16px 2px rgba(0,0,0,0.12);
+  }
+  .MuiPaper-elevation10 {
+    box-shadow: 0px 6px 6px -3px rgba(0,0,0,0.2),0px 10px 14px 1px rgba(0,0,0,0.14),0px 4px 18px 3px rgba(0,0,0,0.12);
+  }
+  .MuiPaper-elevation11 {
+    box-shadow: 0px 6px 7px -4px rgba(0,0,0,0.2),0px 11px 15px 1px rgba(0,0,0,0.14),0px 4px 20px 3px rgba(0,0,0,0.12);
+  }
+  .MuiPaper-elevation12 {
+    box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.2),0px 12px 17px 2px rgba(0,0,0,0.14),0px 5px 22px 4px rgba(0,0,0,0.12);
+  }
+  .MuiPaper-elevation13 {
+    box-shadow: 0px 7px 8px -4px rgba(0,0,0,0.2),0px 13px 19px 2px rgba(0,0,0,0.14),0px 5px 24px 4px rgba(0,0,0,0.12);
+  }
+  .MuiPaper-elevation14 {
+    box-shadow: 0px 7px 9px -4px rgba(0,0,0,0.2),0px 14px 21px 2px rgba(0,0,0,0.14),0px 5px 26px 4px rgba(0,0,0,0.12);
+  }
+  .MuiPaper-elevation15 {
+    box-shadow: 0px 8px 9px -5px rgba(0,0,0,0.2),0px 15px 22px 2px rgba(0,0,0,0.14),0px 6px 28px 5px rgba(0,0,0,0.12);
+  }
+  .MuiPaper-elevation16 {
+    box-shadow: 0px 8px 10px -5px rgba(0,0,0,0.2),0px 16px 24px 2px rgba(0,0,0,0.14),0px 6px 30px 5px rgba(0,0,0,0.12);
+  }
+  .MuiPaper-elevation17 {
+    box-shadow: 0px 8px 11px -5px rgba(0,0,0,0.2),0px 17px 26px 2px rgba(0,0,0,0.14),0px 6px 32px 5px rgba(0,0,0,0.12);
+  }
+  .MuiPaper-elevation18 {
+    box-shadow: 0px 9px 11px -5px rgba(0,0,0,0.2),0px 18px 28px 2px rgba(0,0,0,0.14),0px 7px 34px 6px rgba(0,0,0,0.12);
+  }
+  .MuiPaper-elevation19 {
+    box-shadow: 0px 9px 12px -6px rgba(0,0,0,0.2),0px 19px 29px 2px rgba(0,0,0,0.14),0px 7px 36px 6px rgba(0,0,0,0.12);
+  }
+  .MuiPaper-elevation20 {
+    box-shadow: 0px 10px 13px -6px rgba(0,0,0,0.2),0px 20px 31px 3px rgba(0,0,0,0.14),0px 8px 38px 7px rgba(0,0,0,0.12);
+  }
+  .MuiPaper-elevation21 {
+    box-shadow: 0px 10px 13px -6px rgba(0,0,0,0.2),0px 21px 33px 3px rgba(0,0,0,0.14),0px 8px 40px 7px rgba(0,0,0,0.12);
+  }
+  .MuiPaper-elevation22 {
+    box-shadow: 0px 10px 14px -6px rgba(0,0,0,0.2),0px 22px 35px 3px rgba(0,0,0,0.14),0px 8px 42px 7px rgba(0,0,0,0.12);
+  }
+  .MuiPaper-elevation23 {
+    box-shadow: 0px 11px 14px -7px rgba(0,0,0,0.2),0px 23px 36px 3px rgba(0,0,0,0.14),0px 9px 44px 8px rgba(0,0,0,0.12);
+  }
+  .MuiPaper-elevation24 {
+    box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12);
+  }
+  .MuiDrawer-docked {
+    flex: 0 0 auto;
+  }
+  .MuiDrawer-paper {
+    top: 0;
+    flex: 1 0 auto;
+    height: 100%;
+    display: flex;
+    outline: 0;
+    z-index: 1200;
+    position: fixed;
+    overflow-y: auto;
+    flex-direction: column;
+    -webkit-overflow-scrolling: touch;
+  }
+  .MuiDrawer-paperAnchorLeft {
+    left: 0;
+    right: auto;
+  }
+  .MuiDrawer-paperAnchorRight {
+    left: auto;
+    right: 0;
+  }
+  .MuiDrawer-paperAnchorTop {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: auto;
+    height: auto;
+    max-height: 100%;
+  }
+  .MuiDrawer-paperAnchorBottom {
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: auto;
+    max-height: 100%;
+  }
+  .MuiDrawer-paperAnchorDockedLeft {
+    border-right: 1px solid rgba(0, 0, 0, 0.12);
+  }
+  .MuiDrawer-paperAnchorDockedTop {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+  .MuiDrawer-paperAnchorDockedRight {
+    border-left: 1px solid rgba(0, 0, 0, 0.12);
+  }
+  .MuiDrawer-paperAnchorDockedBottom {
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+  }
+  .MuiList-root {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    list-style: none;
+  }
+  .MuiList-padding {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .MuiList-subheader {
+    padding-top: 0;
+  }
+  .MuiButtonBase-root {
+    color: inherit;
+    border: 0;
+    cursor: pointer;
+    margin: 0;
+    display: inline-flex;
+    outline: 0;
+    padding: 0;
+    position: relative;
+    align-items: center;
+    user-select: none;
+    border-radius: 0;
+    vertical-align: middle;
+    -moz-appearance: none;
+    justify-content: center;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .MuiButtonBase-root::-moz-focus-inner {
+    border-style: none;
+  }
+  .MuiButtonBase-root.Mui-disabled {
+    cursor: default;
+    pointer-events: none;
+  }
+@media print {
+  .MuiButtonBase-root {
+    color-adjust: exact;
+  }
+}
+  .MuiListItem-root {
+    width: 100%;
+    display: flex;
+    position: relative;
+    box-sizing: border-box;
+    text-align: left;
+    align-items: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    justify-content: flex-start;
+    text-decoration: none;
+  }
+  .MuiListItem-root.Mui-focusVisible {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+  .MuiListItem-root.Mui-selected, .MuiListItem-root.Mui-selected:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+  .MuiListItem-root.Mui-disabled {
+    opacity: 0.5;
+  }
+  .MuiListItem-container {
+    position: relative;
+  }
+  .MuiListItem-dense {
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+  .MuiListItem-alignItemsFlexStart {
+    align-items: flex-start;
+  }
+  .MuiListItem-divider {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    background-clip: padding-box;
+  }
+  .MuiListItem-gutters {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .MuiListItem-button {
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  }
+  .MuiListItem-button:hover {
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+@media (hover: none) {
+  .MuiListItem-button:hover {
+    background-color: transparent;
+  }
+}
+  .MuiListItem-secondaryAction {
+    padding-right: 48px;
+  }
+  .MuiDivider-root {
+    border: none;
+    height: 1px;
+    margin: 0;
+    flex-shrink: 0;
+    background-color: rgba(0, 0, 0, 0.12);
+  }
+  .MuiDivider-absolute {
+    left: 0;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+  }
+  .MuiDivider-inset {
+    margin-left: 72px;
+  }
+  .MuiDivider-light {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+  .MuiDivider-middle {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  .MuiDivider-vertical {
+    width: 1px;
+    height: 100%;
+  }
+  .MuiDivider-flexItem {
+    height: auto;
+    align-self: stretch;
+  }
+  .MuiSvgIcon-root {
+    fill: currentColor;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    font-size: 1.5rem;
+    transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    flex-shrink: 0;
+    user-select: none;
+  }
+  .MuiSvgIcon-colorPrimary {
+    color: hsla(0, 0%, 0%, 1);
+  }
+  .MuiSvgIcon-colorSecondary {
+    color: #5b6770;
+  }
+  .MuiSvgIcon-colorAction {
+    color: rgba(0, 0, 0, 0.54);
+  }
+  .MuiSvgIcon-colorError {
+    color: hsla(354, 100%, 45%, 1);
+  }
+  .MuiSvgIcon-colorDisabled {
+    color: rgba(0, 0, 0, 0.26);
+  }
+  .MuiSvgIcon-fontSizeInherit {
+    font-size: inherit;
+  }
+  .MuiSvgIcon-fontSizeSmall {
+    font-size: 1.25rem;
+  }
+  .MuiSvgIcon-fontSizeLarge {
+    font-size: 2.1875rem;
+  }
+  .MuiAppBar-root {
+    width: 100%;
+    display: flex;
+    z-index: 1100;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    flex-direction: column;
+  }
+  .MuiAppBar-positionFixed {
+    top: 0;
+    left: auto;
+    right: 0;
+    position: fixed;
+  }
+@media print {
+  .MuiAppBar-positionFixed {
+    position: absolute;
+  }
+}
+  .MuiAppBar-positionAbsolute {
+    top: 0;
+    left: auto;
+    right: 0;
+    position: absolute;
+  }
+  .MuiAppBar-positionSticky {
+    top: 0;
+    left: auto;
+    right: 0;
+    position: sticky;
+  }
+  .MuiAppBar-positionStatic {
+    position: static;
+  }
+  .MuiAppBar-positionRelative {
+    position: relative;
+  }
+  .MuiAppBar-colorDefault {
+    color: rgba(0, 0, 0, 0.87);
+    background-color: #f5f5f5;
+  }
+  .MuiAppBar-colorPrimary {
+    color: #fff;
+    background-color: hsla(0, 0%, 0%, 1);
+  }
+  .MuiAppBar-colorSecondary {
+    color: #fff;
+    background-color: #5b6770;
+  }
+  .MuiAppBar-colorInherit {
+    color: inherit;
+  }
+  .MuiAppBar-colorTransparent {
+    color: inherit;
+    background-color: transparent;
+  }
+  .MuiToolbar-root {
+    display: flex;
+    position: relative;
+    align-items: center;
+  }
+  .MuiToolbar-gutters {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+@media (min-width:600px) {
+  .MuiToolbar-gutters {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+  .MuiToolbar-regular {
+    min-height: 56px;
+  }
+@media (min-width:0px) and (orientation: landscape) {
+  .MuiToolbar-regular {
+    min-height: 48px;
+  }
+}
+@media (min-width:600px) {
+  .MuiToolbar-regular {
+    min-height: 64px;
+  }
+}
+  .MuiToolbar-dense {
+    min-height: 48px;
+  }
+  .MuiTypography-root {
+    margin: 0;
+  }
+  .MuiTypography-root.uppercase {
+    text-transform: uppercase;
+  }
+  .MuiTypography-root.italic {
+    font-style: italic;
+  }
+  .MuiTypography-root.light {
+    font-weight: 300;
+  }
+  .MuiTypography-root.normal {
+    font-weight: 400;
+  }
+  .MuiTypography-root.demiBold {
+    font-weight: 600;
+  }
+  .MuiTypography-root.bold {
+    font-weight: 700;
+  }
+  .MuiTypography-root.extraBold {
+    font-weight: 800;
+  }
+  .MuiTypography-root.remPt75 {
+    font-size: .75rem;
+  }
+  .MuiTypography-root.mtHalfEm {
+    margin-top: .5em;
+  }
+  .MuiTypography-root.mbQuarterRm {
+    margin-bottom: .25em;
+  }
+  .MuiTypography-body2 {
+    font-size: .875rem;
+    font-family: Din,Roboto,"Helvetica Neue",sans-serif;
+    font-weight: 400;
+    line-height: 1.43;
+    letter-spacing: 0.01rem;
+  }
+  .MuiTypography-body1 {
+    font-size: 1rem;
+    font-family: Din,Roboto,"Helvetica Neue",sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.01rem;
+  }
+  .MuiTypography-body1.contentfulRichText {
+    font-size: 1.25rem;
+  }
+  .MuiTypography-caption {
+    font-size: .75rem;
+    font-family: Din,Roboto,"Helvetica Neue",sans-serif;
+    font-weight: 400;
+    line-height: 1.66;
+  }
+  .MuiTypography-button {
+    font-size: 0.875rem;
+    font-family: Din,Roboto,"Helvetica Neue",sans-serif;
+    font-weight: 500;
+    line-height: 1.75;
+    text-transform: uppercase;
+  }
+  .MuiTypography-h1 {
+    font-size: 3.75rem;
+    font-family: Din,Roboto,"Helvetica Neue",sans-serif;
+    font-weight: normal;
+    line-height: 1.2;
+    letter-spacing: 0.0425rem;
+  }
+  .MuiTypography-h2 {
+    font-size: 2.75rem;
+    font-family: Din,Roboto,"Helvetica Neue",sans-serif;
+    font-weight: normal;
+    line-height: 1.23;
+    letter-spacing: 0.03125rem;
+  }
+  .MuiTypography-h3 {
+    font-size: 2.125rem;
+    font-family: Din,Roboto,"Helvetica Neue",sans-serif;
+    font-weight: normal;
+    line-height: 1.26;
+    letter-spacing: 0.03125rem;
+  }
+  .MuiTypography-h4 {
+    font-size: 1.5rem;
+    font-family: Din,Roboto,"Helvetica Neue",sans-serif;
+    font-weight: normal;
+    line-height: 1.235;
+    letter-spacing: 0.015rem;
+  }
+  .MuiTypography-h5 {
+    font-size: 1.25rem;
+    font-family: Din,Roboto,"Helvetica Neue",sans-serif;
+    font-weight: normal;
+    line-height: 1.4;
+    letter-spacing: 0.015rem;
+  }
+  .MuiTypography-h5.contentfulRichText {
+    font-weight: 600;
+  }
+  .MuiTypography-h6 {
+    font-size: 1.125rem;
+    font-family: Din,Roboto,"Helvetica Neue",sans-serif;
+    font-weight: normal;
+    line-height: 1.4;
+    letter-spacing: 0.015rem;
+  }
+  .MuiTypography-subtitle1 {
+    font-size: 1rem;
+    font-family: Din,Roboto,"Helvetica Neue",sans-serif;
+    font-weight: 400;
+    line-height: 1.75;
+  }
+  .MuiTypography-subtitle2 {
+    color: #5b6770;
+    font-size: 0.875rem;
+    font-family: Din,Roboto,"Helvetica Neue",sans-serif;
+    font-weight: 500;
+    line-height: 1.57;
+  }
+  .MuiTypography-overline {
+    font-size: 0.75rem;
+    font-family: Din,Roboto,"Helvetica Neue",sans-serif;
+    font-weight: 400;
+    line-height: 2.66;
+    text-transform: uppercase;
+  }
+  .MuiTypography-srOnly {
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+  }
+  .MuiTypography-alignLeft {
+    text-align: left;
+  }
+  .MuiTypography-alignCenter {
+    text-align: center;
+  }
+  .MuiTypography-alignRight {
+    text-align: right;
+  }
+  .MuiTypography-alignJustify {
+    text-align: justify;
+  }
+  .MuiTypography-noWrap {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .MuiTypography-gutterBottom {
+    margin-bottom: 0.35em;
+  }
+  .MuiTypography-paragraph {
+    margin-bottom: 16px;
+  }
+  .MuiTypography-colorInherit {
+    color: inherit;
+  }
+  .MuiTypography-colorPrimary {
+    color: hsla(0, 0%, 0%, 1);
+  }
+  .MuiTypography-colorSecondary {
+    color: #5b6770;
+  }
+  .MuiTypography-colorTextPrimary {
+    color: hsla(0, 0%, 0%, 1);
+  }
+  .MuiTypography-colorTextSecondary {
+    color: rgba(0, 0, 0, 0.54);
+  }
+  .MuiTypography-colorError {
+    color: hsla(354, 100%, 45%, 1);
+  }
+  .MuiTypography-displayInline {
+    display: inline;
+  }
+  .MuiTypography-displayBlock {
+    display: block;
+  }
+  .MuiIconButton-root {
+    flex: 0 0 auto;
+    color: rgba(0, 0, 0, 0.54);
+    padding: 12px;
+    overflow: visible;
+    font-size: 1.5rem;
+    text-align: center;
+    transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    border-radius: 50%;
+  }
+  .MuiIconButton-root:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+  .MuiIconButton-root.Mui-disabled {
+    color: rgba(0, 0, 0, 0.26);
+    background-color: transparent;
+  }
+@media (hover: none) {
+  .MuiIconButton-root:hover {
+    background-color: transparent;
+  }
+}
+  .MuiIconButton-edgeStart {
+    margin-left: -12px;
+  }
+  .MuiIconButton-sizeSmall.MuiIconButton-edgeStart {
+    margin-left: -3px;
+  }
+  .MuiIconButton-edgeEnd {
+    margin-right: -12px;
+  }
+  .MuiIconButton-sizeSmall.MuiIconButton-edgeEnd {
+    margin-right: -3px;
+  }
+  .MuiIconButton-colorInherit {
+    color: inherit;
+  }
+  .MuiIconButton-colorPrimary {
+    color: hsla(0, 0%, 0%, 1);
+  }
+  .MuiIconButton-colorPrimary:hover {
+    background-color: hsla(0, 0%, 0%, 0.04);
+  }
+@media (hover: none) {
+  .MuiIconButton-colorPrimary:hover {
+    background-color: transparent;
+  }
+}
+  .MuiIconButton-colorSecondary {
+    color: #5b6770;
+  }
+  .MuiIconButton-colorSecondary:hover {
+    background-color: rgba(91, 103, 112, 0.04);
+  }
+@media (hover: none) {
+  .MuiIconButton-colorSecondary:hover {
+    background-color: transparent;
+  }
+}
+  .MuiIconButton-sizeSmall {
+    padding: 3px;
+    font-size: 1.125rem;
+  }
+  .MuiIconButton-label {
+    width: 100%;
+    display: flex;
+    align-items: inherit;
+    justify-content: inherit;
+  }
+  .MuiLink-root {
+    color: hsla(203, 46%, 51%, 1);
+  }
+  .MuiLink-root.noWrap {
+    white-space: nowrap;
+  }
+  .MuiLink-root.noUnderline:hover {
+    text-decoration: none;
+  }
+  .MuiLink-underlineNone {
+    text-decoration: none;
+  }
+  .MuiLink-underlineHover {
+    text-decoration: none;
+  }
+  .MuiLink-underlineHover:hover {
+    text-decoration: underline;
+  }
+  .MuiLink-underlineAlways {
+    text-decoration: underline;
+  }
+  .MuiLink-button {
+    border: 0;
+    cursor: pointer;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    position: relative;
+    user-select: none;
+    border-radius: 0;
+    vertical-align: middle;
+    -moz-appearance: none;
+    background-color: transparent;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .MuiLink-button::-moz-focus-inner {
+    border-style: none;
+  }
+  .MuiLink-button.Mui-focusVisible {
+    outline: auto;
+  }
+  .jss1 {
+    color: hsla(117, 66%, 51%, 1);
+    font-weight: 600;
+    margin-left: 0.5rem;
+    letter-spacing: .1rem;
+  }
+  .jss2 {
+    display: flex;
+  }
+  .jss3 {
+    white-space: nowrap;
+  }
+  .jss4 {
+    display: flex;
+  }
+  .jss5 {
+    transition: margin 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms,width 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+    background-color: hsla(0, 100%, 100%, 1);
+  }
+  .jss6 {
+    width: calc(100% - 240px);
+    transition: margin 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms,width 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+    margin-left: 240px;
+  }
+  .jss7 {
+    margin-right: 1rem;
+  }
+  .jss8 {
+    display: none;
+  }
+  .jss9 {
+    width: 240px;
+    flex-shrink: 0;
+  }
+  .jss10 {
+    width: 240px;
+  }
+  .jss11 {
+    display: flex;
+    padding: 0rem 0.5rem 0rem 1rem;
+    min-height: 56px;
+    align-items: center;
+    justify-content: space-between;
+  }
+@media (min-width:0px) and (orientation: landscape) {
+  .jss11 {
+    min-height: 48px;
+  }
+}
+@media (min-width:600px) {
+  .jss11 {
+    min-height: 64px;
+  }
+}
+  .jss12 {
+    padding: 1.5rem;
+    flex-grow: 1;
+    transition: margin 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;
+    margin-left: -240px;
+  }
+  .jss13 {
+    transition: margin 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+    margin-left: 0;
+  }
+  .MuiListItemText-root {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+  .MuiListItemText-multiline {
+    margin-top: 6px;
+    margin-bottom: 6px;
+  }
+  .MuiListItemText-inset {
+    padding-left: 56px;
+  }
+  .jss16 {
+    border: 1px solid hsla(204, 6%, 85%, 1);
+    margin: 1rem 0rem;
+    border-radius: 10px;
+  }
+  .jss17 {
+    border: 2px solid hsla(195, 22%, 96%, 1);
+    display: flex;
+    padding: 1rem;
+    flex-wrap: wrap;
+    background-color: hsla(195, 22%, 96%, 0.4);
+  }
+  .jss17 .chipMain {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .MuiChip-root {
+    color: rgba(0, 0, 0, 0.87);
+    border: none;
+    cursor: default;
+    height: 32px;
+    display: inline-flex;
+    outline: 0;
+    padding: 0;
+    font-size: 0.8125rem;
+    box-sizing: border-box;
+    transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    align-items: center;
+    font-family: Din,Roboto,"Helvetica Neue",sans-serif;
+    white-space: nowrap;
+    border-radius: 16px;
+    vertical-align: middle;
+    justify-content: center;
+    text-decoration: none;
+    background-color: #e0e0e0;
+  }
+  .MuiChip-root.Mui-disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .MuiChip-root .MuiChip-avatar {
+    color: #616161;
+    width: 24px;
+    height: 24px;
+    font-size: 0.75rem;
+    margin-left: 5px;
+    margin-right: -6px;
+  }
+  .MuiChip-root .MuiChip-avatarColorPrimary {
+    color: #fff;
+    background-color: hsla(0, 0%, 0%, 1);
+  }
+  .MuiChip-root .MuiChip-avatarColorSecondary {
+    color: #fff;
+    background-color: rgb(63, 72, 78);
+  }
+  .MuiChip-root .MuiChip-avatarSmall {
+    width: 18px;
+    height: 18px;
+    font-size: 0.625rem;
+    margin-left: 4px;
+    margin-right: -4px;
+  }
+  .MuiChip-sizeSmall {
+    height: 24px;
+  }
+  .MuiChip-colorPrimary {
+    color: #fff;
+    background-color: hsla(0, 0%, 0%, 1);
+  }
+  .MuiChip-colorSecondary {
+    color: #fff;
+    background-color: #5b6770;
+  }
+  .MuiChip-clickable {
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .MuiChip-clickable:hover, .MuiChip-clickable:focus {
+    background-color: rgb(206, 206, 206);
+  }
+  .MuiChip-clickable:active {
+    box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
+  }
+  .MuiChip-clickableColorPrimary:hover, .MuiChip-clickableColorPrimary:focus {
+    background-color: hsla(0, 0%, 8%, 1);
+  }
+  .MuiChip-clickableColorSecondary:hover, .MuiChip-clickableColorSecondary:focus {
+    background-color: rgb(104, 115, 123);
+  }
+  .MuiChip-deletable:focus {
+    background-color: rgb(206, 206, 206);
+  }
+  .MuiChip-deletableColorPrimary:focus {
+    background-color: hsla(0, 0%, 20%, 1);
+  }
+  .MuiChip-deletableColorSecondary:focus {
+    background-color: rgb(123, 133, 140);
+  }
+  .MuiChip-outlined {
+    border: 1px solid rgba(0, 0, 0, 0.23);
+    background-color: transparent;
+  }
+  .MuiChip-clickable.MuiChip-outlined:hover, .MuiChip-clickable.MuiChip-outlined:focus, .MuiChip-deletable.MuiChip-outlined:focus {
+    background-color: hsla(0, 0%, 0%, 0.04);
+  }
+  .MuiChip-outlined .MuiChip-avatar {
+    margin-left: 4px;
+  }
+  .MuiChip-outlined .MuiChip-avatarSmall {
+    margin-left: 2px;
+  }
+  .MuiChip-outlined .MuiChip-icon {
+    margin-left: 4px;
+  }
+  .MuiChip-outlined .MuiChip-iconSmall {
+    margin-left: 2px;
+  }
+  .MuiChip-outlined .MuiChip-deleteIcon {
+    margin-right: 5px;
+  }
+  .MuiChip-outlined .MuiChip-deleteIconSmall {
+    margin-right: 3px;
+  }
+  .MuiChip-outlinedPrimary {
+    color: hsla(0, 0%, 0%, 1);
+    border: 1px solid hsla(0, 0%, 0%, 1);
+  }
+  .MuiChip-clickable.MuiChip-outlinedPrimary:hover, .MuiChip-clickable.MuiChip-outlinedPrimary:focus, .MuiChip-deletable.MuiChip-outlinedPrimary:focus {
+    background-color: hsla(0, 0%, 0%, 0.04);
+  }
+  .MuiChip-outlinedSecondary {
+    color: #5b6770;
+    border: 1px solid #5b6770;
+  }
+  .MuiChip-clickable.MuiChip-outlinedSecondary:hover, .MuiChip-clickable.MuiChip-outlinedSecondary:focus, .MuiChip-deletable.MuiChip-outlinedSecondary:focus {
+    background-color: rgba(91, 103, 112, 0.04);
+  }
+  .MuiChip-icon {
+    color: #616161;
+    margin-left: 5px;
+    margin-right: -6px;
+  }
+  .MuiChip-iconSmall {
+    width: 18px;
+    height: 18px;
+    margin-left: 4px;
+    margin-right: -4px;
+  }
+  .MuiChip-iconColorPrimary {
+    color: inherit;
+  }
+  .MuiChip-iconColorSecondary {
+    color: inherit;
+  }
+  .MuiChip-label {
+    overflow: hidden;
+    white-space: nowrap;
+    padding-left: 12px;
+    padding-right: 12px;
+    text-overflow: ellipsis;
+  }
+  .MuiChip-labelSmall {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .MuiChip-deleteIcon {
+    color: hsla(0, 0%, 0%, 0.26);
+    width: 22px;
+    cursor: pointer;
+    height: 22px;
+    margin: 0 5px 0 -6px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .MuiChip-deleteIcon:hover {
+    color: hsla(0, 0%, 0%, 0.4);
+  }
+  .MuiChip-deleteIconSmall {
+    width: 16px;
+    height: 16px;
+    margin-left: -4px;
+    margin-right: 4px;
+  }
+  .MuiChip-deleteIconColorPrimary {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .MuiChip-deleteIconColorPrimary:hover, .MuiChip-deleteIconColorPrimary:active {
+    color: #fff;
+  }
+  .MuiChip-deleteIconColorSecondary {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .MuiChip-deleteIconColorSecondary:hover, .MuiChip-deleteIconColorSecondary:active {
+    color: #fff;
+  }
+  .MuiChip-deleteIconOutlinedColorPrimary {
+    color: hsla(0, 0%, 0%, 0.7);
+  }
+  .MuiChip-deleteIconOutlinedColorPrimary:hover, .MuiChip-deleteIconOutlinedColorPrimary:active {
+    color: hsla(0, 0%, 0%, 1);
+  }
+  .MuiChip-deleteIconOutlinedColorSecondary {
+    color: rgba(91, 103, 112, 0.7);
+  }
+  .MuiChip-deleteIconOutlinedColorSecondary:hover, .MuiChip-deleteIconOutlinedColorSecondary:active {
+    color: #5b6770;
+  }
+  .jss18 {
+    margin-top: 0.25rem;
+    transition: border-color .2s;
+    font-weight: 600;
+    margin-left: 0.375rem;
+    letter-spacing: .05em;
+  }
+  .jss18:hover {
+    border: 2px solid transparent;
+  }
+  .jss20 {
+    background-color: hsla(117, 66%, 51%, 0.3);
+    border: 2px solid hsla(117, 66%, 51%, 0.25);
+  }
+  .jss20:hover {
+    background-color: hsla(117, 66%, 51%, 0.5);
+  }
+  .jss21 {
+    background-color: hsla(117, 66%, 51%, 0.4);
+    border: 2px solid hsla(117, 66%, 51%, 1);
+  }
+  .jss22 {
+    background-color: hsla(202, 64%, 57%, 0.3);
+    border: 2px solid hsla(202, 64%, 57%, 0.25);
+  }
+  .jss22:hover {
+    background-color: hsla(202, 64%, 57%, 0.5);
+  }
+  .jss23 {
+    background-color: hsla(202, 64%, 57%, 0.4);
+    border: 2px solid hsla(202, 64%, 57%, 1);
+  }
+  .jss24 {
+    background-color: hsla(353, 89%, 76%, 0.3);
+    border: 2px solid hsla(353, 89%, 76%, 0.25);
+  }
+  .jss24:hover {
+    background-color: hsla(353, 89%, 76%, 0.5);
+  }
+  .jss25 {
+    background-color: hsla(353, 89%, 76%, 0.4);
+    border: 2px solid hsla(353, 89%, 76%, 1);
+  }
+  .jss26 {
+    background-color: hsla(44, 94%, 73%, 0.3);
+    border: 2px solid hsla(44, 94%, 73%, 0.25);
+  }
+  .jss26:hover {
+    background-color: hsla(44, 94%, 73%, 0.5);
+  }
+  .jss27 {
+    background-color: hsla(44, 94%, 73%, 0.4);
+    border: 2px solid hsla(44, 94%, 73%, 1);
+  }
+  .jss28 {
+    background-color: hsla(220, 44%, 41%, 0.3);
+    border: 2px solid hsla(220, 44%, 41%, 0.25);
+  }
+  .jss28:hover {
+    background-color: hsla(220, 44%, 41%, 0.5);
+  }
+  .jss29 {
+    background-color: hsla(220, 44%, 41%, 0.4);
+    border: 2px solid hsla(220, 44%, 41%, 1);
+  }
+  .jss30 {
+    background-color: hsla(206, 10%, 40%, 0.3);
+    border: 2px solid hsla(206, 10%, 40%, 0.25);
+  }
+  .jss30:hover {
+    background-color: hsla(206, 10%, 40%, 0.5);
+  }
+  .jss31 {
+    background-color: hsla(206, 10%, 40%, 0.4);
+    border: 2px solid hsla(206, 10%, 40%, 1);
+  }
+  .jss32 {
+    background-color: hsla(249, 44%, 41%, 0.3);
+    border: 2px solid hsla(249, 44%, 41%, 0.25);
+  }
+  .jss32:hover {
+    background-color: hsla(249, 44%, 41%, 0.5);
+  }
+  .jss33 {
+    background-color: hsla(249, 44%, 41%, 0.4);
+    border: 2px solid hsla(249, 44%, 41%, 1);
+  }
+  .jss34 {
+    background-color: hsla(117, 64%, 83%, 0.3);
+    border: 2px solid hsla(117, 64%, 83%, 0.25);
+  }
+  .jss34:hover {
+    background-color: hsla(117, 64%, 83%, 0.5);
+  }
+  .jss35 {
+    background-color: hsla(117, 64%, 83%, 0.4);
+    border: 2px solid hsla(117, 64%, 83%, 1);
+  }
+  .jss36 {
+    background-color: hsla(17, 88%, 60%, 0.3);
+    border: 2px solid hsla(17, 88%, 60%, 0.25);
+  }
+  .jss36:hover {
+    background-color: hsla(17, 88%, 60%, 0.5);
+  }
+  .jss37 {
+    background-color: hsla(17, 88%, 60%, 0.4);
+    border: 2px solid hsla(17, 88%, 60%, 1);
+  }
+  .jss38 {
+    background-color: hsla(249, 44%, 70%, 0.3);
+    border: 2px solid hsla(249, 44%, 70%, 0.25);
+  }
+  .jss38:hover {
+    background-color: hsla(249, 44%, 70%, 0.5);
+  }
+  .jss39 {
+    background-color: hsla(249, 44%, 70%, 0.4);
+    border: 2px solid hsla(249, 44%, 70%, 1);
+  }
+  .jss42 {
+    background-color: hsla(117, 66%, 51%, 0.3);
+    border: 2px solid hsla(117, 66%, 51%, 0.25);
+  }
+  .jss42:hover {
+    background-color: hsla(117, 66%, 51%, 0.5);
+  }
+  .jss43 {
+    background-color: hsla(117, 66%, 51%, 0.4);
+    border: 2px solid hsla(117, 66%, 51%, 1);
+  }
+  .jss44 {
+    background-color: hsla(353, 89%, 76%, 0.3);
+    border: 2px solid hsla(353, 89%, 76%, 0.25);
+  }
+  .jss44:hover {
+    background-color: hsla(353, 89%, 76%, 0.5);
+  }
+  .jss45 {
+    background-color: hsla(353, 89%, 76%, 0.4);
+    border: 2px solid hsla(353, 89%, 76%, 1);
+  }
+  .jss49 {
+    background-color: hsla(117, 66%, 51%, 0.3);
+    border: 2px solid hsla(117, 66%, 51%, 0.25);
+  }
+  .jss49:hover {
+    background-color: hsla(117, 66%, 51%, 0.5);
+  }
+  .jss50 {
+    background-color: hsla(117, 66%, 51%, 0.4);
+    border: 2px solid hsla(117, 66%, 51%, 1);
+  }
+  .jss51 {
+    background-color: hsla(202, 64%, 57%, 0.3);
+    border: 2px solid hsla(202, 64%, 57%, 0.25);
+  }
+  .jss51:hover {
+    background-color: hsla(202, 64%, 57%, 0.5);
+  }
+  .jss52 {
+    background-color: hsla(202, 64%, 57%, 0.4);
+    border: 2px solid hsla(202, 64%, 57%, 1);
+  }
+  .jss56 {
+    background-color: hsla(202, 64%, 57%, 0.3);
+    border: 2px solid hsla(202, 64%, 57%, 0.25);
+  }
+  .jss56:hover {
+    background-color: hsla(202, 64%, 57%, 0.5);
+  }
+  .jss57 {
+    background-color: hsla(202, 64%, 57%, 0.4);
+    border: 2px solid hsla(202, 64%, 57%, 1);
+  }
+  .jss61 {
+    background-color: hsla(44, 94%, 73%, 0.3);
+    border: 2px solid hsla(44, 94%, 73%, 0.25);
+  }
+  .jss61:hover {
+    background-color: hsla(44, 94%, 73%, 0.5);
+  }
+  .jss62 {
+    background-color: hsla(44, 94%, 73%, 0.4);
+    border: 2px solid hsla(44, 94%, 73%, 1);
+  }
+  .jss66 {
+    background-color: hsla(206, 10%, 40%, 0.3);
+    border: 2px solid hsla(206, 10%, 40%, 0.25);
+  }
+  .jss66:hover {
+    background-color: hsla(206, 10%, 40%, 0.5);
+  }
+  .jss67 {
+    background-color: hsla(206, 10%, 40%, 0.4);
+    border: 2px solid hsla(206, 10%, 40%, 1);
+  }
+  .jss68 {
+    background-color: hsla(220, 44%, 41%, 0.3);
+    border: 2px solid hsla(220, 44%, 41%, 0.25);
+  }
+  .jss68:hover {
+    background-color: hsla(220, 44%, 41%, 0.5);
+  }
+  .jss69 {
+    background-color: hsla(220, 44%, 41%, 0.4);
+    border: 2px solid hsla(220, 44%, 41%, 1);
+  }
+  .jss73 {
+    background-color: hsla(206, 10%, 40%, 0.3);
+    border: 2px solid hsla(206, 10%, 40%, 0.25);
+  }
+  .jss73:hover {
+    background-color: hsla(206, 10%, 40%, 0.5);
+  }
+  .jss74 {
+    background-color: hsla(206, 10%, 40%, 0.4);
+    border: 2px solid hsla(206, 10%, 40%, 1);
+  }
+  .jss78 {
+    background-color: hsla(249, 44%, 41%, 0.3);
+    border: 2px solid hsla(249, 44%, 41%, 0.25);
+  }
+  .jss78:hover {
+    background-color: hsla(249, 44%, 41%, 0.5);
+  }
+  .jss79 {
+    background-color: hsla(249, 44%, 41%, 0.4);
+    border: 2px solid hsla(249, 44%, 41%, 1);
+  }
+  .jss80 {
+    background-color: hsla(353, 89%, 76%, 0.3);
+    border: 2px solid hsla(353, 89%, 76%, 0.25);
+  }
+  .jss80:hover {
+    background-color: hsla(353, 89%, 76%, 0.5);
+  }
+  .jss81 {
+    background-color: hsla(353, 89%, 76%, 0.4);
+    border: 2px solid hsla(353, 89%, 76%, 1);
+  }
+  .jss85 {
+    background-color: hsla(117, 64%, 83%, 0.3);
+    border: 2px solid hsla(117, 64%, 83%, 0.25);
+  }
+  .jss85:hover {
+    background-color: hsla(117, 64%, 83%, 0.5);
+  }
+  .jss86 {
+    background-color: hsla(117, 64%, 83%, 0.4);
+    border: 2px solid hsla(117, 64%, 83%, 1);
+  }
+  .jss87 {
+    background-color: hsla(353, 89%, 76%, 0.3);
+    border: 2px solid hsla(353, 89%, 76%, 0.25);
+  }
+  .jss87:hover {
+    background-color: hsla(353, 89%, 76%, 0.5);
+  }
+  .jss88 {
+    background-color: hsla(353, 89%, 76%, 0.4);
+    border: 2px solid hsla(353, 89%, 76%, 1);
+  }
+  .jss89 {
+    background-color: hsla(206, 10%, 40%, 0.3);
+    border: 2px solid hsla(206, 10%, 40%, 0.25);
+  }
+  .jss89:hover {
+    background-color: hsla(206, 10%, 40%, 0.5);
+  }
+  .jss90 {
+    background-color: hsla(206, 10%, 40%, 0.4);
+    border: 2px solid hsla(206, 10%, 40%, 1);
+  }
+  .jss94 {
+    background-color: hsla(17, 88%, 60%, 0.3);
+    border: 2px solid hsla(17, 88%, 60%, 0.25);
+  }
+  .jss94:hover {
+    background-color: hsla(17, 88%, 60%, 0.5);
+  }
+  .jss95 {
+    background-color: hsla(17, 88%, 60%, 0.4);
+    border: 2px solid hsla(17, 88%, 60%, 1);
+  }
+  .jss99 {
+    background-color: hsla(17, 88%, 60%, 0.3);
+    border: 2px solid hsla(17, 88%, 60%, 0.25);
+  }
+  .jss99:hover {
+    background-color: hsla(17, 88%, 60%, 0.5);
+  }
+  .jss100 {
+    background-color: hsla(17, 88%, 60%, 0.4);
+    border: 2px solid hsla(17, 88%, 60%, 1);
+  }
+  .jss104 {
+    background-color: hsla(249, 44%, 70%, 0.3);
+    border: 2px solid hsla(249, 44%, 70%, 0.25);
+  }
+  .jss104:hover {
+    background-color: hsla(249, 44%, 70%, 0.5);
+  }
+  .jss105 {
+    background-color: hsla(249, 44%, 70%, 0.4);
+    border: 2px solid hsla(249, 44%, 70%, 1);
+  }
+  .jss109 {
+    background-color: hsla(206, 10%, 40%, 0.3);
+    border: 2px solid hsla(206, 10%, 40%, 0.25);
+  }
+  .jss109:hover {
+    background-color: hsla(206, 10%, 40%, 0.5);
+  }
+  .jss110 {
+    background-color: hsla(206, 10%, 40%, 0.4);
+    border: 2px solid hsla(206, 10%, 40%, 1);
+  }
+  .jss111 {
+    background-color: hsla(353, 89%, 76%, 0.3);
+    border: 2px solid hsla(353, 89%, 76%, 0.25);
+  }
+  .jss111:hover {
+    background-color: hsla(353, 89%, 76%, 0.5);
+  }
+  .jss112 {
+    background-color: hsla(353, 89%, 76%, 0.4);
+    border: 2px solid hsla(353, 89%, 76%, 1);
+  }</style></head><body><div id="__next"><div class="jss4"><header class="MuiPaper-root MuiAppBar-root MuiAppBar-positionFixed MuiAppBar-colorPrimary jss5 mui-fixed MuiPaper-elevation4"><div class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"><button class="MuiButtonBase-root MuiIconButton-root jss7 MuiIconButton-edgeStart" tabindex="0" type="button" aria-label="open drawer"><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg></span></button><a class="MuiTypography-root MuiLink-root MuiLink-underlineHover noWrap noUnderline MuiTypography-colorPrimary" href="/"><h1 class="MuiTypography-root jss1 MuiTypography-h3">JS Lessons</h1></a></div></header><div class="MuiDrawer-root MuiDrawer-docked jss9"><div class="MuiPaper-root MuiDrawer-paper jss10 MuiDrawer-paperAnchorLeft MuiDrawer-paperAnchorDockedLeft MuiPaper-elevation0" style="visibility:hidden"><div class="jss11"><h3 class="MuiTypography-root MuiTypography-h4">Lessons</h3><button class="MuiButtonBase-root MuiIconButton-root" tabindex="0" type="button"><span class="MuiIconButton-label"><svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path></svg></span></button></div><hr class="MuiDivider-root"/><nav><ul class="MuiList-root MuiList-padding"><a class="MuiTypography-root MuiLink-root MuiLink-underlineHover jss3 MuiTypography-colorPrimary" href="/closures"><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false">Closures</div></a><a class="MuiTypography-root MuiLink-root MuiLink-underlineHover jss3 MuiTypography-colorPrimary" href="/is-mounted"><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false">Is Mounted</div></a><a class="MuiTypography-root MuiLink-root MuiLink-underlineHover jss3 MuiTypography-colorPrimary" href="/material-cascade?bad=true"><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false">Material Cascade - Bad</div></a><a class="MuiTypography-root MuiLink-root MuiLink-underlineHover jss3 MuiTypography-colorPrimary" href="/material-cascade?bad=false"><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false">Material Cascade - Good</div></a><a class="MuiTypography-root MuiLink-root MuiLink-underlineHover jss3 MuiTypography-colorPrimary" href="/rounding"><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false">Rounding</div></a><a class="MuiTypography-root MuiLink-root MuiLink-underlineHover jss3 MuiTypography-colorPrimary" href="/use-form-state"><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false">Use Form State</div></a><a class="MuiTypography-root MuiLink-root MuiLink-underlineHover jss3 MuiTypography-colorPrimary" href="/when-hooks-run"><div class="MuiButtonBase-root MuiListItem-root MuiListItem-gutters MuiListItem-button" tabindex="0" role="button" aria-disabled="false">When Hooks Run</div></a></ul></nav></div></div><main class="jss12"><div class="jss11"></div><div class="MuiContainer-root MuiContainer-maxWidthLg"><div class="MuiBox-root jss14"><div class="MuiContainer-root MuiContainer-maxWidthMd"><div class="MuiBox-root jss15"><div class="jss17"><div class="MuiButtonBase-root MuiChip-root jss18 jss20 chipMain MuiChip-sizeSmall MuiChip-clickable MuiChip-deletable" tabindex="0" role="button"><span class="MuiChip-label MuiChip-labelSmall">NextJS</span><svg class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></div><div class="MuiButtonBase-root MuiChip-root jss18 jss22 chipMain MuiChip-sizeSmall MuiChip-clickable MuiChip-deletable" tabindex="0" role="button"><span class="MuiChip-label MuiChip-labelSmall">Material UI</span><svg class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></div><div class="MuiButtonBase-root MuiChip-root jss18 jss24 chipMain MuiChip-sizeSmall MuiChip-clickable MuiChip-deletable" tabindex="0" role="button"><span class="MuiChip-label MuiChip-labelSmall">Hooks</span><svg class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></div><div class="MuiButtonBase-root MuiChip-root jss18 jss26 chipMain MuiChip-sizeSmall MuiChip-clickable MuiChip-deletable" tabindex="0" role="button"><span class="MuiChip-label MuiChip-labelSmall">TinyMCE</span><svg class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></div><div class="MuiButtonBase-root MuiChip-root jss18 jss28 chipMain MuiChip-sizeSmall MuiChip-clickable MuiChip-deletable" tabindex="0" role="button"><span class="MuiChip-label MuiChip-labelSmall">Axios</span><svg class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></div><div class="MuiButtonBase-root MuiChip-root jss18 jss30 chipMain MuiChip-sizeSmall MuiChip-clickable MuiChip-deletable" tabindex="0" role="button"><span class="MuiChip-label MuiChip-labelSmall">Utils</span><svg class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></div><div class="MuiButtonBase-root MuiChip-root jss18 jss32 chipMain MuiChip-sizeSmall MuiChip-clickable MuiChip-deletable" tabindex="0" role="button"><span class="MuiChip-label MuiChip-labelSmall">JS Fundamentals</span><svg class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></div><div class="MuiButtonBase-root MuiChip-root jss18 jss34 chipMain MuiChip-sizeSmall MuiChip-clickable MuiChip-deletable" tabindex="0" role="button"><span class="MuiChip-label MuiChip-labelSmall">React Fundamentals</span><svg class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></div><div class="MuiButtonBase-root MuiChip-root jss18 jss36 chipMain MuiChip-sizeSmall MuiChip-clickable MuiChip-deletable" tabindex="0" role="button"><span class="MuiChip-label MuiChip-labelSmall">Other</span><svg class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></div><div class="MuiButtonBase-root MuiChip-root jss18 jss38 chipMain MuiChip-sizeSmall MuiChip-clickable MuiChip-deletable" tabindex="0" role="button"><span class="MuiChip-label MuiChip-labelSmall">Resources</span><svg class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></div></div><ul class="MuiList-root MuiList-padding"><li class="MuiListItem-root jss16 MuiListItem-gutters"><div class="MuiBox-root jss40"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">In NextJS, all hooks execute client side</span></div><div class="MuiBox-root jss41"><div class="MuiButtonBase-root MuiChip-root jss18 jss42 chipMain MuiChip-sizeSmall MuiChip-clickable MuiChip-deletable" tabindex="0" role="button"><span class="MuiChip-label MuiChip-labelSmall">NextJS</span><svg class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></div><div class="MuiButtonBase-root MuiChip-root jss18 jss44 chipMain MuiChip-sizeSmall MuiChip-clickable MuiChip-deletable" tabindex="0" role="button"><span class="MuiChip-label MuiChip-labelSmall">Hooks</span><svg class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></div></div><div class="MuiBox-root jss46"></div></div></li><li class="MuiListItem-root jss16 MuiListItem-gutters"><div class="MuiBox-root jss47"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Do not change the NODE_ENV variable in live envs for a NextJS app. 
+When NextJS builds the production (optimized, no live reload) version of the code it sets the NODE_ENV to production. Do not change it.
+If you need to detect if you are in a live develop / stage environment, add another environment variable (e.g. INTERNAL_ENV) to signal that. 
+Make sure your env variables are set the same at both build time and run time. 
+If you are using material UI, you can check if NextJS is running a production or dev build by looking at the build pages source code -
+in production, custom classes should be renamed to jss###</span></div><div class="MuiBox-root jss48"><div class="MuiButtonBase-root MuiChip-root jss18 jss49 chipMain MuiChip-sizeSmall MuiChip-clickable MuiChip-deletable" tabindex="0" role="button"><span class="MuiChip-label MuiChip-labelSmall">NextJS</span><svg class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></div><div class="MuiButtonBase-root MuiChip-root jss18 jss51 chipMain MuiChip-sizeSmall MuiChip-clickable MuiChip-deletable" tabindex="0" role="button"><span class="MuiChip-label MuiChip-labelSmall">Material UI</span><svg class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></div></div><div class="MuiBox-root jss53"></div></div></li><li class="MuiListItem-root jss16 MuiListItem-gutters"><div class="MuiBox-root jss54"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Don&#x27;t pass down classes. Always import components from the same source.</span></div><div class="MuiBox-root jss55"><div class="MuiButtonBase-root MuiChip-root jss18 jss56 chipMain MuiChip-sizeSmall MuiChip-clickable MuiChip-deletable" tabindex="0" role="button"><span class="MuiChip-label MuiChip-labelSmall">Material UI</span><svg class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></div></div><div class="MuiBox-root jss58"><a class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary" href="/material-cascade?bad=true">Material Cascade - Bad</a></div></div></li><li class="MuiListItem-root jss16 MuiListItem-gutters"><div class="MuiBox-root jss59"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">TinyMCE many crash the site if it receives bad html as its inital data. Use sanitize-html we setting the editor&#x27;s intial state to prevent this.</span></div><div class="MuiBox-root jss60"><div class="MuiButtonBase-root MuiChip-root jss18 jss61 chipMain MuiChip-sizeSmall MuiChip-clickable MuiChip-deletable" tabindex="0" role="button"><span class="MuiChip-label MuiChip-labelSmall">TinyMCE</span><svg class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></div></div><div class="MuiBox-root jss63"><a class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary" href="/material-cascade?bad=true">Material Cascade - Bad</a></div></div></li><li class="MuiListItem-root jss16 MuiListItem-gutters"><div class="MuiBox-root jss64"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Axios does not wrap their errors, instead you will need a try catch. Consider using a custom wrapper around axios to standardize this throughout your site. See the appAxios method in src/lib/utils/index.ts for example.</span></div><div class="MuiBox-root jss65"><div class="MuiButtonBase-root MuiChip-root jss18 jss66 chipMain MuiChip-sizeSmall MuiChip-clickable MuiChip-deletable" tabindex="0" role="button"><span class="MuiChip-label MuiChip-labelSmall">Utils</span><svg class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></div><div class="MuiButtonBase-root MuiChip-root jss18 jss68 chipMain MuiChip-sizeSmall MuiChip-clickable MuiChip-deletable" tabindex="0" role="button"><span class="MuiChip-label MuiChip-labelSmall">Axios</span><svg class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></div></div><div class="MuiBox-root jss70"><a class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary" href="/material-cascade?bad=true">Material Cascade - Bad</a></div></div></li><li class="MuiListItem-root jss16 MuiListItem-gutters"><div class="MuiBox-root jss71"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">For two digit decimal rounding Number.prototype.toFixed() may not be reliable.</span></div><div class="MuiBox-root jss72"><div class="MuiButtonBase-root MuiChip-root jss18 jss73 chipMain MuiChip-sizeSmall MuiChip-clickable MuiChip-deletable" tabindex="0" role="button"><span class="MuiChip-label MuiChip-labelSmall">Utils</span><svg class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></div></div><div class="MuiBox-root jss75"><a class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary" href="/rounding">Rounding</a></div></div></li><li class="MuiListItem-root jss16 MuiListItem-gutters"><div class="MuiBox-root jss76"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Closures can capture old state.</span></div><div class="MuiBox-root jss77"><div class="MuiButtonBase-root MuiChip-root jss18 jss78 chipMain MuiChip-sizeSmall MuiChip-clickable MuiChip-deletable" tabindex="0" role="button"><span class="MuiChip-label MuiChip-labelSmall">JS Fundamentals</span><svg class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></div><div class="MuiButtonBase-root MuiChip-root jss18 jss80 chipMain MuiChip-sizeSmall MuiChip-clickable MuiChip-deletable" tabindex="0" role="button"><span class="MuiChip-label MuiChip-labelSmall">Hooks</span><svg class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></div></div><div class="MuiBox-root jss82"><a class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary" href="/closures">Closures</a><a class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary" target="_blank" href="https://dmitripavlutin.com/react-hooks-stale-closures/">Stale Closures with Hooks</a></div></div></li><li class="MuiListItem-root jss16 MuiListItem-gutters"><div class="MuiBox-root jss83"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Async request may complete after a component has unmounted. Avoid unexpected behavior and memory leak warnings using the useIsMounted hook.</span></div><div class="MuiBox-root jss84"><div class="MuiButtonBase-root MuiChip-root jss18 jss85 chipMain MuiChip-sizeSmall MuiChip-clickable MuiChip-deletable" tabindex="0" role="button"><span class="MuiChip-label MuiChip-labelSmall">React Fundamentals</span><svg class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></div><div class="MuiButtonBase-root MuiChip-root jss18 jss87 chipMain MuiChip-sizeSmall MuiChip-clickable MuiChip-deletable" tabindex="0" role="button"><span class="MuiChip-label MuiChip-labelSmall">Hooks</span><svg class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></div><div class="MuiButtonBase-root MuiChip-root jss18 jss89 chipMain MuiChip-sizeSmall MuiChip-clickable MuiChip-deletable" tabindex="0" role="button"><span class="MuiChip-label MuiChip-labelSmall">Utils</span><svg class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></div></div><div class="MuiBox-root jss91"><a class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary" href="/is-mounted">Is Mounted</a></div></div></li><li class="MuiListItem-root jss16 MuiListItem-gutters"><div class="MuiBox-root jss92"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Don&#x27;t bring in libraries until you need them. They can bulk up your project, and you inherit their bugs. </span></div><div class="MuiBox-root jss93"><div class="MuiButtonBase-root MuiChip-root jss18 jss94 chipMain MuiChip-sizeSmall MuiChip-clickable MuiChip-deletable" tabindex="0" role="button"><span class="MuiChip-label MuiChip-labelSmall">Other</span><svg class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></div></div><div class="MuiBox-root jss96"></div></div></li><li class="MuiListItem-root jss16 MuiListItem-gutters"><div class="MuiBox-root jss97"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Use Node Version Manager .nvmrc file to make sure all developers on your project are using the same version of npm</span></div><div class="MuiBox-root jss98"><div class="MuiButtonBase-root MuiChip-root jss18 jss99 chipMain MuiChip-sizeSmall MuiChip-clickable MuiChip-deletable" tabindex="0" role="button"><span class="MuiChip-label MuiChip-labelSmall">Other</span><svg class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></div></div><div class="MuiBox-root jss101"><a class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary" target="_blank" href="https://github.com/nvm-sh/nvm">Node Version Manager</a></div></div></li><li class="MuiListItem-root jss16 MuiListItem-gutters"><div class="MuiBox-root jss102"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">HSLA color format can be more readable and makes it easier to create slight variants of a color.</span></div><div class="MuiBox-root jss103"><div class="MuiButtonBase-root MuiChip-root jss18 jss104 chipMain MuiChip-sizeSmall MuiChip-clickable MuiChip-deletable" tabindex="0" role="button"><span class="MuiChip-label MuiChip-labelSmall">Resources</span><svg class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></div></div><div class="MuiBox-root jss106"><a class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary" target="_blank" href="https://hslpicker.com/">HSLA Color Picker</a></div></div></li><li class="MuiListItem-root jss16 MuiListItem-gutters"><div class="MuiBox-root jss107"><div class="MuiListItemText-root"><span class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock">Consider borrowing the useFormState hook for minimal form state management.
+You may find it beneficial to fully own the form management code in your project rather than use a library so it is fully extensible.</span></div><div class="MuiBox-root jss108"><div class="MuiButtonBase-root MuiChip-root jss18 jss109 chipMain MuiChip-sizeSmall MuiChip-clickable MuiChip-deletable" tabindex="0" role="button"><span class="MuiChip-label MuiChip-labelSmall">Utils</span><svg class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></div><div class="MuiButtonBase-root MuiChip-root jss18 jss111 chipMain MuiChip-sizeSmall MuiChip-clickable MuiChip-deletable" tabindex="0" role="button"><span class="MuiChip-label MuiChip-labelSmall">Hooks</span><svg class="MuiSvgIcon-root MuiChip-deleteIcon MuiChip-deleteIconSmall" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path></svg></div></div><div class="MuiBox-root jss113"><a class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary" href="/use-form-state">Use Form State</a></div></div></li></ul></div></div></div></div></main></div></div><script id="__NEXT_DATA__" type="application/json">{"props":{"pageProps":{}},"page":"/","query":{},"buildId":"3pz7gn98-4TOO-0d8wF18","nextExport":true,"autoExport":true,"isFallback":false}</script><script nomodule="" src="/_next/static/chunks/polyfills-ad30d1320810fa304e64.js"></script><script src="/_next/static/chunks/main-0647464f3121454225a1.js" async=""></script><script src="/_next/static/chunks/webpack-50bee04d1dc61f8adf5b.js" async=""></script><script src="/_next/static/chunks/framework.114f113ec24c188975ca.js" async=""></script><script src="/_next/static/chunks/commons.baac3d43d6abcc927f24.js" async=""></script><script src="/_next/static/chunks/e48cc8f35c4eeaaf0adb3c7725278c5629c73a75.6ade3a413b7e4a317f75.js" async=""></script><script src="/_next/static/chunks/58eee0157721ce6242f8a76a462869f6c5240a10.1448a9e5a38e3f33fbce.js" async=""></script><script src="/_next/static/chunks/8f61e787c27c2ed2d4cb0f442cec7f9350979845.4198ecc1a5bb72a9e5f2.js" async=""></script><script src="/_next/static/chunks/baa7e52d9b30337e865d13495973dbcd7b57b9b2.24f0abcc214129d7d934.js" async=""></script><script src="/_next/static/chunks/5846589f7252149010eedc2dd0404a11cc85cdeb.308c3e1f7e416d0fc260.js" async=""></script><script src="/_next/static/chunks/pages/_app-346df9ed78cc9e47b0ca.js" async=""></script><script src="/_next/static/chunks/pages/index-cb85277c0778b5209644.js" async=""></script><script src="/_next/static/3pz7gn98-4TOO-0d8wF18/_buildManifest.js" async=""></script><script src="/_next/static/3pz7gn98-4TOO-0d8wF18/_ssgManifest.js" async=""></script></body></html>
