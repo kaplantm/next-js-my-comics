@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Typography, Box, Chip, Divider } from "@material-ui/core";
+import { Container, Box } from "@material-ui/core";
 import LessonsList from "../src/page-containers/lessons-list";
 
 export default function Index() {
