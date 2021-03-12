@@ -24,7 +24,7 @@ export type lessonsListItemType = {
 
 export const lessonsListItems: lessonsListItemType[] = [
   {
-    text: "In NextJS, all hooks execute client side",
+    text: "In NextJS, the useEffect hook executes client side",
     categories: [categoriesEnum.next, categoriesEnum.hooks],
   },
   {

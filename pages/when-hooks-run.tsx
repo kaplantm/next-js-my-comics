@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Box, Typography, Button, Grid } from "@material-ui/core";
+import { Typography, Button, Grid } from "@material-ui/core";
 import { useRouter } from "next/router";
-import { medGreen, medLightBlue, toxicGreen } from "../src/theme/colors";
 import { pushCurrentPageWithUpdatedQueryParams } from "../src/lib/utils";
 import WhenHooksRunBad from "../src/page-containers/when-hooks-run/bad";
 import WhenHooksRunGood from "../src/page-containers/when-hooks-run/good";
