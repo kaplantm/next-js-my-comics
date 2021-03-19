@@ -59,13 +59,10 @@ const theme = createMuiTheme({
         },
       },
       h1: {
-        fontSize: "3.75rem", // 60px text equivalent based on default base font size
-        lineHeight: 1.2,
-        letterSpacing: "0.0425rem",
-        fontWeight: "normal",
+        fontSize: "3rem", // 32px text equivalent based on default base font size
       },
       h2: {
-        fontSize: "2.75rem", // 44px text equivalent based on default base font size
+        fontSize: ".75rem", // 44px text equivalent based on default base font size
         lineHeight: 1.23,
         letterSpacing: "0.03125rem",
         fontWeight: "normal",

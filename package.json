@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3000",
+    "dev": "next dev -p 80",
     "export": "next build && next export",
     "build": "next build",
     "start": "next start",
@@ -30,7 +30,8 @@
     "next": "10.0.7",
     "npm": "^7.5.4",
     "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "react-markdown": "^5.0.3"
   },
   "devDependencies": {
     "@types/jest": "^26.0.20",

@@ -57,9 +57,10 @@ export type comicVineIssueType = {
 };
 
 export enum loadingEnum {
-  COMPLETE = 0, // Completed state is falsy
-  NOT_STARTED = 1,
-  LOADING = 2,
+  LOADED = "LOADED",
+  FAILED = "FAILED",
+  LOADING = "LOADING",
+  NOT_STARTED = "NOT_STARTED",
 }
 
 export type mappedRouteType = {
