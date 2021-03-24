@@ -1,11 +1,16 @@
 {
   "compilerOptions": {
+    "paths": {
+      "@components/*": ["./src/components/*"],
+      "@page-containers/*": ["./src/page-containers/*"],
+      "@page-layouts/*": ["./src/page-layouts/*"],
+      "@hoc-components/*": ["./src/hoc-components/*"],
+      "@lib/*": ["./src/lib/*"],
+      "@redux/*": ["./src/redux/*"],
+      "@mocks/*": ["./src/mocks/*"]
+    },
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -18,12 +23,6 @@
     "isolatedModules": true,
     "jsx": "preserve"
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }
