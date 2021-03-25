@@ -1,10 +1,8 @@
 import React from "react";
-import ContentfulClient from "@lib/contentful/client";
-import { getSafeObject } from "@lib/utils/object-utils";
 
-const IssuePage = (props) => {
+const ArcPage = (props) => {
   console.log(props);
-  return <h1>ComicStoryPage</h1>;
+  return <h1>ArcPage</h1>;
 };
 
 export const getStaticPaths = async () => ({
@@ -16,14 +14,14 @@ export const getStaticProps = async ({ params }) => {
   const path = params.contentful_issue_params
     ? params.contentful_page_params.join("/")
     : "/";
-  let issue = await ContentfulClient.fetchIssue(path);
+  // let arc = await ContentfulClient.fetchArc(path);
 
   return {
     props: {
       params,
-      entry: getSafeObject(issue),
+      // entry: getSafeObject(arc),
     },
   };
 };
 
-export default IssuePage;
+export default ArcPage;

@@ -1,10 +1,8 @@
 import React from "react";
-import { getSafeObject } from "@lib/utils/object-utils";
-import ContentfulClient from "@lib/contentful/client";
 
-const SeriesPage = (props) => {
+const IssuePage = (props) => {
   console.log(props);
-  return <h1>ComicStoryPage</h1>;
+  return <h1>IssuePage</h1>;
 };
 
 export const getStaticPaths = async () => ({
@@ -16,14 +14,14 @@ export const getStaticProps = async ({ params }) => {
   const path = params.contentful_issue_params
     ? params.contentful_page_params.join("/")
     : "/";
-  let series = await ContentfulClient.fetchSeries(path);
+  // let issue = await ContentfulClient.fetchIssue(path);
 
   return {
     props: {
       params,
-      entry: getSafeObject(series),
+      // entry: getSafeObject(issue),
     },
   };
 };
 
-export default SeriesPage;
+export default IssuePage;

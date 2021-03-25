@@ -97,9 +97,6 @@ const theme = createMuiTheme({
         fontSize: "1rem", // 16px text equivalent based on default base font size
         letterSpacing: "0.01rem",
         lineHeight: 1.5,
-        "&.contentfulRichText": {
-          fontSize: "1.25rem",
-        },
       },
       body2: {
         fontSize: ".875rem", // 14px text equivalent based on default base font size
