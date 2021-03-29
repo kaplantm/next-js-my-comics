@@ -1,6 +1,6 @@
 import { differenceInYears, isAfter, isValid } from "date-fns";
 import { FormValidatorConfigType, Nullable } from "../../types";
-
+// TODO: remove?
 export const passwordRequirementsNotMetError =
   "Password does not meet requirements";
 
@@ -109,7 +109,6 @@ export const curriedIsAtLeastYearsOld = (years: number) => (date: string) => {
   if (!isDateValid(date)) {
     return true;
   }
-  console.log({ years, date });
   return getYearsSinceNow(date) >= years;
 };
 

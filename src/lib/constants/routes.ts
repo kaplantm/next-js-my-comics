@@ -6,9 +6,17 @@ export const routeMap: { [key: string]: mappedRouteType } = {
     pathname: "/",
     name: "Home",
   },
+  seriesIndex: {
+    pathname: "/series",
+    name: "Series Index",
+  },
 };
 
 export const navRoutes = sortObjectArrayAlphabeticallyBy(
-  Object.values(routeMap).slice(1),
+  Object.values(routeMap),
   "name"
 );
+
+export const getSeriesRoute = (series: string) => `/series/${series}`;
+export const getIssueRoute = (series: string, issueNumber: number) =>
+  `${getSeriesRoute(series)}/issues/${issueNumber}`;

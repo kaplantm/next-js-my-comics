@@ -17,6 +17,7 @@ export const darkBlue = "hsla(220, 44%, 41%, 1)";
 export const purple = "hsla(249, 44%, 41%, 1)";
 export const lavender = "hsla(249, 44%, 70%, 1)";
 export const lightYellow = "hsla(44, 94%, 73%, 1)";
+export const yellow = "hsla(50, 100%, 60%, 1)";
 export const orange = "hsla(17, 88%, 60%, 1)";
 
 // Resource: https://hslpicker.com

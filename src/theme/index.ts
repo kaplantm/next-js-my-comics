@@ -1,5 +1,13 @@
 import { createMuiTheme } from "@material-ui/core/styles";
-import { white, cherryRed, slateGrey, black, medBlue, iceBlue } from "./colors";
+import {
+  white,
+  cherryRed,
+  slateGrey,
+  black,
+  medBlue,
+  iceBlue,
+  yellow,
+} from "./colors";
 
 // Create a theme instance.
 const theme = createMuiTheme({
@@ -9,7 +17,7 @@ const theme = createMuiTheme({
       main: black,
     },
     secondary: {
-      main: slateGrey,
+      main: yellow,
     },
     error: {
       main: cherryRed,
@@ -59,57 +67,44 @@ const theme = createMuiTheme({
         },
       },
       h1: {
-        fontSize: "3rem", // 32px text equivalent based on default base font size
+        fontSize: "2rem",
+        fontWeight: "normal",
       },
       h2: {
-        fontSize: ".75rem", // 44px text equivalent based on default base font size
-        lineHeight: 1.23,
-        letterSpacing: "0.03125rem",
+        fontSize: "1.5rem",
         fontWeight: "normal",
       },
       h3: {
-        fontSize: "2.125rem", // 34px text equivalent based on default base font size
-        lineHeight: 1.26,
-        letterSpacing: "0.03125rem",
+        fontSize: "1.25rem",
         fontWeight: "normal",
       },
       h4: {
-        fontSize: "1.5rem", // 24px text equivalent based on default base font size
-        letterSpacing: "0.015rem",
+        fontSize: "1.125rem",
         fontWeight: "normal",
       },
       h5: {
-        fontSize: "1.25rem", // 20px text equivalent based on default base font size
-        lineHeight: 1.4,
-        letterSpacing: "0.015rem",
+        fontSize: "1rem",
         fontWeight: "normal",
-        "&.contentfulRichText": {
-          fontWeight: 600,
-        },
       },
       h6: {
-        fontSize: "1.125rem", // 18px text equivalent based on default base font size
-        lineHeight: 1.4,
-        letterSpacing: "0.015rem",
+        fontSize: ".75rem",
         fontWeight: "normal",
       },
       body1: {
-        fontSize: "1rem", // 16px text equivalent based on default base font size
-        letterSpacing: "0.01rem",
-        lineHeight: 1.5,
+        fontSize: "1rem", // 16px
+        fontWeight: "normal",
       },
       body2: {
-        fontSize: ".875rem", // 14px text equivalent based on default base font size
-        // body2 letterspacing and lineheight varies by color and alignment
-        // please refer to the styleguide for non-black colors
-        lineHeight: 1.43,
-        letterSpacing: "0.01rem",
+        fontSize: ".875rem",
+        fontWeight: "normal",
       },
       caption: {
-        fontSize: ".75rem", // 12px text equivalent based on default base font size
+        fontSize: ".75rem",
+        fontWeight: "normal",
       },
       subtitle2: {
         color: slateGrey,
+        fontWeight: "normal",
       },
     },
     MuiButton: {

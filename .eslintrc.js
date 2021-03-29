@@ -27,16 +27,17 @@ module.exports = {
   plugins: ["react", "@typescript-eslint", "jest"],
   settings: {
     "import/resolver": {
+      node: {
+        extensions: [".js", ".jsx", ".ts", ".tsx"],
+        moduleDirectory: ["node_modules", "src/"],
+      },
       alias: {
         map: [
           ["src", "./src"],
-          ["@components", "./src/components"],
-          ["@page-containers", "./src/page-containers"],
-          ["@page-layouts", "./src/page-layouts"],
-          ["@hoc-components", "./src/hoc-components"],
-          ["@lib", "./src/lib"],
-          ["@redux", "./src/redux"],
-          ["@mocks", "./src/mocks"],
+          ["@components/*", "./src/components"],
+          ["@page-containers/*", "./src/page-containers"],
+          ["@data-types", "./src/types"],
+          ["@lib/*", "./src/lib"],
         ],
         extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
       },

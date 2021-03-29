@@ -1,4 +1,4 @@
-import { Dialog, DialogTitle } from "@material-ui/core";
+import { Dialog } from "@material-ui/core";
 
 // TODO: types
 function ImageDialog(props) {

@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "paths": {
       "@components/*": ["./src/components/*"],
       "@page-containers/*": ["./src/page-containers/*"],
@@ -7,6 +8,7 @@
       "@hoc-components/*": ["./src/hoc-components/*"],
       "@lib/*": ["./src/lib/*"],
       "@redux/*": ["./src/redux/*"],
+      "@app-types/*": ["./src/types/*"],
       "@mocks/*": ["./src/mocks/*"]
     },
     "target": "es5",

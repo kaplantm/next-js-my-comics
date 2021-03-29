@@ -1,22 +1,35 @@
 import React from "react";
-import { Container, Box } from "@material-ui/core";
+import ListIndex from "@page-containers/list-index";
+import {
+  getSeriesData,
+  getSeriesTitles,
+} from "@lib/utils/static-generation-utils";
+import { getSeriesRoute } from "@lib/constants/routes";
 
-function IndexPage() {
-  return <Container maxWidth="md">Series index</Container>;
-}
+// TODO: collections, arcs
+const SeriesIndexPage = ({ listData }) => (
+  <ListIndex listData={listData} headerLabel="Series" />
+);
 
-export const getStaticPaths = async () => ({
-  paths: [],
-  fallback: "blocking",
-});
-
-export const getStaticProps = async ({ params }) => {
+export const getStaticProps = async () => {
+  const seriesTitles = await getSeriesTitles();
+  const seriesData = await Promise.all(
+    seriesTitles.map(async (seriesTitle) => {
+      const comic = await getSeriesData(seriesTitle);
+      return {
+        link: {
+          pathname: getSeriesRoute(seriesTitle),
+          name: comic.frontMatter.title,
+        },
+        comic,
+      };
+    })
+  );
   return {
     props: {
-      params: {},
-      // entry: getSafeObject(series),
+      listData: seriesData,
     },
   };
 };
 
-export default IndexPage;
+export default SeriesIndexPage;
