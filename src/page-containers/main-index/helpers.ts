@@ -140,8 +140,29 @@ const groupIssuesBy = (
     return acc;
   }, {});
 
+const groupIssuesByReadingOrder = (
+  issues: ComicWithParamsType[],
+  readingOrder: string[]
+) =>
+  issues.reduce(
+    (acc, val) => {
+      const readingOrderPath = `${val.params.series}/issues/${val.params.issueNumber}`;
+      if (readingOrder.indexOf(readingOrderPath) !== -1) {
+        acc["My Reading Order"].issues.push(val);
+      } else {
+        acc["Untracked"].issues.push(val);
+      }
+      return acc;
+    },
+    {
+      "My Reading Order": { issues: [], params: null, comic: null },
+      Untracked: { issues: [], params: null, comic: null },
+    }
+  );
+
 export const getGroupedComics = (
-  allComics: allStaticComicsType
+  allComics: allStaticComicsType,
+  readingOrder: string[]
 ): {
   [key in sortingEnum]: allStaticComicsTypeWithListIssues;
 } => {
@@ -161,8 +182,9 @@ export const getGroupedComics = (
   return {
     [sortingEnum.YEAR]: groupIssuesBy(allIssues, "startYear"),
     [sortingEnum.ARC]: groupIssuesBy(allIssues, "arc"),
-    [sortingEnum.READING_ORDER]: {
-      "My Reading Order": { issues: allIssues, params: null, comic: null },
-    },
+    [sortingEnum.READING_ORDER]: groupIssuesByReadingOrder(
+      allIssues,
+      readingOrder
+    ),
   };
 };

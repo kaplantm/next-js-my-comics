@@ -23,7 +23,10 @@ const MainIndex = ({
     sortingDirectionEnum.ASC
   );
 
-  const comicGroupings = useMemo(() => getGroupedComics(allComics), []);
+  const comicGroupings = useMemo(
+    () => getGroupedComics(allComics, readingOrder),
+    []
+  );
   const groupedComics = comicGroupings[sorting];
   const sortedGroupedComics = useMemo(
     () => getSortedData(groupedComics, readingOrder, sorting),

@@ -11,6 +11,9 @@ const ListSection = ({
   groupData: allStaticComicsWithListIssuesType;
   headerLabel: string;
 }) => {
+  if (!groupData.issues.length) {
+    return null;
+  }
   const listData = groupData.issues.map(({ params, comic }) => ({
     link: {
       pathname: getIssueRoute(params.series, params.issueNumber),

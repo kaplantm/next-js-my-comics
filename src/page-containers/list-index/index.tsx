@@ -1,18 +1,9 @@
 import React, { useState } from "react";
-import {
-  Typography,
-  Grid,
-  Divider,
-  Collapse,
-  IconButton,
-  Box,
-} from "@material-ui/core";
+import { Typography, Grid, Collapse, IconButton, Box } from "@material-ui/core";
 import useStyles from "./use-styles";
 import { listDataType, getInitialState } from "./helpers";
-import { ComicType, mappedRouteType } from "@lib/types";
 import AppLink from "@components/app-link";
-import { KeyboardArrowLeft, KeyboardArrowUp } from "@material-ui/icons";
-import ComicBody from "@page-containers/comic-body";
+import { KeyboardArrowDown, KeyboardArrowLeft } from "@material-ui/icons";
 import ReactMarkdown from "react-markdown";
 
 export type ListIndexProps = {
@@ -48,9 +39,9 @@ function ListIndex({ headerLabel, listData }: ListIndexProps) {
                 </AppLink>
                 <IconButton onClick={() => toggleExpanded(index)}>
                   {expandedState[index] ? (
-                    <KeyboardArrowLeft />
+                    <KeyboardArrowDown />
                   ) : (
-                    <KeyboardArrowUp />
+                    <KeyboardArrowLeft />
                   )}
                 </IconButton>
               </Box>
