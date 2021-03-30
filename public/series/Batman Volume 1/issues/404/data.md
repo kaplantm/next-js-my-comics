@@ -7,7 +7,7 @@ arc: "Batman: Year One"
 link: https://dc.fandom.com/wiki/Batman_Vol_1_404
 ---
 
-- Jame Gordon relocates from Chicago to Gotham. Starts working a GCPD under Commissioner Gillian B. Loeb.
+- James Gordon relocates from Chicago to Gotham. Starts working a GCPD under Commissioner Gillian B. Loeb.
 - BW returns to the US after 12 years abroad, about to become Batman.
 - Gordon realized Gotham police force is full of corruption, including the brutish Lt. Arnold Flass.
 - Flass grows concerned and tells Commissioner Loeb that Gordon may not be a "team player" (not corrupt). Loeb gives Flass permission to teach Gordon a lesson, that night some officers beat up Jim in a parking lot. Gordon recognizes Flass voice and vows to strike back.

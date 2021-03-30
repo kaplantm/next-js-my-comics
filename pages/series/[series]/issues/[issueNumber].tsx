@@ -3,10 +3,14 @@ import {
   getIssueData,
   getIssueNumbers,
   getSeriesTitles,
-} from "../../../../src/lib/utils/static-generation-utils";
-import ComicBody from "../../../../src/page-containers/comic-body";
+} from "@lib/utils/static-comic-file-manager/utils";
+import ComicBody from "@page-containers/comic-body";
+import getSingletonStaticComicFileManager from "@lib/utils/static-comic-file-manager";
 import React from "react";
+import { ComicPageParams } from "@lib/types";
 
+// TODO: right arrow - next in series
+// TODO: down arrow - next in reading order
 const IssuePage = (props) => <ComicBody {...props} />;
 
 export const getStaticPaths = async () => {
@@ -28,16 +32,15 @@ export const getStaticPaths = async () => {
   };
 };
 
-export async function getStaticProps({
-  params,
-}: {
-  params: { series: string; issueNumber: number };
-}) {
+export async function getStaticProps({ params }: { params: ComicPageParams }) {
+  const singletonStaticComicFileManager = await getSingletonStaticComicFileManager;
+  const series = singletonStaticComicFileManager.comics[params.series];
+
   return {
     props: {
       params,
-      series: await getSeriesData(params.series),
-      issue: await getIssueData(params.series, params.issueNumber),
+      series,
+      issue: series.issues[params.issueNumber],
     },
   };
 }

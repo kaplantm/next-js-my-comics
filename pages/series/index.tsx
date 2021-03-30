@@ -1,33 +1,26 @@
 import React from "react";
 import ListIndex from "@page-containers/list-index";
-import {
-  getSeriesData,
-  getSeriesTitles,
-} from "@lib/utils/static-generation-utils";
 import { getSeriesRoute } from "@lib/constants/routes";
+import getSingletonStaticComicFileManager from "@lib/utils/static-comic-file-manager";
 
-// TODO: collections, arcs
 const SeriesIndexPage = ({ listData }) => (
   <ListIndex listData={listData} headerLabel="Series" />
 );
 
 export const getStaticProps = async () => {
-  const seriesTitles = await getSeriesTitles();
-  const seriesData = await Promise.all(
-    seriesTitles.map(async (seriesTitle) => {
-      const comic = await getSeriesData(seriesTitle);
-      return {
-        link: {
-          pathname: getSeriesRoute(seriesTitle),
-          name: comic.frontMatter.title,
-        },
-        comic,
-      };
-    })
-  );
+  const singletonStaticComicFileManager = await getSingletonStaticComicFileManager;
+  const comics = singletonStaticComicFileManager.comics;
+  const listData = Object.values(comics).map(({ params, comic }) => ({
+    link: {
+      pathname: getSeriesRoute(params.series),
+      name: comic.frontMatter.title,
+    },
+    comic,
+  }));
+
   return {
     props: {
-      listData: seriesData,
+      listData,
     },
   };
 };

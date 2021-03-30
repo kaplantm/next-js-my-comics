@@ -7,4 +7,4 @@ arc: null
 link: https://dc.fandom.com/wiki/Batman_Vol_1
 ---
 
-Detective Comics is an anthology comic featuring detective characters (both superhero and civilian). The longest-lasting character in Detective Comics was Batman: from the time of his debut (#27, May 1939), the Caped Crusader was almost always the star of the cover and lead story.
+"Batman" was the first comic book series featuring Batman as the protagonist. After a successful year of publishing Batman stories in Detective Comics (Volume 1); DC started publishing "Batman" in the Spring of 1940. As with most books of the era, it consisted of various stories featuring Batman and his recently introduced sidekick, Robin.

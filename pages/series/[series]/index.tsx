@@ -1,13 +1,9 @@
-import { ComicType, mappedRouteType } from "@lib/types";
+import { allStaticComicsSeriesType } from "@lib/types";
 import React from "react";
-import {
-  getIssueData,
-  getIssueNumbers,
-  getSeriesData,
-  getSeriesTitles,
-} from "../../../src/lib/utils/static-generation-utils";
+import { getSeriesTitles } from "@lib/utils/static-comic-file-manager/utils";
 import ComicBody from "@page-containers/comic-body";
 import ListIndex, { ListIndexProps } from "@page-containers/list-index";
+import getSingletonStaticComicFileManager from "@lib/utils/static-comic-file-manager";
 import { getIssueRoute } from "@lib/constants/routes";
 
 const SeriesPage = ({
@@ -15,7 +11,7 @@ const SeriesPage = ({
   ...rest
 }: {
   listData: ListIndexProps["listData"];
-  series: ComicType;
+  series: allStaticComicsSeriesType;
   params: { series: string; issueNumber: number };
 }) => (
   <>
@@ -39,24 +35,22 @@ export async function getStaticProps({
 }: {
   params: { series: string };
 }) {
-  const issueNumbers = await getIssueNumbers(params.series);
-  const issuesData = await Promise.all(
-    issueNumbers.map(async (issueNumber) => {
-      const comic = await getIssueData(params.series, issueNumber);
-      return {
-        link: {
-          pathname: getIssueRoute(params.series, issueNumber),
-          name: `#${issueNumber} - ${comic.frontMatter.title}`,
-        },
-        comic,
-      };
+  const singletonStaticComicFileManager = await getSingletonStaticComicFileManager;
+  const series = singletonStaticComicFileManager.comics[params.series];
+  const listData = Object.values(series.issues).map(
+    ({ params: comicParams, comic }) => ({
+      link: {
+        pathname: getIssueRoute(params.series, comicParams.issueNumber),
+        name: comic.frontMatter.title,
+      },
+      comic,
     })
   );
   return {
     props: {
       params,
-      series: await getSeriesData(params.series),
-      listData: issuesData,
+      series: series,
+      listData,
     },
   };
 }

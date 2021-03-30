@@ -5,6 +5,11 @@ export interface appAxiosResponse<T> {
   error?: AxiosError<any>;
 }
 
+export type ComicPageParams = {
+  series: string;
+  issueNumber: number;
+};
+
 export type ComicType = {
   coverPath: string;
   imagePaths: string[];
@@ -18,6 +23,18 @@ export type ComicType = {
     link: string;
     readingOrder: number;
   };
+};
+
+export type ComicWithParamsType = { params: ComicPageParams; comic: ComicType };
+
+export type allStaticComicsSeriesType = ComicWithParamsType & {
+  issues: {
+    [issueNumber: number]: ComicWithParamsType;
+  };
+};
+
+export type allStaticComicsType = {
+  [seriesTitle: string]: allStaticComicsSeriesType;
 };
 
 export enum loadingEnum {

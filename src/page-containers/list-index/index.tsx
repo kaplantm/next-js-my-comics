@@ -21,7 +21,8 @@ export type ListIndexProps = {
 };
 
 // TODO: page head
-// TODO: main page w/ everything in order. Order options: reading order, by comic, by year published
+// TODO: expand all
+
 function ListIndex({ headerLabel, listData }: ListIndexProps) {
   const [expandedState, setExpandedState] = useState(getInitialState(listData));
   const classes = useStyles();

@@ -4,12 +4,12 @@ import ReactMarkdown from "react-markdown";
 import useStyles from "./use-styles";
 import ViewableImage from "../../components/viewable-image";
 import { getDisplaySubtitle, getDisplayTitle } from "./helpers";
-import { ComicType } from "@lib/types";
+import { ComicWithParamsType } from "@lib/types";
 
 type ComicBodyProps = {
   params: { series: string; issueNumber: number };
-  issue?: ComicType;
-  series: ComicType;
+  issue?: ComicWithParamsType;
+  series: ComicWithParamsType;
 };
 
 // TODO: tpye of info and prop type
@@ -21,14 +21,16 @@ function ComicBody({ params, issue, series }: ComicBodyProps) {
     description: seriesDescription,
     coverPath: seriesCoverPath,
     frontMatter: seriesFrontMatter,
-  } = series;
+  } = series.comic;
   const {
     description: issueDescription,
     coverPath: issueCoverPath,
     frontMatter: issueFrontMatter,
-  } = issue || {};
+  } = issue?.comic || {};
   const isIssue = !!issue;
-  const { description, coverPath, imagePaths } = isIssue ? issue : series;
+  const { description, coverPath, imagePaths } = isIssue
+    ? issue.comic
+    : series.comic;
   const { link: titleLink, title } = isIssue
     ? issueFrontMatter
     : seriesFrontMatter;
