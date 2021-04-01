@@ -8,8 +8,6 @@
     "build": "next build",
     "start": "next start",
     "test": "jest",
-    "ghpages:push": "cd out && touch .nojekyll && git init && git add . && git commit -m 'deploy' && git push --force git@github.com:kaplantm/next-js-my-comics.git HEAD:gh-pages && cd .. && rm -rf out ",
-    "ghpages": "npm run export && npm run ghpages:push",
     "test:update": "jest --updateSnapshot",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
