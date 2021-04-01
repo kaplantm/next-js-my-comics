@@ -35,7 +35,12 @@ const MainIndex = ({
 
   // // Separate useMemo so we don't have to redo sorting function if only direction changes
   const { directionalSortedGroupedComics, groupOrder } = useMemo(
-    () => getDirectionallySortedData(sortedGroupedComics, sortingDirection),
+    () =>
+      getDirectionallySortedData(
+        sortedGroupedComics,
+        sortingDirection,
+        sorting
+      ),
     [sortingDirection, sorting]
   );
 

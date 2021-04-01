@@ -2,7 +2,6 @@ import getSingletonStaticComicFileManager from "@lib/utils/static-comic-file-man
 import React from "react";
 import PanelsIndex from "@page-containers/panels";
 
-// TODO: arrows to move to next image
 const PanelsIndexPage = (props) => <PanelsIndex {...props} />;
 
 export async function getStaticProps() {

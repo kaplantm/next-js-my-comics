@@ -3,7 +3,7 @@ import React from "react";
 import { getSeriesTitles } from "@lib/utils/static-comic-file-manager/utils";
 import ComicBody from "@page-containers/comic-body";
 import ListIndex, {
-  ListIndexProps,
+  ComicListIndexProps,
 } from "@page-containers/comic-list-index/index";
 import getSingletonStaticComicFileManager from "@lib/utils/static-comic-file-manager";
 import { getIssueRoute } from "@lib/constants/routes";
@@ -12,7 +12,7 @@ const SeriesPage = ({
   listData,
   ...rest
 }: {
-  listData: ListIndexProps["listData"];
+  listData: ComicListIndexProps["listData"];
   series: allStaticComicsSeriesType;
   params: { series: string; issueNumber: number };
 }) => (

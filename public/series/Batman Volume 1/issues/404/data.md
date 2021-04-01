@@ -1,7 +1,7 @@
 ---
 title: "Chapter One: Who I Am - How I Come to Be"
-startYear: 1987
-endYear: null
+start: "February, 1987"
+end: null
 issueNumber: 404
 arc: "Batman: Year One"
 link: https://dc.fandom.com/wiki/Batman_Vol_1_404

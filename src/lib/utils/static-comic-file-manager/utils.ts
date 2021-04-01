@@ -2,7 +2,6 @@ import { promises as fs } from "fs";
 import path from "path";
 import { safeLoadFront } from "yaml-front-matter";
 
-//  TODO: cleanup unused if any
 const dataFileName = "data.md";
 export const coverFileName = "cover.png";
 const omittedFiles = [".DS_Store"];

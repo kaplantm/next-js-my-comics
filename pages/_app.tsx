@@ -5,7 +5,6 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../src/theme";
 import Page from "../src/components/page-layout";
 
-// TODO: useformstate
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
     // Remove the server-side injected CSS.

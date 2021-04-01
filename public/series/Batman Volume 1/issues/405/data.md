@@ -1,7 +1,7 @@
 ---
 title: "Chapter Two: War is Declared"
-startYear: 1987
-endYear: null
+start: "March, 1987"
+end: null
 issueNumber: 405
 arc: "Batman: Year One"
 link: https://dc.fandom.com/wiki/Batman_Vol_1_405

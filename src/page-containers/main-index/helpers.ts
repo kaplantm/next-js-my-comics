@@ -42,12 +42,28 @@ export const getSortByReadingOrder = (readingOrder) => (
   return readingOrderIndexA - readingOrderIndexB;
 };
 
-export const getSortByNumericFrontMatterKey = (
-  numericKey:
-    | ComicType["frontMatter"]["endYear"]
-    | ComicType["frontMatter"]["startYear"]
-    | ComicType["frontMatter"]["issueNumber"]
-) => (a, b) => {
+export const sortByDate = (a, b) => {
+  console.log({ a, b });
+  const dateValueA = typeof a === "string" ? new Date(a) : new Date(a, 0, 1);
+  const dateValueB = typeof b === "string" ? new Date(b) : new Date(b, 0, 1);
+  console.log({ a, b }, dateValueA.getTime(), dateValueB.getTime());
+  return dateValueA.getTime() - dateValueB.getTime();
+};
+
+export const getSortByDateFrontMatterKey = (numericKey: "end" | "start") => (
+  a,
+  b
+) => {
+  const valueA = a.comic.frontMatter[numericKey] || 0;
+  const valueB = b.comic.frontMatter[numericKey] || 0;
+
+  return sortByDate(valueA, valueB);
+};
+
+export const getSortByNumericFrontMatterKey = (numericKey: "issueNumber") => (
+  a,
+  b
+) => {
   const valueA = a.comic.frontMatter[numericKey] || 0;
   const valueB = b.comic.frontMatter[numericKey] || 0;
 
@@ -71,8 +87,9 @@ export const getSortedData = (
   readingOrder: string[],
   sorting: sortingEnum
 ) => {
-  const sortedKeys = Object.keys(comicGroups).sort();
-  const comicGroupsSortedKeys = sortedKeys.reduce((acc, key) => {
+  console.log(" sorting === sortingEnum.YEAR ", sorting === sortingEnum.YEAR);
+  const keys = Object.keys(comicGroups);
+  const comicGroupsSortedKeys = keys.reduce((acc, key) => {
     acc[key] = comicGroups[key];
     return acc;
   }, {});
@@ -85,7 +102,7 @@ export const getSortedData = (
     case sortingEnum.YEAR:
       return sortComicGroupIssues(
         comicGroupsSortedKeys,
-        getSortByNumericFrontMatterKey("startYear")
+        getSortByDateFrontMatterKey("start")
       );
     case sortingEnum.ARC:
       return sortComicGroupIssues(
@@ -99,9 +116,11 @@ export const getSortedData = (
 
 export const getDirectionallySortedData = (
   comicGroups: allStaticComicsTypeWithListIssues,
-  sortingDirection: sortingDirectionEnum
+  sortingDirection: sortingDirectionEnum,
+  sorting
 ) => {
-  const keys = Object.keys(comicGroups).sort();
+  const keySorter = sorting === sortingEnum.YEAR ? sortByDate : undefined;
+  const keys = Object.keys(comicGroups).sort(keySorter);
   if (sortingDirection === sortingDirectionEnum.ASC) {
     // Exported a separate map for key order here since objects are not inherently ordered
     return { directionalSortedGroupedComics: comicGroups, groupOrder: keys };
@@ -167,7 +186,7 @@ export const getGroupedComics = (
   [key in sortingEnum]: allStaticComicsTypeWithListIssues;
 } => {
   return {
-    [sortingEnum.YEAR]: groupIssuesBy(allIssues, "startYear"),
+    [sortingEnum.YEAR]: groupIssuesBy(allIssues, "start"),
     [sortingEnum.ARC]: groupIssuesBy(allIssues, "arc"),
     [sortingEnum.READING_ORDER]: groupIssuesByReadingOrder(
       allIssues,

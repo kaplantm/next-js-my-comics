@@ -17,11 +17,10 @@ export type ComicType = {
   frontMatter: {
     title: string;
     arc: string;
-    startYear: string | number;
-    endYear: string | number;
+    start: string | number;
+    end: string | number;
     issueNumber: number;
     link: string;
-    readingOrder: number;
   };
 };
 

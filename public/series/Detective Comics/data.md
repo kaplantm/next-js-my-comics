@@ -1,7 +1,7 @@
 ---
 title: "Detective Comics"
-startYear: 1937
-endYear: "Ongoing"
+start: 1937
+end: "Ongoing"
 issue: null
 arc: null
 link: https://dc.fandom.com/wiki/Detective_Comics_Vol_1

@@ -1,7 +1,7 @@
 ---
 title: "The Case of the Criminal Syndicate!"
-startYear: 1939
-endYear: null
+start: "May, 1939"
+end: null
 issueNumber: 27
 arc: null
 link: https://dc.fandom.com/wiki/Detective_Comics_Vol_1_27

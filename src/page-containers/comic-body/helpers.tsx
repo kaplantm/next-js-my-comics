@@ -2,34 +2,27 @@ import AppLink from "../../components/app-link";
 import { getSeriesRoute } from "../../lib/constants/routes";
 import { Typography } from "@material-ui/core";
 
-// TODO:
-// get indexes working for series and issues
-// get main index working w/ reading order andd filters
-// add content
-export const getStartEnd = (
-  startYear: string | number,
-  endYear: string | number
-) => {
-  if (!startYear && !endYear) {
+export const getStartEnd = (start: string | number, end: string | number) => {
+  if (!start && !end) {
     return null;
   }
-  if (!endYear) {
-    return ` (${startYear})`;
+  if (!end) {
+    return ` (${start})`;
   }
-  return ` (${startYear || "?"} - ${endYear})`;
+  return ` (${start || "?"} - ${end})`;
 };
 
 export const getDisplayTitle = (
   titleLink: string,
   title: string,
   isIssue: boolean,
-  seriesStartYear: string | number,
-  seriesEndYear: string | number
+  seriesStart: string | number,
+  seriesEnd: string | number
 ) => {
   const displayTitle = (
     <Typography variant="h1" gutterBottom>
       {title}
-      {isIssue ? "" : getStartEnd(seriesStartYear, seriesEndYear)}
+      {isIssue ? "" : getStartEnd(seriesStart, seriesEnd)}
     </Typography>
   );
   return titleLink ? (
@@ -42,14 +35,14 @@ export const getDisplaySubtitle = (
   paramSeries: string,
   seriesTitle: string,
   issueNumber: number,
-  issueStartYear: string | number,
-  issueEndYear: string | number
+  issueStart: string | number,
+  issueEnd: string | number
 ) => (
   <AppLink nextProps={{ href: getSeriesRoute(paramSeries) }}>
     <Typography variant="h2">
       {seriesTitle}
       {issueNumber ? ` - #${issueNumber} ` : ""}
-      {getStartEnd(issueStartYear, issueEndYear)}
+      {getStartEnd(issueStart, issueEnd)}
     </Typography>
   </AppLink>
 );

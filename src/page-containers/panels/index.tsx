@@ -8,9 +8,6 @@ export type PanelsIndexProps = {
   categories: string[];
 };
 
-// TODO: page head
-// TODO: expand all
-
 function PanelsIndex({ categories }: PanelsIndexProps) {
   const classes = useStyles();
 

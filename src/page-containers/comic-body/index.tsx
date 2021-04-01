@@ -12,21 +12,11 @@ type ComicBodyProps = {
   series: ComicWithParamsType;
 };
 
-// TODO: tpye of info and prop type
-// TODO: main page w/ everything in order. Order options: reading order, by comic, by year published
 function ComicBody({ params, issue, series }: ComicBodyProps) {
   const classes = useStyles();
 
-  const {
-    description: seriesDescription,
-    coverPath: seriesCoverPath,
-    frontMatter: seriesFrontMatter,
-  } = series.comic;
-  const {
-    description: issueDescription,
-    coverPath: issueCoverPath,
-    frontMatter: issueFrontMatter,
-  } = issue?.comic || {};
+  const { frontMatter: seriesFrontMatter } = series.comic;
+  const { frontMatter: issueFrontMatter } = issue?.comic || {};
   const isIssue = !!issue;
   const { description, coverPath, imagePaths } = isIssue
     ? issue.comic
@@ -42,16 +32,16 @@ function ComicBody({ params, issue, series }: ComicBodyProps) {
           titleLink,
           title,
           isIssue,
-          seriesFrontMatter.startYear,
-          seriesFrontMatter.endYear
+          seriesFrontMatter.start,
+          seriesFrontMatter.end
         )}
         {isIssue &&
           getDisplaySubtitle(
             params.series,
             seriesFrontMatter.title,
             issueFrontMatter.issueNumber,
-            issueFrontMatter.startYear,
-            issueFrontMatter.endYear
+            issueFrontMatter.start,
+            issueFrontMatter.end
           )}
       </Grid>
 
