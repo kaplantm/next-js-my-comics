@@ -37,6 +37,10 @@ export type allStaticComicsType = {
   [seriesTitle: string]: allStaticComicsSeriesType;
 };
 
+export type allStaticPanelsType = {
+  [category: string]: string[];
+};
+
 export enum loadingEnum {
   LOADED = "LOADED",
   FAILED = "FAILED",

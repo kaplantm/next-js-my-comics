@@ -8,14 +8,14 @@ import {
   getDirectionallySortedData,
   getGroupedComics,
 } from "./helpers";
-import { allStaticComicsType } from "@lib/types";
+import { ComicWithParamsType } from "@lib/types";
 import MemoizedListSection from "./list-section";
 
 const MainIndex = ({
-  allComics,
+  allIssues,
   readingOrder,
 }: {
-  allComics: allStaticComicsType;
+  allIssues: ComicWithParamsType[];
   readingOrder: string[];
 }) => {
   const [sorting, setSorting] = useState(sortingEnum.READING_ORDER);
@@ -24,7 +24,7 @@ const MainIndex = ({
   );
 
   const comicGroupings = useMemo(
-    () => getGroupedComics(allComics, readingOrder),
+    () => getGroupedComics(allIssues, readingOrder),
     []
   );
   const groupedComics = comicGroupings[sorting];

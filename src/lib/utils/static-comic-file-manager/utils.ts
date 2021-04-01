@@ -7,20 +7,22 @@ const dataFileName = "data.md";
 export const coverFileName = "cover.png";
 const omittedFiles = [".DS_Store"];
 
-const baseDirectory = "public";
+const baseDirectory = path.join(process.cwd(), "public");
+const basePanelsDirectory = `${baseDirectory}/panels`;
 const baseSeriesDirectory = `${baseDirectory}/series`;
-const readingOrderFilePath = path.join(
-  process.cwd(),
-  `${baseDirectory}/reading-order.json`
-);
+const readingOrderFilePath = `${baseDirectory}/reading-order.json`;
+
 const getSeriesDirectory = (series: string) =>
-  path.join(process.cwd(), `${baseSeriesDirectory}/${series}`);
+  `${baseSeriesDirectory}/${series}`;
 const getIssuesDirectory = (series: string) =>
   `${getSeriesDirectory(series)}/issues`;
 const getIssueDirectory = (series: string, issue: number) =>
   `${getSeriesDirectory(series)}/issues/${issue}`;
+export const getPanelsCategoryDirectory = (category: string) =>
+  `${basePanelsDirectory}/${category}`;
 const getImagesDirectory = (intialDirectory: string) =>
   `${intialDirectory}/images`;
+
 const getFileNamesInDirectory = async (
   directory: string,
   omissions = omittedFiles
@@ -43,7 +45,8 @@ const getCoverPath = async (directory: string) => {
     ? `${removeLocalPath(directory)}/${coverFileName}`
     : null;
 };
-const getImagePaths = async (directory: string) => {
+
+export const getImagePaths = async (directory: string) => {
   try {
     const imagesDirectory = getImagesDirectory(directory);
     const fileNames = await getFileNamesInDirectory(imagesDirectory);
@@ -86,9 +89,8 @@ const getParsedMarkdownFile = async (
   }
 };
 
-export const getSeriesTitles = async () => {
-  return getFileNamesInDirectory(baseSeriesDirectory);
-};
+export const getSeriesTitles = async () =>
+  getFileNamesInDirectory(baseSeriesDirectory);
 export const getIssueNumbers = async (seriesTitle: string) => {
   const issuesDirectory = getIssuesDirectory(seriesTitle);
 
@@ -97,6 +99,8 @@ export const getIssueNumbers = async (seriesTitle: string) => {
     issuesDirectory
   )) as any[]) as number[];
 };
+export const getPanelCategories = async () =>
+  getFileNamesInDirectory(basePanelsDirectory);
 
 export const getSeriesData = async (
   seriesTitle: string

@@ -8,10 +8,16 @@ const IndexPage = (props) => <MainIndex {...props} />;
 export const getStaticProps = async () => {
   const readingOrder = await getReadingOrder();
   const singletonStaticComicFileManager = await getSingletonStaticComicFileManager;
-
+  const { comics } = singletonStaticComicFileManager;
+  const allIssues = Object.keys(comics)
+    .map((seriesTitle) => {
+      const issuesInSeries = comics[seriesTitle].issues;
+      return Object.values(issuesInSeries);
+    })
+    .flat();
   return {
     props: {
-      allComics: singletonStaticComicFileManager.comics,
+      allIssues,
       readingOrder,
     },
   };

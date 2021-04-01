@@ -14,7 +14,7 @@ import clsx from "clsx";
 import React from "react";
 import { Menu, ChevronLeft } from "@material-ui/icons";
 import AppLink from "../app-link";
-import useStyles from "./useStyles";
+import useStyles from "./use-styles";
 import { routeMap, navRoutes } from "../../lib/constants/routes";
 import { mappedRouteType } from "../../lib/types";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import ListIndex from "@page-containers/list-index";
+import ListIndex from "@page-containers/comic-list-index/index";
 import { getSeriesRoute } from "@lib/constants/routes";
 import getSingletonStaticComicFileManager from "@lib/utils/static-comic-file-manager";
 

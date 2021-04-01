@@ -161,24 +161,11 @@ const groupIssuesByReadingOrder = (
   );
 
 export const getGroupedComics = (
-  allComics: allStaticComicsType,
+  allIssues: ComicWithParamsType[],
   readingOrder: string[]
 ): {
   [key in sortingEnum]: allStaticComicsTypeWithListIssues;
 } => {
-  const seriesTitleKeys = Object.keys(allComics);
-  const allSeriesWithListIssues: allStaticComicsTypeWithListIssues = seriesTitleKeys.reduce(
-    (acc, key) => {
-      const oldValue = allComics[key];
-      acc[key] = { ...oldValue, issues: Object.values(oldValue?.issues || []) };
-      return acc;
-    },
-    {} as allStaticComicsTypeWithListIssues
-  );
-  const allIssues = Object.values(allSeriesWithListIssues)
-    .map((val) => val.issues)
-    .flat();
-
   return {
     [sortingEnum.YEAR]: groupIssuesBy(allIssues, "startYear"),
     [sortingEnum.ARC]: groupIssuesBy(allIssues, "arc"),

@@ -2,7 +2,9 @@ import { allStaticComicsSeriesType } from "@lib/types";
 import React from "react";
 import { getSeriesTitles } from "@lib/utils/static-comic-file-manager/utils";
 import ComicBody from "@page-containers/comic-body";
-import ListIndex, { ListIndexProps } from "@page-containers/list-index";
+import ListIndex, {
+  ListIndexProps,
+} from "@page-containers/comic-list-index/index";
 import getSingletonStaticComicFileManager from "@lib/utils/static-comic-file-manager";
 import { getIssueRoute } from "@lib/constants/routes";
 

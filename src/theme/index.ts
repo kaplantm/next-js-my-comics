@@ -38,6 +38,9 @@ const theme = createMuiTheme({
         "&.uppercase": {
           textTransform: "uppercase",
         },
+        "&.capitalize": {
+          textTransform: "capitalize",
+        },
         "&.italic": {
           fontStyle: "italic",
         },

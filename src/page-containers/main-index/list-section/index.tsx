@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { getIssueRoute } from "@lib/constants/routes";
 import { Box } from "@material-ui/core";
-import ListIndex from "@page-containers/list-index";
+import ListIndex from "@page-containers/comic-list-index/index";
 import { allStaticComicsWithListIssuesType } from "../helpers";
 
 const ListSection = ({

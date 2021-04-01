@@ -6,7 +6,7 @@ import AppLink from "@components/app-link";
 import { KeyboardArrowDown, KeyboardArrowLeft } from "@material-ui/icons";
 import ReactMarkdown from "react-markdown";
 
-export type ListIndexProps = {
+export type ComicListIndexProps = {
   headerLabel: string;
   listData: listDataType;
 };
@@ -14,7 +14,7 @@ export type ListIndexProps = {
 // TODO: page head
 // TODO: expand all
 
-function ListIndex({ headerLabel, listData }: ListIndexProps) {
+function ComicListIndex({ headerLabel, listData }: ComicListIndexProps) {
   const [expandedState, setExpandedState] = useState(getInitialState(listData));
   const classes = useStyles();
 
@@ -58,4 +58,4 @@ function ListIndex({ headerLabel, listData }: ListIndexProps) {
   );
 }
 
-export default ListIndex;
+export default ComicListIndex;
