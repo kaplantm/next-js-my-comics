@@ -5,6 +5,7 @@ import useStyles from "./use-styles";
 import ViewableImage from "../../components/viewable-image";
 import { getDisplaySubtitle, getDisplayTitle } from "./helpers";
 import { ComicWithParamsType } from "@lib/types";
+import MasonryLayout from "@components/masonry-layout";
 
 type ComicBodyProps = {
   params: { series: string; issueNumber: number };
@@ -59,11 +60,11 @@ function ComicBody({ params, issue, series }: ComicBodyProps) {
           </Grid>
           <Grid item xs={12}>
             <Grid container spacing={3}>
-              {imagePaths.map((url: string) => (
-                <Grid item xs={12} md={4} key={url}>
-                  <ViewableImage src={url} width="100%" />
-                </Grid>
-              ))}
+              <MasonryLayout>
+                {imagePaths.map((url: string) => (
+                  <ViewableImage src={url} key={url} />
+                ))}
+              </MasonryLayout>
             </Grid>
           </Grid>
         </>
