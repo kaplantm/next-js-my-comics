@@ -5,6 +5,12 @@ const useStyles = makeStyles((theme) => ({
   image: {
     cursor: "pointer",
     display: "block",
+    backgroundColor: iceBlue,
+    width: "100%",
+    borderRadius: 6,
+  },
+  loading: {
+    minHeight: 200,
   },
 }));
 

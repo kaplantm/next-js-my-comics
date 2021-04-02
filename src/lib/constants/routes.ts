@@ -8,11 +8,11 @@ export const routeMap: { [key: string]: mappedRouteType } = {
   },
   seriesIndex: {
     pathname: "/series",
-    name: "Series Index",
+    name: "Series",
   },
   panelsIndex: {
     pathname: "/panels",
-    name: "Panels Index",
+    name: "Panels",
   },
 };
 

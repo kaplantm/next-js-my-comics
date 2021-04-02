@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ImageDialog from "./image-dialog";
 import useStyles from "./use-styles";
 
@@ -12,8 +12,15 @@ function ViewableImage(
   const classes = useStyles();
   const [openModal, setOpenModal] = useState(false);
   const imageRef = useRef(null);
-  const rawImageHeight = imageRef.current?.naturalHeight;
-  const rawImageWidth = imageRef.current?.naturalWidth;
+  const [imageData, setImageData] = useState<{
+    rawWidth: number;
+    rawHeight: number;
+    loaded: boolean;
+  }>({ rawWidth: 0, rawHeight: 0, loaded: false });
+
+  const complete = imageRef.current?.complete;
+  const rawWidth = imageRef.current?.naturalWidth;
+  const rawHeight = imageRef.current?.naturalHeight;
 
   function handleOpenModal() {
     setOpenModal(true);
@@ -22,6 +29,31 @@ function ViewableImage(
     setOpenModal(false);
   }
 
+  // Will trigger 200 responses but not 304 Not Modified
+  function onLoad({ target }: any) {
+    console.log("** onload");
+    if (!imageData.loaded) {
+      setImageData({
+        rawWidth: target.naturalWidth,
+        rawHeight: target.naturalHeight,
+        loaded: true,
+      });
+    }
+  }
+
+  useEffect(() => {
+    // Will trigger for 304 Not Modified images but not 200 responses
+    if (imageRef.current?.complete && !imageData.loaded) {
+      console.log("** useffect");
+      setImageData({
+        rawWidth,
+        rawHeight,
+        loaded: true,
+      });
+    }
+  }, [imageRef.current, rawWidth, rawHeight, imageData.loaded]);
+
+  console.log({ imageData, complete, current: imageRef.current });
   return (
     <>
       <img
@@ -29,13 +61,18 @@ function ViewableImage(
         {...props}
         onClick={handleOpenModal}
         role="button"
-        className={clsx(props.className, classes.image)}
+        onLoad={onLoad}
+        className={clsx(
+          props.className,
+          classes.image,
+          !imageData.loaded && classes.loading
+        )}
       />
       <ImageDialog
         src={props.src}
         open={openModal}
-        rawImageHeight={rawImageHeight}
-        rawImageWidth={rawImageWidth}
+        rawImageWidth={imageData.rawWidth}
+        rawImageHeight={imageData.rawHeight}
         onClose={handleCloseModal}
       />
     </>

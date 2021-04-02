@@ -18,7 +18,7 @@ export type allStaticComicsTypeWithListIssues = {
 
 export enum sortingEnum {
   READING_ORDER = "My Reading Order",
-  YEAR = "Year Published",
+  YEAR = "Date",
   ARC = "Arc",
 }
 
