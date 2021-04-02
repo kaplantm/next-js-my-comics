@@ -17,13 +17,15 @@ function Panels({ params, imagePaths }: PanelsProps) {
         </Typography>
       </Grid>
 
-      {!!imagePaths?.length && (
-        <MasonryLayout>
-          {imagePaths.map((url: string) => (
-            <ViewableImage src={url} key={url} />
-          ))}
-        </MasonryLayout>
-      )}
+      <Grid item xs={12}>
+        {!!imagePaths?.length && (
+          <MasonryLayout>
+            {imagePaths.map((url: string) => (
+              <ViewableImage src={url} key={url} />
+            ))}
+          </MasonryLayout>
+        )}{" "}
+      </Grid>
     </Grid>
   );
 }

@@ -6,7 +6,7 @@ const dataFileName = "data.md";
 export const coverFileName = "cover.png";
 const omittedFiles = [".DS_Store"];
 
-const baseDirectory = path.join(process.cwd(), "public");
+const baseDirectory = path.join(process.cwd(), "public/static");
 const basePanelsDirectory = `${baseDirectory}/panels`;
 const baseSeriesDirectory = `${baseDirectory}/series`;
 const readingOrderFilePath = `${baseDirectory}/reading-order.json`;

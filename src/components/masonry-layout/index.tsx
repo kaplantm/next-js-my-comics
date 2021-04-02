@@ -1,3 +1,4 @@
+import { useMediaQuery } from "@material-ui/core";
 import useStyles from "./use-styles";
 
 /**
@@ -6,25 +7,30 @@ import useStyles from "./use-styles";
  */
 const MasonryLayout = ({
   columns = 3,
+  smallWidthColumns = 2,
   gap = 20,
   children,
 }: {
   columns?: number;
+  smallWidthColumns?: number;
   gap?: number;
   children: React.ReactNode[];
 }) => {
   const classes = useStyles();
   const columnWrapper = {};
   const result = [];
+  const isSmallWindow = useMediaQuery("(max-width:600px)");
+  const numColumns = isSmallWindow ? smallWidthColumns : columns;
+  console.log({ isSmallWindow });
 
   // create columns
-  for (let i = 0; i < columns; i++) {
+  for (let i = 0; i < numColumns; i++) {
     columnWrapper[`column${i}`] = [];
   }
 
   // divide children into columns
   for (let i = 0; i < children.length; i++) {
-    const columnIndex = i % columns;
+    const columnIndex = i % numColumns;
     columnWrapper[`column${columnIndex}`].push(
       <div
         className={classes.imageMatte}
@@ -37,7 +43,7 @@ const MasonryLayout = ({
   }
 
   // wrap children in each column with a div
-  for (let i = 0; i < columns; i++) {
+  for (let i = 0; i < numColumns; i++) {
     result.push(
       <div
         key={`column${i}`}
