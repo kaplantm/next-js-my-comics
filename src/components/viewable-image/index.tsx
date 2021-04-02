@@ -14,7 +14,7 @@ function ViewableImage(
   const imageRef = useRef(null);
   const rawImageHeight = imageRef.current?.naturalHeight;
   const rawImageWidth = imageRef.current?.naturalWidth;
-  console.log("imageRef.current", imageRef.current?.naturalWidth);
+
   function handleOpenModal() {
     setOpenModal(true);
   }

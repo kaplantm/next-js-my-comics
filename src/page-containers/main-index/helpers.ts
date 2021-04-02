@@ -43,10 +43,8 @@ export const getSortByReadingOrder = (readingOrder) => (
 };
 
 export const sortByDate = (a, b) => {
-  console.log({ a, b });
   const dateValueA = typeof a === "string" ? new Date(a) : new Date(a, 0, 1);
   const dateValueB = typeof b === "string" ? new Date(b) : new Date(b, 0, 1);
-  console.log({ a, b }, dateValueA.getTime(), dateValueB.getTime());
   return dateValueA.getTime() - dateValueB.getTime();
 };
 
@@ -87,7 +85,6 @@ export const getSortedData = (
   readingOrder: string[],
   sorting: sortingEnum
 ) => {
-  console.log(" sorting === sortingEnum.YEAR ", sorting === sortingEnum.YEAR);
   const keys = Object.keys(comicGroups);
   const comicGroupsSortedKeys = keys.reduce((acc, key) => {
     acc[key] = comicGroups[key];

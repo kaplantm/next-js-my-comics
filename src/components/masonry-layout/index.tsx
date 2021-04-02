@@ -21,7 +21,6 @@ const MasonryLayout = ({
   const result = [];
   const isSmallWindow = useMediaQuery("(max-width:600px)");
   const numColumns = isSmallWindow ? smallWidthColumns : columns;
-  console.log({ isSmallWindow });
 
   // create columns
   for (let i = 0; i < numColumns; i++) {

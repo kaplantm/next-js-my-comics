@@ -10,7 +10,6 @@ export const getStaticPaths = async () => {
   const paths = (await getPanelCategories()).map((category) => ({
     params: { category },
   }));
-  console.log("****", { paths });
   return {
     paths,
     fallback: false,
