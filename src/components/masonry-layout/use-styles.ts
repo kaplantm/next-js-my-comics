@@ -9,9 +9,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
 
-    minHeight: 200,
     "& img": {
-      maxHeight: 500,
       maxWidth: "100%",
     },
   },
