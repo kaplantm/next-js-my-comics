@@ -31,7 +31,6 @@ function ViewableImage(
 
   // Will trigger 200 responses but not 304 Not Modified
   function onLoad({ target }: any) {
-    console.log("** onload");
     if (!imageData.loaded) {
       setImageData({
         rawWidth: target.naturalWidth,
@@ -44,7 +43,6 @@ function ViewableImage(
   useEffect(() => {
     // Will trigger for 304 Not Modified images but not 200 responses
     if (imageRef.current?.complete && !imageData.loaded) {
-      console.log("** useffect");
       setImageData({
         rawWidth,
         rawHeight,
@@ -53,7 +51,6 @@ function ViewableImage(
     }
   }, [imageRef.current, rawWidth, rawHeight, imageData.loaded]);
 
-  console.log({ imageData, complete, current: imageRef.current });
   return (
     <>
       <img
@@ -63,9 +60,9 @@ function ViewableImage(
         role="button"
         onLoad={onLoad}
         className={clsx(
-          props.className,
           classes.image,
-          !imageData.loaded && classes.loading
+          !imageData.loaded && classes.loading,
+          props.className
         )}
       />
       <ImageDialog

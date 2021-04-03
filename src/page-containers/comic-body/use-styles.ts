@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   coverImage: {
-    width: "30%",
+    maxWidth: "30%",
     float: "right",
     margin: theme.spacing(2, 0, 2, 2),
     [theme.breakpoints.down("xs")]: {

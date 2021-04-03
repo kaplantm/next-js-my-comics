@@ -3,7 +3,12 @@ import path from "path";
 import { safeLoadFront } from "yaml-front-matter";
 
 const dataFileName = "data.md";
-export const coverFileName = "cover.png";
+const coverFileName = "cover";
+const possibleCoverFiles = [
+  `${coverFileName}.png`,
+  `${coverFileName}.jpg`,
+  `${coverFileName}.jpeg`,
+];
 const omittedFiles = [".DS_Store"];
 
 const baseDirectory = path.join(process.cwd(), "public/static");
@@ -40,8 +45,10 @@ const readFile = async (filePath: string) => fs.readFile(filePath, "utf8");
 const removeLocalPath = (directory: string) => directory.split("public")[1];
 const getCoverPath = async (directory: string) => {
   const fileNames = await getFileNamesInDirectory(directory);
-  return fileNames.includes(coverFileName)
-    ? `${removeLocalPath(directory)}/${coverFileName}`
+  const foundCoverFileName =
+    fileNames.find((element) => possibleCoverFiles.includes(element)) || null;
+  return foundCoverFileName
+    ? `${removeLocalPath(directory)}/${foundCoverFileName}`
     : null;
 };
 
