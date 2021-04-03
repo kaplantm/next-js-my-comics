@@ -71,29 +71,31 @@ const MainIndex = ({
               ))}
             </ButtonGroup>
           </Grid>
-          <Grid item>
-            <ButtonGroup
-              color="primary"
-              aria-label="outlined primary button group"
-            >
-              {Object.values(sortingDirectionEnum).map((direction) => (
-                <Button
-                  key={direction}
-                  disabled={sortingDirection === direction}
-                  onClick={handleSortingDirectionUpdate(direction)}
-                >
-                  {direction === sortingDirectionEnum.ASC ? (
-                    <ArrowUpward />
-                  ) : (
-                    <ArrowDownward />
-                  )}
-                </Button>
-              ))}
-            </ButtonGroup>
-          </Grid>
+          {groupOrder.length > 1 && (
+            <Grid item>
+              <ButtonGroup
+                color="primary"
+                aria-label="outlined primary button group"
+              >
+                {Object.values(sortingDirectionEnum).map((direction) => (
+                  <Button
+                    key={direction}
+                    disabled={sortingDirection === direction}
+                    onClick={handleSortingDirectionUpdate(direction)}
+                  >
+                    {direction === sortingDirectionEnum.ASC ? (
+                      <ArrowUpward />
+                    ) : (
+                      <ArrowDownward />
+                    )}
+                  </Button>
+                ))}
+              </ButtonGroup>
+            </Grid>
+          )}
         </Grid>
       </Box>
-      {groupOrder.map((key, index) => (
+      {groupOrder.map((key) => (
         <MemoizedListSection
           key={key}
           groupData={directionalSortedGroupedComics[key]}

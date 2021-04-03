@@ -120,7 +120,10 @@ export const getDirectionallySortedData = (
   const keys = Object.keys(comicGroups).sort(keySorter);
   if (sortingDirection === sortingDirectionEnum.ASC) {
     // Exported a separate map for key order here since objects are not inherently ordered
-    return { directionalSortedGroupedComics: comicGroups, groupOrder: keys };
+    return {
+      directionalSortedGroupedComics: comicGroups,
+      groupOrder: keys.filter((key) => comicGroups[key].issues.length),
+    };
   }
   const reverseKeys = keys.reverse();
   if (keys.length > 1) {
