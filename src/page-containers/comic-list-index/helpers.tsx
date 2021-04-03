@@ -1,7 +1,4 @@
-import { ComicType, mappedRouteType } from "@lib/types";
+import { ComicWithMetadata, MappedRouteType } from "@lib/types";
 
-// TODO: remove?
-export type listDataType = { link: mappedRouteType; comic: ComicType }[];
-
-export const getInitialState = (listData: listDataType) =>
+export const getInitialState = (listData: ComicWithMetadata[]) =>
   listData.map((item) => false);

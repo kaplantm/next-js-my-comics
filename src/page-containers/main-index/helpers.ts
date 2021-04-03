@@ -1,19 +1,14 @@
-import {
-  allStaticComicsType,
-  allStaticComicsSeriesType,
-  ComicWithParamsType,
-  ComicType,
-} from "@lib/types";
+import { ComicWithMetadata, ComicType } from "@lib/types";
 
-export type allStaticComicsWithListIssuesType = Omit<
-  allStaticComicsSeriesType,
+export type ComicWithMetadataListIssuesType = Omit<
+  ComicWithMetadata,
   "issues"
 > & {
-  issues: ComicWithParamsType[];
+  issues: ComicWithMetadata[];
 };
 
-export type allStaticComicsTypeWithListIssues = {
-  [seriesTitle: string]: allStaticComicsWithListIssuesType;
+export type GroupedComicsType = {
+  [key: string]: ComicWithMetadataListIssuesType;
 };
 
 export enum sortingEnum {
@@ -28,8 +23,8 @@ export enum sortingDirectionEnum {
 }
 
 export const getSortByReadingOrder = (readingOrder) => (
-  a: ComicWithParamsType,
-  b: ComicWithParamsType
+  a: ComicWithMetadata,
+  b: ComicWithMetadata
 ) => {
   const readingOrderPathA = `${a.params.series}/issues/${a.params.issueNumber}`;
   const readingOrderPathB = `${b.params.series}/issues/${b.params.issueNumber}`;
@@ -69,7 +64,7 @@ export const getSortByNumericFrontMatterKey = (numericKey: "issueNumber") => (
 };
 
 const sortComicGroupIssues = (
-  comicGroups: allStaticComicsTypeWithListIssues,
+  comicGroups: GroupedComicsType,
   sortFunction: (a, b) => number
 ) => {
   const keys = Object.keys(comicGroups);
@@ -81,7 +76,7 @@ const sortComicGroupIssues = (
 };
 
 export const getSortedData = (
-  comicGroups: allStaticComicsTypeWithListIssues,
+  comicGroups: GroupedComicsType,
   readingOrder: string[],
   sorting: sortingEnum
 ) => {
@@ -112,7 +107,7 @@ export const getSortedData = (
 };
 
 export const getDirectionallySortedData = (
-  comicGroups: allStaticComicsTypeWithListIssues,
+  comicGroups: GroupedComicsType,
   sortingDirection: sortingDirectionEnum,
   sorting
 ) => {
@@ -146,9 +141,9 @@ export const getDirectionallySortedData = (
 };
 
 const groupIssuesBy = (
-  issues: ComicWithParamsType[],
+  issues: ComicWithMetadata[],
   frontMatterKey: keyof ComicType["frontMatter"]
-) =>
+): GroupedComicsType =>
   issues.reduce((acc, val) => {
     const key = val.comic.frontMatter[frontMatterKey] || "Unknown";
     if (acc[key] && acc[key].issues) {
@@ -160,9 +155,9 @@ const groupIssuesBy = (
   }, {});
 
 const groupIssuesByReadingOrder = (
-  issues: ComicWithParamsType[],
+  issues: ComicWithMetadata[],
   readingOrder: string[]
-) =>
+): GroupedComicsType =>
   issues.reduce(
     (acc, val) => {
       const readingOrderPath = `${val.params.series}/issues/${val.params.issueNumber}`;
@@ -174,16 +169,16 @@ const groupIssuesByReadingOrder = (
       return acc;
     },
     {
-      "My Reading Order": { issues: [], params: null, comic: null },
-      Untracked: { issues: [], params: null, comic: null },
+      "My Reading Order": { issues: [], params: null, link: null, comic: null },
+      Untracked: { issues: [], params: null, link: null, comic: null },
     }
   );
 
 export const getGroupedComics = (
-  allIssues: ComicWithParamsType[],
+  allIssues: ComicWithMetadata[],
   readingOrder: string[]
 ): {
-  [key in sortingEnum]: allStaticComicsTypeWithListIssues;
+  [key in sortingEnum]: GroupedComicsType;
 } => {
   return {
     [sortingEnum.YEAR]: groupIssuesBy(allIssues, "start"),

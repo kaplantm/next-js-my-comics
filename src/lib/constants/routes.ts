@@ -1,7 +1,7 @@
-import { mappedRouteType } from "../types";
+import { MappedRouteType } from "../types";
 import { sortObjectArrayAlphabeticallyBy } from "../utils/array-utils";
 
-export const routeMap: { [key: string]: mappedRouteType } = {
+export const routeMap: { [key: string]: MappedRouteType } = {
   home: {
     pathname: "/",
     name: "Home",

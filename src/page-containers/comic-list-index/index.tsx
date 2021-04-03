@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { Typography, Grid, Collapse, IconButton, Box } from "@material-ui/core";
 import useStyles from "./use-styles";
-import { listDataType, getInitialState } from "./helpers";
+import { getInitialState } from "./helpers";
 import AppLink from "@components/app-link";
 import { KeyboardArrowDown, KeyboardArrowLeft } from "@material-ui/icons";
 import ReactMarkdown from "react-markdown";
+import { ComicWithMetadata } from "@lib/types";
 
-export type ComicListIndexProps = {
+type ComicListIndexProps = {
   headerLabel: string;
-  listData: listDataType;
+  listData: ComicWithMetadata[];
 };
 
 // TODO: page head

@@ -1,3 +1,5 @@
+import { getIssueRoute, getSeriesRoute } from "@lib/constants/routes";
+import { ComicWithMetadata } from "@lib/types";
 import { promises, mkdirSync, existsSync } from "fs";
 import path from "path";
 import { safeLoadFront } from "yaml-front-matter";
@@ -56,7 +58,7 @@ const getCoverPath = async (directory: string) => {
     : null;
 };
 
-export const getImagePaths = async (directory: string) => {
+export const getImagePaths = async (directory: string): Promise<string[]> => {
   try {
     const imagesDirectory = getImagesDirectory(directory);
     const fileNames = await getFileNamesInDirectory(imagesDirectory);
@@ -112,7 +114,7 @@ export const getIssueNumbers = async (seriesTitle: string) => {
 export const getPanelCategories = async () =>
   getFileNamesInDirectory(basePanelsDirectory);
 
-export const getSeriesData = async (
+const getSeriesData = async (
   seriesTitle: string
 ): Promise<{
   description: string;
@@ -130,7 +132,7 @@ export const getSeriesData = async (
   };
 };
 
-export const getIssueData = async (
+const getIssueData = async (
   seriesTitle: string,
   issueNumber: number
 ): Promise<{
@@ -156,3 +158,66 @@ export const getReadingOrder = async (): Promise<string[]> => {
   const fileData = await readFile(readingOrderFilePath);
   return JSON.parse(fileData);
 };
+
+export async function getPanelsInCategory(category: string): Promise<string[]> {
+  return getImagePaths(getPanelsCategoryDirectory(category));
+}
+
+export async function getIssue(
+  series: string,
+  issueNumber: number
+): Promise<ComicWithMetadata> {
+  const comic = await getIssueData(series, issueNumber);
+  return {
+    params: {
+      series,
+      issueNumber,
+    },
+    link: {
+      pathname: getIssueRoute(series, issueNumber),
+      name: comic.frontMatter.title,
+    },
+    comic,
+  };
+}
+
+async function getAllIssuesInSeries(
+  series: string
+): Promise<{ [key: number]: ComicWithMetadata }> {
+  const issueNumbersInSeries = await getIssueNumbers(series);
+  return issueNumbersInSeries.reduce(async (acc, issueNumber) => {
+    const newAcc = await acc;
+    newAcc[issueNumber] = await getIssue(series, issueNumber);
+    return Promise.resolve(newAcc);
+  }, Promise.resolve({}));
+}
+
+export async function getSeries(
+  seriesTitle: string,
+  includeIssues?: boolean
+): Promise<ComicWithMetadata> {
+  const comic = await getSeriesData(seriesTitle);
+  return {
+    params: {
+      series: seriesTitle,
+    },
+    link: {
+      pathname: getSeriesRoute(seriesTitle),
+      name: comic.frontMatter.title,
+    },
+    comic,
+    issues: includeIssues ? await getAllIssuesInSeries(seriesTitle) : [],
+  };
+}
+
+export async function getAllSeries(
+  includeIssues?: boolean
+): Promise<{ [key: string]: ComicWithMetadata }> {
+  const seriesTitles = await getSeriesTitles();
+  return await seriesTitles.reduce(async (acc, seriesTitle) => {
+    const newAcc = await acc;
+    // TODO: update types w/ link
+    newAcc[seriesTitle] = await getSeries(seriesTitle, includeIssues);
+    return Promise.resolve(newAcc);
+  }, Promise.resolve({}));
+}

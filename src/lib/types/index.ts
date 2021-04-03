@@ -1,13 +1,13 @@
 import { AxiosError, AxiosResponse } from "axios";
 
-export interface appAxiosResponse<T> {
+export interface AppAxiosResponse<T> {
   response: AxiosResponse<T>;
   error?: AxiosError<any>;
 }
 
 export type ComicPageParams = {
   series: string;
-  issueNumber: number;
+  issueNumber?: number;
 };
 
 export type ComicType = {
@@ -24,38 +24,17 @@ export type ComicType = {
   };
 };
 
-export type ComicWithParamsType = { params: ComicPageParams; comic: ComicType };
-
-export type allStaticComicsSeriesType = ComicWithParamsType & {
-  issues: {
-    [issueNumber: number]: ComicWithParamsType;
+export type ComicWithMetadata = {
+  link: MappedRouteType;
+  params: ComicPageParams;
+  comic: ComicType;
+  issues?: {
+    [issueNumber: number]: ComicWithMetadata;
   };
 };
 
-export type allStaticComicsType = {
-  [seriesTitle: string]: allStaticComicsSeriesType;
-};
-
-export type allStaticPanelsType = {
-  [category: string]: string[];
-};
-
-export enum loadingEnum {
-  LOADED = "LOADED",
-  FAILED = "FAILED",
-  LOADING = "LOADING",
-  NOT_STARTED = "NOT_STARTED",
-}
-
-export type mappedRouteType = {
+export type MappedRouteType = {
   pathname: string;
   name: string;
   query?: { [key: string]: string | boolean | number };
 };
-
-export interface FormValidatorConfigType {
-  validator: (value: string | number | boolean, formFields?: any) => boolean;
-  message: string;
-}
-
-export type Nullable<T> = T | null;

@@ -4,13 +4,13 @@ import ReactMarkdown from "react-markdown";
 import useStyles from "./use-styles";
 import ViewableImage from "../../components/viewable-image";
 import { getDisplaySubtitle, getDisplayTitle } from "./helpers";
-import { ComicWithParamsType } from "@lib/types";
+import { ComicWithMetadata } from "@lib/types";
 import MasonryLayout from "@components/masonry-layout";
 
 type ComicBodyProps = {
   params: { series: string; issueNumber: number };
-  issue?: ComicWithParamsType;
-  series: ComicWithParamsType;
+  issue?: ComicWithMetadata;
+  series: ComicWithMetadata;
 };
 
 function ComicBody({ params, issue, series }: ComicBodyProps) {

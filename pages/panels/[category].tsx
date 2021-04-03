@@ -1,5 +1,7 @@
-import { getPanelCategories } from "@lib/utils/static-comic-file-manager/utils";
-import getInitializedComicFileManager from "@lib/utils/static-comic-file-manager";
+import {
+  getPanelCategories,
+  getPanelsInCategory,
+} from "@lib/utils/static-comics/utils";
 import React from "react";
 import Panels from "@page-containers/panels/category";
 
@@ -21,8 +23,7 @@ export async function getStaticProps({
 }: {
   params: { category: string };
 }) {
-  const singletonStaticComicFileManager = await getInitializedComicFileManager();
-  const imagePaths = singletonStaticComicFileManager.panels[params.category];
+  const imagePaths = await getPanelsInCategory(params.category);
 
   return {
     props: {

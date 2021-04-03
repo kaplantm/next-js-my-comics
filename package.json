@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 80",
-    "build": "rm -rf ./build-scratch; mkdir build-scratch; next build && rm -rf ./build-scratch",
+    "build": "next build",
     "export": "npm run build && next export",
     "start": "next start",
     "test": "jest",

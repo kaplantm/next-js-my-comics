@@ -16,7 +16,7 @@ import { Menu, ChevronLeft } from "@material-ui/icons";
 import AppLink from "../app-link";
 import useStyles from "./use-styles";
 import { routeMap, navRoutes } from "../../lib/constants/routes";
-import { mappedRouteType } from "../../lib/types";
+import { MappedRouteType } from "../../lib/types";
 
 function Page({ children }: { children: any }) {
   const classes = useStyles();
@@ -40,7 +40,7 @@ function Page({ children }: { children: any }) {
           </AppLink>
           <nav>
             <List className={classes.navList}>
-              {navRoutes.map((route: mappedRouteType) => (
+              {navRoutes.map((route: MappedRouteType) => (
                 <AppLink
                   nextProps={{
                     href: {

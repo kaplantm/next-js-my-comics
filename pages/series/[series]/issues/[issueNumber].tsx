@@ -1,11 +1,10 @@
 import {
-  getSeriesData,
-  getIssueData,
   getIssueNumbers,
   getSeriesTitles,
-} from "@lib/utils/static-comic-file-manager/utils";
+  getSeries,
+  getIssue,
+} from "@lib/utils/static-comics/utils";
 import ComicBody from "@page-containers/comic-body";
-import getInitializedComicFileManager from "@lib/utils/static-comic-file-manager";
 import React from "react";
 import { ComicPageParams } from "@lib/types";
 
@@ -33,14 +32,14 @@ export const getStaticPaths = async () => {
 };
 
 export async function getStaticProps({ params }: { params: ComicPageParams }) {
-  const singletonStaticComicFileManager = await getInitializedComicFileManager();
-  const series = singletonStaticComicFileManager.comics[params.series];
+  const series = await getSeries(params.series);
+  const issue = await getIssue(params.series, params.issueNumber);
 
   return {
     props: {
       params,
       series,
-      issue: series.issues[params.issueNumber],
+      issue,
     },
   };
 }

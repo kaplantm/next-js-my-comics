@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig } from "axios";
 import Router from "next/router";
-import { appAxiosResponse } from "../types";
+import { AppAxiosResponse } from "../types";
 
 export function sleep(ms: number = 1000) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -8,7 +8,7 @@ export function sleep(ms: number = 1000) {
 
 export async function appAxios<T>(
   config: AxiosRequestConfig
-): Promise<appAxiosResponse<T>> {
+): Promise<AppAxiosResponse<T>> {
   await sleep();
   try {
     return { response: await axios(config), error: null };

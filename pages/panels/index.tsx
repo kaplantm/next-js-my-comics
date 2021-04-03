@@ -1,12 +1,11 @@
-import getInitializedComicFileManager from "@lib/utils/static-comic-file-manager";
 import React from "react";
 import PanelsIndex from "@page-containers/panels";
+import { getPanelCategories } from "@lib/utils/static-comics/utils";
 
 const PanelsIndexPage = (props) => <PanelsIndex {...props} />;
 
 export async function getStaticProps() {
-  const singletonStaticComicFileManager = await getInitializedComicFileManager();
-  const categories = Object.keys(singletonStaticComicFileManager.panels);
+  const categories = await getPanelCategories();
 
   return {
     props: {

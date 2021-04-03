@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
 
+    minHeight: "200px",
     "& img": {
       maxWidth: "100%",
       maxHeight: "500px",

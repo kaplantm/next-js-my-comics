@@ -1,19 +1,15 @@
-import { allStaticComicsSeriesType } from "@lib/types";
+import { ComicWithMetadata } from "@lib/types";
 import React from "react";
-import { getSeriesTitles } from "@lib/utils/static-comic-file-manager/utils";
+import { getSeries, getSeriesTitles } from "@lib/utils/static-comics/utils";
 import ComicBody from "@page-containers/comic-body";
-import ListIndex, {
-  ComicListIndexProps,
-} from "@page-containers/comic-list-index/index";
-import getInitializedComicFileManager from "@lib/utils/static-comic-file-manager";
-import { getIssueRoute } from "@lib/constants/routes";
+import ListIndex from "@page-containers/comic-list-index/index";
 
 const SeriesPage = ({
   listData,
   ...rest
 }: {
-  listData: ComicListIndexProps["listData"];
-  series: allStaticComicsSeriesType;
+  listData: ComicWithMetadata[];
+  series: ComicWithMetadata;
   params: { series: string; issueNumber: number };
 }) => (
   <>
@@ -37,17 +33,9 @@ export async function getStaticProps({
 }: {
   params: { series: string };
 }) {
-  const singletonStaticComicFileManager = await getInitializedComicFileManager();
-  const series = singletonStaticComicFileManager.comics[params.series];
-  const listData = Object.values(series.issues).map(
-    ({ params: comicParams, comic }) => ({
-      link: {
-        pathname: getIssueRoute(params.series, comicParams.issueNumber),
-        name: comic.frontMatter.title,
-      },
-      comic,
-    })
-  );
+  const series = await getSeries(params.series, true);
+  const listData = Object.values(series.issues);
+
   return {
     props: {
       params,
