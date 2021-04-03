@@ -1,14 +1,17 @@
+import { Paper } from "@material-ui/core";
 import clsx from "clsx";
 import React, { useState, useRef, useEffect } from "react";
 import ImageDialog from "./image-dialog";
 import useStyles from "./use-styles";
 
-function ViewableImage(
-  props: React.DetailedHTMLProps<
-    React.ImgHTMLAttributes<HTMLImageElement>,
-    HTMLImageElement
-  >
-) {
+function ViewableImage({
+  width,
+  src,
+  ...rest
+}: React.DetailedHTMLProps<
+  React.ImgHTMLAttributes<HTMLImageElement>,
+  HTMLImageElement
+>) {
   const classes = useStyles();
   const [openModal, setOpenModal] = useState(false);
   const imageRef = useRef(null);
@@ -53,20 +56,23 @@ function ViewableImage(
 
   return (
     <>
-      <img
-        ref={imageRef}
-        {...props}
-        onClick={handleOpenModal}
-        role="button"
-        onLoad={onLoad}
-        className={clsx(
-          classes.image,
-          !imageData.loaded && classes.loading,
-          props.className
-        )}
-      />
+      <Paper className={classes.paper} elevation={2} style={{ width }}>
+        <img
+          ref={imageRef}
+          src={src}
+          {...rest}
+          onClick={handleOpenModal}
+          role="button"
+          onLoad={onLoad}
+          className={clsx(
+            classes.image,
+            !imageData.loaded && classes.loading,
+            rest.className
+          )}
+        />
+      </Paper>
       <ImageDialog
-        src={props.src}
+        src={src}
         open={openModal}
         rawImageWidth={imageData.rawWidth}
         rawImageHeight={imageData.rawHeight}
