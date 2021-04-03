@@ -1,5 +1,8 @@
 import { allStaticComicsType, allStaticPanelsType } from "@lib/types";
+import { writeFileSync, readFileSync, existsSync } from "fs";
 import {
+  buildScratchAllComicsFilePath,
+  buildScratchAllPanelsFilePath,
   getImagePaths,
   getIssueData,
   getIssueNumbers,
@@ -9,25 +12,41 @@ import {
   getSeriesTitles,
 } from "./utils";
 
-// TODO: log stuff to make sure this does what you think it does
 class StaticComicFileManager {
-  initializationPromise = null;
   comics: allStaticComicsType = {};
   panels: allStaticPanelsType = {};
 
   constructor() {}
 
-  async _doInitialize() {
-    this.comics = await this.getAllComics();
-    this.panels = await this.getAllPanels();
+  async _initialize() {
+    this.comics = await this.getNewOrCached(
+      buildScratchAllComicsFilePath,
+      this.getAllComics.bind(this)
+    );
+    this.panels = await this.getNewOrCached(
+      buildScratchAllPanelsFilePath,
+      this.getAllPanels.bind(this)
+    );
   }
 
-  async _initialize() {
-    // prevent concurrent calls firing initialization more than once
-    if (!this.initializationPromise) {
-      this.initializationPromise = this._doInitialize();
+  // We cache the built json in files in a scratch folder
+  // So if we have them already, we don't need to go gathering them for every page
+  // Instead we just read the objects from the saved file
+  async getNewOrCached<T>(cachedFilePath, getter: () => Promise<T>) {
+    if (existsSync(cachedFilePath)) {
+      const newData = JSON.parse(
+        readFileSync(cachedFilePath, {
+          encoding: "utf8",
+        })
+      );
+      return newData;
     }
-    return this.initializationPromise;
+
+    const newData = await getter();
+    if (process.env.NODE_ENV !== "development") {
+      writeFileSync(cachedFilePath, JSON.stringify(newData));
+    }
+    return newData;
   }
 
   async getAllPanels() {
@@ -43,7 +62,7 @@ class StaticComicFileManager {
 
   async getAllComics() {
     const seriesTitles = await getSeriesTitles();
-    return seriesTitles.reduce(async (acc, seriesTitle) => {
+    return await seriesTitles.reduce(async (acc, seriesTitle) => {
       const comic = await getSeriesData(seriesTitle);
       const newAcc = await acc;
       newAcc[seriesTitle] = {
@@ -51,7 +70,6 @@ class StaticComicFileManager {
           series: seriesTitle,
         },
         comic,
-
         issues: await this.getAllIssuesInSeries(seriesTitle),
       };
       return Promise.resolve(newAcc);
@@ -75,10 +93,10 @@ class StaticComicFileManager {
   }
 }
 
-const getSingletonStaticComicFileManager = (async () => {
+const getInitializedComicFileManager = async () => {
   const staticComicFileManager = new StaticComicFileManager();
   await staticComicFileManager._initialize();
   return staticComicFileManager;
-})();
+};
 
-export default getSingletonStaticComicFileManager;
+export default getInitializedComicFileManager;

@@ -56,7 +56,11 @@ function ViewableImage({
 
   return (
     <>
-      <Paper className={classes.paper} elevation={2} style={{ width }}>
+      <Paper
+        className={clsx(classes.paper, "viewableImagePaper")}
+        elevation={2}
+        style={{ width }}
+      >
         <img
           ref={imageRef}
           src={src}
@@ -67,7 +71,7 @@ function ViewableImage({
           className={clsx(
             classes.image,
             !imageData.loaded && classes.loading,
-            rest.className
+            "viewableImage"
           )}
         />
       </Paper>

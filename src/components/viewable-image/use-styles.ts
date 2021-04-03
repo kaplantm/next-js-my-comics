@@ -6,6 +6,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: "hidden",
   },
   image: {
+    maxWidth: "100%",
     cursor: "pointer",
     display: "block",
     backgroundColor: iceBlue,

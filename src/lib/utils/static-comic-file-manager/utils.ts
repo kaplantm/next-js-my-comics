@@ -1,4 +1,4 @@
-import { promises as fs } from "fs";
+import { promises, mkdirSync, existsSync } from "fs";
 import path from "path";
 import { safeLoadFront } from "yaml-front-matter";
 
@@ -10,6 +10,9 @@ const possibleCoverFiles = [
   `${coverFileName}.jpeg`,
 ];
 const omittedFiles = [".DS_Store"];
+const buildScratchDirectory = `${process.cwd()}/build-scratch`;
+export const buildScratchAllComicsFilePath = `${buildScratchDirectory}/allComics.json`;
+export const buildScratchAllPanelsFilePath = `${buildScratchDirectory}/allPanels.json`;
 
 const baseDirectory = path.join(process.cwd(), "public/static");
 const basePanelsDirectory = `${baseDirectory}/panels`;
@@ -32,7 +35,7 @@ const getFileNamesInDirectory = async (
   omissions = omittedFiles
 ) => {
   try {
-    const files = (await fs.readdir(directory)) || [];
+    const files = (await promises.readdir(directory)) || [];
     return files.filter((file) => !omissions.includes(file));
   } catch (e) {
     return [];
@@ -40,7 +43,8 @@ const getFileNamesInDirectory = async (
 };
 const getMarkdownFilePathInDirectory = (directory: string) =>
   `${directory}/${dataFileName}`;
-const readFile = async (filePath: string) => fs.readFile(filePath, "utf8");
+const readFile = async (filePath: string) =>
+  promises.readFile(filePath, "utf8");
 
 const removeLocalPath = (directory: string) => directory.split("public")[1];
 const getCoverPath = async (directory: string) => {

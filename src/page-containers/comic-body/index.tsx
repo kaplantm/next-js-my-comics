@@ -48,7 +48,7 @@ function ComicBody({ params, issue, series }: ComicBodyProps) {
 
       <Grid item xs={12} className={classes.coverImageContainer}>
         <Typography component="div">
-          <ViewableImage src={coverPath} className={classes.coverImage} />
+          <ViewableImage src={coverPath} />
           {description && <ReactMarkdown>{description}</ReactMarkdown>}
         </Typography>
       </Grid>

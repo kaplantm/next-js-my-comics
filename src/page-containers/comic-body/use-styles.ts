@@ -9,13 +9,14 @@ const useStyles = makeStyles((theme) => ({
       marginTop: theme.spacing(1),
       marginBottom: theme.spacing(1),
     },
-  },
-  coverImage: {
-    maxWidth: "30%",
-    float: "right",
-    margin: theme.spacing(2, 0, 2, 2),
-    [theme.breakpoints.down("xs")]: {
-      width: "100%",
+    "& .viewableImagePaper": {
+      border: "1px solid red",
+      maxWidth: "30%",
+      float: "right",
+      margin: theme.spacing(2, 0, 2, 2),
+      [theme.breakpoints.down("xs")]: {
+        width: "100%",
+      },
     },
   },
   divider: {

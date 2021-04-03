@@ -5,7 +5,7 @@ import ComicBody from "@page-containers/comic-body";
 import ListIndex, {
   ComicListIndexProps,
 } from "@page-containers/comic-list-index/index";
-import getSingletonStaticComicFileManager from "@lib/utils/static-comic-file-manager";
+import getInitializedComicFileManager from "@lib/utils/static-comic-file-manager";
 import { getIssueRoute } from "@lib/constants/routes";
 
 const SeriesPage = ({
@@ -37,7 +37,7 @@ export async function getStaticProps({
 }: {
   params: { series: string };
 }) {
-  const singletonStaticComicFileManager = await getSingletonStaticComicFileManager;
+  const singletonStaticComicFileManager = await getInitializedComicFileManager();
   const series = singletonStaticComicFileManager.comics[params.series];
   const listData = Object.values(series.issues).map(
     ({ params: comicParams, comic }) => ({

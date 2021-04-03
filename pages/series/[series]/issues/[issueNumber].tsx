@@ -5,7 +5,7 @@ import {
   getSeriesTitles,
 } from "@lib/utils/static-comic-file-manager/utils";
 import ComicBody from "@page-containers/comic-body";
-import getSingletonStaticComicFileManager from "@lib/utils/static-comic-file-manager";
+import getInitializedComicFileManager from "@lib/utils/static-comic-file-manager";
 import React from "react";
 import { ComicPageParams } from "@lib/types";
 
@@ -33,7 +33,7 @@ export const getStaticPaths = async () => {
 };
 
 export async function getStaticProps({ params }: { params: ComicPageParams }) {
-  const singletonStaticComicFileManager = await getSingletonStaticComicFileManager;
+  const singletonStaticComicFileManager = await getInitializedComicFileManager();
   const series = singletonStaticComicFileManager.comics[params.series];
 
   return {
