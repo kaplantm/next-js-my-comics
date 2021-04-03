@@ -2,6 +2,12 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   coverImageContainer: {
+    [theme.breakpoints.down("xs")]: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flexDirection: "column",
+    },
     "& ul": {
       paddingInlineStart: theme.spacing(2),
     },
@@ -10,18 +16,26 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: theme.spacing(1),
     },
     "& .viewableImagePaper": {
-      border: "1px solid red",
       maxWidth: "30%",
       float: "right",
       margin: theme.spacing(2, 0, 2, 2),
       [theme.breakpoints.down("xs")]: {
-        width: "100%",
+        maxWidth: "100%",
+        "& img": {
+          maxHeight: "50vh",
+        },
       },
     },
   },
-  divider: {
-    width: "100%",
-    margin: theme.spacing(4, 0, 2, 0),
+  childrenContainer: {
+    marginTop: theme.spacing(6),
+    maxWidth: "60%",
+    [theme.breakpoints.down("xs")]: {
+      maxWidth: "100%",
+    },
+  },
+  imagesContainer: {
+    marginTop: theme.spacing(6),
   },
 }));
 

@@ -21,7 +21,6 @@ function ViewableImage({
     loaded: boolean;
   }>({ rawWidth: 0, rawHeight: 0, loaded: false });
 
-  const complete = imageRef.current?.complete;
   const rawWidth = imageRef.current?.naturalWidth;
   const rawHeight = imageRef.current?.naturalHeight;
 

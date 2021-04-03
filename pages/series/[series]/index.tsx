@@ -13,8 +13,9 @@ const SeriesPage = ({
   params: { series: string; issueNumber: number };
 }) => (
   <>
-    <ComicBody {...rest} />
-    <ListIndex listData={listData} headerLabel="Issues" />
+    <ComicBody {...rest}>
+      <ListIndex listData={listData} headerLabel="Comics" />
+    </ComicBody>
   </>
 );
 

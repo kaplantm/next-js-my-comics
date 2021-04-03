@@ -11,9 +11,10 @@ type ComicBodyProps = {
   params: { series: string; issueNumber: number };
   issue?: ComicWithMetadata;
   series: ComicWithMetadata;
+  children: React.ReactNode;
 };
 
-function ComicBody({ params, issue, series }: ComicBodyProps) {
+function ComicBody({ params, issue, series, children }: ComicBodyProps) {
   const classes = useStyles();
 
   const { frontMatter: seriesFrontMatter } = series.comic;
@@ -47,18 +48,18 @@ function ComicBody({ params, issue, series }: ComicBodyProps) {
       </Grid>
 
       <Grid item xs={12} className={classes.coverImageContainer}>
+        {coverPath && <ViewableImage src={coverPath} />}
         <Typography component="div">
-          <ViewableImage src={coverPath} />
           {description && <ReactMarkdown>{description}</ReactMarkdown>}
         </Typography>
+        {children && (
+          <div className={classes.childrenContainer}>{children}</div>
+        )}
       </Grid>
 
       {!!imagePaths?.length && (
         <>
-          <Grid item xs={12}>
-            <Divider className={classes.divider} />
-          </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} className={classes.imagesContainer}>
             <Grid container spacing={3}>
               <MasonryLayout>
                 {imagePaths.map((url: string) => (
