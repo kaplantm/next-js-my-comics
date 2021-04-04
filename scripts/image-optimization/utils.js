@@ -74,7 +74,6 @@ async function optimizeFiles(filePaths) {
         let quality = size > maxSize ? 75 : 100;
         let optimizationDone = false;
         while (!optimizationDone) {
-          console.log({ quality });
           const newImage = await image
             .resize(newWidth, newHeight)
             .png({ quality })
@@ -91,7 +90,6 @@ async function optimizeFiles(filePaths) {
         const { size: newSize } = await stat(filePath);
 
         bytesSaved += size - newSize;
-        console.log({ bytesSaved, size, newSize, maxSize });
         optimizedFiles.push(filePath);
       } catch (e) {
         console.log("e", e);
