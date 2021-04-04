@@ -11,7 +11,7 @@ const possibleCoverFiles = [
   `${coverFileName}.jpg`,
   `${coverFileName}.jpeg`,
 ];
-const omittedFiles = [".DS_Store"];;
+const omittedFiles = [".DS_Store"];
 
 const baseDirectory = path.join(process.cwd(), "public/static");
 const basePanelsDirectory = `${baseDirectory}/panels`;
@@ -172,7 +172,7 @@ export async function getIssue(
     },
     link: {
       pathname: getIssueRoute(series, issueNumber),
-      name: comic.frontMatter.title,
+      name: `#${issueNumber} - ${comic.frontMatter.title}`,
     },
     comic,
   };

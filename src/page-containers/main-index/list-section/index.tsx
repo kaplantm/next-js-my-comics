@@ -14,7 +14,14 @@ const ListSection = ({
   if (!groupData.issues.length) {
     return null;
   }
-  const listData = Object.values(groupData.issues);
+  const listData = Object.values(groupData.issues).map((item) => ({
+    ...item,
+    link: {
+      pathname: item.link.pathname,
+      name: `${item.params.series} ${item.link.name}`,
+    },
+  }));
+
   return (
     <Box mt={3}>
       <ListIndex listData={listData} headerLabel={headerLabel} />

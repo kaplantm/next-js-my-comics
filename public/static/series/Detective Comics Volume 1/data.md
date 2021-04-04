@@ -1,5 +1,5 @@
 ---
-title: "Detective Comics"
+title: "Detective Comics Volume 1"
 start: 1937
 end: "Ongoing"
 issue: null
