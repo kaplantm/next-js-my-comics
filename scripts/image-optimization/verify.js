@@ -1,12 +1,12 @@
-const { getFilesFailingOptimizationCheck } = require("./utils");
+const { getFilesFailingOptimizationCheck, getArguments } = require("./utils");
 
 async function init() {
-  const arguments = process.argv.slice(2);
-  const folder = arguments[0];
-  if (!folder) {
-    throw "Missing folder argument";
-  }
-  const failingFiles = await getFilesFailingOptimizationCheck(folder);
+  const [folder, maxDimension, maxSize] = getArguments();
+  const failingFiles = await getFilesFailingOptimizationCheck(
+    folder,
+    maxDimension,
+    maxSize
+  );
   if (failingFiles.length) {
     console.warn("Image file(s) too large \n", failingFiles);
   } else {

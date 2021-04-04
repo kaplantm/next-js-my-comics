@@ -11,6 +11,16 @@ function getFlags() {
             folder=$1
             shift
             ;;
+        -d)
+            shift
+            maxDimension=$1
+            shift
+            ;;
+        -s)
+            shift
+            maxSize=$1
+            shift
+            ;;
         *)
             echo "$1 is not a recognized flag!"
             return 1
@@ -21,10 +31,10 @@ function getFlags() {
     if [ $action = "verify" ]; then
         # TODO: add prompt if you committed
         echo "Verifying image files..."
-        eval "node ./scripts/image-optimization/verify.js $folder"
+        eval "node ./scripts/image-optimization/verify.js $folder $maxDimension $maxSize"
     else
         echo "Optimizing image files..."
-        eval "node ./scripts/image-optimization/optimize.js $folder"
+        eval "node ./scripts/image-optimization/optimize.js $folder $maxDimension $maxSize"
     fi
 }
 

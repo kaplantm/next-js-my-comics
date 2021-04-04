@@ -2,12 +2,24 @@ const sharp = require("sharp");
 const { resolve } = require("path");
 const { readdir, stat, readFile } = require("fs").promises;
 
-const maxDimension = 1500; // TODO: flag
-const maxSize = 0.8 * 1000 * 1000; // in bytes TODO: flag
+const defaultMaxDimension = 1500; // TODO: flag
+const defaultMaxSize = 0.8 * 1000 * 1000; // in bytes TODO: flag
 
 // TODO: handle filenames w/ spacing like in original?
 const imageOpDir = `${process.cwd()}/scripts/image-optimization/`;
 
+const getArguments = () => {
+  const arguments = process.argv.slice(2);
+  const [folder, maxDimension, maxSize] = arguments;
+  if (!folder) {
+    throw "Missing folder argument";
+  }
+  return [
+    folder,
+    parseInt(maxDimension) || defaultMaxDimension,
+    parseInt(maxSize) || defaultMaxSize,
+  ];
+};
 // https://stackoverflow.com/a/45130990
 async function getFilePaths(dir) {
   const dirents = await readdir(dir, { withFileTypes: true });
@@ -20,7 +32,11 @@ async function getFilePaths(dir) {
   return Array.prototype.concat(...files);
 }
 
-async function getFilesFailingOptimizationCheck(folder) {
+async function getFilesFailingOptimizationCheck(
+  folder,
+  maxDimension = defaultMaxDimension,
+  maxSize = defaultMaxSize
+) {
   const filePaths = await getFilePaths(folder);
 
   const failingFiles = (
@@ -50,11 +66,27 @@ async function getFilesFailingOptimizationCheck(folder) {
   return failingFiles;
 }
 
-async function getOptimizedImage(image, newWidth, newHeight, quality) {
-  return image.resize(newWidth, newHeight).png({ quality }).jpeg({ quality });
+async function getOptimizedImage(image, width, height, quality) {
+  return image
+    .resize({ width, height, fit: sharp.fit.contain })
+    .png({ quality })
+    .jpeg({ quality });
 }
 
-async function optimizeFiles(filePaths) {
+const getNewWidthHeight = (width, height, maxDimension) => {
+  const widthIsMoreThanHeight = width > height;
+  const newWidth =
+    width > maxDimension && widthIsMoreThanHeight ? maxDimension : undefined;
+  const newHeight =
+    height > maxDimension && !widthIsMoreThanHeight ? maxDimension : undefined;
+  return { width: newWidth, height: newHeight };
+};
+
+async function optimizeFiles(
+  filePaths,
+  maxDimension = defaultMaxDimension,
+  maxSize = defaultMaxSize
+) {
   const optimizedFiles = [];
   const notOptimizedFiles = [];
   let bytesSaved = 0;
@@ -64,20 +96,20 @@ async function optimizeFiles(filePaths) {
         // Using fileBuffer to avoid "Error: Cannot use same file for input and output"
         const fileBuffer = await readFile(filePath);
         const image = sharp(fileBuffer);
-        const metaData = await image.metadata();
-        const newWidth =
-          metaData.width > maxDimension ? maxDimension : undefined;
-        const newHeight =
-          metaData.height > maxDimension ? maxDimension : undefined;
+        const { width, height } = await image.metadata();
+        const newDimensions = getNewWidthHeight(width, height, maxDimension);
         const { size } = await stat(filePath);
 
+        console.log({ newDimensions, width, height });
         let quality = size > maxSize ? 75 : 100;
         let optimizationDone = false;
         while (!optimizationDone) {
-          const newImage = await image
-            .resize(newWidth, newHeight)
-            .png({ quality })
-            .jpeg({ quality });
+          const newImage = await getOptimizedImage(
+            image,
+            newDimensions.width,
+            newDimensions.height,
+            quality
+          );
           const newImageBuffer = await newImage.toBuffer();
           const newImageSize = Buffer.byteLength(newImageBuffer);
           if (newImageSize < maxSize || quality < 50) {
@@ -104,4 +136,8 @@ async function optimizeFiles(filePaths) {
   };
 }
 
-module.exports = { optimizeFiles, getFilesFailingOptimizationCheck };
+module.exports = {
+  optimizeFiles,
+  getFilesFailingOptimizationCheck,
+  getArguments,
+};

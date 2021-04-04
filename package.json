@@ -9,8 +9,11 @@
     "start": "next start",
     "test": "jest",
     "test:update": "jest --updateSnapshot",
-    "images:v": "bash ./scripts/image-optimization/main.sh -a verify -f",
-    "images:o": "bash ./scripts/image-optimization/main.sh -a optimize -f",
+    "imgv": "bash ./scripts/image-optimization/main.sh -a verify",
+    "imgo": "bash ./scripts/image-optimization/main.sh -a optimize",
+    "imgv:all": "npm run imgv -- -f '/Users/tonikaplan/next-js-my-comics/public/static'",
+    "imgo:all": "npm run imgo -- -f '/Users/tonikaplan/next-js-my-comics/public/static'",
+    "imgo:small": "npm run imgo -- -d 150 -f",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "test:clear": "jest --clearCache"
