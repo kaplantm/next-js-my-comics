@@ -11,10 +11,7 @@ const possibleCoverFiles = [
   `${coverFileName}.jpg`,
   `${coverFileName}.jpeg`,
 ];
-const omittedFiles = [".DS_Store"];
-const buildScratchDirectory = `${process.cwd()}/build-scratch`;
-export const buildScratchAllComicsFilePath = `${buildScratchDirectory}/allComics.json`;
-export const buildScratchAllPanelsFilePath = `${buildScratchDirectory}/allPanels.json`;
+const omittedFiles = [".DS_Store"];;
 
 const baseDirectory = path.join(process.cwd(), "public/static");
 const basePanelsDirectory = `${baseDirectory}/panels`;

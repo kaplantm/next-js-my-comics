@@ -9,6 +9,8 @@
     "start": "next start",
     "test": "jest",
     "test:update": "jest --updateSnapshot",
+    "images:v": "bash ./scripts/image-optimization/main.sh -a verify -f",
+    "images:o": "bash ./scripts/image-optimization/main.sh -a optimize -f",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "test:clear": "jest --clearCache"
