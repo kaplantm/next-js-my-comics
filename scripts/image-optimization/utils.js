@@ -101,7 +101,7 @@ async function optimizeFiles(
         const { size } = await stat(filePath);
 
         console.log({ newDimensions, width, height });
-        let quality = size > maxSize ? 75 : 100;
+        let quality = size > maxSize ? 75 : 90;
         let optimizationDone = false;
         while (!optimizationDone) {
           const newImage = await getOptimizedImage(
