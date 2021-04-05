@@ -10,7 +10,7 @@
     "test": "jest",
     "test:update": "jest --updateSnapshot",
     "imgv": "bash ./scripts/image-optimization/main.sh -a verify",
-    "imgo": "bash ./scripts/image-optimization/main.sh -a optimize -d 1300 -s 800000",
+    "imgo": "bash ./scripts/image-optimization/main.sh -a optimize -d 1000 -s 800000",
     "imgv:all": "npm run imgv -- -f '/Users/tonikaplan/next-js-my-comics/public/static'",
     "imgo:all": "npm run imgo -- -f '/Users/tonikaplan/next-js-my-comics/public/static'",
     "imgo:small": "npm run imgo -- -d 150 -f",
