@@ -1,8 +1,13 @@
 import { makeStyles } from "@material-ui/core/styles";
 
+type styleConfigType = {
+  coverWidth: number;
+  coverHeight: number;
+};
+
 const useStyles = makeStyles((theme) => ({
   coverImageContainer: {
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -16,13 +21,17 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: theme.spacing(1),
     },
     "& .viewableImageWrapper": {
-      maxWidth: "30%",
       float: "right",
       margin: theme.spacing(2, 0, 2, 2),
-      [theme.breakpoints.down("xs")]: {
-        maxWidth: "100%",
+      "& img": {
+        width: ({ coverWidth }: styleConfigType) => coverWidth,
+        height: ({ coverHeight }: styleConfigType) => coverHeight,
+      },
+      [theme.breakpoints.down("sm")]: {
+        margin: 0,
         "& img": {
-          maxHeight: "50vh",
+          width: ({ coverWidth }: styleConfigType) => coverWidth * 0.75,
+          height: ({ coverHeight }: styleConfigType) => coverHeight * 0.75,
         },
       },
     },

@@ -1,3 +1,4 @@
+import { getWidthHeightFromImagePath } from "@lib/utils/image-utils";
 import { Paper } from "@material-ui/core";
 import clsx from "clsx";
 import React, { useState, useRef, useEffect } from "react";
@@ -5,7 +6,6 @@ import ImageDialog from "./image-dialog";
 import useStyles from "./use-styles";
 
 function ViewableImage({
-  width,
   src,
   ...rest
 }: React.DetailedHTMLProps<
@@ -14,15 +14,11 @@ function ViewableImage({
 >) {
   const classes = useStyles();
   const [openModal, setOpenModal] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   const imageRef = useRef(null);
-  const [imageData, setImageData] = useState<{
-    rawWidth: number;
-    rawHeight: number;
-    loaded: boolean;
-  }>({ rawWidth: 0, rawHeight: 0, loaded: false });
-
-  const rawWidth = imageRef.current?.naturalWidth;
-  const rawHeight = imageRef.current?.naturalHeight;
+  const { width: rawWidth, height: rawHeight } = getWidthHeightFromImagePath(
+    src
+  );
 
   function handleOpenModal() {
     setOpenModal(true);
@@ -33,38 +29,29 @@ function ViewableImage({
 
   // Will trigger 200 responses but not 304 Not Modified
   function onLoad({ target }: any) {
-    if (!imageData.loaded) {
-      setImageData({
-        rawWidth: target.naturalWidth,
-        rawHeight: target.naturalHeight,
-        loaded: true,
-      });
+    if (!loaded) {
+      setLoaded(true);
     }
   }
 
   useEffect(() => {
     // Will trigger for 304 Not Modified images but not 200 responses
-    if (imageRef.current?.complete && !imageData.loaded) {
-      setImageData({
-        rawWidth,
-        rawHeight,
-        loaded: true,
-      });
+    if (imageRef.current?.complete && !loaded) {
+      setLoaded(true);
     }
-  }, [imageRef.current, rawWidth, rawHeight, imageData.loaded]);
+  }, [imageRef.current, rawWidth, rawHeight, loaded]);
 
   return (
     <div
       className={clsx(
         classes.viewableImageWrapper,
-        !imageData.loaded && classes.loading,
+        !loaded && classes.loading,
         "viewableImageWrapper"
       )}
     >
       <Paper
         className={clsx(classes.paper, "viewableImagePaper")}
         elevation={2}
-        style={{ width }}
       >
         <img
           ref={imageRef}
@@ -81,8 +68,8 @@ function ViewableImage({
       <ImageDialog
         src={src}
         open={openModal}
-        rawImageWidth={imageData.rawWidth}
-        rawImageHeight={imageData.rawHeight}
+        rawImageWidth={rawWidth}
+        rawImageHeight={rawHeight}
         onClose={handleCloseModal}
       />
     </div>

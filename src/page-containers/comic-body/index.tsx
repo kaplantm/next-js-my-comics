@@ -1,11 +1,15 @@
 import React from "react";
-import { Typography, Grid, Divider } from "@material-ui/core";
+import { Typography, Grid, Divider, useMediaQuery } from "@material-ui/core";
 import ReactMarkdown from "react-markdown";
 import useStyles from "./use-styles";
 import ViewableImage from "../../components/viewable-image";
 import { getDisplaySubtitle, getDisplayTitle } from "./helpers";
 import { ComicWithMetadata } from "@lib/types";
 import MasonryLayout from "@components/masonry-layout";
+import {
+  getScaledImageWidthHeight,
+  getWidthHeightFromImagePath,
+} from "@lib/utils/image-utils";
 
 type ComicBodyProps = {
   params: { series: string; issueNumber: number };
@@ -15,17 +19,22 @@ type ComicBodyProps = {
 };
 
 function ComicBody({ params, issue, series, children }: ComicBodyProps) {
-  const classes = useStyles();
-
   const { frontMatter: seriesFrontMatter } = series.comic;
   const { frontMatter: issueFrontMatter } = issue?.comic || {};
   const isIssue = !!issue;
-  const { description, coverPath, imagePaths } = isIssue
-    ? issue.comic
-    : series.comic;
+
   const { link: titleLink, title } = isIssue
     ? issueFrontMatter
     : seriesFrontMatter;
+  const { description, coverPath, imagePaths } = isIssue
+    ? issue.comic
+    : series.comic;
+  const { width: coverWidth, height: coverHeight } = getScaledImageWidthHeight(
+    coverPath,
+    400,
+    600
+  );
+  const classes = useStyles({ coverWidth, coverHeight });
 
   return (
     <Grid container spacing={3}>
@@ -48,7 +57,13 @@ function ComicBody({ params, issue, series, children }: ComicBodyProps) {
       </Grid>
 
       <Grid item xs={12} className={classes.coverImageContainer}>
-        {coverPath && <ViewableImage src={coverPath} />}
+        {coverPath && (
+          <ViewableImage
+            src={coverPath}
+            width={coverWidth}
+            height={coverHeight}
+          />
+        )}
         <Typography component="div">
           {description && <ReactMarkdown>{description}</ReactMarkdown>}
         </Typography>

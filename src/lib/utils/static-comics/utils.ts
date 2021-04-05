@@ -5,18 +5,17 @@ import path from "path";
 import { safeLoadFront } from "yaml-front-matter";
 
 const dataFileName = "data.md";
-const coverFileName = "cover";
-const possibleCoverFiles = [
-  `${coverFileName}.png`,
-  `${coverFileName}.jpg`,
-  `${coverFileName}.jpeg`,
-];
 const omittedFiles = [".DS_Store"];
 
 const baseDirectory = path.join(process.cwd(), "public/static");
 const basePanelsDirectory = `${baseDirectory}/panels`;
 const baseSeriesDirectory = `${baseDirectory}/series`;
 const readingOrderFilePath = `${baseDirectory}/reading-order.json`;
+
+const isImageFile = (fileName) =>
+  fileName.endsWith(".png") ||
+  fileName.endsWith(".jpg") ||
+  fileName.endsWith(".jpeg");
 
 const getSeriesDirectory = (series: string) =>
   `${baseSeriesDirectory}/${series}`;
@@ -48,8 +47,9 @@ const readFile = async (filePath: string) =>
 const removeLocalPath = (directory: string) => directory.split("public")[1];
 const getCoverPath = async (directory: string) => {
   const fileNames = await getFileNamesInDirectory(directory);
-  const foundCoverFileName =
-    fileNames.find((element) => possibleCoverFiles.includes(element)) || null;
+  const foundCoverFileName = fileNames.find(
+    (element) => isImageFile(element) && element.includes("cover")
+  );
   return foundCoverFileName
     ? `${removeLocalPath(directory)}/${foundCoverFileName}`
     : null;
@@ -60,12 +60,7 @@ export const getImagePaths = async (directory: string): Promise<string[]> => {
     const imagesDirectory = getImagesDirectory(directory);
     const fileNames = await getFileNamesInDirectory(imagesDirectory);
     return fileNames
-      .filter(
-        (fileName) =>
-          fileName.endsWith(".png") ||
-          fileName.endsWith(".jpg") ||
-          fileName.endsWith(".jpeg")
-      )
+      .filter(isImageFile)
       .map((fileName) => `${removeLocalPath(imagesDirectory)}/${fileName}`);
   } catch (e) {
     return [];
