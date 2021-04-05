@@ -3,7 +3,7 @@ title: "Balance"
 start: "June, 1999"
 end: null
 issueNumber: 118
-arc: "No Man's Land"
+arc: "Batman: No Man's Land"
 link: "https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_118"
 ---
 

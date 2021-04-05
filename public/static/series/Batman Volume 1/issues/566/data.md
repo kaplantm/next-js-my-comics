@@ -3,7 +3,7 @@ title: "The Visitor"
 start: "June, 1999"
 end: null
 issueNumber: 566
-arc: "No Man's Land"
+arc: "Batman: No Man's Land"
 link: "https://dc.fandom.com/wiki/Batman_Vol_1_566"
 ---
 

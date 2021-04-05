@@ -3,7 +3,7 @@ title: "Home Sweet Home"
 start: "June, 1999"
 end: null
 issueNumber: 86
-arc: "No Man's Land"
+arc: "Batman: No Man's Land"
 link: "https://dc.fandom.com/wiki/Batman:_Shadow_of_the_Bat_Vol_1_86"
 ---
 

@@ -3,7 +3,7 @@ title: "Jellybean Deathtrap"
 start: "June, 1999"
 end: null
 issueNumber: 53
-arc: "No Man's Land"
+arc: "Batman: No Man's Land"
 link: "https://dc.fandom.com/wiki/Azrael:_Agent_of_the_Bat_Vol_1_53"
 ---
 
