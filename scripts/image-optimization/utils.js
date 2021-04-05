@@ -37,7 +37,7 @@ async function getFilesFailingOptimizationCheck(
   maxDimension = defaultMaxDimension,
   maxSize = defaultMaxSize
 ) {
-  const filePaths = await getFilePaths(folder);
+  const filePaths = await getFilePaths(`${process.cwd()}${folder}`);
 
   const failingFiles = (
     await Promise.all(
