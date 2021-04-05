@@ -2,6 +2,13 @@ import { makeStyles } from "@material-ui/core/styles";
 import { iceBlue } from "../../theme/colors";
 
 const useStyles = makeStyles((theme) => ({
+  viewableImageWrapper: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    transition: "min-height .3s",
+    minHeight: 0,
+  },
   paper: {
     overflow: "hidden",
   },
@@ -12,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: iceBlue,
   },
   loading: {
-    minHeight: 200,
+    minHeight: 150,
   },
 }));
 

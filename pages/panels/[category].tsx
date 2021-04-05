@@ -5,8 +5,15 @@ import {
 import React from "react";
 import Panels from "@page-containers/panels/category";
 
+const fitlerablePages = ["reacts"];
+
 // TODO: arrows to move to next image
-const PanelsCategoryPage = (props) => <Panels {...props} />;
+const PanelsCategoryPage = (props) => (
+  <Panels
+    {...props}
+    filterable={fitlerablePages.includes(props.params.category)}
+  />
+);
 
 export const getStaticPaths = async () => {
   const paths = (await getPanelCategories()).map((category) => ({

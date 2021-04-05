@@ -60,7 +60,7 @@ function ComicBody({ params, issue, series, children }: ComicBodyProps) {
       {!!imagePaths?.length && (
         <>
           <Grid item xs={12} className={classes.imagesContainer}>
-            <Grid container spacing={3}>
+            <Grid item xs={12} container spacing={3}>
               <MasonryLayout>
                 {imagePaths.map((url: string) => (
                   <ViewableImage src={url} key={url} />

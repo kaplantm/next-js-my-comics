@@ -4,6 +4,7 @@ import { iceBlue } from "src/theme/colors";
 const useStyles = makeStyles((theme) => ({
   masonryContainer: {
     display: "flex",
+    flex: 1,
   },
   imageMatte: {
     backgroundColor: iceBlue,

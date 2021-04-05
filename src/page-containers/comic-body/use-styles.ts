@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
       marginTop: theme.spacing(1),
       marginBottom: theme.spacing(1),
     },
-    "& .viewableImagePaper": {
+    "& .viewableImageWrapper": {
       maxWidth: "30%",
       float: "right",
       margin: theme.spacing(2, 0, 2, 2),

@@ -54,7 +54,13 @@ function ViewableImage({
   }, [imageRef.current, rawWidth, rawHeight, imageData.loaded]);
 
   return (
-    <>
+    <div
+      className={clsx(
+        classes.viewableImageWrapper,
+        !imageData.loaded && classes.loading,
+        "viewableImageWrapper"
+      )}
+    >
       <Paper
         className={clsx(classes.paper, "viewableImagePaper")}
         elevation={2}
@@ -62,16 +68,14 @@ function ViewableImage({
       >
         <img
           ref={imageRef}
+          // Use this for testing image loading styles
+          // src="http://slowwly.robertomurray.co.uk/delay/2000/url/https://picsum.photos/200/500"
           src={src}
           {...rest}
           onClick={handleOpenModal}
           role="button"
           onLoad={onLoad}
-          className={clsx(
-            classes.image,
-            !imageData.loaded && classes.loading,
-            "viewableImage"
-          )}
+          className={clsx(classes.image, "viewableImage")}
         />
       </Paper>
       <ImageDialog
@@ -81,7 +85,7 @@ function ViewableImage({
         rawImageHeight={imageData.rawHeight}
         onClose={handleCloseModal}
       />
-    </>
+    </div>
   );
 }
 
