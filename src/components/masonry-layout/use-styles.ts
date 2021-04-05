@@ -1,8 +1,8 @@
 import { makeStyles } from "@material-ui/core/styles";
-import { iceBlue } from "src/theme/colors";
+import { iceBlue, softBlue } from "src/theme/colors";
 
 const useStyles = makeStyles((theme) => ({
-  masonryContainer: {
+  masonryResultContainer: {
     display: "flex",
     flex: 1,
   },
@@ -19,6 +19,21 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: "100%",
       maxHeight: "500px",
     },
+  },
+  showMoreButtonContainer: {
+    display: "flex",
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  showMoreButton: {
+    display: "flex",
+    flex: 1,
+    backgroundColor: softBlue,
+    padding: theme.spacing(3),
+    fontSize: "1.25rem",
+    fontWeight: 800,
+    color: theme.palette.text.secondary,
   },
 }));
 

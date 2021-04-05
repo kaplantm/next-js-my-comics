@@ -1,5 +1,8 @@
-import { useMediaQuery } from "@material-ui/core";
+import { Button, useMediaQuery } from "@material-ui/core";
+import { useState } from "react";
 import useStyles from "./use-styles";
+
+const pageSize = 12;
 
 /**
  * MasonryLayout component
@@ -21,6 +24,28 @@ const MasonryLayout = ({
   const result = [];
   const isSmallWindow = useMediaQuery("(max-width:600px)");
   const numColumns = isSmallWindow ? smallWidthColumns : columns;
+  const [numItemsToDisplay, setNumItemsToDisplay] = useState(pageSize);
+  const showShowMore = numItemsToDisplay < children.length;
+  const showMoreItem = (
+    <div className={classes.showMoreButtonContainer}>
+      <Button
+        variant="contained"
+        color="default"
+        onClick={onShowMore}
+        className={classes.showMoreButton}
+      >
+        Show More
+      </Button>
+    </div>
+  );
+  const itemsToDisplay = [
+    ...children.slice(0, numItemsToDisplay),
+    // ...(showShowMore ? [showMoreItem] : []),
+  ];
+
+  function onShowMore() {
+    setNumItemsToDisplay((prev) => prev + pageSize);
+  }
 
   // create columns
   for (let i = 0; i < numColumns; i++) {
@@ -28,7 +53,7 @@ const MasonryLayout = ({
   }
 
   // divide children into columns
-  for (let i = 0; i < children.length; i++) {
+  for (let i = 0; i < itemsToDisplay.length; i++) {
     const columnIndex = i % numColumns;
     columnWrapper[`column${columnIndex}`].push(
       <div
@@ -36,9 +61,13 @@ const MasonryLayout = ({
         style={{ marginBottom: `${gap}px` }}
         key={`column${columnIndex}${i}`}
       >
-        {children[i]}
+        {itemsToDisplay[i]}
       </div>
     );
+  }
+
+  if (showShowMore) {
+    columnWrapper[`column${Math.floor(numColumns / 2)}`].push(showMoreItem);
   }
 
   // wrap children in each column with a div
@@ -56,7 +85,7 @@ const MasonryLayout = ({
     );
   }
 
-  return <div className={classes.masonryContainer}>{result}</div>;
+  return <div className={classes.masonryResultContainer}>{result}</div>;
 };
 
 export default MasonryLayout;
