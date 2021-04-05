@@ -1,6 +1,6 @@
 const sharp = require("sharp");
 const { resolve } = require("path");
-const { readdir, stat, readFile } = require("fs").promises;
+const { readdir, stat, readFile, rename } = require("fs").promises;
 
 const defaultMaxDimension = 1500; // TODO: flag
 const defaultMaxSize = 0.8 * 1000 * 1000; // in bytes TODO: flag
@@ -22,9 +22,9 @@ const getArguments = () => {
 };
 // https://stackoverflow.com/a/45130990
 async function getFilePaths(dir) {
-  const dirents = await readdir(dir, { withFileTypes: true });
+  const directories = await readdir(dir, { withFileTypes: true });
   const files = await Promise.all(
-    dirents.map((dirent) => {
+    directories.map((dirent) => {
       const res = resolve(dir, dirent.name);
       return dirent.isDirectory() ? getFilePaths(res) : res;
     })
@@ -32,13 +32,42 @@ async function getFilePaths(dir) {
   return Array.prototype.concat(...files);
 }
 
+async function getImageFilePaths(dir) {
+  const files = await getFilePaths(dir);
+
+  return files.filter(
+    (file) =>
+      file.endsWith(".png") || file.endsWith(".jpg") || file.endsWith(".jpeg")
+  );
+}
+
+const fileNameEndsWithDimensionsRegex = /(_\d*x\d*)$/i;
+async function renameFilesToIncludeDimensions(filePaths) {
+  return Promise.all(
+    filePaths.map(async (filePath) => {
+      const [withoutFileType, fileType] = filePath.split(".");
+      const fileNameEndsWithDimensions = fileNameEndsWithDimensionsRegex.test(
+        withoutFileType
+      );
+      if (fileNameEndsWithDimensions) {
+        return filePath;
+      }
+      const image = sharp(filePath);
+      const { width, height } = await image.metadata();
+      const newFilePath = `${withoutFileType}_${width}x${height}.${fileType}`;
+
+      await rename(filePath, newFilePath);
+      return newFilePath;
+    })
+  );
+}
+
 async function getFilesFailingOptimizationCheck(
+  filePaths,
   folder,
   maxDimension = defaultMaxDimension,
   maxSize = defaultMaxSize
 ) {
-  const filePaths = await getFilePaths(`${process.cwd()}${folder}`);
-
   const failingFiles = (
     await Promise.all(
       filePaths.map(async (filePath) => {
@@ -140,4 +169,6 @@ module.exports = {
   optimizeFiles,
   getFilesFailingOptimizationCheck,
   getArguments,
+  renameFilesToIncludeDimensions,
+  getImageFilePaths,
 };

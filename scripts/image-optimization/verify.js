@@ -1,8 +1,15 @@
-const { getFilesFailingOptimizationCheck, getArguments } = require("./utils");
+const {
+  getFilesFailingOptimizationCheck,
+  getArguments,
+  getImageFilePaths,
+} = require("./utils");
 
 async function init() {
   const [folder, maxDimension, maxSize] = getArguments();
+
+  const filePaths = await getImageFilePaths(`${process.cwd()}${folder}`);
   const failingFiles = await getFilesFailingOptimizationCheck(
+    filePaths,
     folder,
     maxDimension,
     maxSize

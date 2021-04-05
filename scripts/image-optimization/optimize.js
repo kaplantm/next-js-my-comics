@@ -1,19 +1,25 @@
-const sharp = require("sharp");
 const {
   getFilesFailingOptimizationCheck,
   optimizeFiles,
   getArguments,
+  renameFilesToIncludeDimensions,
+  getImageFilePaths,
 } = require("./utils");
 
 async function init() {
   const [folder, maxDimension, maxSize] = getArguments();
+
+  const filePaths = await getImageFilePaths(`${process.cwd()}${folder}`);
+  const newFilePaths = await renameFilesToIncludeDimensions(filePaths);
+
   const filePathsToOptimize = await getFilesFailingOptimizationCheck(
+    newFilePaths,
     folder,
     maxDimension,
     maxSize
   );
   if (!filePathsToOptimize.length) {
-    console.log("All images pass optimization, no files to optimize");
+    console.log("All images pass optimization.");
     return;
   }
   const { optimizedFiles, notOptimizedFiles, bytesSaved } = await optimizeFiles(
