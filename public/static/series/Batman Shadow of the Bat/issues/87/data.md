@@ -3,7 +3,7 @@ title: "Claim Jumping, Part Two"
 start: "July, 1999"
 end: null
 issueNumber: 87
-arc: "No Man's Land"
+arc: "Batman: No Man's Land"
 link: "https://dc.fandom.com/wiki/Batman:_Shadow_of_the_Bat_Vol_1_87"
 ---
 

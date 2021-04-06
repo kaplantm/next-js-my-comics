@@ -3,7 +3,7 @@ title: "Bread and Circuses: Conclusion"
 start: "May, 1999"
 end: null
 issueNumber: 85
-arc: "No Man's Land"
+arc: "Batman: No Man's Land"
 link: "https://dc.fandom.com/wiki/Batman:_Shadow_of_the_Bat_Vol_1_85"
 ---
 

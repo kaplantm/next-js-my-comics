@@ -3,7 +3,7 @@ title: "Mosaic, Part One"
 start: "May, 1999"
 end: null
 issueNumber: 565
-arc: "No Man's Land"
+arc: "Batman: No Man's Land"
 link: "https://dc.fandom.com/wiki/Batman_Vol_1_565"
 ---
 

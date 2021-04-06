@@ -3,7 +3,7 @@ title: "Two Down • The Comforts • Harold"
 start: "March, 1999"
 end: null
 issueNumber: 16
-arc: "No Man's Land"
+arc: "Batman: No Man's Land"
 link: "https://dc.fandom.com/wiki/Batman_Chronicles_Vol_1_16"
 ---
 

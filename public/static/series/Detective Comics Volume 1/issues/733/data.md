@@ -3,7 +3,7 @@ title: "Shades of Grey"
 start: "June, 1999"
 end: null
 issueNumber: 733
-arc: "No Man's Land"
+arc: "Batman: No Man's Land"
 link: "https://dc.fandom.com/wiki/Detective_Comics_Vol_1_733"
 ---
 
