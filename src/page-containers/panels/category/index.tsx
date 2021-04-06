@@ -19,8 +19,12 @@ function Panels({ params, imagePaths, filterable }: PanelsProps) {
   useEffect(() => {
     setCurrentImagePaths(
       imagePaths.filter((path) => {
-        const fileName = path.split("/").slice(-1)[0].split(".")[0];
-        return fileName.includes(debouncedSearchTerm);
+        const fileName = path
+          .split("/")
+          .slice(-1)[0]
+          .split(".")[0]
+          .toLowerCase();
+        return fileName.includes(debouncedSearchTerm.toLowerCase());
       })
     );
   }, [debouncedSearchTerm]);

@@ -19,4 +19,6 @@ function AppTextField(props: TextFieldProps) {
   );
 }
 
-export default React.memo(AppTextField);
+const AppTextFieldMemoized = React.memo(AppTextField);
+
+export default AppTextFieldMemoized;

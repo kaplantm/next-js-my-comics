@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Box, Button, ButtonGroup, Grid } from "@material-ui/core";
 import { ArrowDownward, ArrowUpward } from "@material-ui/icons";
 import {
@@ -10,6 +10,8 @@ import {
 } from "./helpers";
 import { ComicWithMetadata } from "@lib/types";
 import MemoizedListSection from "./list-section";
+import useDebounce from "@lib/hooks/use-debounce";
+import AppTextField from "@components/form-inputs/app-text-field";
 
 const MainIndex = ({
   allIssues,
@@ -22,15 +24,38 @@ const MainIndex = ({
   const [sortingDirection, setSortingDirection] = useState(
     sortingDirectionEnum.ASC
   );
+  const [currentIssues, setCurrentIssues] = useState(allIssues);
+  const [searchTerm, setSearchTerm] = useState("");
+  const debouncedSearchTerm = useDebounce(searchTerm, 250);
+
+  useEffect(() => {
+    setCurrentIssues(
+      allIssues.filter((issue) => {
+        const lowercaseSearchTerm = debouncedSearchTerm.toLowerCase();
+        const inTitle = issue.comic.frontMatter.title
+          .toLowerCase()
+          .includes(lowercaseSearchTerm);
+        const inDescription = issue.comic.description
+          .toLowerCase()
+          .includes(lowercaseSearchTerm);
+        return inDescription || inTitle;
+      })
+    );
+  }, [debouncedSearchTerm]);
+
+  function onFilterUpdate({ target }) {
+    const newFilter = target.value;
+    setSearchTerm(newFilter);
+  }
 
   const comicGroupings = useMemo(
-    () => getGroupedComics(allIssues, readingOrder),
-    []
+    () => getGroupedComics(currentIssues, readingOrder),
+    [currentIssues]
   );
   const groupedComics = comicGroupings[sorting];
   const sortedGroupedComics = useMemo(
     () => getSortedData(groupedComics, readingOrder, sorting),
-    [sorting]
+    [sorting, groupedComics]
   );
 
   // // Separate useMemo so we don't have to redo sorting function if only direction changes
@@ -41,7 +66,7 @@ const MainIndex = ({
         sortingDirection,
         sorting
       ),
-    [sortingDirection, sorting]
+    [sortingDirection, sorting, sortedGroupedComics]
   );
 
   function handleSortingUpdate(sorting: sortingEnum) {
@@ -93,6 +118,14 @@ const MainIndex = ({
               </ButtonGroup>
             </Grid>
           )}
+          <Grid item xs={12}>
+            <AppTextField
+              label="Search"
+              variant="outlined"
+              onChange={onFilterUpdate}
+              value={searchTerm}
+            />
+          </Grid>
         </Grid>
       </Box>
       {groupOrder.map((key) => (
