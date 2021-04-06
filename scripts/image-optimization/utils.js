@@ -45,7 +45,10 @@ const fileNameEndsWithDimensionsRegex = /(_\d*x\d*)$/i;
 async function renameFilesToIncludeDimensions(filePaths) {
   return Promise.all(
     filePaths.map(async (filePath) => {
-      const [withoutFileType, fileType] = filePath.split(".");
+      const splitName = filePath.split(".");
+      const fileType = splitName[splitName.length - 1];
+      const withoutFileType = splitName.slice(0, -1).join("");
+
       const fileNameEndsWithDimensions = fileNameEndsWithDimensionsRegex.test(
         withoutFileType
       );
