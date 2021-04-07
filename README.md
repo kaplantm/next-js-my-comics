@@ -1,3 +1,31 @@
+// TODO
+fix images by series for all issues (issues missing covers)
+
+missing robin series cover
+remove duplicate images (.e.g in panels and elsewhere)
+
+azreal- done
+one shots - done
+catwoman - done
+robin - done
+nightwing - done
+batman chronicles - done
+legends - done
+shadow - done
+
+detective comics
+batman
+funny
+ear
+reacts
+
+why does batman 553 and catwoman and robin still have images in images folder? make sure they uploaded
+fix double filesize in names?
+
+<!-- TODO: dev and deployment instructions -->
+
+Cache-Control: max-age=31536000
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

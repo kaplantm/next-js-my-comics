@@ -35,10 +35,14 @@ async function getFilePaths(dir) {
 async function getImageFilePaths(dir) {
   const files = await getFilePaths(dir);
 
-  return files.filter(
-    (file) =>
-      file.endsWith(".png") || file.endsWith(".jpg") || file.endsWith(".jpeg")
-  );
+  return files.filter((file) => {
+    const lowerFilePath = file.toLowerCase();
+    return (
+      lowerFilePath.endsWith(".png") ||
+      lowerFilePath.endsWith(".jpg") ||
+      lowerFilePath.endsWith(".jpeg")
+    );
+  });
 }
 
 const fileNameEndsWithDimensionsRegex = /(_\d*x\d*)$/i;
@@ -74,10 +78,11 @@ async function getFilesFailingOptimizationCheck(
   const failingFiles = (
     await Promise.all(
       filePaths.map(async (filePath) => {
+        const lowerFilePath = filePath.toLowerCase();
         const isImage =
-          filePath.endsWith(".png") ||
-          filePath.endsWith(".jpg") ||
-          filePath.endsWith(".jpeg");
+          lowerFilePath.endsWith(".png") ||
+          lowerFilePath.endsWith(".jpg") ||
+          lowerFilePath.endsWith(".jpeg");
         if (!isImage) {
           return null;
         }

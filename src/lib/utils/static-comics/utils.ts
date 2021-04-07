@@ -12,11 +12,6 @@ const basePanelsDirectory = `${baseDirectory}/panels`;
 const baseSeriesDirectory = `${baseDirectory}/series`;
 const readingOrderFilePath = `${baseDirectory}/reading-order.json`;
 
-const isImageFile = (fileName) =>
-  fileName.endsWith(".png") ||
-  fileName.endsWith(".jpg") ||
-  fileName.endsWith(".jpeg");
-
 const getSeriesDirectory = (series: string) =>
   `${baseSeriesDirectory}/${series}`;
 const getIssuesDirectory = (series: string) =>
@@ -44,25 +39,15 @@ const getMarkdownFilePathInDirectory = (directory: string) =>
 const readFile = async (filePath: string) =>
   promises.readFile(filePath, "utf8");
 
-const removeLocalPath = (directory: string) => directory.split("public")[1];
-const getCoverPath = async (directory: string) => {
-  const fileNames = await getFileNamesInDirectory(directory);
-  const foundCoverFileName = fileNames.find(
-    (element) => isImageFile(element) && element.includes("cover")
-  );
-  return foundCoverFileName
-    ? `${removeLocalPath(directory)}/${foundCoverFileName}`
-    : null;
-};
-
 export const getImagePaths = async (directory: string): Promise<string[]> => {
+  console.log("getImagePaths b4");
   try {
-    const imagesDirectory = getImagesDirectory(directory);
-    const images = JSON.parse(await readFile(`${imagesDirectory}/images.json`));
+    const images = JSON.parse(await readFile(`${directory}/images.json`));
     const img = images.map((image) => `${process.env.S3_URL}/${image}`);
-    console.log({ img });
+    console.log("getImagePaths", { img });
     return img;
   } catch (e) {
+    console.log(e);
     return [];
   }
 };
@@ -117,10 +102,12 @@ const getSeriesData = async (
   const seriesDirectory = getSeriesDirectory(seriesTitle);
   const parsedData = await getParsedMarkdownFile(seriesDirectory, seriesTitle);
 
+  console.log("here");
+  const [coverPath, ...imagePaths] = await getImagePaths(seriesDirectory);
   return {
     ...parsedData,
-    coverPath: await getCoverPath(seriesDirectory),
-    imagePaths: await getImagePaths(seriesDirectory),
+    coverPath: coverPath || null,
+    imagePaths,
   };
 };
 
@@ -138,11 +125,12 @@ const getIssueData = async (
     issueDirectory,
     `${seriesTitle}-${issueNumber}`
   );
+  const [coverPath, ...imagePaths] = await getImagePaths(issueDirectory);
 
   return {
     ...parsedData,
-    coverPath: await getCoverPath(issueDirectory),
-    imagePaths: await getImagePaths(issueDirectory),
+    coverPath: coverPath || null,
+    imagePaths,
   };
 };
 
