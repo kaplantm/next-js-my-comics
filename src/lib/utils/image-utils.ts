@@ -1,6 +1,6 @@
 // image_widthxheight.png
 export const getWidthHeightFromImagePath = (fileName: string) => {
-  const [width, height] = fileName
+  const [width, height] = (fileName || "")
     .split("_")
     .slice(-1)[0]
     .split(".")[0]

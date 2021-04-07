@@ -58,10 +58,10 @@ const getCoverPath = async (directory: string) => {
 export const getImagePaths = async (directory: string): Promise<string[]> => {
   try {
     const imagesDirectory = getImagesDirectory(directory);
-    const fileNames = await getFileNamesInDirectory(imagesDirectory);
-    return fileNames
-      .filter(isImageFile)
-      .map((fileName) => `${removeLocalPath(imagesDirectory)}/${fileName}`);
+    const images = JSON.parse(await readFile(`${imagesDirectory}/images.json`));
+    const img = images.map((image) => `${process.env.S3_URL}/${image}`);
+    console.log({ img });
+    return img;
   } catch (e) {
     return [];
   }
