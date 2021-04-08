@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginBottom: theme.spacing(3),
+    marginBottom: theme.spacing(1.5),
   },
   helperText: {
     // Absolutely position to prevent container resizing

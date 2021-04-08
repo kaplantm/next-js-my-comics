@@ -12,11 +12,11 @@ const basePanelsDirectory = `${baseDirectory}/panels`;
 const baseSeriesDirectory = `${baseDirectory}/series`;
 const readingOrderFilePath = `${baseDirectory}/reading-order.json`;
 
-const getSeriesDirectory = (series: string) =>
+export const getSeriesDirectory = (series: string) =>
   `${baseSeriesDirectory}/${series}`;
 const getIssuesDirectory = (series: string) =>
   `${getSeriesDirectory(series)}/issues`;
-const getIssueDirectory = (series: string, issue: number) =>
+export const getIssueDirectory = (series: string, issue: number) =>
   `${getSeriesDirectory(series)}/issues/${issue}`;
 export const getPanelsCategoryDirectory = (category: string) =>
   `${basePanelsDirectory}/${category}`;
@@ -200,4 +200,13 @@ export async function getAllSeries(
     newAcc[seriesTitle] = await getSeries(seriesTitle, includeIssues);
     return Promise.resolve(newAcc);
   }, Promise.resolve({}));
+}
+
+export function ensureDirectoryExistence(filePath) {
+  var dirname = path.dirname(filePath);
+  if (existsSync(dirname)) {
+    return true;
+  }
+  ensureDirectoryExistence(dirname);
+  mkdirSync(dirname);
 }
