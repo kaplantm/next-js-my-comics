@@ -114,9 +114,6 @@ const theme = createMuiTheme({
       root: {
         backgroundColor: iceBlue,
         whiteSpace: "nowrap",
-        "&.margin1": {
-          margin: ".5rem",
-        },
       },
     },
     MuiLink: {

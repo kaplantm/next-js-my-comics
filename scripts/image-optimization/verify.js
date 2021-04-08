@@ -1,8 +1,8 @@
 const {
   getFilesFailingOptimizationCheck,
-  getArguments,
   getImageFilePaths,
 } = require("./utils");
+const { getArguments } = require("./get-arguments");
 
 async function init() {
   const [folder, maxDimension, maxSize] = getArguments();

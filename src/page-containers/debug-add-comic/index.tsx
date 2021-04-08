@@ -207,6 +207,7 @@ const DebugAddComic = ({
           </Grid>
           <Grid item container xs={12} justify="center">
             <LoaderButton
+              size="large"
               disabled={disableSubmitButton || submissionInProgress}
               loading={submissionInProgress}
               fullWidth

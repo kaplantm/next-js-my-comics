@@ -5,21 +5,6 @@ const { readdir, stat, readFile, rename } = require("fs").promises;
 const defaultMaxDimension = 1500; // TODO: flag
 const defaultMaxSize = 0.8 * 1000 * 1000; // in bytes TODO: flag
 
-// TODO: handle filenames w/ spacing like in original?
-const imageOpDir = `${process.cwd()}/scripts/image-optimization/`;
-
-const getArguments = () => {
-  const arguments = process.argv.slice(2);
-  const [folder, maxDimension, maxSize] = arguments;
-  if (!folder) {
-    throw "Missing folder argument";
-  }
-  return [
-    folder,
-    parseInt(maxDimension) || defaultMaxDimension,
-    parseInt(maxSize) || defaultMaxSize,
-  ];
-};
 // https://stackoverflow.com/a/45130990
 async function getFilePaths(dir) {
   const directories = await readdir(dir, { withFileTypes: true });
@@ -173,10 +158,38 @@ async function optimizeFiles(
   };
 }
 
+export async function optimize(folder, maxDimension, maxSize) {
+  const filePaths = await getImageFilePaths(`${process.cwd()}${folder}`);
+  const newFilePaths = await renameFilesToIncludeDimensions(filePaths);
+
+  const filePathsToOptimize = await getFilesFailingOptimizationCheck(
+    newFilePaths,
+    folder,
+    maxDimension,
+    maxSize
+  );
+  if (!filePathsToOptimize.length) {
+    console.log("All images pass optimization.");
+    return;
+  }
+  const { optimizedFiles, notOptimizedFiles, bytesSaved } = await optimizeFiles(
+    filePathsToOptimize,
+    maxDimension,
+    maxSize
+  );
+  if (optimizedFiles.length) {
+    console.log("Optimized images", optimizedFiles);
+  }
+  if (notOptimizedFiles.length) {
+    console.log("Failed to optimize images", notOptimizedFiles);
+  }
+  console.log(`Saved ${(bytesSaved / 1000000).toFixed(2)}MB`);
+}
+
 module.exports = {
   optimizeFiles,
   getFilesFailingOptimizationCheck,
-  getArguments,
   renameFilesToIncludeDimensions,
   getImageFilePaths,
+  optimize,
 };

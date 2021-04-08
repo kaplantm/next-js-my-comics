@@ -37,3 +37,4 @@ yarn-error.log*
 .env.local
 
 scripts/image-optimization/input-output
+/public/image-optimization/input-output

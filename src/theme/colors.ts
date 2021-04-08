@@ -1,5 +1,6 @@
 export const powderBlue = "hsla(204, 6%, 85%, 1)";
 export const softBlue = "hsla(204, 30%, 85%, 1)";
+export const softBlueLight = "hsla(204, 30%, 93%, 1)";
 export const iceBlue = "hsla(195, 22%, 96%, 1)";
 export const white = "hsla(0, 100%, 100%, 1)";
 export const cherryRed = "hsla(354, 100%, 45%, 1)";
