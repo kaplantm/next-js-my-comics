@@ -177,6 +177,9 @@ export async function getSeries(
   includeIssues?: boolean
 ): Promise<ComicWithMetadata> {
   const comic = await getSeriesData(seriesTitle);
+  if (!comic?.frontMatter) {
+    throw `Failed to build seriesTitle: ${seriesTitle}`;
+  }
   return {
     params: {
       series: seriesTitle,

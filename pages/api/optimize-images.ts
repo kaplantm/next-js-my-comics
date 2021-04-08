@@ -3,7 +3,7 @@ import { ensureDirectoryExistence } from "@lib/utils/static-comics/utils";
 import multer, { memoryStorage } from "multer";
 import { optimize } from "../../scripts/image-optimization/utils";
 
-const inputOutputDir = "image-optimization/input-output";
+const inputOutputDir = "public/image-optimization/input-output";
 export const config = {
   api: {
     bodyParser: false,
@@ -27,15 +27,24 @@ const multerInstance = multer({
 // FE button to upload images
 // add aws cli
 // add endpoint to upload images into target folders in s3q
+// deleting files - deletes reference, not s3 file
 export default async function handler(req, res) {
-  const time = new Date().getTime();
-  req.multerDestination = `${inputOutputDir}/${time}`;
-  ensureDirectoryExistence(`${req.multerDestination}/newFile.png`);
+  try {
+    const time = new Date().getTime();
+    req.multerDestination = `${inputOutputDir}/${time}`;
+    ensureDirectoryExistence(`${req.multerDestination}/newFile.png`);
+    await runMiddleware(req, res, multerInstance.array("images", 30));
 
-  await runMiddleware(req, res, multerInstance.array("images", 30));
-
-  console.log({ req, files: req.files, requestId: req.requestId });
-  optimize(`/${inputOutputDir}`, 1500, 500000);
-  return res.status(200).json("Series not found");
-  return res.status(500).json("Failed to optimize images");
+    console.log({ body: req.body, files: req.files });
+    const optimizedResult = await optimize(
+      `/${req.multerDestination}`,
+      1500,
+      500000
+    );
+    console.log({ optimizedResult });
+    return res.status(200).json(optimizedResult);
+  } catch (e) {
+    console.log(e);
+    return res.status(500).json("Failed to optimize images");
+  }
 }

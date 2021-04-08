@@ -2,8 +2,13 @@ const sharp = require("sharp");
 const { resolve } = require("path");
 const { readdir, stat, readFile, rename } = require("fs").promises;
 
+// TODO: move these into typescript if they arent gonna be run in node anymore
+
 const defaultMaxDimension = 1500; // TODO: flag
 const defaultMaxSize = 0.8 * 1000 * 1000; // in bytes TODO: flag
+const cwd = process.cwd();
+
+const removeLocalPublicPath = (path) => path.split(`${cwd}/public`)[1];
 
 // https://stackoverflow.com/a/45130990
 async function getFilePaths(dir) {
@@ -159,7 +164,7 @@ async function optimizeFiles(
 }
 
 export async function optimize(folder, maxDimension, maxSize) {
-  const filePaths = await getImageFilePaths(`${process.cwd()}${folder}`);
+  const filePaths = await getImageFilePaths(`${cwd}${folder}`);
   const newFilePaths = await renameFilesToIncludeDimensions(filePaths);
 
   const filePathsToOptimize = await getFilesFailingOptimizationCheck(
@@ -170,7 +175,11 @@ export async function optimize(folder, maxDimension, maxSize) {
   );
   if (!filePathsToOptimize.length) {
     console.log("All images pass optimization.");
-    return;
+    console.log({ newFilePaths, cwd });
+    return {
+      filePaths: newFilePaths.map(removeLocalPublicPath),
+      bytesSaved: 0,
+    };
   }
   const { optimizedFiles, notOptimizedFiles, bytesSaved } = await optimizeFiles(
     filePathsToOptimize,
@@ -184,6 +193,12 @@ export async function optimize(folder, maxDimension, maxSize) {
     console.log("Failed to optimize images", notOptimizedFiles);
   }
   console.log(`Saved ${(bytesSaved / 1000000).toFixed(2)}MB`);
+  return {
+    filePaths: [...optimizedFiles, ...notOptimizedFiles].map(
+      removeLocalPublicPath
+    ),
+    bytesSaved,
+  };
 }
 
 module.exports = {

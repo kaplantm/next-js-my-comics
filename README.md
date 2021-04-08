@@ -32,3 +32,6 @@ batman_1_529_2_510x756.jpeg
 batman_1_529_3_594x1008
 batman_1_529_4_175x467.jpeg
 Batman Legends of the Dark Knight 119 1_IMG_0451_352x800.jpeg
+
+copy whole s3 locally
+aws s3 sync s3://comicassets.tonarie.com .

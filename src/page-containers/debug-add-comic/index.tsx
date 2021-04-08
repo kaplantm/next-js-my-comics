@@ -1,5 +1,11 @@
 import React from "react";
-import { Grid, MenuItem, Typography } from "@material-ui/core";
+import {
+  Checkbox,
+  FormControlLabel,
+  Grid,
+  MenuItem,
+  Typography,
+} from "@material-ui/core";
 import { ComicPageParams, ComicWithMetadata } from "@lib/types";
 import AppTextField from "@components/form-inputs/app-text-field";
 import DebugOnlyWrapper from "@components/debug-only-wrapper";
@@ -48,9 +54,12 @@ const DebugAddComic = ({
       link: link || "",
       series: params.series || "",
       description: description || "",
+      isIssue: isIssue,
     },
     {
-      requiredFields: ["title", "link", "issueNumber", "series", "description"],
+      requiredFields: isIssue
+        ? ["title", "link", "issueNumber", "series", "description"]
+        : ["link", "series", "description"],
       errorValidatorsForFields: {
         title: (val: string) =>
           runValidatorsAndReturnErrorMessage(val, onlyRequiredConfigSet),
@@ -66,6 +75,7 @@ const DebugAddComic = ({
     }
   );
 
+  const isNewSeries = !editMode && !formFieldValues.isIssue;
   const arcInputProps = getPropsForFormField("arc");
 
   function handleArcInputChange(event, newInputValue) {
@@ -77,9 +87,13 @@ const DebugAddComic = ({
   async function onCreateComic() {
     setSubmissionInProgress(true);
     const result = await appAxios({
-      method: "put",
+      method: editMode ? "PUT" : "POST",
       url: "/api/create-comic",
-      data: formFieldValues,
+      data: {
+        ...formFieldValues,
+        isIssue,
+        title: isNewSeries ? formFieldValues.series : formFieldValues.title,
+      },
     });
 
     if (result.error) {
@@ -94,6 +108,11 @@ const DebugAddComic = ({
     setSubmissionInProgress(false);
   }
 
+  function handleCheckboxChange(e: any) {
+    onFormFieldUpdate({
+      target: { name: e.target.name, value: !e.target.checked },
+    });
+  }
   console.log({ formFieldErrors });
 
   return (
@@ -108,63 +127,96 @@ const DebugAddComic = ({
           lg={8}
           alignItems="center"
         >
-          <Grid item xs={8}>
-            <AppTextField
-              fullWidth
-              label="Title"
-              variant="outlined"
-              {...getPropsForFormField("title")}
-            />
-          </Grid>
-          <Grid item xs={4}>
-            <AppTextField
-              fullWidth
-              type="number"
+          <Grid item xs={12}>
+            <FormControlLabel
               disabled={editMode}
-              label="Issue #"
-              variant="outlined"
-              {...getPropsForFormField("issueNumber")}
-            />
-          </Grid>
-          <Grid item xs={12} md={8}>
-            <AppTextField
-              select
-              fullWidth
-              disabled={editMode}
+              control={
+                <Checkbox
+                  checked={!formFieldValues.isIssue}
+                  color="primary"
+                  onChange={handleCheckboxChange}
+                  name="isIssue"
+                />
+              }
               label="Series"
-              variant="outlined"
-              {...getPropsForFormField("series")}
-            >
-              {editMode ? (
-                <MenuItem key={params.series} value={params.series}>
-                  {params.series}
-                </MenuItem>
-              ) : (
-                seriesTitles.map((seriesTitle) => (
-                  <MenuItem key={seriesTitle} value={seriesTitle}>
-                    {seriesTitle}
-                  </MenuItem>
-                ))
-              )}
-            </AppTextField>
+            />
           </Grid>
-          <Grid item xs={12} md={4}>
-            <Autocomplete
-              freeSolo
-              options={allArcs}
-              getOptionLabel={(option) => option}
-              renderInput={(params) => (
+          {!isNewSeries && (
+            <>
+              <Grid item xs={8}>
                 <AppTextField
                   fullWidth
-                  {...params}
-                  label="Arcs"
+                  label="Title"
                   variant="outlined"
+                  disabled={editMode && !isIssue}
+                  {...getPropsForFormField("title")}
                 />
-              )}
-              value={arcInputProps.value}
-              onChange={handleArcInputChange}
-            />
+              </Grid>
+              <Grid item xs={4}>
+                <AppTextField
+                  fullWidth
+                  type="number"
+                  disabled={editMode}
+                  label="Issue #"
+                  variant="outlined"
+                  {...getPropsForFormField("issueNumber")}
+                />
+              </Grid>
+            </>
+          )}
+
+          <Grid item xs={12} md={isNewSeries ? 12 : 8}>
+            {isNewSeries ? (
+              <AppTextField
+                fullWidth
+                label="Series"
+                variant="outlined"
+                {...getPropsForFormField("series")}
+              />
+            ) : (
+              <AppTextField
+                select
+                fullWidth
+                disabled={editMode}
+                label="Series"
+                variant="outlined"
+                {...getPropsForFormField("series")}
+              >
+                {editMode ? (
+                  <MenuItem key={params.series} value={params.series}>
+                    {params.series}
+                  </MenuItem>
+                ) : (
+                  seriesTitles.map((seriesTitle) => (
+                    <MenuItem key={seriesTitle} value={seriesTitle}>
+                      {seriesTitle}
+                    </MenuItem>
+                  ))
+                )}
+              </AppTextField>
+            )}
           </Grid>
+          {!isNewSeries && (
+            <>
+              <Grid item xs={12} md={4}>
+                <Autocomplete
+                  freeSolo
+                  options={allArcs}
+                  getOptionLabel={(option) => option}
+                  renderInput={(params) => (
+                    <AppTextField
+                      fullWidth
+                      {...params}
+                      label="Arcs"
+                      variant="outlined"
+                    />
+                  )}
+                  value={arcInputProps.value}
+                  onChange={handleArcInputChange}
+                />
+              </Grid>
+            </>
+          )}
           <Grid item xs={6}>
             <AppTextField
               fullWidth

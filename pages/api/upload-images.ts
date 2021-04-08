@@ -1,0 +1,57 @@
+import AWS from "aws-sdk";
+import { promises } from "fs";
+const { readFile, writeFile } = promises;
+
+AWS.config.credentials = {
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+};
+
+const bucketName = process.env.S3_URL.split("https://s3.amazonaws.com/")[1];
+
+const s3 = new AWS.S3({ apiVersion: "latest" });
+
+// TODO: handle panels pages and series pages edits
+
+export default async function handler(req, res) {
+  const { paths, folder, jsonPath } = req.body;
+  if (!paths || !folder || !jsonPath) {
+    return res
+      .status(400)
+      .json("Missing required param. Required params: paths, folder, jsonPath");
+  }
+  if (!paths.length) {
+    return res.status(400).json("Paths array cannot be empty");
+  }
+
+  // const imagePaths = paths.map((path) => `${folder}${path}`);
+
+  const uploadedImages = [];
+  try {
+    await Promise.all(
+      paths.map(async (imagePath) => {
+        const pathInS3 = `${folder}/${imagePath.split("/").slice(-1)}`;
+        const imagesJsonFilePath = `public${jsonPath}`;
+        const imagesArrayFile = JSON.parse(
+          await readFile(imagesJsonFilePath, "utf8")
+        );
+        const updatedImagesArray = [...imagesArrayFile, pathInS3];
+        const file = await readFile(`public${imagePath}`);
+        const objectParams = {
+          Bucket: bucketName,
+          Key: pathInS3,
+          Body: file,
+          ACL: "public-read",
+        };
+        await s3.putObject(objectParams).promise();
+        await writeFile(imagesJsonFilePath, JSON.stringify(updatedImagesArray));
+        uploadedImages.push(`${process.env.S3_URL}/${pathInS3}`);
+      })
+    );
+
+    return res.status(200).json({ filePaths: uploadedImages });
+  } catch (e) {
+    console.log(e);
+    return res.status(500).json("Failed to optimize images");
+  }
+}

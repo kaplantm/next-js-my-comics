@@ -30,7 +30,7 @@ const buildComicData = ({
 title: ${title ? `"${title}"` : null}
 start: ${start ? `"${start}"` : null}
 end: ${end ? `"${end}"` : null}
-issueNumber: ${issueNumber || null}
+issue: ${issueNumber || null}
 arc: ${arc ? `"${arc}"` : null}
 link: ${link ? `"${link}"` : null}
 ---
@@ -47,23 +47,31 @@ export default async function handler(req, res) {
   if (
     body.series &&
     body.title &&
-    issueNumber &&
+    (!body.isIssue || issueNumber) &&
     body.link &&
     body.description
   ) {
-    const issueDirectory = getIssueDirectory(body.series, body.issueNumber);
-    const issueExists = existsSync(issueDirectory);
-    if (issueExists && req.method === "POST") {
-      return res.status(409).json("Issue already exists");
+    const comicDirectory = body.isIssue
+      ? getIssueDirectory(body.series, body.issueNumber)
+      : getSeriesDirectory(body.series);
+    const comicExists = existsSync(comicDirectory);
+
+    if (comicExists && req.method === "POST") {
+      return res.status(409).json("Comic already exists");
     }
-    const seriesExists = existsSync(getSeriesDirectory(body.series));
-    if (!seriesExists) {
-      return res.status(404).json("Series not found");
+    if (!comicExists && req.method === "PUT") {
+      return res.status(409).json("Comic not found");
+    }
+    if (body.isIssue) {
+      const seriesExists = existsSync(getSeriesDirectory(body.series));
+      if (!seriesExists) {
+        return res.status(404).json("Series not found");
+      }
     }
 
     try {
       const markdownData = buildComicData(body);
-      const fileLocation = `${issueDirectory}/data.md`;
+      const fileLocation = `${comicDirectory}/data.md`;
       ensureDirectoryExistence(fileLocation);
       await promises.writeFile(fileLocation, markdownData);
       return res.status(200).json("Comic Created");
