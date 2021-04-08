@@ -11,3 +11,4 @@ link: "https://dc.fandom.com/wiki/Azrael_Vol_1_40"
 - Bane tries to convince Azreal they are similar, should work together.
 - As the copter lands, the quake hits. Bane escapes and Azrael chases him. Bane still trying convince Azreal to partner up. Azrael refuses, and explains to Bane that he is nothing like him while they fight.
 - Jean-Paul beats Bane, then takes him back to custody.
+- new

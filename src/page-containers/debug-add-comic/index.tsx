@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, MenuItem, Typography } from "@material-ui/core";
-import { ComicWithMetadata } from "@lib/types";
+import { ComicPageParams, ComicWithMetadata } from "@lib/types";
 import AppTextField from "@components/form-inputs/app-text-field";
 import DebugOnlyWrapper from "@components/debug-only-wrapper";
 import { useFormState } from "@lib/hooks/use-form-state";
@@ -13,10 +13,21 @@ import { onlyRequiredConfigSet } from "@lib/hooks/use-form-state/validator-confi
 const DebugAddComic = ({
   seriesTitles,
   allArcs,
+  issue,
+  series,
+  params = { series: null, issueNumber: null },
+  editMode,
 }: {
   seriesTitles: string[];
   allArcs: string[];
+  issue?: ComicWithMetadata;
+  series?: ComicWithMetadata;
+  params?: ComicPageParams;
+  editMode?: boolean;
 }) => {
+  const isIssue = !!issue;
+  const { frontMatter, description } = issue?.comic || series?.comic || {};
+  const { title, start, end, arc, link } = frontMatter || ({} as any);
   const {
     onFormFieldUpdate,
     formFieldValues,
@@ -29,17 +40,17 @@ const DebugAddComic = ({
     getPropsForFormField,
   } = useFormState(
     {
-      title: "",
-      start: "",
-      end: "",
-      issue: "",
-      arc: "",
-      link: "",
-      series: "",
-      description: "",
+      title: title || "",
+      start: start || "",
+      end: end || "",
+      issueNumber: params.issueNumber,
+      arc: arc || "",
+      link: link || "",
+      series: params.series || "",
+      description: description || "",
     },
     {
-      requiredFields: ["title", "link", "issue", "series", "description"],
+      requiredFields: ["title", "link", "issueNumber", "series", "description"],
       errorValidatorsForFields: {
         title: (val: string) =>
           runValidatorsAndReturnErrorMessage(val, onlyRequiredConfigSet),
@@ -49,7 +60,7 @@ const DebugAddComic = ({
           runValidatorsAndReturnErrorMessage(val, onlyRequiredConfigSet),
         description: (val: string) =>
           runValidatorsAndReturnErrorMessage(val, onlyRequiredConfigSet),
-        issue: (val: string) =>
+        issueNumber: (val: string) =>
           runValidatorsAndReturnErrorMessage(val, onlyRequiredConfigSet),
       },
     }
@@ -66,12 +77,20 @@ const DebugAddComic = ({
   async function onCreateComic() {
     setSubmissionInProgress(true);
     const result = await appAxios({
-      method: "post",
+      method: "put",
       url: "/api/create-comic",
       data: formFieldValues,
     });
 
-    console.log({ result });
+    if (result.error) {
+      setFormError(
+        `Error: ${result.error?.response?.data} (${
+          result.error?.response?.status || "?"
+        })`
+      );
+    } else {
+      setFormError(null);
+    }
     setSubmissionInProgress(false);
   }
 
@@ -100,24 +119,33 @@ const DebugAddComic = ({
           <Grid item xs={4}>
             <AppTextField
               fullWidth
+              type="number"
+              disabled={editMode}
               label="Issue #"
               variant="outlined"
-              {...getPropsForFormField("issue")}
+              {...getPropsForFormField("issueNumber")}
             />
           </Grid>
           <Grid item xs={12} md={8}>
             <AppTextField
               select
               fullWidth
+              disabled={editMode}
               label="Series"
               variant="outlined"
               {...getPropsForFormField("series")}
             >
-              {seriesTitles.map((seriesTitle) => (
-                <MenuItem key={seriesTitle} value={seriesTitle}>
-                  {seriesTitle}
+              {editMode ? (
+                <MenuItem key={params.series} value={params.series}>
+                  {params.series}
                 </MenuItem>
-              ))}
+              ) : (
+                seriesTitles.map((seriesTitle) => (
+                  <MenuItem key={seriesTitle} value={seriesTitle}>
+                    {seriesTitle}
+                  </MenuItem>
+                ))
+              )}
             </AppTextField>
           </Grid>
           <Grid item xs={12} md={4}>
@@ -171,7 +199,11 @@ const DebugAddComic = ({
             />
           </Grid>
           <Grid item container xs={12} justify="center">
-            <Typography color="error">{formError}</Typography>
+            <Typography
+              color={submissionInProgress ? "textSecondary" : "error"}
+            >
+              {formError}
+            </Typography>
           </Grid>
           <Grid item container xs={12} justify="center">
             <LoaderButton

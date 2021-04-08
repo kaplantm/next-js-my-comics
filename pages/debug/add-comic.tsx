@@ -1,11 +1,10 @@
 import React from "react";
-import { getAllSeries, getReadingOrder } from "@lib/utils/static-comics/utils";
+import { getAllSeries } from "@lib/utils/static-comics/utils";
 import DebugAddComic from "@page-containers/debug-add-comic";
 
 const DebugAddComicPage = (props) => <DebugAddComic {...props} />;
 
 export const getStaticProps = async () => {
-  const readingOrder = await getReadingOrder();
   const comics = await getAllSeries(true);
   const seriesTitles = Object.keys(comics);
   const allIssues = seriesTitles

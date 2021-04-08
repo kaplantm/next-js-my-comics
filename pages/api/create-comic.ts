@@ -12,7 +12,7 @@ type BuildComicRequestType = {
   title: string;
   start: string | number;
   end?: string | number;
-  issue: string | number;
+  issueNumber: string | number;
   arc: string;
   link: string;
   description: string;
@@ -22,41 +22,43 @@ const buildComicData = ({
   title,
   start,
   end,
-  issue,
+  issueNumber,
   arc,
   link,
   description,
 }: BuildComicRequestType) => `---
-title: ${title || null}
-start: ${start || null}
-end: ${end || null}
-issue: ${issue || null}
-arc: ${arc || null}
-link: ${link || null}
+title: ${title ? `"${title}"` : null}
+start: ${start ? `"${start}"` : null}
+end: ${end ? `"${end}"` : null}
+issueNumber: ${issueNumber || null}
+arc: ${arc ? `"${arc}"` : null}
+link: ${link ? `"${link}"` : null}
 ---
 
-${description}
+${description.trim()}
 `;
 
+// TODO: issue number always number
 export default async function handler(req, res) {
   const body = req.body || ({} as BuildComicRequestType);
+  const issueNumber = parseInt(req.body.issueNumber);
   console.log({ req });
 
   if (
     body.series &&
     body.title &&
-    body.issue &&
+    issueNumber &&
     body.link &&
     body.description
   ) {
-    const issueDirectory = getIssueDirectory(body.series, body.issue);
+    const issueDirectory = getIssueDirectory(body.series, body.issueNumber);
     const issueExists = existsSync(issueDirectory);
-    if (issueExists) {
-      res.status(409).json("Issue already exists");
+    if (issueExists && req.method === "POST") {
+      return res.status(409).json("Issue already exists");
     }
     const seriesExists = existsSync(getSeriesDirectory(body.series));
     if (!seriesExists) {
-      res.status(404).json("Series not found");
+      return res.status(404).json("Series not found");
     }
 
     try {
@@ -64,24 +66,16 @@ export default async function handler(req, res) {
       const fileLocation = `${issueDirectory}/data.md`;
       ensureDirectoryExistence(fileLocation);
       await promises.writeFile(fileLocation, markdownData);
-      res.status(200).json("Comic Created");
+      return res.status(200).json("Comic Created");
     } catch (e) {
       console.log(e);
-      res.status(500).json("Something went wrong. See server console.");
+      return res.status(500).json("Something went wrong. See server console.");
     }
   } else {
-    res
+    return res
       .status(400)
       .json(
-        "Missing required data. Series, title, issue, link and description are required."
+        "Missing required data. Series, title, issueNumber, link and description are required."
       );
-    return;
   }
-  // TODO: write markdown file
-  // TODO: upload images to s3
-
-  // TODO: errors
-  // - no series, no issue number, no title, no link, series doesn't exist, issue already exists
 }
-
-// TODO: separate edit pages in series/edit and series/issues/#/edit

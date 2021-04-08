@@ -12,7 +12,7 @@ import {
 } from "@lib/utils/image-utils";
 
 type ComicBodyProps = {
-  params: { series: string; issueNumber: number };
+  params: ComicPageParams;
   issue?: ComicWithMetadata;
   series: ComicWithMetadata;
   children: React.ReactNode;
