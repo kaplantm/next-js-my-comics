@@ -54,7 +54,7 @@ const DebugAddComic = ({
       link: link || "",
       series: params.series || "",
       description: description || "",
-      isIssue: isIssue,
+      isIssue: isIssue || !editMode,
     },
     {
       requiredFields: isIssue
@@ -91,7 +91,7 @@ const DebugAddComic = ({
       url: "/api/create-comic",
       data: {
         ...formFieldValues,
-        isIssue,
+        isIssue: editMode ? isIssue : formFieldValues.isIssue,
         title: isNewSeries ? formFieldValues.series : formFieldValues.title,
       },
     });
