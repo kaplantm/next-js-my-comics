@@ -10,21 +10,20 @@ import { appAxios } from "@lib/utils";
 import useStyles from "./use-styles";
 
 const DebugAddImages = ({
-  seriesTitles,
-  allArcs,
   issue,
   series,
-  params = { series: null, issueNumber: null },
-  editMode,
+  params = { series: null, issueNumber: null, category: null },
+  imagePaths: imagePathsProp,
+  maxDimension = 1500,
 }: {
-  seriesTitles: string[];
-  allArcs: string[];
   issue?: ComicWithMetadata;
   series?: ComicWithMetadata;
-  params?: ComicPageParams;
-  editMode?: boolean;
+  params?: ComicPageParams & { category: string };
+  imagePaths?: string[];
+  maxDimension?: number;
 }) => {
   const classes = useStyles();
+  const isCategory = !!params.category;
   const [submissionInProgress, setSubmissionInProgress] = useState(false);
   const [optimizeFormError, setOptimizeFormError] = useState(null);
   const [uploadFormError, setUploadFormError] = useState(null);
@@ -34,11 +33,10 @@ const DebugAddImages = ({
     [key: string]: string | Blob;
   }>({});
   const filesToOptimize = Object.values(filesToOptimizeData);
-  const { frontMatter, description, imagePaths } =
-    issue?.comic || series?.comic || {};
+  const { frontMatter, imagePaths } = issue?.comic ||
+    series?.comic || { imagePaths: imagePathsProp, fontMatter: null };
   const formRef = React.useRef<HTMLFormElement | null>(null);
   const [savedImagePaths, setSavedImagePaths] = useState(imagePaths);
-  const { title, start, end, arc, link } = frontMatter || ({} as any);
   const onDrop = useCallback((acceptedFiles) => {
     const newFileData = acceptedFiles.reduce((acc, val) => {
       acc[val.name] = val;
@@ -55,6 +53,7 @@ const DebugAddImages = ({
 
     const formData = new FormData();
     filesToOptimize.forEach((file) => formData.append("images", file as any));
+    formData.append("maxDimension", maxDimension);
 
     const result = await appAxios({
       method: "post",
@@ -82,10 +81,12 @@ const DebugAddImages = ({
 
   async function onImageUpload() {
     setSubmissionInProgress(false);
-    const seriesPath = `/static/series/${params.series}`;
+    const categoryPath = isCategory
+      ? `/static/panels/${params.category}`
+      : `/static/series/${params.series}`;
     const jsonPath = !!issue
-      ? `${seriesPath}/issues/${params.issueNumber}/images.json`
-      : `${seriesPath}/images.json`;
+      ? `${categoryPath}/issues/${params.issueNumber}/images.json`
+      : `${categoryPath}/images.json`;
     console.log({ jsonPath, issue });
     const result = await appAxios({
       method: "post",
@@ -95,7 +96,7 @@ const DebugAddImages = ({
         paths: optimizedFilePaths,
         folder: params.issueNumber
           ? `${params.series}/${params.issueNumber}`
-          : params.series,
+          : params.category || params.series,
         jsonPath,
       },
     });
@@ -129,7 +130,7 @@ const DebugAddImages = ({
         <Grid item xs={12}>
           <Typography variant="h4">{params.series}</Typography>
           <Typography variant="h1">
-            {params.issueNumber} {title}
+            {params.category} {params.issueNumber} {frontMatter?.title}
           </Typography>
         </Grid>
         <Grid item xs={12}>

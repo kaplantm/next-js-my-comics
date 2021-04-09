@@ -1,6 +1,6 @@
 import { runMiddleware } from "@lib/utils/api-middleware";
 import { ensureDirectoryExistence } from "@lib/utils/static-comics/utils";
-import multer, { memoryStorage } from "multer";
+import multer from "multer";
 import { optimize } from "../../scripts/image-optimization/utils";
 
 const inputOutputDir = "public/image-optimization/input-output";
@@ -35,10 +35,9 @@ export default async function handler(req, res) {
     ensureDirectoryExistence(`${req.multerDestination}/newFile.png`);
     await runMiddleware(req, res, multerInstance.array("images", 30));
 
-    console.log({ body: req.body, files: req.files });
     const optimizedResult = await optimize(
       `/${req.multerDestination}`,
-      1500,
+      parseInt(req.body?.maxDimension) || 1500,
       500000
     );
     console.log({ optimizedResult });
