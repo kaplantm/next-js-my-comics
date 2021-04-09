@@ -34,6 +34,7 @@ issue: ${issueNumber || null}
 arc: ${arc ? `"${arc}"` : null}
 link: ${link ? `"${link}"` : null}
 ---
+
 ${description.trim()}
 `;
 

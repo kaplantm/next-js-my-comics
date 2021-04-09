@@ -3,7 +3,7 @@ import ListIndex from "@page-containers/comic-list-index/index";
 import { getAllSeries } from "@lib/utils/static-comics/utils";
 
 const SeriesIndexPage = ({ listData }) => (
-  <ListIndex listData={listData} headerLabel="Series" />
+  <ListIndex listData={listData} headerLabel="Series" skipArcColorTooltip />
 );
 
 export const getStaticProps = async () => {

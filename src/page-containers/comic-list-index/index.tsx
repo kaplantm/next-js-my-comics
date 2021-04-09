@@ -12,23 +12,26 @@ import {
   ListItem,
 } from "@material-ui/core";
 import useStyles from "./use-styles";
-import { getInitialState } from "./helpers";
+import { getArcSpot, getInitialState } from "./helpers";
 import AppLink from "@components/app-link";
 import { KeyboardArrowDown, KeyboardArrowLeft } from "@material-ui/icons";
 import ReactMarkdown from "react-markdown";
 import { ComicWithMetadata } from "@lib/types";
-import { stringToHex } from "@lib/utils/string-utils";
-import { iceBlue } from "src/theme/colors";
 
 type ComicListIndexProps = {
   headerLabel: string;
   listData: ComicWithMetadata[];
+  skipArcColorTooltip?: boolean;
 };
 
 // TODO: page head
 // TODO: expand all
 
-function ComicListIndex({ headerLabel, listData }: ComicListIndexProps) {
+function ComicListIndex({
+  headerLabel,
+  listData,
+  skipArcColorTooltip,
+}: ComicListIndexProps) {
   const [expandedState, setExpandedState] = useState(getInitialState(listData));
   const classes = useStyles();
 
@@ -40,6 +43,7 @@ function ComicListIndex({ headerLabel, listData }: ComicListIndexProps) {
     });
   }
 
+  console.log({ skipArcColorTooltip });
   return (
     <Grid container spacing={3}>
       <Grid item xs={12} className={classes.coverImageContainer}>
@@ -48,16 +52,13 @@ function ComicListIndex({ headerLabel, listData }: ComicListIndexProps) {
           {listData.map(({ link, comic }, index) => (
             <ListItem key={link.pathname}>
               <ListItemIcon>
-                <Tooltip title={comic.frontMatter.arc || "No Arc / Unknown"}>
-                  <Box
-                    borderRadius="1rem"
-                    width="1rem"
-                    height="1rem"
-                    bgcolor={stringToHex(comic.frontMatter.arc) || iceBlue}
-                    mr={1}
-                    ml={1}
-                  />
-                </Tooltip>
+                {skipArcColorTooltip ? (
+                  getArcSpot()
+                ) : (
+                  <Tooltip title={comic.frontMatter.arc || "No Arc / Unknown"}>
+                    {getArcSpot(comic.frontMatter.arc)}
+                  </Tooltip>
+                )}
               </ListItemIcon>
               <Box display="flex" alignItems="center">
                 <ListItemText>
