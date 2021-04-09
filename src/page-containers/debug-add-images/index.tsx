@@ -33,10 +33,14 @@ const DebugAddImages = ({
     [key: string]: string | Blob;
   }>({});
   const filesToOptimize = Object.values(filesToOptimizeData);
-  const { frontMatter, imagePaths } = issue?.comic ||
+  const { frontMatter, imagePaths, coverPath } = issue?.comic ||
     series?.comic || { imagePaths: imagePathsProp, fontMatter: null };
   const formRef = React.useRef<HTMLFormElement | null>(null);
-  const [savedImagePaths, setSavedImagePaths] = useState(imagePaths);
+  const [savedImagePaths, setSavedImagePaths] = useState([
+    ...imagePaths,
+    ...(coverPath ? [coverPath] : []),
+  ]);
+
   const onDrop = useCallback((acceptedFiles) => {
     const newFileData = acceptedFiles.reduce((acc, val) => {
       acc[val.name] = val;

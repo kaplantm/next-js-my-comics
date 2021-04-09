@@ -173,6 +173,7 @@ export async function optimize(folder, maxDimension, maxSize) {
     maxDimension,
     maxSize
   );
+
   if (!filePathsToOptimize.length) {
     console.log("All images pass optimization.");
     console.log({ newFilePaths, cwd });
@@ -182,12 +183,12 @@ export async function optimize(folder, maxDimension, maxSize) {
     };
   }
   const { optimizedFiles, notOptimizedFiles, bytesSaved } = await optimizeFiles(
-    filePathsToOptimize,
+    newFilePaths,
     maxDimension,
     maxSize
   );
   if (optimizedFiles.length) {
-    console.log("Optimized images", optimizedFiles);
+    console.log("Optimized images", { optimizedFiles, filePathsToOptimize });
   }
   if (notOptimizedFiles.length) {
     console.log("Failed to optimize images", notOptimizedFiles);

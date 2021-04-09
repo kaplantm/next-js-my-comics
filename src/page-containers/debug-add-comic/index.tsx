@@ -155,7 +155,6 @@ const DebugAddComic = ({
               <Grid item xs={4}>
                 <AppTextField
                   fullWidth
-                  type="number"
                   disabled={editMode}
                   label="Issue #"
                   variant="outlined"

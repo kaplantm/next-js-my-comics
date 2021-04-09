@@ -41,7 +41,7 @@ ${description.trim()}
 // TODO: issue number always number
 export default async function handler(req, res) {
   const body = req.body || ({} as BuildComicRequestType);
-  const issueNumber = parseInt(req.body.issueNumber);
+  const issueNumber = parseInt(req.body.issueNumber) || req.body.issueNumber;
   console.log({ req });
 
   if (

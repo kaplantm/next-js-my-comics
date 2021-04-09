@@ -40,11 +40,9 @@ const readFile = async (filePath: string) =>
   promises.readFile(filePath, "utf8");
 
 export const getImagePaths = async (directory: string): Promise<string[]> => {
-  console.log("getImagePaths b4");
   try {
     const images = JSON.parse(await readFile(`${directory}/images.json`));
     const img = images.map((image) => `${process.env.S3_URL}/${image}`);
-    console.log("getImagePaths", { img });
     return img;
   } catch (e) {
     console.log(e);
@@ -102,7 +100,6 @@ const getSeriesData = async (
   const seriesDirectory = getSeriesDirectory(seriesTitle);
   const parsedData = await getParsedMarkdownFile(seriesDirectory, seriesTitle);
 
-  console.log("here");
   const [coverPath, ...imagePaths] = await getImagePaths(seriesDirectory);
   return {
     ...parsedData,

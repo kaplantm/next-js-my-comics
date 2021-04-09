@@ -19,7 +19,7 @@ export type ComicType = {
     arc: string;
     start: string | number;
     end: string | number;
-    issueNumber: number;
+    issueNumber: string | number;
     link: string;
   };
 };

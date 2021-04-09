@@ -7,7 +7,9 @@ import {
 import { ComicPageParams } from "@lib/types";
 import DebugAddImages from "@page-containers/debug-add-images";
 
-const DebugEditComicPage = (props) => <DebugAddImages {...props} editMode />;
+const DebugEditComicImagesPage = (props) => (
+  <DebugAddImages {...props} editMode />
+);
 
 export const getStaticPaths = async () => {
   const seriesTitles = await getSeriesTitles();
@@ -30,7 +32,7 @@ export const getStaticPaths = async () => {
 
 export async function getStaticProps({ params }: { params: ComicPageParams }) {
   const issue = await getIssue(params.series, params.issueNumber);
-
+  console.log({ issue });
   return {
     props: {
       params,
@@ -38,4 +40,4 @@ export async function getStaticProps({ params }: { params: ComicPageParams }) {
     },
   };
 }
-export default DebugEditComicPage;
+export default DebugEditComicImagesPage;

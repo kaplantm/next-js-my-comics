@@ -32,9 +32,14 @@ export default async function handler(req, res) {
       paths.map(async (imagePath) => {
         const pathInS3 = `${folder}/${imagePath.split("/").slice(-1)}`;
         const imagesJsonFilePath = `public${jsonPath}`;
-        const imagesArrayFile = JSON.parse(
-          await readFile(imagesJsonFilePath, "utf8")
-        );
+        let imagesArrayFile = [];
+        try {
+          imagesArrayFile = JSON.parse(
+            await readFile(imagesJsonFilePath, "utf8")
+          );
+        } catch (e) {
+          imagesArrayFile = [];
+        }
         const updatedImagesArray = [...imagesArrayFile, pathInS3];
         const file = await readFile(`public${imagePath}`);
         const objectParams = {
