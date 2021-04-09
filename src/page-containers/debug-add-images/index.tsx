@@ -47,7 +47,6 @@ const DebugAddImages = ({
       return acc;
     }, {});
     setFilesToOptimizeData((prev) => ({ ...prev, ...newFileData }));
-    console.log({ acceptedFiles, newFileData });
     // Do something with the files
   }, []);
 
@@ -57,7 +56,7 @@ const DebugAddImages = ({
 
     const formData = new FormData();
     filesToOptimize.forEach((file) => formData.append("images", file as any));
-    formData.append("maxDimension", maxDimension);
+    formData.append("maxDimension", `${maxDimension}`);
 
     const result = await appAxios({
       method: "post",
@@ -71,7 +70,6 @@ const DebugAddImages = ({
       setOptimizeFormError("Something went wrong");
     } else if (result.response.data.filePaths?.length) {
       setBytesSaved(result.response.data.bytesSaved);
-      console.log({ files: result.response.data.filePaths });
       setOptimizedFilePaths((prev) => [
         ...prev,
         ...result.response.data.filePaths,
@@ -84,14 +82,14 @@ const DebugAddImages = ({
   }
 
   async function onImageUpload() {
-    setSubmissionInProgress(false);
+    setSubmissionInProgress(true);
     const categoryPath = isCategory
       ? `/static/panels/${params.category}`
       : `/static/series/${params.series}`;
     const jsonPath = !!issue
       ? `${categoryPath}/issues/${params.issueNumber}/images.json`
       : `${categoryPath}/images.json`;
-    console.log({ jsonPath, issue });
+
     const result = await appAxios({
       method: "post",
       url: "/api/upload-images",
@@ -105,7 +103,6 @@ const DebugAddImages = ({
       },
     });
 
-    console.log({ result });
     // TODO: types
     if (
       result?.error ||
@@ -116,7 +113,6 @@ const DebugAddImages = ({
         "Something went wrong. Refresh the page for up to date data."
       );
     } else {
-      console.log({ files: result.response.data.filePaths });
       setSavedImagePaths((prev) => [
         ...result.response.data.filePaths,
         ...prev,
@@ -127,7 +123,6 @@ const DebugAddImages = ({
     setSubmissionInProgress(false);
   }
 
-  console.log({ optimizedFilePaths });
   return (
     <DebugOnlyWrapper>
       <Grid container spacing={3} justify="center">

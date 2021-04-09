@@ -142,10 +142,11 @@ export const getDirectionallySortedData = (
 
 const groupIssuesBy = (
   issues: ComicWithMetadata[],
-  frontMatterKey: keyof ComicType["frontMatter"]
+  frontMatterKey: keyof ComicType["frontMatter"],
+  fallbackKey = "Unknown"
 ): GroupedComicsType =>
   issues.reduce((acc, val) => {
-    const key = val.comic.frontMatter[frontMatterKey] || "Unknown";
+    const key = val.comic.frontMatter[frontMatterKey] || fallbackKey;
     if (acc[key] && acc[key].issues) {
       acc[key].issues.push(val);
     } else {
@@ -182,7 +183,7 @@ export const getGroupedComics = (
 } => {
   return {
     [sortingEnum.YEAR]: groupIssuesBy(allIssues, "start"),
-    [sortingEnum.ARC]: groupIssuesBy(allIssues, "arc"),
+    [sortingEnum.ARC]: groupIssuesBy(allIssues, "arc", "No Arc / Unknown"),
     [sortingEnum.READING_ORDER]: groupIssuesByReadingOrder(
       allIssues,
       readingOrder

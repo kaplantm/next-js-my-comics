@@ -32,7 +32,7 @@ export const getStaticPaths = async () => {
 
 export async function getStaticProps({ params }: { params: ComicPageParams }) {
   const issue = await getIssue(params.series, params.issueNumber);
-  console.log({ issue });
+
   return {
     props: {
       params,

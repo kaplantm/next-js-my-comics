@@ -31,16 +31,6 @@ export default async function handler(req, res) {
     await Promise.all(
       paths.map(async (imagePath) => {
         const pathInS3 = `${folder}/${imagePath.split("/").slice(-1)}`;
-        const imagesJsonFilePath = `public${jsonPath}`;
-        let imagesArrayFile = [];
-        try {
-          imagesArrayFile = JSON.parse(
-            await readFile(imagesJsonFilePath, "utf8")
-          );
-        } catch (e) {
-          imagesArrayFile = [];
-        }
-        const updatedImagesArray = [...imagesArrayFile, pathInS3];
         const file = await readFile(`public${imagePath}`);
         const objectParams = {
           Bucket: bucketName,
@@ -49,12 +39,30 @@ export default async function handler(req, res) {
           ACL: "public-read",
         };
         await s3.putObject(objectParams).promise();
-        await writeFile(imagesJsonFilePath, JSON.stringify(updatedImagesArray));
-        uploadedImages.push(`${process.env.S3_URL}/${pathInS3}`);
+        uploadedImages.push(pathInS3);
       })
     );
 
-    return res.status(200).json({ filePaths: uploadedImages });
+    const imagesJsonFilePath = `public${jsonPath}`;
+
+    let imagesArrayFileData = [];
+    try {
+      imagesArrayFileData = JSON.parse(
+        await readFile(imagesJsonFilePath, "utf8")
+      );
+    } catch (e) {
+      imagesArrayFileData = [];
+    }
+    await writeFile(
+      imagesJsonFilePath,
+      JSON.stringify([...imagesArrayFileData, ...uploadedImages])
+    );
+
+    return res.status(200).json({
+      filePaths: uploadedImages.map(
+        (pathInS3) => `${process.env.S3_URL}/${pathInS3}`
+      ),
+    });
   } catch (e) {
     console.log(e);
     return res.status(500).json("Failed to optimize images");

@@ -34,7 +34,6 @@ issue: ${issueNumber || null}
 arc: ${arc ? `"${arc}"` : null}
 link: ${link ? `"${link}"` : null}
 ---
-
 ${description.trim()}
 `;
 
@@ -42,7 +41,6 @@ ${description.trim()}
 export default async function handler(req, res) {
   const body = req.body || ({} as BuildComicRequestType);
   const issueNumber = parseInt(req.body.issueNumber) || req.body.issueNumber;
-  console.log({ req });
 
   if (
     body.series &&

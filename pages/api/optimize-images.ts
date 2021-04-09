@@ -40,7 +40,6 @@ export default async function handler(req, res) {
       parseInt(req.body?.maxDimension) || 1500,
       500000
     );
-    console.log({ optimizedResult });
     return res.status(200).json(optimizedResult);
   } catch (e) {
     console.log(e);

@@ -53,7 +53,7 @@ const DebugAddComic = ({
       arc: arc || "",
       link: link || "",
       series: params.series || "",
-      description: description || "",
+      description: (description || "").trim(),
       isIssue: isIssue || !editMode,
     },
     {
@@ -113,7 +113,6 @@ const DebugAddComic = ({
       target: { name: e.target.name, value: !e.target.checked },
     });
   }
-  console.log({ formFieldErrors });
 
   return (
     <DebugOnlyWrapper>

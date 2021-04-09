@@ -4,6 +4,7 @@ import {
 } from "@lib/utils/static-comics/utils";
 import React from "react";
 import Panels from "@page-containers/panels/category";
+import { shuffleArray } from "@lib/utils/array-utils";
 
 const fitlerablePages = ["reacts"];
 
@@ -35,7 +36,7 @@ export async function getStaticProps({
   return {
     props: {
       params,
-      imagePaths,
+      imagePaths: shuffleArray(imagePaths || []),
     },
   };
 }

@@ -1,11 +1,24 @@
 import React, { useState } from "react";
-import { Typography, Grid, Collapse, IconButton, Box } from "@material-ui/core";
+import {
+  Typography,
+  Grid,
+  Collapse,
+  IconButton,
+  Box,
+  Tooltip,
+  List,
+  ListItemText,
+  ListItemIcon,
+  ListItem,
+} from "@material-ui/core";
 import useStyles from "./use-styles";
 import { getInitialState } from "./helpers";
 import AppLink from "@components/app-link";
 import { KeyboardArrowDown, KeyboardArrowLeft } from "@material-ui/icons";
 import ReactMarkdown from "react-markdown";
 import { ComicWithMetadata } from "@lib/types";
+import { stringToHex } from "@lib/utils/string-utils";
+import { iceBlue } from "src/theme/colors";
 
 type ComicListIndexProps = {
   headerLabel: string;
@@ -31,29 +44,44 @@ function ComicListIndex({ headerLabel, listData }: ComicListIndexProps) {
     <Grid container spacing={3}>
       <Grid item xs={12} className={classes.coverImageContainer}>
         {headerLabel && <Typography variant="h1">{headerLabel}</Typography>}
-        <ul>
+        <List>
           {listData.map(({ link, comic }, index) => (
-            <li key={link.pathname}>
+            <ListItem key={link.pathname}>
+              <ListItemIcon>
+                <Tooltip title={comic.frontMatter.arc || "No Arc / Unknown"}>
+                  <Box
+                    borderRadius="1rem"
+                    width="1rem"
+                    height="1rem"
+                    bgcolor={stringToHex(comic.frontMatter.arc) || iceBlue}
+                    mr={1}
+                    ml={1}
+                  />
+                </Tooltip>
+              </ListItemIcon>
               <Box display="flex" alignItems="center">
-                <AppLink nextProps={{ href: link.pathname }}>
-                  {link.name}
-                </AppLink>
-                <IconButton onClick={() => toggleExpanded(index)}>
-                  {expandedState[index] ? (
-                    <KeyboardArrowDown />
-                  ) : (
-                    <KeyboardArrowLeft />
-                  )}
-                </IconButton>
+                <ListItemText>
+                  <AppLink nextProps={{ href: link.pathname }}>
+                    {link.name}
+                  </AppLink>
+                  <IconButton onClick={() => toggleExpanded(index)}>
+                    {expandedState[index] ? (
+                      <KeyboardArrowDown />
+                    ) : (
+                      <KeyboardArrowLeft />
+                    )}
+                  </IconButton>
+
+                  <Collapse in={expandedState[index]}>
+                    {comic?.description && (
+                      <ReactMarkdown>{comic.description}</ReactMarkdown>
+                    )}
+                  </Collapse>
+                </ListItemText>
               </Box>
-              <Collapse in={expandedState[index]}>
-                {comic?.description && (
-                  <ReactMarkdown>{comic.description}</ReactMarkdown>
-                )}
-              </Collapse>
-            </li>
+            </ListItem>
           ))}
-        </ul>
+        </List>
       </Grid>
     </Grid>
   );
