@@ -51,3 +51,8 @@ http://localhost/series/Azrael%20Volume%201/debug/edit/images
 
 Add category images
 http://localhost/panels/ears/debug/edit/images
+
+To revert S3:
+https://github.com/angeloc/s3-pit-restore
+Copy locally, then empty bucket in S3, then upload all (make sure to public and cache control metadata)
+s3-pit-restore -b comicassets.tonarie.com -d restored-bucket-local -t "04-09-2021 20:30:50 -5"

@@ -34,7 +34,7 @@ export const getDisplayTitle = (
 export const getDisplaySubtitle = (
   paramSeries: string,
   seriesTitle: string,
-  issueNumber: number,
+  issueNumber: string | number,
   issueStart: string | number,
   issueEnd: string | number
 ) => (

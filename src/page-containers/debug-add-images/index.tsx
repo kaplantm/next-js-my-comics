@@ -58,7 +58,7 @@ const DebugAddImages = ({
     filesToOptimize.forEach((file) => formData.append("images", file as any));
     formData.append("maxDimension", `${maxDimension}`);
 
-    const result = await appAxios({
+    const result: any = await appAxios({
       method: "post",
       url: "/api/optimize-images",
       data: formData,
@@ -90,7 +90,7 @@ const DebugAddImages = ({
       ? `${categoryPath}/issues/${params.issueNumber}/images.json`
       : `${categoryPath}/images.json`;
 
-    const result = await appAxios({
+    const result: any = await appAxios({
       method: "post",
       url: "/api/upload-images",
       // data: {paths: optimizedFilePaths, folder: params.series},
