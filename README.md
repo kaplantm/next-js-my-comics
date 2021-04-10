@@ -1,40 +1,10 @@
-// TODO
-fix images by series for all issues (issues missing covers)
+## To Dev:
 
-missing robin series cover
-remove duplicate images (.e.g in panels and elsewhere)
+git clone
+npm install
+npm run dev
 
-azreal- done
-one shots - done
-catwoman - done
-robin - done
-nightwing - done
-batman chronicles - done
-legends - done
-shadow - done
-detective comics - done
-batman - done
-
-funny
-ear
-reacts
-
-<!-- TODO: dev and deployment instructions -->
-
-Cache-Control: max-age=31536000
-
-some images are in the panels section and will need to also be put in their issue section when it is added
-
-in ears, to add to actual comics when they are added:
-shadow of the bat 48 1_354x800.jpeg
-batman_529_587x502.jpeg
-batman_1_529_2_510x756.jpeg
-batman_1_529_3_594x1008
-batman_1_529_4_175x467.jpeg
-Batman Legends of the Dark Knight 119 1_IMG_0451_352x800.jpeg
-
-copy whole s3 locally
-aws s3 sync s3://comicassets.tonarie.com .
+## To add content:
 
 Add new issue or series
 http://localhost/debug/new/
@@ -51,6 +21,47 @@ http://localhost/series/Azrael%20Volume%201/debug/edit/images
 
 Add category images
 http://localhost/panels/ears/debug/edit/images
+
+- to add a new category page, do it manually (create a new folder in the public/static/panels directory)
+- to rename a series or change an issue number, do it manually (rename the folder in the public/static/series directory)
+- to remove a image, remove the path from the images.json file. If the file is not used elsewhere and you want to remove the file from s3, do it manually using the s3 console or aws cli
+
+## To push to production
+
+npm run export
+
+commit the changes and push
+
+a github action is current setup to push the main branch to s3
+
+## Additional Info
+
+Site S3: comics.tonarie.com
+Images S3: comicassets.tonarie.com
+Live site: http://comics.tonarie.com/
+
+// Notes to self
+
+All images should have this metadata: `Cache-Control: max-age=31536000`
+
+#### TODO:
+
+- some images are in the panels section and will need to also be put in their issue section when it is added:
+
+in ears, to add to actual comics when they are added:
+shadow of the bat 48 1_354x800.jpeg
+batman_529_587x502.jpeg
+batman_1_529_2_510x756.jpeg
+batman_1_529_3_594x1008
+batman_1_529_4_175x467.jpeg
+Batman Legends of the Dark Knight 119 1_IMG_0451_352x800.jpeg
+
+- remove command line versions of image optimization and move utils into src
+
+#### Miscellaneous
+
+copy whole s3 locally
+aws s3 sync s3://comicassets.tonarie.com .
 
 To revert S3:
 https://github.com/angeloc/s3-pit-restore

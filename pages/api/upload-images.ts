@@ -32,11 +32,13 @@ export default async function handler(req, res) {
       paths.map(async (imagePath) => {
         const pathInS3 = `${folder}/${imagePath.split("/").slice(-1)}`;
         const file = await readFile(`public${imagePath}`);
+        // TODO: add cache control metadata
         const objectParams = {
           Bucket: bucketName,
           Key: pathInS3,
           Body: file,
           ACL: "public-read",
+          CacheControl: "max-age=31536000",
         };
         await s3.putObject(objectParams).promise();
         uploadedImages.push(pathInS3);
