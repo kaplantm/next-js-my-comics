@@ -4,12 +4,13 @@ import {
 } from "@lib/utils/static-comics/utils";
 import React from "react";
 import DebugAddImages from "@page-containers/debug-add-images";
+import { reactsPage } from "@lib/constants";
 
 // TODO: arrows to move to next image
 const PanelsCategoryPage = (props) => (
   <DebugAddImages
     {...props}
-    maxDimension={props.category === "reacts" ? 100 : null}
+    maxDimension={props.category === reactsPage ? 100 : null}
   />
 );
 

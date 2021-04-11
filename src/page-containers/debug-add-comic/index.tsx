@@ -49,7 +49,7 @@ const DebugAddComic = ({
       title: title || "",
       start: start || "",
       end: end || "",
-      issueNumber: params.issueNumber,
+      issueNumber: params.issueNumber || "",
       arc: arc || "",
       link: link || "",
       series: params.series || "",

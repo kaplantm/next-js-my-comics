@@ -1,8 +1,8 @@
 import { memo } from "react";
-import { getIssueRoute } from "@lib/constants/routes";
 import { Box } from "@material-ui/core";
 import ListIndex from "@page-containers/comic-list-index/index";
 import { ComicWithMetadataListIssuesType } from "../helpers";
+import { isAOneShot } from "@lib/constants";
 
 const ListSection = ({
   groupData,
@@ -18,7 +18,9 @@ const ListSection = ({
     ...item,
     link: {
       pathname: item.link.pathname,
-      name: `${item.params.series} ${item.link.name}`,
+      name: `${isAOneShot(item.params.series) ? "" : item.params.series} ${
+        item.link.name
+      }`,
     },
   }));
 

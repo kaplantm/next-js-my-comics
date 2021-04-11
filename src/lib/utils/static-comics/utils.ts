@@ -1,3 +1,4 @@
+import { isAOneShot } from "@lib/constants";
 import { getIssueRoute, getSeriesRoute } from "@lib/constants/routes";
 import { ComicWithMetadata } from "@lib/types";
 import { promises, mkdirSync, existsSync } from "fs";
@@ -152,7 +153,9 @@ export async function getIssue(
     },
     link: {
       pathname: getIssueRoute(series, issueNumber),
-      name: `#${issueNumber} - ${comic.frontMatter.title}`,
+      name: `${isAOneShot(series) ? "" : `#${issueNumber} - `}${
+        comic.frontMatter.title
+      }`,
     },
     comic,
   };

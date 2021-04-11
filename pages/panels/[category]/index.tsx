@@ -5,8 +5,9 @@ import {
 import React from "react";
 import Panels from "@page-containers/panels/category";
 import { shuffleArray } from "@lib/utils/array-utils";
+import { reactsPage } from "@lib/constants";
 
-const fitlerablePages = ["reacts"];
+const fitlerablePages = [reactsPage];
 
 // TODO: arrows to move to next image
 const PanelsCategoryPage = (props) => (
