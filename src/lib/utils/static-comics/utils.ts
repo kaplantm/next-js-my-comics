@@ -20,7 +20,7 @@ export const getIssueDirectory = (series: string, issue: number) =>
   `${getSeriesDirectory(series)}/issues/${issue}`;
 export const getPanelsCategoryDirectory = (category: string) =>
   `${basePanelsDirectory}/${category}`;
-const getImagesDirectory = (intialDirectory: string) =>
+export const getImagesDirectory = (intialDirectory: string) =>
   `${intialDirectory}/images`;
 
 const getFileNamesInDirectory = async (

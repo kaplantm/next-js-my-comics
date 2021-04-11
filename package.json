@@ -45,6 +45,7 @@
     "@types/jest": "^26.0.20",
     "@types/multer": "^1.4.5",
     "@types/node": "^14.14.31",
+    "@types/sharp": "^0.28.0",
     "@types/yaml-front-matter": "^4.1.0",
     "aws-sdk": "^2.883.0",
     "babel-plugin-import": "^1.13.3",

@@ -1,11 +1,10 @@
-const sharp = require("sharp");
-const { resolve } = require("path");
-const { readdir, stat, readFile, rename } = require("fs").promises;
+import sharp from "sharp";
+import { resolve } from "path";
+import { promises } from "fs";
+const { readdir, stat, readFile, rename } = promises;
 
-// TODO: move these into typescript if they arent gonna be run in node anymore
-
-const defaultMaxDimension = 1500; // TODO: flag
-const defaultMaxSize = 0.8 * 1000 * 1000; // in bytes TODO: flag
+const defaultMaxDimension = 1500;
+const defaultMaxSize = 0.8 * 1000 * 1000;
 const cwd = process.cwd();
 
 const removeLocalPublicPath = (path) => path.split(`${cwd}/public`)[1];
@@ -61,7 +60,6 @@ async function renameFilesToIncludeDimensions(filePaths) {
 
 async function getFilesFailingOptimizationCheck(
   filePaths,
-  folder,
   maxDimension = defaultMaxDimension,
   maxSize = defaultMaxSize
 ) {
@@ -169,31 +167,23 @@ export async function optimize(folder, maxDimension, maxSize) {
 
   const filePathsToOptimize = await getFilesFailingOptimizationCheck(
     newFilePaths,
-    folder,
     maxDimension,
     maxSize
   );
 
   if (!filePathsToOptimize.length) {
-    console.log("All images pass optimization.");
-    console.log({ newFilePaths, cwd });
     return {
       filePaths: newFilePaths.map(removeLocalPublicPath),
       bytesSaved: 0,
     };
   }
+
   const { optimizedFiles, notOptimizedFiles, bytesSaved } = await optimizeFiles(
     newFilePaths,
     maxDimension,
     maxSize
   );
-  if (optimizedFiles.length) {
-    console.log("Optimized images", { optimizedFiles, filePathsToOptimize });
-  }
-  if (notOptimizedFiles.length) {
-    console.log("Failed to optimize images", notOptimizedFiles);
-  }
-  console.log(`Saved ${(bytesSaved / 1000000).toFixed(2)}MB`);
+
   return {
     filePaths: [...optimizedFiles, ...notOptimizedFiles].map(
       removeLocalPublicPath
@@ -201,11 +191,3 @@ export async function optimize(folder, maxDimension, maxSize) {
     bytesSaved,
   };
 }
-
-module.exports = {
-  optimizeFiles,
-  getFilesFailingOptimizationCheck,
-  renameFilesToIncludeDimensions,
-  getImageFilePaths,
-  optimize,
-};

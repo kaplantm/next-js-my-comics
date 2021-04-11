@@ -1,7 +1,7 @@
 import { runMiddleware } from "@lib/utils/api-middleware";
 import { ensureDirectoryExistence } from "@lib/utils/static-comics/utils";
 import multer from "multer";
-import { optimize } from "../../scripts/image-optimization/utils";
+import { optimize } from "../../src/lib/utils/content-creation/utils";
 
 const inputOutputDir = "public/image-optimization/input-output";
 export const config = {
