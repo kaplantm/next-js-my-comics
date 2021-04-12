@@ -77,33 +77,17 @@ const sortComicGroupIssues = (
 
 export const getSortedData = (
   comicGroups: GroupedComicsType,
-  readingOrder: string[],
-  sorting: sortingEnum
+  readingOrder: string[]
 ) => {
   const keys = Object.keys(comicGroups);
   const comicGroupsSortedKeys = keys.reduce((acc, key) => {
     acc[key] = comicGroups[key];
     return acc;
   }, {});
-  switch (sorting) {
-    case sortingEnum.READING_ORDER:
-      return sortComicGroupIssues(
-        comicGroupsSortedKeys,
-        getSortByReadingOrder(readingOrder)
-      );
-    case sortingEnum.YEAR:
-      return sortComicGroupIssues(
-        comicGroupsSortedKeys,
-        getSortByDateFrontMatterKey("start")
-      );
-    case sortingEnum.ARC:
-      return sortComicGroupIssues(
-        comicGroupsSortedKeys,
-        getSortByNumericFrontMatterKey("issueNumber")
-      );
-    default:
-      return comicGroupsSortedKeys;
-  }
+  return sortComicGroupIssues(
+    comicGroupsSortedKeys,
+    getSortByReadingOrder(readingOrder)
+  );
 };
 
 export const getDirectionallySortedData = (

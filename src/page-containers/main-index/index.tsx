@@ -53,6 +53,7 @@ const MainIndex = ({
     [currentIssues]
   );
   const groupedComics = comicGroupings[sorting];
+
   const sortedGroupedComics = useMemo(
     () => getSortedData(groupedComics, readingOrder, sorting),
     [sorting, groupedComics]
