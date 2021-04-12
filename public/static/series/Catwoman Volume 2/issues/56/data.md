@@ -1,5 +1,5 @@
 ---
-title: "Cataclysm, Part Six: Claustrophobia"
+title: "Part 6: Claustrophobia"
 start: "April, 1998"
 end: null
 issueNumber: 56

@@ -1,5 +1,5 @@
 ---
-title: "Batman: Blackgate - Isle of Men"
+title: "Batman: Blackgate - Part 8: Tribunal: Isle of Men"
 start: "April, 1998"
 end: null
 issue: 2

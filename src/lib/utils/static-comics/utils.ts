@@ -134,7 +134,8 @@ const getIssueData = async (
 
 export const getReadingOrder = async (): Promise<string[]> => {
   const fileData = await readFile(readingOrderFilePath);
-  return JSON.parse(fileData);
+  const parsedData: { [key: string]: string[] } = JSON.parse(fileData);
+  return Object.values(parsedData).flat();
 };
 
 export async function getPanelsInCategory(category: string): Promise<string[]> {

@@ -1,5 +1,5 @@
 ---
-title: "Cataclysm, Part Five: The First and the Last"
+title: "Part 5: The First and the Last"
 start: "April, 1998"
 end: null
 issueNumber: 720

@@ -1,5 +1,5 @@
 ---
-title: "Cataclysm, Part Three: Lifelines"
+title: "Part 3: Lifelines"
 start: "April, 1998"
 end: null
 issueNumber: 553

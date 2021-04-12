@@ -1,5 +1,5 @@
 ---
-title: "Cataclysm, Part Two: Shudder"
+title: "Part 2: Shudder"
 start: "April, 1998"
 end: null
 issueNumber: 19

@@ -1,5 +1,5 @@
 ---
-title: "Cataclysm, Part 1: Castles Built on Sand"
+title: "Part 1: Castles Built on Sand"
 start: "April, 1998"
 end: null
 issueNumber: 73
