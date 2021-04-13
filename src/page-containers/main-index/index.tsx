@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Box, Button, ButtonGroup, Grid } from "@material-ui/core";
 import { ArrowDownward, ArrowUpward } from "@material-ui/icons";
 import {
@@ -20,55 +20,63 @@ const MainIndex = ({
   allIssues: ComicWithMetadata[];
   readingOrder: string[];
 }) => {
+  const groupedComicsRef = useRef(getGroupedComics(allIssues, readingOrder));
   const [sorting, setSorting] = useState(sortingEnum.READING_ORDER);
   const [sortingDirection, setSortingDirection] = useState(
     sortingDirectionEnum.ASC
   );
-  const [currentIssues, setCurrentIssues] = useState(allIssues);
+  const [groups, setGroups] = useState(() => {
+    const {
+      directionalSortedGroupedComics,
+      groupOrder,
+    } = getDirectionallySortedData(
+      groupedComicsRef.current[sorting],
+      sortingDirection,
+      sorting
+    );
+    return { groups: directionalSortedGroupedComics, order: groupOrder };
+  });
   const [searchTerm, setSearchTerm] = useState("");
   const debouncedSearchTerm = useDebounce(searchTerm, 250);
 
   useEffect(() => {
-    setCurrentIssues(
-      allIssues.filter((issue) => {
-        const lowercaseSearchTerm = debouncedSearchTerm.toLowerCase();
-        const inTitle = issue.comic.frontMatter.title
-          .toLowerCase()
-          .includes(lowercaseSearchTerm);
-        const inDescription = issue.comic.description
-          .toLowerCase()
-          .includes(lowercaseSearchTerm);
-        return inDescription || inTitle;
-      })
-    );
-  }, [debouncedSearchTerm]);
+    const lowercaseSearchTerm = debouncedSearchTerm.toLowerCase();
+    const allInCurrentSorting = groupedComicsRef.current[sorting];
+    const filtered = lowercaseSearchTerm
+      ? Object.keys(allInCurrentSorting).reduce((acc, key) => {
+          acc[key] = {
+            comic: null,
+            link: null,
+            params: null,
+            issues: allInCurrentSorting[key].issues.filter((issue) => {
+              const inTitle = issue.comic.frontMatter.title
+                .toLowerCase()
+                .includes(lowercaseSearchTerm);
+              const inDescription = issue.comic.description
+                .toLowerCase()
+                .includes(lowercaseSearchTerm);
+              return inDescription || inTitle;
+            }),
+          };
+          return acc;
+        }, {})
+      : allInCurrentSorting;
+
+    const {
+      directionalSortedGroupedComics,
+      groupOrder,
+    } = getDirectionallySortedData(filtered, sortingDirection, sorting);
+
+    setGroups({
+      groups: directionalSortedGroupedComics,
+      order: groupOrder,
+    });
+  }, [debouncedSearchTerm, sorting, sortingDirection]);
 
   function onFilterUpdate({ target }) {
     const newFilter = target.value;
     setSearchTerm(newFilter);
   }
-
-  const comicGroupings = useMemo(
-    () => getGroupedComics(currentIssues, readingOrder),
-    [currentIssues]
-  );
-  const groupedComics = comicGroupings[sorting];
-
-  const sortedGroupedComics = useMemo(
-    () => getSortedData(groupedComics, readingOrder),
-    [groupedComics]
-  );
-
-  // // Separate useMemo so we don't have to redo sorting function if only direction changes
-  const { directionalSortedGroupedComics, groupOrder } = useMemo(
-    () =>
-      getDirectionallySortedData(
-        sortedGroupedComics,
-        sortingDirection,
-        sorting
-      ),
-    [sortingDirection, sorting, sortedGroupedComics]
-  );
 
   function handleSortingUpdate(sorting: sortingEnum) {
     return () => setSorting(sorting);
@@ -97,7 +105,7 @@ const MainIndex = ({
               ))}
             </ButtonGroup>
           </Grid>
-          {groupOrder.length > 1 && (
+          {groups.order.length > 1 && (
             <Grid item>
               <ButtonGroup
                 color="primary"
@@ -129,10 +137,10 @@ const MainIndex = ({
           </Grid>
         </Grid>
       </Box>
-      {groupOrder.map((key) => (
+      {groups.order.map((key) => (
         <MemoizedListSection
           key={key}
-          groupData={directionalSortedGroupedComics[key]}
+          groupData={groups.groups[key]}
           headerLabel={key}
         />
       ))}

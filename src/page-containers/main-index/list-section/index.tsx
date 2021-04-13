@@ -1,8 +1,8 @@
 import { memo } from "react";
 import { Box } from "@material-ui/core";
-import ListIndex from "@page-containers/comic-list-index/index";
-import { ComicWithMetadataListIssuesType } from "../helpers";
+import { MemoizedListIndex } from "@page-containers/comic-list-index/index";
 import { isAOneShot } from "@lib/constants";
+import { ComicWithMetadataListIssuesType } from "../helpers";
 
 const ListSection = ({
   groupData,
@@ -26,7 +26,7 @@ const ListSection = ({
 
   return (
     <Box mt={3}>
-      <ListIndex listData={listData} headerLabel={headerLabel} />
+      <MemoizedListIndex listData={listData} headerLabel={headerLabel} />
     </Box>
   );
 };

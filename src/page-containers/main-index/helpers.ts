@@ -167,10 +167,16 @@ export const getGroupedComics = (
   [key in sortingEnum]: GroupedComicsType;
 } => {
   return {
-    [sortingEnum.YEAR]: groupIssuesBy(allIssues, "start"),
-    [sortingEnum.ARC]: groupIssuesBy(allIssues, "arc", "No Arc / Unknown"),
-    [sortingEnum.READING_ORDER]: groupIssuesByReadingOrder(
-      allIssues,
+    [sortingEnum.YEAR]: getSortedData(
+      groupIssuesBy(allIssues, "start"),
+      readingOrder
+    ),
+    [sortingEnum.ARC]: getSortedData(
+      groupIssuesBy(allIssues, "arc", "No Arc / Unknown"),
+      readingOrder
+    ),
+    [sortingEnum.READING_ORDER]: getSortedData(
+      groupIssuesByReadingOrder(allIssues, readingOrder),
       readingOrder
     ),
   };
