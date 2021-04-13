@@ -15,15 +15,21 @@ function hashCode(str: string) {
   return hash;
 }
 
-export function intToHex(i) {
-  var c = (i & 0x00ffffff).toString(16).toUpperCase();
-  const hex = "00000".substring(0, 6 - c.length) + c;
-  return `#${hex}`;
-}
-
 export function stringToHex(str: string) {
   if (!str) {
     return null;
   }
-  return intToHex(hashCode(str));
+  const { h, s, l } = str.split("").reduce(
+    (acc, char) => {
+      acc.h += char.charCodeAt(0);
+      acc.s = char.charCodeAt(0);
+      if (!acc.l) {
+        acc.l = char.charCodeAt(0);
+      }
+      return acc;
+    },
+    { h: 0, s: 0, l: 0 }
+  );
+  const a = str.charCodeAt(Math.ceil(str.length / 2)) / 100;
+  return `hsla(${h % 300},${Math.max(20, s / 2)}%,${l % 90}%,${a + 0.2})`;
 }
