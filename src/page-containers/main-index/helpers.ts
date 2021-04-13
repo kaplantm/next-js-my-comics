@@ -1,4 +1,5 @@
 import { ComicWithMetadata, ComicType } from "@lib/types";
+import { parseDateFromMarkdownString } from "@lib/utils/string-utils";
 
 export type ComicWithMetadataListIssuesType = Omit<
   ComicWithMetadata,
@@ -38,8 +39,8 @@ export const getSortByReadingOrder = (readingOrder) => (
 };
 
 export const sortByDate = (a, b) => {
-  const dateValueA = typeof a === "string" ? new Date(a) : new Date(a, 0, 1);
-  const dateValueB = typeof b === "string" ? new Date(b) : new Date(b, 0, 1);
+  const dateValueA = parseDateFromMarkdownString(a);
+  const dateValueB = parseDateFromMarkdownString(b);
   return dateValueA.getTime() - dateValueB.getTime();
 };
 
