@@ -56,7 +56,7 @@ const MainIndex = ({
 
   const sortedGroupedComics = useMemo(
     () => getSortedData(groupedComics, readingOrder),
-    [sorting, groupedComics]
+    [groupedComics]
   );
 
   // // Separate useMemo so we don't have to redo sorting function if only direction changes

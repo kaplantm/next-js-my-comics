@@ -1,5 +1,5 @@
 ---
-title: "Cataclysm, Part Four: Hour of the Quake"
+title: "Part 4: Hour of the Quake"
 start: "April, 1998"
 end: null
 issueNumber: 40
