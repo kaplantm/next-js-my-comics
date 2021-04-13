@@ -27,7 +27,7 @@ const MasonryLayout = ({
   const [numItemsToDisplay, setNumItemsToDisplay] = useState(pageSize);
   const showShowMore = numItemsToDisplay < children.length;
   const showMoreItem = (
-    <div className={classes.showMoreButtonContainer}>
+    <div className={classes.showMoreButtonContainer} key="showMoreItem">
       <Button
         variant="contained"
         color="default"
@@ -38,10 +38,7 @@ const MasonryLayout = ({
       </Button>
     </div>
   );
-  const itemsToDisplay = [
-    ...children.slice(0, numItemsToDisplay),
-    // ...(showShowMore ? [showMoreItem] : []),
-  ];
+  const itemsToDisplay = children.slice(0, numItemsToDisplay);
 
   function onShowMore() {
     setNumItemsToDisplay((prev) => prev + pageSize);

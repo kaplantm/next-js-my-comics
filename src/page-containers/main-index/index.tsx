@@ -55,7 +55,7 @@ const MainIndex = ({
   const groupedComics = comicGroupings[sorting];
 
   const sortedGroupedComics = useMemo(
-    () => getSortedData(groupedComics, readingOrder, sorting),
+    () => getSortedData(groupedComics, readingOrder),
     [sorting, groupedComics]
   );
 
