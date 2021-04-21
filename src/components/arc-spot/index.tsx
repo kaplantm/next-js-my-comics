@@ -1,7 +1,6 @@
-import { stringToHex } from "@lib/utils/string-utils";
-import { Box, Tooltip } from "@material-ui/core";
-import { iceBlue, softBlue } from "src/theme/colors";
-import { darken } from "@material-ui/core/styles/colorManipulator";
+import { stringToHSLAColor } from "@lib/utils/string-utils";
+import { Box } from "@material-ui/core";
+import { iceBlue, softBlue, transparentBlackpt25 } from "src/theme/colors";
 import { memo } from "react";
 
 const ArcSpotToolTip = ({
@@ -11,22 +10,20 @@ const ArcSpotToolTip = ({
   tooltipText: string;
   colorString?: string;
 }) => {
-  const color = colorString ? stringToHex(colorString) : iceBlue;
+  const color = colorString ? stringToHSLAColor(colorString, 0.25) : iceBlue;
 
   const spot = (
     <Box
       borderRadius="1rem"
-      width="1rem"
-      height="1rem"
       bgcolor={color}
-      border={`1px solid ${color ? darken(color, 0.25) : softBlue}`}
-      mr={1}
-      ml={1}
-    />
+      border={`1px solid ${transparentBlackpt25}`}
+      mr={2}
+      pl={2}
+      pr={2}
+    >
+      {tooltipText}
+    </Box>
   );
-  if (tooltipText) {
-    return <Tooltip title={tooltipText}>{spot}</Tooltip>;
-  }
   return spot;
 };
 

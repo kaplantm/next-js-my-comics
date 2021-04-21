@@ -22,5 +22,6 @@ export const lightYellow = "hsla(44, 94%, 73%, 1)";
 export const yellow = "hsla(50, 100%, 60%, 1)";
 export const orange = "hsla(17, 88%, 60%, 1)";
 export const transparentBlack = "hsla(0, 0%, 0%, .75)";
+export const transparentBlackpt25 = "hsla(0, 0%, 0%, .25)";
 
 // Resource: https://hslpicker.com

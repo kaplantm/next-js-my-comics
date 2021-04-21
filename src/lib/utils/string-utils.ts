@@ -15,7 +15,7 @@ function hashCode(str: string) {
   return hash;
 }
 
-export function stringToHex(str: string) {
+export function stringToHSLAColor(str: string, alpha?: number) {
   if (!str) {
     return null;
   }
@@ -31,11 +31,12 @@ export function stringToHex(str: string) {
     { h: 0, s: 0, l: 0 }
   );
   const a = str.charCodeAt(Math.ceil(str.length / 2)) / 100;
-  return `hsla(${h % 300},${Math.max(20, s / 2)}%,${l % 90}%,${a + 0.2})`;
+  return `hsla(${h % 300},${Math.max(20, s / 2)}%,${l % 90}%,${
+    alpha || a + 0.2
+  })`;
 }
 
 const monthYearRegex = /([A-z]*, \d\d\d\d)$/i;
-const yearRegex = /(\d\d\d\d)$/i;
 
 enum monthsEnum {
   january = 0,
