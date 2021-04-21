@@ -10,7 +10,7 @@ import { reactsPage } from "@lib/constants";
 const PanelsCategoryPage = (props) => (
   <DebugAddImages
     {...props}
-    maxDimension={props.category === reactsPage ? 100 : null}
+    maxDimension={props.params.category === reactsPage ? 150 : null}
   />
 );
 

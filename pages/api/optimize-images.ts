@@ -34,7 +34,6 @@ export default async function handler(req, res) {
     req.multerDestination = `${inputOutputDir}/${time}`;
     ensureDirectoryExistence(`${req.multerDestination}/newFile.png`);
     await runMiddleware(req, res, multerInstance.array("images", 30));
-
     const optimizedResult = await optimize(
       `/${req.multerDestination}`,
       parseInt(req.body?.maxDimension) || 1500,

@@ -1,6 +1,7 @@
 import sharp from "sharp";
 import { resolve } from "path";
 import { promises } from "fs";
+import { sleep } from "..";
 const { readdir, stat, readFile, rename } = promises;
 
 const defaultMaxDimension = 1500;
@@ -40,16 +41,17 @@ async function renameFilesToIncludeDimensions(filePaths) {
     filePaths.map(async (filePath) => {
       const splitName = filePath.split(".");
       const fileType = splitName[splitName.length - 1];
-      const withoutFileType = splitName.slice(0, -1).join("");
+      let withoutFileType = splitName.slice(0, -1).join("");
 
       const fileNameEndsWithDimensions = fileNameEndsWithDimensionsRegex.test(
         withoutFileType
       );
       if (fileNameEndsWithDimensions) {
-        return filePath;
+        withoutFileType = withoutFileType.split("_").slice(0, -1);
       }
       const image = sharp(filePath);
       const { width, height } = await image.metadata();
+      console.log({ width, height, filePath });
       const newFilePath = `${withoutFileType}_${width}x${height}.${fileType}`;
 
       await rename(filePath, newFilePath);
@@ -125,7 +127,6 @@ async function optimizeFiles(
         const newDimensions = getNewWidthHeight(width, height, maxDimension);
         const { size } = await stat(filePath);
 
-        console.log({ newDimensions, width, height });
         let quality = size > maxSize ? 75 : 90;
         let optimizationDone = false;
         while (!optimizationDone) {
@@ -163,15 +164,16 @@ async function optimizeFiles(
 
 export async function optimize(folder, maxDimension, maxSize) {
   const filePaths = await getImageFilePaths(`${cwd}${folder}`);
-  const newFilePaths = await renameFilesToIncludeDimensions(filePaths);
 
   const filePathsToOptimize = await getFilesFailingOptimizationCheck(
-    newFilePaths,
+    filePaths,
     maxDimension,
     maxSize
   );
 
   if (!filePathsToOptimize.length) {
+    const newFilePaths = await renameFilesToIncludeDimensions(filePaths);
+    console.log("here1");
     return {
       filePaths: newFilePaths.map(removeLocalPublicPath),
       bytesSaved: 0,
@@ -179,15 +181,18 @@ export async function optimize(folder, maxDimension, maxSize) {
   }
 
   const { optimizedFiles, notOptimizedFiles, bytesSaved } = await optimizeFiles(
-    newFilePaths,
+    filePaths,
     maxDimension,
     maxSize
   );
+  sharp.cache(false); // disable sharp cache so the rename function gets updated dimensions metadata
+  const newFilePaths = await renameFilesToIncludeDimensions([
+    ...optimizedFiles,
+    ...notOptimizedFiles,
+  ]);
 
   return {
-    filePaths: [...optimizedFiles, ...notOptimizedFiles].map(
-      removeLocalPublicPath
-    ),
+    filePaths: newFilePaths.map(removeLocalPublicPath),
     bytesSaved,
   };
 }
