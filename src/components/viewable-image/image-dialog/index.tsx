@@ -5,16 +5,22 @@ import useStyles from "./use-styles";
 
 // TODO: types
 function ImageDialog(props) {
-  const classes = useStyles();
   const { onClose, src, open, rawImageHeight, rawImageWidth } = props;
+  const classes = useStyles({ rawImageHeight, rawImageWidth });
   const [fullsize, setFullsize] = useState(false);
   const [canZoom, setCanZoom] = useState(false);
 
   useEffect(() => {
+    if (!open) {
+      setFullsize(false);
+    }
+  }, [open]);
+
+  useEffect(() => {
     if (rawImageHeight && rawImageWidth) {
       if (
-        window.innerHeight * 0.9 < rawImageHeight ||
-        window.innerWidth < rawImageWidth
+        window.innerHeight < rawImageHeight - 50 ||
+        window.innerWidth < rawImageWidth - 50
       ) {
         setCanZoom(true);
       }
