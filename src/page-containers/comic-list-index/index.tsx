@@ -50,16 +50,18 @@ function ComicListIndex({
         <List>
           {listData.map(({ link, comic }, index) => (
             <ListItem key={link.pathname}>
-              <ListItemIcon>
-                <ArcSpot
-                  tooltipText={
-                    skipArcColorTooltip
-                      ? null
-                      : comic.frontMatter.arc || "No Arc / Unknown"
-                  }
-                  colorString={comic.frontMatter.arc}
-                />
-              </ListItemIcon>
+              {!skipArcColorTooltip && (
+                <ListItemIcon>
+                  <ArcSpot
+                    tooltipText={
+                      skipArcColorTooltip
+                        ? null
+                        : comic.frontMatter.arc || "No Arc / Unknown"
+                    }
+                    colorString={comic.frontMatter.arc}
+                  />
+                </ListItemIcon>
+              )}
               <Box display="flex" alignItems="center">
                 <ListItemText>
                   <AppLink nextProps={{ href: link.pathname }}>
