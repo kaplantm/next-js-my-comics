@@ -1,5 +1,5 @@
 ---
-title: "Cataclysm, Part Seven: Tribunal"
+title: "Part 7: Tribunal"
 start: "April, 1998"
 end: null
 issueNumber: 52

@@ -33,3 +33,34 @@ export function stringToHex(str: string) {
   const a = str.charCodeAt(Math.ceil(str.length / 2)) / 100;
   return `hsla(${h % 300},${Math.max(20, s / 2)}%,${l % 90}%,${a + 0.2})`;
 }
+
+const monthYearRegex = /([A-z]*, \d\d\d\d)$/i;
+const yearRegex = /(\d\d\d\d)$/i;
+
+enum monthsEnum {
+  january = 0,
+  feburary = 0,
+  march = 0,
+  april = 0,
+  may = 0,
+  june = 0,
+  july = 0,
+  august = 0,
+  september = 0,
+  october = 0,
+  november = 0,
+  december = 0,
+}
+
+// Add ability to parse dates in "May, 1999" format since thats the format we most commonly get from the dc wiki
+export const parseDateFromMarkdownString = (dateString: string): Date => {
+  let date = new Date(dateString);
+  if (date.getTime()) {
+    return date;
+  }
+  if (monthYearRegex.test(dateString)) {
+    const [month, year] = dateString.split(", ");
+    date = new Date(parseInt(year), monthsEnum[month.toLowerCase()], 1);
+  }
+  return date;
+};

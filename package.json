@@ -26,7 +26,6 @@
     "@types/enzyme": "^3.10.8",
     "axios": "^0.21.1",
     "clsx": "^1.1.1",
-    "date-fns": "^2.19.0",
     "eslint": "^7.21.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-import-resolver-alias": "^1.1.2",

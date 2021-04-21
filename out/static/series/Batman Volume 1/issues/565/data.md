@@ -1,5 +1,5 @@
 ---
-title: "Mosaic, Part One"
+title: "Mosaic, Part 1"
 start: "May, 1999"
 end: null
 issueNumber: 565

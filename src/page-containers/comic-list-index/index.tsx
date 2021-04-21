@@ -1,22 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import {
   Typography,
   Grid,
   Collapse,
   IconButton,
   Box,
-  Tooltip,
   List,
   ListItemText,
   ListItemIcon,
   ListItem,
 } from "@material-ui/core";
 import useStyles from "./use-styles";
-import { getArcSpot, getInitialState } from "./helpers";
+import { getInitialState } from "./helpers";
 import AppLink from "@components/app-link";
 import { KeyboardArrowDown, KeyboardArrowLeft } from "@material-ui/icons";
 import ReactMarkdown from "react-markdown";
 import { ComicWithMetadata } from "@lib/types";
+import ArcSpot from "@components/arc-spot";
 
 type ComicListIndexProps = {
   headerLabel: string;
@@ -51,13 +51,14 @@ function ComicListIndex({
           {listData.map(({ link, comic }, index) => (
             <ListItem key={link.pathname}>
               <ListItemIcon>
-                {skipArcColorTooltip ? (
-                  getArcSpot()
-                ) : (
-                  <Tooltip title={comic.frontMatter.arc || "No Arc / Unknown"}>
-                    {getArcSpot(comic.frontMatter.arc)}
-                  </Tooltip>
-                )}
+                <ArcSpot
+                  tooltipText={
+                    skipArcColorTooltip
+                      ? null
+                      : comic.frontMatter.arc || "No Arc / Unknown"
+                  }
+                  colorString={comic.frontMatter.arc}
+                />
               </ListItemIcon>
               <Box display="flex" alignItems="center">
                 <ListItemText>
@@ -88,3 +89,5 @@ function ComicListIndex({
 }
 
 export default ComicListIndex;
+
+export const MemoizedListIndex = memo(ComicListIndex);
