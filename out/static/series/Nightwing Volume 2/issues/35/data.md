@@ -1,5 +1,5 @@
 ---
-title: "The Belly of the Beast"
+title: "Escape to Blackgate Part One: The Belly of the Beast"
 start: "September, 1999"
 end: null
 issue: 35
