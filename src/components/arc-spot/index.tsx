@@ -1,6 +1,6 @@
 import { stringToHSLAColor } from "@lib/utils/string-utils";
 import { Box } from "@material-ui/core";
-import { iceBlue, softBlue, transparentBlackpt25 } from "src/theme/colors";
+import { iceBlue, transparentBlackpt25 } from "src/theme/colors";
 import { memo } from "react";
 
 const ArcSpotToolTip = ({
@@ -17,7 +17,6 @@ const ArcSpotToolTip = ({
       borderRadius="1rem"
       bgcolor={color}
       border={`1px solid ${transparentBlackpt25}`}
-      mr={2}
       pl={2}
       pr={2}
     >

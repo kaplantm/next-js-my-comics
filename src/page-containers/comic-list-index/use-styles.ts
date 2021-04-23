@@ -1,6 +1,20 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
+  arcSpotWrapper: {
+    marginTop: 4,
+    marginRight: theme.spacing(2),
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: "30%",
+    },
+  },
+  listItem: {
+    marginTop: theme.spacing(1),
+    marginBottom: theme.spacing(1),
+  },
+  expandButton: {
+    margin: theme.spacing(-2, 1),
+  },
   coverImageContainer: {
     "& li": {
       paddingTop: theme.spacing(0),

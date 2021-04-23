@@ -49,38 +49,54 @@ function ComicListIndex({
         {headerLabel && <Typography variant="h1">{headerLabel}</Typography>}
         <List>
           {listData.map(({ link, comic }, index) => (
-            <ListItem key={link.pathname}>
-              {!skipArcColorTooltip && (
-                <ListItemIcon>
-                  <ArcSpot
-                    tooltipText={
-                      skipArcColorTooltip
-                        ? null
-                        : comic.frontMatter.arc || "No Arc / Unknown"
-                    }
-                    colorString={comic.frontMatter.arc}
-                  />
-                </ListItemIcon>
-              )}
-              <Box display="flex" alignItems="center">
-                <ListItemText>
-                  <AppLink nextProps={{ href: link.pathname }}>
-                    {link.name}
-                  </AppLink>
-                  <IconButton onClick={() => toggleExpanded(index)}>
-                    {expandedState[index] ? (
-                      <KeyboardArrowDown />
-                    ) : (
-                      <KeyboardArrowLeft />
-                    )}
-                  </IconButton>
-
-                  <Collapse in={expandedState[index]}>
-                    {comic?.description && (
+            <ListItem
+              className={classes.listItem}
+              disableGutters
+              key={link.pathname}
+            >
+              <Box
+                display="flex"
+                alignItems="flex-start"
+                flexDirection="column"
+              >
+                <Box display="flex" alignItems="center">
+                  {!skipArcColorTooltip && (
+                    <ListItemIcon className={classes.arcSpotWrapper}>
+                      <ArcSpot
+                        tooltipText={
+                          skipArcColorTooltip
+                            ? null
+                            : comic.frontMatter.arc || "No Arc / Unknown"
+                        }
+                        colorString={comic.frontMatter.arc}
+                      />
+                    </ListItemIcon>
+                  )}
+                  <ListItemText>
+                    <Box display="flex" alignItems="center">
+                      <AppLink nextProps={{ href: link.pathname }}>
+                        {link.name}
+                      </AppLink>
+                      <IconButton
+                        className={classes.expandButton}
+                        onClick={() => toggleExpanded(index)}
+                      >
+                        {expandedState[index] ? (
+                          <KeyboardArrowDown />
+                        ) : (
+                          <KeyboardArrowLeft />
+                        )}
+                      </IconButton>
+                    </Box>
+                  </ListItemText>
+                </Box>
+                <Collapse in={expandedState[index]}>
+                  {comic?.description && (
+                    <Box mt={2} mb={1} ml={3}>
                       <ReactMarkdown>{comic.description}</ReactMarkdown>
-                    )}
-                  </Collapse>
-                </ListItemText>
+                    </Box>
+                  )}
+                </Collapse>
               </Box>
             </ListItem>
           ))}
