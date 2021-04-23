@@ -35,6 +35,7 @@ function ImageDialog(props) {
       onClose={onClose}
       open={open}
       classes={{ container: classes.dialogContainer }}
+      maxWidth={false}
     >
       <img
         src={src}
