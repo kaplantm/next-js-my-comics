@@ -41,7 +41,7 @@ export default async function handler(req, res) {
     );
     return res.status(200).json(optimizedResult);
   } catch (e) {
-    console.log(e);
+    console.log("optimize-images", e);
     return res.status(500).json("Failed to optimize images");
   }
 }

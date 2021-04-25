@@ -41,12 +41,16 @@ const readFile = async (filePath: string) =>
   promises.readFile(filePath, "utf8");
 
 export const getImagePaths = async (directory: string): Promise<string[]> => {
+  const fileName = `${directory}/images.json`;
+  if (!existsSync(fileName)) {
+    return [];
+  }
   try {
-    const images = JSON.parse(await readFile(`${directory}/images.json`));
+    const images = JSON.parse(await readFile(fileName));
     const img = images.map((image) => `${process.env.S3_URL}/${image}`);
     return img;
   } catch (e) {
-    console.log(e);
+    console.log("getImagePaths", e);
     return [];
   }
 };

@@ -13,10 +13,16 @@ import {
 import useStyles from "./use-styles";
 import { getInitialState } from "./helpers";
 import AppLink from "@components/app-link";
-import { KeyboardArrowDown, KeyboardArrowLeft } from "@material-ui/icons";
+import {
+  Edit,
+  Image,
+  KeyboardArrowDown,
+  KeyboardArrowLeft,
+} from "@material-ui/icons";
 import ReactMarkdown from "react-markdown";
 import { ComicWithMetadata } from "@lib/types";
 import ArcSpot from "@components/arc-spot";
+import { isDevMode } from "@lib/utils";
 
 type ComicListIndexProps = {
   headerLabel: string;
@@ -77,6 +83,7 @@ function ComicListIndex({
                       <AppLink nextProps={{ href: link.pathname }}>
                         {link.name}
                       </AppLink>
+
                       <IconButton
                         className={classes.expandButton}
                         onClick={() => toggleExpanded(index)}
@@ -87,6 +94,28 @@ function ComicListIndex({
                           <KeyboardArrowLeft />
                         )}
                       </IconButton>
+                      {isDevMode && (
+                        <Box display={{ xs: "none", sm: "none", md: "block" }}>
+                          <AppLink
+                            nextProps={{ href: `${link.pathname}/debug/edit` }}
+                            isExternal
+                          >
+                            <IconButton component="div">
+                              <Edit />
+                            </IconButton>
+                          </AppLink>
+                          <AppLink
+                            nextProps={{
+                              href: `${link.pathname}/debug/edit/images`,
+                            }}
+                            isExternal
+                          >
+                            <IconButton component="div">
+                              <Image />
+                            </IconButton>
+                          </AppLink>
+                        </Box>
+                      )}
                     </Box>
                   </ListItemText>
                 </Box>

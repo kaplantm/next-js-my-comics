@@ -75,7 +75,7 @@ export default async function handler(req, res) {
       await promises.writeFile(fileLocation, markdownData);
       return res.status(200).json("Comic Created");
     } catch (e) {
-      console.log(e);
+      console.log("create-comic", e);
       return res.status(500).json("Something went wrong. See server console.");
     }
   } else {

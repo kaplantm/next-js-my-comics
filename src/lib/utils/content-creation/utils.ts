@@ -51,7 +51,6 @@ async function renameFilesToIncludeDimensions(filePaths) {
       }
       const image = sharp(filePath);
       const { width, height } = await image.metadata();
-      console.log({ width, height, filePath });
       const newFilePath = `${withoutFileType}_${width}x${height}.${fileType}`;
 
       await rename(filePath, newFilePath);
@@ -150,7 +149,7 @@ async function optimizeFiles(
         bytesSaved += size - newSize;
         optimizedFiles.push(filePath);
       } catch (e) {
-        console.log("e", e);
+        console.log("optimizeFiles", e);
         notOptimizedFiles.push(filePath);
       }
     })
@@ -173,7 +172,6 @@ export async function optimize(folder, maxDimension, maxSize) {
 
   if (!filePathsToOptimize.length) {
     const newFilePaths = await renameFilesToIncludeDimensions(filePaths);
-    console.log("here1");
     return {
       filePaths: newFilePaths.map(removeLocalPublicPath),
       bytesSaved: 0,

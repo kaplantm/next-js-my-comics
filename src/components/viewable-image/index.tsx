@@ -56,7 +56,7 @@ function ViewableImage({
         <img
           ref={imageRef}
           // Use this for testing image loading styles
-          // src="http://slowwly.robertomurray.co.uk/delay/2000/url/https://picsum.photos/200/500"
+          // src=" https://deelay.me/5000/https://picsum.photos/200/500"
           src={src}
           {...rest}
           onClick={handleOpenModal}
