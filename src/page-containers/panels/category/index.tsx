@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Typography, Grid } from "@material-ui/core";
-import ViewableImage from "../../../components/viewable-image";
-import MasonryLayout from "@components/masonry-layout";
-import AppTextField from "@components/form-inputs/app-text-field";
-import useDebounce from "@lib/hooks/use-debounce";
+import React, { useState, useEffect } from 'react';
+import { Typography, Grid } from '@material-ui/core';
+import MasonryLayout from '@components/masonry-layout';
+import AppTextField from '@components/form-inputs/app-text-field';
+import useDebounce from '@lib/hooks/use-debounce';
 
 type PanelsProps = {
   params: { category: string };
@@ -13,21 +12,21 @@ type PanelsProps = {
 
 function Panels({ params, imagePaths, filterable }: PanelsProps) {
   const [currentImagePaths, setCurrentImagePaths] = useState(imagePaths);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const debouncedSearchTerm = useDebounce(searchTerm, 250);
 
   useEffect(() => {
     setCurrentImagePaths(
-      imagePaths.filter((path) => {
+      imagePaths.filter(path => {
         const fileName = path
-          .split("/")
+          .split('/')
           .slice(-1)[0]
-          .split(".")[0]
+          .split('.')[0]
           .toLowerCase();
         return fileName.includes(debouncedSearchTerm.toLowerCase());
       })
     );
-  }, [debouncedSearchTerm]);
+  }, [debouncedSearchTerm, imagePaths]);
 
   function onFilterUpdate({ target }) {
     const newFilter = target.value;

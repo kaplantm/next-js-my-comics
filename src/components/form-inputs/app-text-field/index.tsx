@@ -1,7 +1,7 @@
 import React from "react";
 import { TextField, TextFieldProps } from "@material-ui/core";
-import useStyles from "./use-styles";
 import clsx from "clsx";
+import useStyles from "./use-styles";
 
 function AppTextField(props: TextFieldProps) {
   const classes = useStyles();

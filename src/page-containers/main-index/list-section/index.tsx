@@ -14,7 +14,7 @@ const ListSection = ({
   if (!groupData.issues.length) {
     return null;
   }
-  const listData = Object.values(groupData.issues).map((item) => ({
+  const listData = Object.values(groupData.issues).map(item => ({
     ...item,
     link: {
       pathname: item.link.pathname,

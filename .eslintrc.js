@@ -33,6 +33,8 @@ module.exports = {
   rules: {
     'react-hooks/exhaustive-deps': 'warn',
     'max-len': ['warn', 130],
+    radix: 0,
+    'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
     'import/no-named-as-default': 'off',
     'jest/no-focused-tests': 'error',
     'react/jsx-props-no-spreading': 'off',

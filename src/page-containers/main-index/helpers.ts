@@ -23,7 +23,7 @@ export enum sortingDirectionEnum {
   DESC = "desc",
 }
 
-export const getSortByReadingOrder = (readingOrder) => (
+export const getSortByReadingOrder = readingOrder => (
   a: ComicWithMetadata,
   b: ComicWithMetadata
 ) => {
@@ -102,7 +102,7 @@ export const getDirectionallySortedData = (
     // Exported a separate map for key order here since objects are not inherently ordered
     return {
       directionalSortedGroupedComics: comicGroups,
-      groupOrder: keys.filter((key) => comicGroups[key].issues.length),
+      groupOrder: keys.filter(key => comicGroups[key].issues.length),
     };
   }
   const reverseKeys = keys.reverse();
@@ -150,7 +150,7 @@ const groupIssuesByReadingOrder = (
       if (readingOrder.indexOf(readingOrderPath) !== -1) {
         acc["My Reading Order"].issues.push(val);
       } else {
-        acc["Untracked"].issues.push(val);
+        acc.Untracked.issues.push(val);
       }
       return acc;
     },
@@ -165,8 +165,7 @@ export const getGroupedComics = (
   readingOrder: string[]
 ): {
   [key in sortingEnum]: GroupedComicsType;
-} => {
-  return {
+} => ({
     [sortingEnum.YEAR]: getSortedData(
       groupIssuesBy(allIssues, "start"),
       readingOrder
@@ -179,5 +178,4 @@ export const getGroupedComics = (
       groupIssuesByReadingOrder(allIssues, readingOrder),
       readingOrder
     ),
-  };
-};
+  });

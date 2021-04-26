@@ -1,13 +1,12 @@
-import React, { useCallback, useState } from "react";
-import { Grid, Typography } from "@material-ui/core";
-import { ComicPageParams, ComicWithMetadata } from "@lib/types";
-import DebugOnlyWrapper from "@components/debug-only-wrapper";
-import ViewableImage from "@components/viewable-image";
-import MasonryLayout from "@components/masonry-layout";
-import MyDropzone from "@components/my-dropzone";
-import LoaderButton from "@components/loader-button";
-import { appAxios } from "@lib/utils";
-import useStyles from "./use-styles";
+import React, { useCallback, useState } from 'react';
+import { Grid, Typography } from '@material-ui/core';
+import { ComicPageParams, ComicWithMetadata } from '@lib/types';
+import DebugOnlyWrapper from '@components/debug-only-wrapper';
+import MasonryLayout from '@components/masonry-layout';
+import MyDropzone from '@components/my-dropzone';
+import LoaderButton from '@components/loader-button';
+import { appAxios } from '@lib/utils';
+import useStyles from './use-styles';
 
 const DebugAddImages = ({
   issue,
@@ -41,12 +40,12 @@ const DebugAddImages = ({
     ...(coverPath ? [coverPath] : []),
   ]);
 
-  const onDrop = useCallback((acceptedFiles) => {
+  const onDrop = useCallback(acceptedFiles => {
     const newFileData = acceptedFiles.reduce((acc, val) => {
       acc[val.name] = val;
       return acc;
     }, {});
-    setFilesToOptimizeData((prev) => ({ ...prev, ...newFileData }));
+    setFilesToOptimizeData(prev => ({ ...prev, ...newFileData }));
     // Do something with the files
   }, []);
 
@@ -55,22 +54,22 @@ const DebugAddImages = ({
     setSubmissionInProgress(true);
 
     const formData = new FormData();
-    filesToOptimize.forEach((file) => formData.append("images", file as any));
-    formData.append("maxDimension", `${maxDimension}`);
+    filesToOptimize.forEach(file => formData.append('images', file as any));
+    formData.append('maxDimension', `${maxDimension}`);
 
     const result: any = await appAxios({
-      method: "post",
-      url: "/api/optimize-images",
+      method: 'post',
+      url: '/api/optimize-images',
       data: formData,
-      headers: { "content-type": "multipart/form-data" },
+      headers: { 'content-type': 'multipart/form-data' },
     });
 
     // TODO: types
     if (result?.error || !result?.response?.data) {
-      setOptimizeFormError("Something went wrong");
+      setOptimizeFormError('Something went wrong');
     } else if (result.response.data.filePaths?.length) {
       setBytesSaved(result.response.data.bytesSaved);
-      setOptimizedFilePaths((prev) => [
+      setOptimizedFilePaths(prev => [
         ...prev,
         ...result.response.data.filePaths,
       ]);
@@ -86,13 +85,13 @@ const DebugAddImages = ({
     const categoryPath = isCategory
       ? `/static/panels/${params.category}`
       : `/static/series/${params.series}`;
-    const jsonPath = !!issue
+    const jsonPath = issue
       ? `${categoryPath}/issues/${params.issueNumber}/images.json`
       : `${categoryPath}/images.json`;
 
     const result: any = await appAxios({
-      method: "post",
-      url: "/api/upload-images",
+      method: 'post',
+      url: '/api/upload-images',
       // data: {paths: optimizedFilePaths, folder: params.series},
       data: {
         paths: optimizedFilePaths,
@@ -110,13 +109,10 @@ const DebugAddImages = ({
       result.response.data.filePaths?.length !== optimizedFilePaths.length
     ) {
       setUploadFormError(
-        "Something went wrong. Refresh the page for up to date data."
+        'Something went wrong. Refresh the page for up to date data.'
       );
     } else {
-      setSavedImagePaths((prev) => [
-        ...result.response.data.filePaths,
-        ...prev,
-      ]);
+      setSavedImagePaths(prev => [...result.response.data.filePaths, ...prev]);
       setUploadFormError(null);
       setOptimizedFilePaths([]);
     }

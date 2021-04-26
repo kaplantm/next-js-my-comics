@@ -6,7 +6,7 @@ type styleConfigType = {
   rawImageHeight: number;
 };
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   dialogContainer: {
     backgroundColor: transparentBlack,
   },

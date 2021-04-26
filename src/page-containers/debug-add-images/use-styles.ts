@@ -1,13 +1,8 @@
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from '@material-ui/core/styles';
 
-type styleConfigType = {
-  coverWidth: number;
-  coverHeight: number;
-};
-
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   uploadForm: {
-    width: "100%",
+    width: '100%',
   },
 }));
 

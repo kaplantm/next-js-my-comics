@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { black, yellow } from "../../theme/colors";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   title: {
     fontWeight: 600,
     letterSpacing: ".1rem",

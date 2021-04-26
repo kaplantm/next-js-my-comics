@@ -4,7 +4,7 @@ import { Button, ButtonProps, CircularProgress } from "@material-ui/core";
 import clsx from "clsx";
 import { green } from "@material-ui/core/colors";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
     alignItems: "center",

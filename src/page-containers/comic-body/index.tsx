@@ -1,12 +1,12 @@
-import React from "react";
-import { Typography, Grid, Divider, useMediaQuery } from "@material-ui/core";
-import ReactMarkdown from "react-markdown";
-import useStyles from "./use-styles";
-import ViewableImage from "../../components/viewable-image";
-import { getDisplaySubtitle, getDisplayTitle } from "./helpers";
-import { ComicPageParams, ComicWithMetadata } from "@lib/types";
-import MasonryLayout from "@components/masonry-layout";
-import { getScaledImageWidthHeight } from "@lib/utils/image-utils";
+import React from 'react';
+import { Typography, Grid } from '@material-ui/core';
+import ReactMarkdown from 'react-markdown';
+import { ComicPageParams, ComicWithMetadata } from '@lib/types';
+import MasonryLayout from '@components/masonry-layout';
+import { getScaledImageWidthHeight } from '@lib/utils/image-utils';
+import useStyles from './use-styles';
+import ViewableImage from '../../components/viewable-image';
+import { getDisplaySubtitle, getDisplayTitle } from './helpers';
 
 type ComicBodyProps = {
   params: ComicPageParams;

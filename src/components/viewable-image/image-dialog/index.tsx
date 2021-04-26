@@ -46,7 +46,7 @@ function ImageDialog(props) {
   }, [rawImageHeight, rawImageWidth]);
 
   function toggleFullsize() {
-    setFullsize((prev) => !prev);
+    setFullsize(prev => !prev);
   }
   return (
     <Dialog

@@ -5,7 +5,7 @@ type styleConfigType = {
   coverHeight: number;
 };
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   coverImageContainer: {
     [theme.breakpoints.down("sm")]: {
       display: "flex",

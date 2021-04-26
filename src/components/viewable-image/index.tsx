@@ -1,9 +1,9 @@
-import { getWidthHeightFromImagePath } from "@lib/utils/image-utils";
-import { Paper } from "@material-ui/core";
-import clsx from "clsx";
-import React, { useState, useRef, useEffect } from "react";
-import ImageDialog from "./image-dialog";
-import useStyles from "./use-styles";
+import { getWidthHeightFromImagePath } from '@lib/utils/image-utils';
+import { Paper } from '@material-ui/core';
+import clsx from 'clsx';
+import React, { useState, useRef, useEffect } from 'react';
+import ImageDialog from './image-dialog';
+import useStyles from './use-styles';
 
 function ViewableImage({
   src,
@@ -16,10 +16,10 @@ function ViewableImage({
   React.ImgHTMLAttributes<HTMLImageElement>,
   HTMLImageElement
 > & {
-  open: boolean;
-  setOpenIndex: (index: number) => void;
-  index: number;
-  changeOpenIndex: (delta: number) => void;
+  open?: boolean;
+  setOpenIndex?: (index: number) => void;
+  index?: number;
+  changeOpenIndex?: (delta: number) => void;
 }) {
   const classes = useStyles();
   const [openModal, setOpenModal] = useState(false);
@@ -63,11 +63,11 @@ function ViewableImage({
       className={clsx(
         classes.viewableImageWrapper,
         !loaded && classes.loading,
-        "viewableImageWrapper"
+        'viewableImageWrapper'
       )}
     >
       <Paper
-        className={clsx(classes.paper, "viewableImagePaper")}
+        className={clsx(classes.paper, 'viewableImagePaper')}
         elevation={2}
       >
         <img
@@ -79,7 +79,7 @@ function ViewableImage({
           onClick={handleOpenModal}
           role="button"
           onLoad={onLoad}
-          className={clsx(classes.image, "viewableImage")}
+          className={clsx(classes.image, 'viewableImage')}
         />
       </Paper>
 

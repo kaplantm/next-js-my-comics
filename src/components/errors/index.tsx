@@ -11,7 +11,7 @@ const statusCodes: { [key: string]: string } = {
   500: "Internal Server Error",
 };
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   wrapper: {
     height: "100vh",
     textAlign: "center",

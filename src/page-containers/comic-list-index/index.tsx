@@ -10,13 +10,13 @@ import {
   ListItemIcon,
   ListItem,
 } from "@material-ui/core";
-import useStyles from "./use-styles";
-import { getInitialState } from "./helpers";
 import AppLink from "@components/app-link";
 import { KeyboardArrowDown, KeyboardArrowLeft } from "@material-ui/icons";
 import ReactMarkdown from "react-markdown";
 import { ComicWithMetadata } from "@lib/types";
 import ArcSpot from "@components/arc-spot";
+import { getInitialState } from "./helpers";
+import useStyles from "./use-styles";
 
 type ComicListIndexProps = {
   headerLabel: string;
@@ -36,7 +36,7 @@ function ComicListIndex({
   const classes = useStyles();
 
   function toggleExpanded(index: number) {
-    setExpandedState((prev) => {
+    setExpandedState(prev => {
       const clone = [...prev];
       clone[index] = !prev[index];
       return clone;

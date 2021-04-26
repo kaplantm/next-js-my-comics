@@ -84,7 +84,7 @@ export function useFormState<T>(
       opts?.errorValidatorsForFields &&
       opts?.errorValidatorsForFields[name]
     ) {
-      setFormFieldErrors((prev) => {
+      setFormFieldErrors(prev => {
         const newFormFieldErrors = { ...prev };
         newFormFieldErrors[name] = opts?.errorValidatorsForFields[name](
           value,
@@ -93,7 +93,7 @@ export function useFormState<T>(
         return newFormFieldErrors;
       });
     }
-    setFormFieldValues((prev) => {
+    setFormFieldValues(prev => {
       const newFormFieldValues = { ...prev };
       newFormFieldValues[name] = value;
       return newFormFieldValues;
@@ -103,7 +103,7 @@ export function useFormState<T>(
   function onFormFieldBlur(event: any) {
     const name = event.target.name as FormFieldKey<T>;
     if (!formFieldHasBlurred[name]) {
-      setFormFieldHasBlurred((prev) => ({ ...prev, [name]: true }));
+      setFormFieldHasBlurred(prev => ({ ...prev, [name]: true }));
     }
   }
 

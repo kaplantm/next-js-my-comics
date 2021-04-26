@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { iceBlue, softBlue } from "src/theme/colors";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   masonryResultContainer: {
     display: "flex",
     flex: 1,
