@@ -1,8 +1,8 @@
-import { Dialog, Typography } from "@material-ui/core";
-import clsx from "clsx";
-import { useEffect, useRef, useState } from "react";
-import { useSwipeable } from "react-swipeable";
-import useStyles from "./use-styles";
+import { Dialog, Typography } from '@material-ui/core';
+import clsx from 'clsx';
+import { useEffect, useRef, useState } from 'react';
+import { useSwipeable } from 'react-swipeable';
+import useStyles from './use-styles';
 
 // TODO: types
 function ImageDialog(props) {
@@ -20,10 +20,10 @@ function ImageDialog(props) {
   const handlers = changeOpenIndex
     ? useSwipeable({
         onSwipedLeft: () => {
-          changeOpenIndex(-1);
+          changeOpenIndex(1);
         },
         onSwipedRight: () => {
-          changeOpenIndex(1);
+          changeOpenIndex(-1);
         },
       })
     : {};
