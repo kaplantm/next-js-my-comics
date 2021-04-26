@@ -176,11 +176,7 @@ const DebugAddImages = ({
         <Grid item xs={8}>
           {!!optimizedFilePaths?.length && (
             <Grid item xs={12} container spacing={3}>
-              <MasonryLayout>
-                {optimizedFilePaths.map((url: string) => (
-                  <ViewableImage src={url} key={url} />
-                ))}
-              </MasonryLayout>
+              <MasonryLayout images={optimizedFilePaths} />
             </Grid>
           )}
         </Grid>
@@ -207,11 +203,7 @@ const DebugAddImages = ({
         {!!savedImagePaths?.length && (
           <Grid item xs={12}>
             <Grid item xs={12} container spacing={3}>
-              <MasonryLayout>
-                {savedImagePaths.map((url: string) => (
-                  <ViewableImage src={url} key={url} />
-                ))}
-              </MasonryLayout>
+              <MasonryLayout images={savedImagePaths} />
             </Grid>
           </Grid>
         )}

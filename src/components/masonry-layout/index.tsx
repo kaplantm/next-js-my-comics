@@ -1,5 +1,7 @@
+import ViewableImage from "@components/viewable-image";
+import useKeyPress from "@lib/hooks/use-key-press";
 import { Button, useMediaQuery } from "@material-ui/core";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useStyles from "./use-styles";
 
 const pageSize = 12;
@@ -12,20 +14,39 @@ const MasonryLayout = ({
   columns = 3,
   smallWidthColumns = 2,
   gap = 20,
-  children,
+  images,
 }: {
   columns?: number;
   smallWidthColumns?: number;
   gap?: number;
-  children: React.ReactNode[];
+  images: string[];
 }) => {
+  const {
+    ArrowRight: isRightArrowPressed,
+    ArrowLeft: isLeftArrowPressed,
+  } = useKeyPress(["ArrowRight", "ArrowLeft"]);
+  const [openIndex, setOpenIndex] = useState(null);
   const classes = useStyles();
   const columnWrapper = {};
   const result = [];
   const isSmallWindow = useMediaQuery("(max-width:600px)");
   const numColumns = isSmallWindow ? smallWidthColumns : columns;
   const [numItemsToDisplay, setNumItemsToDisplay] = useState(pageSize);
-  const showShowMore = numItemsToDisplay < children.length;
+  const showShowMore = numItemsToDisplay < images.length;
+
+  function safetlyChangeOpenIndex(delta: number) {
+    setOpenIndex((prev: number) =>
+      Math.min(numItemsToDisplay, Math.max(0, prev + delta))
+    );
+  }
+  useEffect(() => {
+    if (isLeftArrowPressed) {
+      safetlyChangeOpenIndex(-1);
+    } else if (isRightArrowPressed) {
+      safetlyChangeOpenIndex(1);
+    }
+  }, [isRightArrowPressed, isLeftArrowPressed]);
+
   const showMoreItem = (
     <div className={classes.showMoreButtonContainer} key="showMoreItem">
       <Button
@@ -38,7 +59,7 @@ const MasonryLayout = ({
       </Button>
     </div>
   );
-  const itemsToDisplay = children.slice(0, numItemsToDisplay);
+  const itemsToDisplay = images.slice(0, numItemsToDisplay);
 
   function onShowMore() {
     setNumItemsToDisplay((prev) => prev + pageSize);
@@ -52,13 +73,21 @@ const MasonryLayout = ({
   // divide children into columns
   for (let i = 0; i < itemsToDisplay.length; i++) {
     const columnIndex = i % numColumns;
+    const image = images[i];
     columnWrapper[`column${columnIndex}`].push(
       <div
         className={classes.imageMatte}
         style={{ marginBottom: `${gap}px` }}
         key={`column${columnIndex}${i}`}
       >
-        {itemsToDisplay[i]}
+        <ViewableImage
+          src={image}
+          key={image}
+          index={i}
+          open={openIndex === i}
+          setOpenIndex={setOpenIndex}
+          changeOpenIndex={safetlyChangeOpenIndex}
+        />
       </div>
     );
   }

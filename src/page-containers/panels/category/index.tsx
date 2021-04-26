@@ -54,12 +54,8 @@ function Panels({ params, imagePaths, filterable }: PanelsProps) {
 
       <Grid item xs={12}>
         {!!currentImagePaths?.length && (
-          <MasonryLayout>
-            {currentImagePaths.map((url: string) => (
-              <ViewableImage src={url} key={url} />
-            ))}
-          </MasonryLayout>
-        )}{" "}
+          <MasonryLayout images={currentImagePaths} />
+        )}
       </Grid>
     </Grid>
   );

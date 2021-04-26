@@ -73,11 +73,7 @@ function ComicBody({ params, issue, series, children }: ComicBodyProps) {
         <>
           <Grid item xs={12} className={classes.imagesContainer}>
             <Grid item xs={12} container spacing={3}>
-              <MasonryLayout>
-                {imagePaths.map((url: string) => (
-                  <ViewableImage src={url} key={url} />
-                ))}
-              </MasonryLayout>
+              <MasonryLayout images={imagePaths} />
             </Grid>
           </Grid>
         </>
