@@ -1,4 +1,4 @@
-import { createMuiTheme } from "@material-ui/core/styles";
+import { createMuiTheme } from '@material-ui/core/styles';
 import {
   white,
   cherryRed,
@@ -7,7 +7,7 @@ import {
   medBlue,
   iceBlue,
   yellow,
-} from "./colors";
+} from './colors';
 
 // Create a theme instance.
 const theme = createMuiTheme({
@@ -30,102 +30,102 @@ const theme = createMuiTheme({
     },
   },
   typography: {
-    fontFamily: ["Din", "Roboto", '"Helvetica Neue"', "sans-serif"].join(","),
+    fontFamily: ['Din', 'Roboto', '"Helvetica Neue"', 'sans-serif'].join(','),
   },
   overrides: {
     MuiTypography: {
       root: {
-        "&.uppercase": {
-          textTransform: "uppercase",
+        '&.uppercase': {
+          textTransform: 'uppercase',
         },
-        "&.capitalize": {
-          textTransform: "capitalize",
+        '&.capitalize': {
+          textTransform: 'capitalize',
         },
-        "&.italic": {
-          fontStyle: "italic",
+        '&.italic': {
+          fontStyle: 'italic',
         },
-        "&.light": {
+        '&.light': {
           fontWeight: 300,
         },
-        "&.normal": {
+        '&.normal': {
           fontWeight: 400,
         },
-        "&.demiBold": {
+        '&.demiBold': {
           fontWeight: 600,
         },
-        "&.bold": {
+        '&.bold': {
           fontWeight: 700,
         },
-        "&.extraBold": {
+        '&.extraBold': {
           fontWeight: 800,
         },
-        "&.remPt75": {
-          fontSize: ".75rem", // 12px text equivalent based on default base font size
+        '&.remPt75': {
+          fontSize: '.75rem', // 12px text equivalent based on default base font size
         },
-        "&.mtHalfEm": {
-          marginTop: ".5em",
+        '&.mtHalfEm': {
+          marginTop: '.5em',
         },
-        "&.mbQuarterRm": {
-          marginBottom: ".25em",
+        '&.mbQuarterRm': {
+          marginBottom: '.25em',
         },
       },
       h1: {
-        fontSize: "2rem",
-        fontWeight: "normal",
+        fontSize: '2rem',
+        fontWeight: 'normal',
       },
       h2: {
-        fontSize: "1.5rem",
-        fontWeight: "normal",
+        fontSize: '1.5rem',
+        fontWeight: 'normal',
       },
       h3: {
-        fontSize: "1.25rem",
-        fontWeight: "normal",
+        fontSize: '1.25rem',
+        fontWeight: 'normal',
       },
       h4: {
-        fontSize: "1.125rem",
-        fontWeight: "normal",
+        fontSize: '1.125rem',
+        fontWeight: 'normal',
       },
       h5: {
-        fontSize: "1rem",
-        fontWeight: "normal",
+        fontSize: '1rem',
+        fontWeight: 'normal',
       },
       h6: {
-        fontSize: ".75rem",
-        fontWeight: "normal",
+        fontSize: '.75rem',
+        fontWeight: 'normal',
       },
       body1: {
-        fontSize: "1rem", // 16px
-        fontWeight: "normal",
+        fontSize: '1rem', // 16px
+        fontWeight: 'normal',
       },
       body2: {
-        fontSize: ".875rem",
-        fontWeight: "normal",
+        fontSize: '.875rem',
+        fontWeight: 'normal',
       },
       caption: {
-        fontSize: ".75rem",
-        fontWeight: "normal",
+        fontSize: '.75rem',
+        fontWeight: 'normal',
       },
       subtitle2: {
         color: slateGrey,
-        fontWeight: "normal",
+        fontWeight: 'normal',
       },
     },
     MuiButton: {
       root: {
         backgroundColor: iceBlue,
-        whiteSpace: "nowrap",
+        whiteSpace: 'nowrap',
       },
     },
     MuiLink: {
       root: {
         color: medBlue,
-        "&.noUnderline": {
-          "&:hover": {
-            textDecoration: "none",
+        '&.noUnderline': {
+          '&:hover': {
+            textDecoration: 'none',
           },
         },
-        "&.noWrap": {
-          whiteSpace: "nowrap",
+        '&.noWrap': {
+          whiteSpace: 'nowrap',
         },
       },
     },

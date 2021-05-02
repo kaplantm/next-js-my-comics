@@ -1,8 +1,8 @@
-import { memo } from "react";
-import { Box } from "@material-ui/core";
-import { MemoizedListIndex } from "@page-containers/comic-list-index/index";
-import { isAOneShot } from "@lib/constants";
-import { ComicWithMetadataListIssuesType } from "../helpers";
+import { memo } from 'react';
+import { Box } from '@material-ui/core';
+import { MemoizedListIndex } from '@page-containers/comic-list-index/index';
+import { isAOneShot } from '@lib/constants';
+import { ComicWithMetadataListIssuesType } from '../helpers';
 
 const ListSection = ({
   groupData,
@@ -18,7 +18,7 @@ const ListSection = ({
     ...item,
     link: {
       pathname: item.link.pathname,
-      name: `${isAOneShot(item.params.series) ? "" : item.params.series} ${
+      name: `${isAOneShot(item.params.series) ? '' : item.params.series} ${
         item.link.name
       }`,
     },

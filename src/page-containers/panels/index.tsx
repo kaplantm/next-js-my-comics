@@ -1,8 +1,8 @@
-import React from "react";
-import { Typography, Grid } from "@material-ui/core";
-import AppLink from "@components/app-link";
-import { getPanelsCategoryRoute } from "@lib/constants/routes";
-import useStyles from "./use-styles";
+import React from 'react';
+import { Typography, Grid } from '@material-ui/core';
+import AppLink from '@components/app-link';
+import { getPanelsCategoryRoute } from '@lib/constants/routes';
+import useStyles from './use-styles';
 
 export type PanelsIndexProps = {
   categories: string[];

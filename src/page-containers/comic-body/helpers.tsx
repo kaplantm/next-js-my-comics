@@ -1,6 +1,6 @@
-import { Typography } from "@material-ui/core";
-import AppLink from "../../components/app-link";
-import { getSeriesRoute } from "../../lib/constants/routes";
+import { Typography } from '@material-ui/core';
+import AppLink from '../../components/app-link';
+import { getSeriesRoute } from '../../lib/constants/routes';
 
 export const getStartEnd = (start: string | number, end: string | number) => {
   if (!start && !end) {
@@ -9,7 +9,7 @@ export const getStartEnd = (start: string | number, end: string | number) => {
   if (!end) {
     return ` (${start})`;
   }
-  return ` (${start || "?"} - ${end})`;
+  return ` (${start || '?'} - ${end})`;
 };
 
 export const getDisplayTitle = (
@@ -22,7 +22,7 @@ export const getDisplayTitle = (
   const displayTitle = (
     <Typography variant="h1" gutterBottom>
       {title}
-      {isIssue ? "" : getStartEnd(seriesStart, seriesEnd)}
+      {isIssue ? '' : getStartEnd(seriesStart, seriesEnd)}
     </Typography>
   );
   return titleLink ? (
@@ -41,7 +41,7 @@ export const getDisplaySubtitle = (
   <AppLink nextProps={{ href: getSeriesRoute(paramSeries) }}>
     <Typography variant="h2">
       {seriesTitle}
-      {issueNumber ? ` - #${issueNumber} ` : ""}
+      {issueNumber ? ` - #${issueNumber} ` : ''}
       {getStartEnd(issueStart, issueEnd)}
     </Typography>
   </AppLink>

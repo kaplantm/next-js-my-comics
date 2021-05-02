@@ -1,24 +1,24 @@
-import React, { useEffect } from "react";
-import Head from "next/head";
-import { Typography, Box } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import React, { useEffect } from 'react';
+import Head from 'next/head';
+import { Typography, Box } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
 const statusCodes: { [key: string]: string } = {
-  401: "Forbidden",
-  400: "Bad Request",
-  404: "This page could not be found.",
-  405: "Method Not Allowed",
-  500: "Internal Server Error",
+  401: 'Forbidden',
+  400: 'Bad Request',
+  404: 'This page could not be found.',
+  405: 'Method Not Allowed',
+  500: 'Internal Server Error',
 };
 
 const useStyles = makeStyles(theme => ({
   wrapper: {
-    height: "100vh",
-    textAlign: "center",
+    height: '100vh',
+    textAlign: 'center',
     padding: theme.spacing(3),
   },
   statusCode: {
-    borderRight: "1px solid rgba(0, 0, 0,.3)",
+    borderRight: '1px solid rgba(0, 0, 0,.3)',
     paddingRight: theme.spacing(2),
     marginRight: theme.spacing(2),
   },
@@ -37,7 +37,7 @@ const ErrorComponent = ({
    *  The following string values are expected:
    *  "NVT": No valid tab in TabbedContainer
    *  "EB": Error caught in ErrorBoundary */
-  statusCode?: number | "EB" | "NVT";
+  statusCode?: number | 'EB' | 'NVT';
   /** If true, set page title  */
   setTitle?: boolean;
   /** Raw error and/or additional error data to log to console */
@@ -49,7 +49,7 @@ const ErrorComponent = ({
   const content: string =
     info ||
     statusCodes[statusCode as string] ||
-    "An unexpected error has occurred.";
+    'An unexpected error has occurred.';
 
   return (
     <Box

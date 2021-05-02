@@ -1,7 +1,7 @@
-import React from "react";
-import NextLink, { LinkProps as NextLinkProps } from "next/link";
-import { Link as MatLink } from "@material-ui/core";
-import { LinkProps as MatLinkProps } from "@material-ui/core/Link";
+import React from 'react';
+import NextLink, { LinkProps as NextLinkProps } from 'next/link';
+import { Link as MatLink } from '@material-ui/core';
+import { LinkProps as MatLinkProps } from '@material-ui/core/Link';
 
 export type AppLinkProps = {
   children: any;
@@ -18,12 +18,12 @@ function AppLink({
 }: AppLinkProps) {
   const fullIsExternal =
     isExternal ||
-    (typeof nextProps.href === "string" && nextProps.href.startsWith("http")) ||
-    (typeof nextProps.href === "object" &&
-      nextProps.href.pathname.startsWith("http"));
+    (typeof nextProps.href === 'string' && nextProps.href.startsWith('http')) ||
+    (typeof nextProps.href === 'object' &&
+      nextProps.href.pathname.startsWith('http'));
 
   const combinedMatLinkProps = fullIsExternal
-    ? { target: "_blank", ...matProps }
+    ? { target: '_blank', ...matProps }
     : matProps;
 
   if (fullIsExternal) {
@@ -32,7 +32,7 @@ function AppLink({
       <MatLink
         {...combinedMatLinkProps}
         href={
-          typeof nextProps.href === "object" ? nextProps.href.pathname : href
+          typeof nextProps.href === 'object' ? nextProps.href.pathname : href
         }
       >
         {children}

@@ -1,7 +1,7 @@
-import { stringToHSLAColor } from "@lib/utils/string-utils";
-import { Box } from "@material-ui/core";
-import { iceBlue, transparentBlackpt25 } from "src/theme/colors";
-import { memo } from "react";
+import { stringToHSLAColor } from '@lib/utils/string-utils';
+import { Box } from '@material-ui/core';
+import { iceBlue, transparentBlackpt25 } from 'src/theme/colors';
+import { memo } from 'react';
 
 const ArcSpotToolTip = ({
   tooltipText,

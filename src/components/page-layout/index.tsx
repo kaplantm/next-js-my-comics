@@ -9,14 +9,14 @@ import {
   Container,
   Divider,
   Drawer,
-} from "@material-ui/core";
-import clsx from "clsx";
-import React from "react";
-import { Menu, ChevronLeft } from "@material-ui/icons";
-import AppLink from "../app-link";
-import useStyles from "./use-styles";
-import { routeMap, navRoutes } from "../../lib/constants/routes";
-import { MappedRouteType } from "../../lib/types";
+} from '@material-ui/core';
+import clsx from 'clsx';
+import React from 'react';
+import { Menu, ChevronLeft } from '@material-ui/icons';
+import AppLink from '../app-link';
+import useStyles from './use-styles';
+import { routeMap, navRoutes } from '../../lib/constants/routes';
+import { MappedRouteType } from '../../lib/types';
 
 function Page({ children }: { children: any }) {
   const classes = useStyles();
@@ -50,7 +50,7 @@ function Page({ children }: { children: any }) {
                   }}
                   className={classes.link}
                   key={`${route.pathname}${
-                    route.query ? JSON.stringify(route.query) : ""
+                    route.query ? JSON.stringify(route.query) : ''
                   }${route.name}`}
                 >
                   <ListItem button>{route.name}</ListItem>

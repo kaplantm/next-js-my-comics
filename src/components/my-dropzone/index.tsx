@@ -1,7 +1,7 @@
-import { Typography } from "@material-ui/core";
-import React from "react";
-import { useDropzone } from "react-dropzone";
-import useStyles from "./use-styles";
+import { Typography } from '@material-ui/core';
+import React from 'react';
+import { useDropzone } from 'react-dropzone';
+import useStyles from './use-styles';
 
 function MyDropzone({ onDrop }: { onDrop: (files: any) => void }) {
   const classes = useStyles();
