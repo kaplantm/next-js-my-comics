@@ -1,14 +1,14 @@
-import { isAOneShot } from "@lib/constants";
-import { getIssueRoute, getSeriesRoute } from "@lib/constants/routes";
-import { ComicWithMetadata } from "@lib/types";
-import { promises, mkdirSync, existsSync } from "fs";
-import path from "path";
-import { safeLoadFront } from "yaml-front-matter";
+import { isAOneShot } from '@lib/constants';
+import { getIssueRoute, getSeriesRoute } from '@lib/constants/routes';
+import { ComicWithMetadata } from '@lib/types';
+import { promises, mkdirSync, existsSync } from 'fs';
+import path from 'path';
+import { safeLoadFront } from 'yaml-front-matter';
 
-const dataFileName = "data.md";
-const omittedFiles = [".DS_Store"];
+const dataFileName = 'data.md';
+const omittedFiles = ['.DS_Store'];
 
-const baseDirectory = path.join(process.cwd(), "public/static");
+const baseDirectory = path.join(process.cwd(), 'public/static');
 const basePanelsDirectory = `${baseDirectory}/panels`;
 const baseSeriesDirectory = `${baseDirectory}/series`;
 const readingOrderFilePath = `${baseDirectory}/reading-order.json`;
@@ -30,7 +30,7 @@ const getFileNamesInDirectory = async (
 ) => {
   try {
     const files = (await promises.readdir(directory)) || [];
-    return files.filter((file) => !omissions.includes(file));
+    return files.filter(file => !omissions.includes(file));
   } catch (e) {
     return [];
   }
@@ -38,7 +38,7 @@ const getFileNamesInDirectory = async (
 const getMarkdownFilePathInDirectory = (directory: string) =>
   `${directory}/${dataFileName}`;
 const readFile = async (filePath: string) =>
-  promises.readFile(filePath, "utf8");
+  promises.readFile(filePath, 'utf8');
 
 export const getImagePaths = async (directory: string): Promise<string[]> => {
   const fileName = `${directory}/images.json`;
@@ -47,10 +47,10 @@ export const getImagePaths = async (directory: string): Promise<string[]> => {
   }
   try {
     const images = JSON.parse(await readFile(fileName));
-    const img = images.map((image) => `${process.env.S3_URL}/${image}`);
+    const img = images.map(image => `${process.env.S3_URL}/${image}`);
     return img;
   } catch (e) {
-    console.log("getImagePaths", e);
+    console.log('getImagePaths', e);
     return [];
   }
 };
@@ -158,7 +158,7 @@ export async function getIssue(
     },
     link: {
       pathname: getIssueRoute(series, issueNumber),
-      name: `${isAOneShot(series) ? "" : `#${issueNumber} - `}${
+      name: `${isAOneShot(series) ? '' : `#${issueNumber} - `}${
         comic.frontMatter.title
       }`,
     },
@@ -183,7 +183,7 @@ export async function getSeries(
 ): Promise<ComicWithMetadata> {
   const comic = await getSeriesData(seriesTitle);
   if (!comic?.frontMatter) {
-    throw `Failed to build seriesTitle: ${seriesTitle}`;
+    throw new Error(`Failed to build seriesTitle: ${seriesTitle}`);
   }
   return {
     params: {
@@ -202,7 +202,7 @@ export async function getAllSeries(
   includeIssues?: boolean
 ): Promise<{ [key: string]: ComicWithMetadata }> {
   const seriesTitles = await getSeriesTitles();
-  return await seriesTitles.reduce(async (acc, seriesTitle) => {
+  return seriesTitles.reduce(async (acc, seriesTitle) => {
     const newAcc = await acc;
     // TODO: update types w/ link
     newAcc[seriesTitle] = await getSeries(seriesTitle, includeIssues);
@@ -211,9 +211,9 @@ export async function getAllSeries(
 }
 
 export function ensureDirectoryExistence(filePath) {
-  var dirname = path.dirname(filePath);
+  const dirname = path.dirname(filePath);
   if (existsSync(dirname)) {
-    return true;
+    return;
   }
   ensureDirectoryExistence(dirname);
   mkdirSync(dirname);

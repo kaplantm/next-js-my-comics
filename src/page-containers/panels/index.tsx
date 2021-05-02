@@ -1,8 +1,8 @@
 import React from "react";
 import { Typography, Grid } from "@material-ui/core";
-import useStyles from "./use-styles";
 import AppLink from "@components/app-link";
 import { getPanelsCategoryRoute } from "@lib/constants/routes";
+import useStyles from "./use-styles";
 
 export type PanelsIndexProps = {
   categories: string[];
@@ -16,7 +16,7 @@ function PanelsIndex({ categories }: PanelsIndexProps) {
       <Grid item xs={12} className={classes.coverImageContainer}>
         <Typography variant="h1">Panel Collections</Typography>
         <ul>
-          {categories.map((category) => (
+          {categories.map(category => (
             <li key={category} className={classes.categoryLink}>
               <AppLink nextProps={{ href: getPanelsCategoryRoute(category) }}>
                 {category}

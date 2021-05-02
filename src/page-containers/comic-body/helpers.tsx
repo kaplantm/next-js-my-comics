@@ -1,6 +1,6 @@
+import { Typography } from "@material-ui/core";
 import AppLink from "../../components/app-link";
 import { getSeriesRoute } from "../../lib/constants/routes";
-import { Typography } from "@material-ui/core";
 
 export const getStartEnd = (start: string | number, end: string | number) => {
   if (!start && !end) {

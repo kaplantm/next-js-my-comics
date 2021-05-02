@@ -1,20 +1,20 @@
-import sharp from "sharp";
-import { resolve } from "path";
-import { promises } from "fs";
-import { sleep } from "..";
+import sharp from 'sharp';
+import { resolve } from 'path';
+import { promises } from 'fs';
+
 const { readdir, stat, readFile, rename } = promises;
 
 const defaultMaxDimension = 1500;
 const defaultMaxSize = 0.8 * 1000 * 1000;
 const cwd = process.cwd();
 
-const removeLocalPublicPath = (path) => path.split(`${cwd}/public`)[1];
+const removeLocalPublicPath = path => path.split(`${cwd}/public`)[1];
 
 // https://stackoverflow.com/a/45130990
 async function getFilePaths(dir) {
   const directories = await readdir(dir, { withFileTypes: true });
   const files = await Promise.all(
-    directories.map((dirent) => {
+    directories.map(dirent => {
       const res = resolve(dir, dirent.name);
       return dirent.isDirectory() ? getFilePaths(res) : res;
     })
@@ -25,12 +25,12 @@ async function getFilePaths(dir) {
 async function getImageFilePaths(dir) {
   const files = await getFilePaths(dir);
 
-  return files.filter((file) => {
+  return files.filter(file => {
     const lowerFilePath = file.toLowerCase();
     return (
-      lowerFilePath.endsWith(".png") ||
-      lowerFilePath.endsWith(".jpg") ||
-      lowerFilePath.endsWith(".jpeg")
+      lowerFilePath.endsWith('.png') ||
+      lowerFilePath.endsWith('.jpg') ||
+      lowerFilePath.endsWith('.jpeg')
     );
   });
 }
@@ -38,16 +38,16 @@ async function getImageFilePaths(dir) {
 const fileNameEndsWithDimensionsRegex = /(_\d*x\d*)$/i;
 async function renameFilesToIncludeDimensions(filePaths) {
   return Promise.all(
-    filePaths.map(async (filePath) => {
-      const splitName = filePath.split(".");
+    filePaths.map(async filePath => {
+      const splitName = filePath.split('.');
       const fileType = splitName[splitName.length - 1];
-      let withoutFileType = splitName.slice(0, -1).join("");
+      let withoutFileType = splitName.slice(0, -1).join('');
 
       const fileNameEndsWithDimensions = fileNameEndsWithDimensionsRegex.test(
         withoutFileType
       );
       if (fileNameEndsWithDimensions) {
-        withoutFileType = withoutFileType.split("_").slice(0, -1);
+        withoutFileType = withoutFileType.split('_').slice(0, -1);
       }
       const image = sharp(filePath);
       const { width, height } = await image.metadata();
@@ -66,12 +66,12 @@ async function getFilesFailingOptimizationCheck(
 ) {
   const failingFiles = (
     await Promise.all(
-      filePaths.map(async (filePath) => {
+      filePaths.map(async filePath => {
         const lowerFilePath = filePath.toLowerCase();
         const isImage =
-          lowerFilePath.endsWith(".png") ||
-          lowerFilePath.endsWith(".jpg") ||
-          lowerFilePath.endsWith(".jpeg");
+          lowerFilePath.endsWith('.png') ||
+          lowerFilePath.endsWith('.jpg') ||
+          lowerFilePath.endsWith('.jpeg');
         if (!isImage) {
           return null;
         }
@@ -87,7 +87,7 @@ async function getFilesFailingOptimizationCheck(
         return null;
       })
     )
-  ).filter((file) => file);
+  ).filter(file => file);
 
   return failingFiles;
 }
@@ -117,7 +117,7 @@ async function optimizeFiles(
   const notOptimizedFiles = [];
   let bytesSaved = 0;
   await Promise.all(
-    filePaths.map(async (filePath) => {
+    filePaths.map(async filePath => {
       try {
         // Using fileBuffer to avoid "Error: Cannot use same file for input and output"
         const fileBuffer = await readFile(filePath);
@@ -149,7 +149,7 @@ async function optimizeFiles(
         bytesSaved += size - newSize;
         optimizedFiles.push(filePath);
       } catch (e) {
-        console.log("optimizeFiles", e);
+        console.log('optimizeFiles', e);
         notOptimizedFiles.push(filePath);
       }
     })

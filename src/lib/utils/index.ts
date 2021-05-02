@@ -1,11 +1,11 @@
-import axios, { AxiosRequestConfig } from "axios";
-import Router from "next/router";
-import { AppAxiosResponse } from "../types";
+import axios, { AxiosRequestConfig } from 'axios';
+import Router from 'next/router';
+import { AppAxiosResponse } from '../types';
 
-export const isDevMode = process.env.NODE_ENV === "development";
+export const isDevMode = process.env.NODE_ENV === 'development';
 
 export function sleep(ms: number = 1000) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 export async function appAxios<T>(
@@ -57,7 +57,7 @@ export async function pushCurrentPageWithUpdatedQueryParams(
 ) {
   // manually getting query params from url string to omit dynamic subpath values
   // (e.g. public_id) that can be included in router.query
-  const [asPathWithoutQuery, prevQuery] = Router.asPath.split("?");
+  const [asPathWithoutQuery, prevQuery] = Router.asPath.split('?');
   // setting a query to undefined will remove it
   const query = removeUndefinedProperties({
     ...(prevQuery ? getQueryParamsObjFromString(prevQuery) : {}),

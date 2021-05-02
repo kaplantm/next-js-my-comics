@@ -1,20 +1,20 @@
-import React from "react";
+import React from 'react';
 import {
   Checkbox,
   FormControlLabel,
   Grid,
   MenuItem,
   Typography,
-} from "@material-ui/core";
-import { ComicPageParams, ComicWithMetadata } from "@lib/types";
-import AppTextField from "@components/form-inputs/app-text-field";
-import DebugOnlyWrapper from "@components/debug-only-wrapper";
-import { useFormState } from "@lib/hooks/use-form-state";
-import Autocomplete from "@material-ui/lab/Autocomplete";
-import LoaderButton from "@components/loader-button";
-import { appAxios } from "@lib/utils";
-import { runValidatorsAndReturnErrorMessage } from "@lib/hooks/use-form-state/validator-functions";
-import { onlyRequiredConfigSet } from "@lib/hooks/use-form-state/validator-configs";
+} from '@material-ui/core';
+import { ComicPageParams, ComicWithMetadata } from '@lib/types';
+import AppTextField from '@components/form-inputs/app-text-field';
+import DebugOnlyWrapper from '@components/debug-only-wrapper';
+import { useFormState } from '@lib/hooks/use-form-state';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import LoaderButton from '@components/loader-button';
+import { appAxios } from '@lib/utils';
+import { runValidatorsAndReturnErrorMessage } from '@lib/hooks/use-form-state/validator-functions';
+import { onlyRequiredConfigSet } from '@lib/hooks/use-form-state/validator-configs';
 
 const DebugAddComic = ({
   seriesTitles,
@@ -37,7 +37,6 @@ const DebugAddComic = ({
   const {
     onFormFieldUpdate,
     formFieldValues,
-    formFieldErrors,
     setSubmissionInProgress,
     submissionInProgress,
     setFormError,
@@ -46,20 +45,20 @@ const DebugAddComic = ({
     getPropsForFormField,
   } = useFormState(
     {
-      title: title || "",
-      start: start || "",
-      end: end || "",
-      issueNumber: params.issueNumber || "",
-      arc: arc || "",
-      link: link || "",
-      series: params.series || "",
-      description: (description || "").trim(),
+      title: title || '',
+      start: start || '',
+      end: end || '',
+      issueNumber: params.issueNumber || '',
+      arc: arc || '',
+      link: link || '',
+      series: params.series || '',
+      description: (description || '').trim(),
       isIssue: isIssue || !editMode,
     },
     {
       requiredFields: isIssue
-        ? ["title", "link", "issueNumber", "series", "description"]
-        : ["link", "series", "description"],
+        ? ['title', 'link', 'issueNumber', 'series', 'description']
+        : ['link', 'series', 'description'],
       errorValidatorsForFields: {
         title: (val: string) =>
           runValidatorsAndReturnErrorMessage(val, onlyRequiredConfigSet),
@@ -76,7 +75,7 @@ const DebugAddComic = ({
   );
 
   const isNewSeries = !editMode && !formFieldValues.isIssue;
-  const arcInputProps = getPropsForFormField("arc");
+  const arcInputProps = getPropsForFormField('arc');
 
   function handleArcInputChange(event, newInputValue) {
     arcInputProps.onChange({
@@ -87,8 +86,8 @@ const DebugAddComic = ({
   async function onCreateComic() {
     setSubmissionInProgress(true);
     const result = await appAxios({
-      method: editMode ? "PUT" : "POST",
-      url: "/api/create-comic",
+      method: editMode ? 'PUT' : 'POST',
+      url: '/api/create-comic',
       data: {
         ...formFieldValues,
         isIssue: editMode ? isIssue : formFieldValues.isIssue,
@@ -99,7 +98,7 @@ const DebugAddComic = ({
     if (result.error) {
       setFormError(
         `Error: ${result.error?.response?.data} (${
-          result.error?.response?.status || "?"
+          result.error?.response?.status || '?'
         })`
       );
     } else {
@@ -148,7 +147,7 @@ const DebugAddComic = ({
                   label="Title"
                   variant="outlined"
                   disabled={editMode && !isIssue}
-                  {...getPropsForFormField("title")}
+                  {...getPropsForFormField('title')}
                 />
               </Grid>
               <Grid item xs={4}>
@@ -157,7 +156,7 @@ const DebugAddComic = ({
                   disabled={editMode}
                   label="Issue #"
                   variant="outlined"
-                  {...getPropsForFormField("issueNumber")}
+                  {...getPropsForFormField('issueNumber')}
                 />
               </Grid>
             </>
@@ -169,7 +168,7 @@ const DebugAddComic = ({
                 fullWidth
                 label="Series"
                 variant="outlined"
-                {...getPropsForFormField("series")}
+                {...getPropsForFormField('series')}
               />
             ) : (
               <AppTextField
@@ -178,14 +177,14 @@ const DebugAddComic = ({
                 disabled={editMode}
                 label="Series"
                 variant="outlined"
-                {...getPropsForFormField("series")}
+                {...getPropsForFormField('series')}
               >
                 {editMode ? (
                   <MenuItem key={params.series} value={params.series}>
                     {params.series}
                   </MenuItem>
                 ) : (
-                  seriesTitles.map((seriesTitle) => (
+                  seriesTitles.map(seriesTitle => (
                     <MenuItem key={seriesTitle} value={seriesTitle}>
                       {seriesTitle}
                     </MenuItem>
@@ -200,8 +199,8 @@ const DebugAddComic = ({
                 <Autocomplete
                   freeSolo
                   options={allArcs}
-                  getOptionLabel={(option) => option}
-                  renderInput={(params) => (
+                  getOptionLabel={option => option}
+                  renderInput={params => (
                     <AppTextField
                       fullWidth
                       {...params}
@@ -220,7 +219,7 @@ const DebugAddComic = ({
               fullWidth
               label="Start"
               variant="outlined"
-              {...getPropsForFormField("start")}
+              {...getPropsForFormField('start')}
             />
           </Grid>
           <Grid item xs={6}>
@@ -228,7 +227,7 @@ const DebugAddComic = ({
               fullWidth
               label="End"
               variant="outlined"
-              {...getPropsForFormField("end")}
+              {...getPropsForFormField('end')}
             />
           </Grid>
           <Grid item xs={12}>
@@ -236,7 +235,7 @@ const DebugAddComic = ({
               fullWidth
               label="Link"
               variant="outlined"
-              {...getPropsForFormField("link")}
+              {...getPropsForFormField('link')}
             />
           </Grid>
           <Grid item xs={12}>
@@ -245,12 +244,12 @@ const DebugAddComic = ({
               fullWidth
               label="Description"
               variant="outlined"
-              {...getPropsForFormField("description")}
+              {...getPropsForFormField('description')}
             />
           </Grid>
           <Grid item container xs={12} justify="center">
             <Typography
-              color={submissionInProgress ? "textSecondary" : "error"}
+              color={submissionInProgress ? 'textSecondary' : 'error'}
             >
               {formError}
             </Typography>

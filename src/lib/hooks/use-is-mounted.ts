@@ -10,8 +10,6 @@ export const useIsMounted = (): (() => boolean) => {
       isMounted.current = false;
     };
   }, []);
-  const checker = useCallback((): boolean => {
-    return isMounted.current;
-  }, []);
+  const checker = useCallback((): boolean => isMounted.current, []);
   return checker;
 };

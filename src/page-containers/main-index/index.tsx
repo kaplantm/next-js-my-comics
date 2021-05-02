@@ -1,17 +1,16 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import { Box, Button, ButtonGroup, Grid } from "@material-ui/core";
-import { ArrowDownward, ArrowUpward } from "@material-ui/icons";
+import React, { useEffect, useRef, useState } from 'react';
+import { Box, Button, ButtonGroup, Grid } from '@material-ui/core';
+import { ArrowDownward, ArrowUpward } from '@material-ui/icons';
+import { ComicWithMetadata } from '@lib/types';
+import useDebounce from '@lib/hooks/use-debounce';
+import AppTextField from '@components/form-inputs/app-text-field';
+import MemoizedListSection from './list-section';
 import {
   sortingEnum,
   sortingDirectionEnum,
-  getSortedData,
   getDirectionallySortedData,
   getGroupedComics,
-} from "./helpers";
-import { ComicWithMetadata } from "@lib/types";
-import MemoizedListSection from "./list-section";
-import useDebounce from "@lib/hooks/use-debounce";
-import AppTextField from "@components/form-inputs/app-text-field";
+} from './helpers';
 
 const MainIndex = ({
   allIssues,
@@ -36,7 +35,7 @@ const MainIndex = ({
     );
     return { groups: directionalSortedGroupedComics, order: groupOrder };
   });
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
   const debouncedSearchTerm = useDebounce(searchTerm, 250);
 
   useEffect(() => {
@@ -48,7 +47,7 @@ const MainIndex = ({
             comic: null,
             link: null,
             params: null,
-            issues: allInCurrentSorting[key].issues.filter((issue) => {
+            issues: allInCurrentSorting[key].issues.filter(issue => {
               const inTitle = issue.comic.frontMatter.title
                 .toLowerCase()
                 .includes(lowercaseSearchTerm);
@@ -78,8 +77,8 @@ const MainIndex = ({
     setSearchTerm(newFilter);
   }
 
-  function handleSortingUpdate(sorting: sortingEnum) {
-    return () => setSorting(sorting);
+  function handleSortingUpdate(newSorting: sortingEnum) {
+    return () => setSorting(newSorting);
   }
   function handleSortingDirectionUpdate(direction: sortingDirectionEnum) {
     return () => setSortingDirection(direction);
@@ -94,7 +93,7 @@ const MainIndex = ({
               color="primary"
               aria-label="outlined primary button group"
             >
-              {Object.values(sortingEnum).map((sort) => (
+              {Object.values(sortingEnum).map(sort => (
                 <Button
                   key={sort}
                   disabled={sorting === sort}
@@ -111,7 +110,7 @@ const MainIndex = ({
                 color="primary"
                 aria-label="outlined primary button group"
               >
-                {Object.values(sortingDirectionEnum).map((direction) => (
+                {Object.values(sortingDirectionEnum).map(direction => (
                   <Button
                     key={direction}
                     disabled={sortingDirection === direction}
@@ -137,7 +136,7 @@ const MainIndex = ({
           </Grid>
         </Grid>
       </Box>
-      {groups.order.map((key) => (
+      {groups.order.map(key => (
         <MemoizedListSection
           key={key}
           groupData={groups.groups[key]}

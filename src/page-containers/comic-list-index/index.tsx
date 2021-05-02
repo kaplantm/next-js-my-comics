@@ -1,4 +1,4 @@
-import React, { useState, memo } from "react";
+import React, { useState, memo } from 'react';
 import {
   Typography,
   Grid,
@@ -9,20 +9,20 @@ import {
   ListItemText,
   ListItemIcon,
   ListItem,
-} from "@material-ui/core";
-import useStyles from "./use-styles";
-import { getInitialState } from "./helpers";
-import AppLink from "@components/app-link";
+} from '@material-ui/core';
+import AppLink from '@components/app-link';
 import {
   Edit,
   Image,
   KeyboardArrowDown,
   KeyboardArrowLeft,
-} from "@material-ui/icons";
-import ReactMarkdown from "react-markdown";
-import { ComicWithMetadata } from "@lib/types";
-import ArcSpot from "@components/arc-spot";
-import { isDevMode } from "@lib/utils";
+} from '@material-ui/icons';
+import ReactMarkdown from 'react-markdown';
+import { ComicWithMetadata } from '@lib/types';
+import ArcSpot from '@components/arc-spot';
+import { isDevMode } from '@lib/utils';
+import { getInitialState } from './helpers';
+import useStyles from './use-styles';
 
 type ComicListIndexProps = {
   headerLabel: string;
@@ -42,7 +42,7 @@ function ComicListIndex({
   const classes = useStyles();
 
   function toggleExpanded(index: number) {
-    setExpandedState((prev) => {
+    setExpandedState(prev => {
       const clone = [...prev];
       clone[index] = !prev[index];
       return clone;
@@ -72,7 +72,7 @@ function ComicListIndex({
                         tooltipText={
                           skipArcColorTooltip
                             ? null
-                            : comic.frontMatter.arc || "No Arc / Unknown"
+                            : comic.frontMatter.arc || 'No Arc / Unknown'
                         }
                         colorString={comic.frontMatter.arc}
                       />
@@ -95,7 +95,7 @@ function ComicListIndex({
                         )}
                       </IconButton>
                       {isDevMode && (
-                        <Box display={{ xs: "none", sm: "none", md: "block" }}>
+                        <Box display={{ xs: 'none', sm: 'none', md: 'block' }}>
                           <AppLink
                             nextProps={{ href: `${link.pathname}/debug/edit` }}
                             isExternal
