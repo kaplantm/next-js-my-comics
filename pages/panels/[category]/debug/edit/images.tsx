@@ -1,13 +1,13 @@
 import {
   getPanelCategories,
   getPanelsInCategory,
-} from "@lib/utils/static-comics/utils";
-import React from "react";
-import DebugAddImages from "@page-containers/debug-add-images";
-import { reactsPage } from "@lib/constants";
+} from '@lib/utils/static-comics/utils';
+import React from 'react';
+import DebugAddImages from '@page-containers/debug-add-images';
+import { reactsPage } from '@lib/constants';
 
 // TODO: arrows to move to next image
-const PanelsCategoryPage = (props) => (
+const PanelsCategoryPage = props => (
   <DebugAddImages
     {...props}
     maxDimension={props.params.category === reactsPage ? 150 : null}
@@ -15,7 +15,7 @@ const PanelsCategoryPage = (props) => (
 );
 
 export const getStaticPaths = async () => {
-  const paths = (await getPanelCategories()).map((category) => ({
+  const paths = (await getPanelCategories()).map(category => ({
     params: { category },
   }));
   return {
