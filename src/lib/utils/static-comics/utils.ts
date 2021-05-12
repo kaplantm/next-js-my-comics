@@ -47,7 +47,7 @@ export const getImagePaths = async (directory: string): Promise<string[]> => {
   }
   try {
     const images = JSON.parse(await readFile(fileName));
-    const img = images.map(image => `${process.env.S3_URL}/${image}`);
+    const img = images.map(image => `${process.env.S3_CDN_URL}/${image}`);
     return img;
   } catch (e) {
     console.log('getImagePaths', e);
