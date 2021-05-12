@@ -29,10 +29,7 @@ http://localhost/panels/ears/debug/edit/images
 ## To push to production
 
 npm run export
-
-commit the changes and push
-
-a github action is current setup to push the main branch to s3
+npm run publish (will require aws cli to be setup)
 
 ## Additional Info
 

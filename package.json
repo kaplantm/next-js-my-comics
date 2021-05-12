@@ -21,7 +21,7 @@
     "lint": "npx eslint src --max-warnings 0 --ext .js,.ts,.jsx,.tsx",
     "prettier": "prettier --write {src/**/*.tsx,src/**/*.ts}",
     "lint:fix": "npx eslint --fix src --ext .js,.ts,.jsx,.tsx",
-    "publish": "rmdir out/image-optimization && aws s3 sync out s3://comics.tonarie.com"
+    "publish": "rmdir out/image-optimization && aws s3 sync out s3://comics.tonarie.com --delete --acl public-read"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
