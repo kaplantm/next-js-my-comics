@@ -1,6 +1,7 @@
 ## To Dev:
 
 git clone
+nvm use
 npm install
 npm run dev
 

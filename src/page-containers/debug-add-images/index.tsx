@@ -156,7 +156,7 @@ const DebugAddImages = ({
                     step={25}
                     marks
                     min={50}
-                    max={1500}
+                    max={2000}
                     aria-labelledby="continuous-slider"
                     valueLabelDisplay="auto"
                   />
