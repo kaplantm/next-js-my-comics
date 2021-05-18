@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React, { useEffect, useState } from 'react';
 import { Box, Button, ButtonGroup, Grid } from '@material-ui/core';
-import { ArrowDownward, ArrowUpward } from '@material-ui/icons';
 import useDebounce from '@lib/hooks/use-debounce';
 import AppTextField from '@components/form-inputs/app-text-field';
 import { useRouter } from 'next/router';
@@ -26,9 +25,6 @@ const MainIndex = ({
 }) => {
   const router = useRouter();
   const [groupsState, setGroupsState] = useState(groupData);
-  const [sortingDirection, setSortingDirection] = useState(
-    sortingDirectionEnum.ASC
-  );
   const [searchTerm, setSearchTerm] = useState('');
   const debouncedSearchTerm = useDebounce(searchTerm, 250);
 
@@ -56,7 +52,7 @@ const MainIndex = ({
 
     const { groups: newGroups, order: newOrder } = getDirectionallySortedData(
       filtered,
-      sortingDirection,
+      sortingDirectionEnum.ASC,
       sorting
     );
 
@@ -64,7 +60,7 @@ const MainIndex = ({
       groups: newGroups,
       order: newOrder,
     });
-  }, [debouncedSearchTerm, sorting, sortingDirection, groupData.groups]);
+  }, [debouncedSearchTerm, sorting, groupData.groups]);
 
   function onFilterUpdate({ target }) {
     const newFilter = target.value;
@@ -74,10 +70,6 @@ const MainIndex = ({
   function handleSortingUpdate(newSorting: sortingEnum) {
     const route = getReadingOrderRoute(newSorting);
     return () => router.push(route);
-  }
-
-  function handleSortingDirectionUpdate(direction: sortingDirectionEnum) {
-    return () => setSortingDirection(direction);
   }
 
   return (
@@ -100,28 +92,6 @@ const MainIndex = ({
               ))}
             </ButtonGroup>
           </Grid>
-          {groupsState.order.length > 1 && (
-            <Grid item>
-              <ButtonGroup
-                color="primary"
-                aria-label="outlined primary button group"
-              >
-                {Object.values(sortingDirectionEnum).map(direction => (
-                  <Button
-                    key={direction}
-                    disabled={sortingDirection === direction}
-                    onClick={handleSortingDirectionUpdate(direction)}
-                  >
-                    {direction === sortingDirectionEnum.ASC ? (
-                      <ArrowUpward />
-                    ) : (
-                      <ArrowDownward />
-                    )}
-                  </Button>
-                ))}
-              </ButtonGroup>
-            </Grid>
-          )}
           <Grid item xs={12}>
             <AppTextField
               label="Search"
