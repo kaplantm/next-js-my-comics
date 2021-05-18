@@ -90,12 +90,7 @@ module.exports = {
         ],
       },
     ],
-    '@typescript-eslint/explicit-module-boundary-types': [
-      'warn',
-      {
-        allowArgumentsExplicitlyTypedAsAny: true,
-      },
-    ],
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react/jsx-wrap-multilines': 'off',
     'react/react-in-jsx-scope': 0,
     'jsx-a11y/label-has-associated-control': [

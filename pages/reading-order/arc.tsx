@@ -1,10 +1,10 @@
 import React from 'react';
 import { getAllSeries, getReadingOrder } from '@lib/utils/static-comics/utils';
 import MainIndex from '@page-containers/main-index';
-import { getReadingOrderGroupData } from '@page-containers/main-index/build-helpers';
 import { sortingEnum } from '@page-containers/main-index/helpers';
+import { getReadingOrderGroupData } from '@page-containers/main-index/build-helpers';
 
-const IndexPage = props => <MainIndex {...props} />;
+const IndexPage = props => <MainIndex sorting={sortingEnum.ARC} {...props} />;
 
 export const getStaticProps = async () => {
   const readingOrder = await getReadingOrder();
@@ -19,7 +19,7 @@ export const getStaticProps = async () => {
   const groupData = getReadingOrderGroupData({
     allIssues,
     readingOrder,
-    sorting: sortingEnum.READING_ORDER,
+    sorting: sortingEnum.ARC,
   });
 
   return {

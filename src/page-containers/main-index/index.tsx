@@ -1,53 +1,46 @@
-import React, { useEffect, useRef, useState } from 'react';
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+import React, { useEffect, useState } from 'react';
 import { Box, Button, ButtonGroup, Grid } from '@material-ui/core';
 import { ArrowDownward, ArrowUpward } from '@material-ui/icons';
-import { ComicWithMetadata } from '@lib/types';
 import useDebounce from '@lib/hooks/use-debounce';
 import AppTextField from '@components/form-inputs/app-text-field';
+import { useRouter } from 'next/router';
+import { getReadingOrderRoute } from '@lib/constants/routes';
 import MemoizedListSection from './list-section';
 import {
   sortingEnum,
   sortingDirectionEnum,
+  GroupedComicsType,
   getDirectionallySortedData,
-  getGroupedComics,
 } from './helpers';
 
 const MainIndex = ({
-  allIssues,
-  readingOrder,
+  sorting = sortingEnum.READING_ORDER,
+  groupData,
 }: {
-  allIssues: ComicWithMetadata[];
-  readingOrder: string[];
+  groupData: {
+    groups: GroupedComicsType;
+    order: string[];
+  };
+  sorting: sortingEnum;
 }) => {
-  const groupedComicsRef = useRef(getGroupedComics(allIssues, readingOrder));
-  const [sorting, setSorting] = useState(sortingEnum.READING_ORDER);
+  const router = useRouter();
+  const [groupsState, setGroupsState] = useState(groupData);
   const [sortingDirection, setSortingDirection] = useState(
     sortingDirectionEnum.ASC
   );
-  const [groups, setGroups] = useState(() => {
-    const {
-      directionalSortedGroupedComics,
-      groupOrder,
-    } = getDirectionallySortedData(
-      groupedComicsRef.current[sorting],
-      sortingDirection,
-      sorting
-    );
-    return { groups: directionalSortedGroupedComics, order: groupOrder };
-  });
   const [searchTerm, setSearchTerm] = useState('');
   const debouncedSearchTerm = useDebounce(searchTerm, 250);
 
   useEffect(() => {
     const lowercaseSearchTerm = debouncedSearchTerm.toLowerCase();
-    const allInCurrentSorting = groupedComicsRef.current[sorting];
     const filtered = lowercaseSearchTerm
-      ? Object.keys(allInCurrentSorting).reduce((acc, key) => {
+      ? Object.keys(groupData.groups).reduce((acc, key) => {
           acc[key] = {
             comic: null,
             link: null,
             params: null,
-            issues: allInCurrentSorting[key].issues.filter(issue => {
+            issues: groupData.groups[key].issues.filter(issue => {
               const inTitle = issue.comic.frontMatter.title
                 .toLowerCase()
                 .includes(lowercaseSearchTerm);
@@ -59,18 +52,19 @@ const MainIndex = ({
           };
           return acc;
         }, {})
-      : allInCurrentSorting;
+      : groupData.groups;
 
-    const {
-      directionalSortedGroupedComics,
-      groupOrder,
-    } = getDirectionallySortedData(filtered, sortingDirection, sorting);
+    const { groups: newGroups, order: newOrder } = getDirectionallySortedData(
+      filtered,
+      sortingDirection,
+      sorting
+    );
 
-    setGroups({
-      groups: directionalSortedGroupedComics,
-      order: groupOrder,
+    setGroupsState({
+      groups: newGroups,
+      order: newOrder,
     });
-  }, [debouncedSearchTerm, sorting, sortingDirection]);
+  }, [debouncedSearchTerm, sorting, sortingDirection, groupData.groups]);
 
   function onFilterUpdate({ target }) {
     const newFilter = target.value;
@@ -78,8 +72,10 @@ const MainIndex = ({
   }
 
   function handleSortingUpdate(newSorting: sortingEnum) {
-    return () => setSorting(newSorting);
+    const route = getReadingOrderRoute(newSorting);
+    return () => router.push(route);
   }
+
   function handleSortingDirectionUpdate(direction: sortingDirectionEnum) {
     return () => setSortingDirection(direction);
   }
@@ -104,7 +100,7 @@ const MainIndex = ({
               ))}
             </ButtonGroup>
           </Grid>
-          {groups.order.length > 1 && (
+          {groupsState.order.length > 1 && (
             <Grid item>
               <ButtonGroup
                 color="primary"
@@ -136,10 +132,10 @@ const MainIndex = ({
           </Grid>
         </Grid>
       </Box>
-      {groups.order.map(key => (
+      {groupsState.order.map(key => (
         <MemoizedListSection
           key={key}
-          groupData={groups.groups[key]}
+          groupData={groupsState.groups[key]}
           headerLabel={key}
         />
       ))}
