@@ -1,7 +1,17 @@
 import { stringToHSLAColor } from '@lib/utils/string-utils';
-import { Box } from '@material-ui/core';
 import { iceBlue, transparentBlackpt25 } from 'src/theme/colors';
 import { memo } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles(theme => ({
+  main: {
+    borderRadius: '1rem',
+    border: `1px solid ${transparentBlackpt25}`,
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+    whiteSpace: 'nowrap',
+  },
+}));
 
 const ArcSpotToolTip = ({
   tooltipText,
@@ -10,20 +20,14 @@ const ArcSpotToolTip = ({
   tooltipText: string;
   colorString?: string;
 }) => {
+  const classes = useStyles();
   const color = colorString ? stringToHSLAColor(colorString, 0.25) : iceBlue;
 
-  const spot = (
-    <Box
-      borderRadius="1rem"
-      bgcolor={color}
-      border={`1px solid ${transparentBlackpt25}`}
-      pl={2}
-      pr={2}
-    >
+  return (
+    <div className={classes.main} style={{ backgroundColor: color }}>
       {tooltipText}
-    </Box>
+    </div>
   );
-  return spot;
 };
 
 export default memo(ArcSpotToolTip);

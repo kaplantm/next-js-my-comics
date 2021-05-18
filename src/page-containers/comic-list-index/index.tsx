@@ -1,15 +1,5 @@
 import React, { useState, memo } from 'react';
-import {
-  Typography,
-  Grid,
-  Collapse,
-  IconButton,
-  Box,
-  List,
-  ListItemText,
-  ListItemIcon,
-  ListItem,
-} from '@material-ui/core';
+import { Typography, Grid, Collapse, IconButton } from '@material-ui/core';
 import AppLink from '@components/app-link';
 import {
   Edit,
@@ -53,83 +43,79 @@ function ComicListIndex({
     <Grid container spacing={3}>
       <Grid item xs={12} className={classes.coverImageContainer}>
         {headerLabel && <Typography variant="h1">{headerLabel}</Typography>}
-        <List>
+        <ul>
           {listData.map(({ link, comic }, index) => (
-            <ListItem
-              className={classes.listItem}
-              disableGutters
-              key={link.pathname}
-            >
-              <Box
-                display="flex"
-                alignItems="flex-start"
-                flexDirection="column"
-              >
-                <Box display="flex" alignItems="center">
-                  {!skipArcColorTooltip && (
-                    <ListItemIcon className={classes.arcSpotWrapper}>
-                      <ArcSpot
-                        tooltipText={
-                          skipArcColorTooltip
-                            ? null
-                            : comic.frontMatter.arc || 'No Arc / Unknown'
-                        }
-                        colorString={comic.frontMatter.arc}
-                      />
-                    </ListItemIcon>
-                  )}
-                  <ListItemText>
-                    <Box display="flex" alignItems="center">
-                      <AppLink nextProps={{ href: link.pathname }}>
-                        {link.name}
-                      </AppLink>
+            <li className={classes.listItem} key={link.pathname}>
+              <div className={classes.flexCenter}>
+                {!skipArcColorTooltip && (
+                  <Typography
+                    variant="body1"
+                    component="div"
+                    className={classes.arcSpotWrapper}
+                  >
+                    <ArcSpot
+                      tooltipText={
+                        skipArcColorTooltip
+                          ? null
+                          : comic.frontMatter.arc || 'No Arc / Unknown'
+                      }
+                      colorString={comic.frontMatter.arc}
+                    />
+                  </Typography>
+                )}
+                <Typography variant="body1" component="div">
+                  <div className={classes.flexCenter}>
+                    <AppLink nextProps={{ href: link.pathname }}>
+                      {link.name}
+                    </AppLink>
 
-                      <IconButton
-                        className={classes.expandButton}
-                        onClick={() => toggleExpanded(index)}
-                      >
-                        {expandedState[index] ? (
-                          <KeyboardArrowDown />
-                        ) : (
-                          <KeyboardArrowLeft />
-                        )}
-                      </IconButton>
-                      {isDevMode && (
-                        <Box display={{ xs: 'none', sm: 'none', md: 'block' }}>
-                          <AppLink
-                            nextProps={{ href: `${link.pathname}/debug/edit` }}
-                            isExternal
-                          >
-                            <IconButton component="div">
-                              <Edit />
-                            </IconButton>
-                          </AppLink>
-                          <AppLink
-                            nextProps={{
-                              href: `${link.pathname}/debug/edit/images`,
-                            }}
-                            isExternal
-                          >
-                            <IconButton component="div">
-                              <Image />
-                            </IconButton>
-                          </AppLink>
-                        </Box>
+                    <IconButton
+                      className={classes.expandButton}
+                      onClick={() => toggleExpanded(index)}
+                    >
+                      {expandedState[index] ? (
+                        <KeyboardArrowDown />
+                      ) : (
+                        <KeyboardArrowLeft />
                       )}
-                    </Box>
-                  </ListItemText>
-                </Box>
-                <Collapse in={expandedState[index]}>
-                  {comic?.description && (
-                    <Box mt={2} mb={1} ml={3}>
+                    </IconButton>
+                    {isDevMode && (
+                      <div>
+                        <AppLink
+                          nextProps={{ href: `${link.pathname}/debug/edit` }}
+                          isExternal
+                        >
+                          <IconButton component="div">
+                            <Edit />
+                          </IconButton>
+                        </AppLink>
+                        <AppLink
+                          nextProps={{
+                            href: `${link.pathname}/debug/edit/images`,
+                          }}
+                          isExternal
+                        >
+                          <IconButton component="div">
+                            <Image />
+                          </IconButton>
+                        </AppLink>
+                      </div>
+                    )}
+                  </div>
+                </Typography>
+              </div>
+              <Collapse in={expandedState[index]}>
+                {comic?.description && (
+                  <div className={classes.markdownWrapper}>
+                    {expandedState[index] && (
                       <ReactMarkdown>{comic.description}</ReactMarkdown>
-                    </Box>
-                  )}
-                </Collapse>
-              </Box>
-            </ListItem>
+                    )}
+                  </div>
+                )}
+              </Collapse>
+            </li>
           ))}
-        </List>
+        </ul>
       </Grid>
     </Grid>
   );
