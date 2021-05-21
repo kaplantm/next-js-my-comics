@@ -9,7 +9,9 @@ const useStyles = makeStyles(theme => ({
     border: `1px solid ${transparentBlackpt25}`,
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2),
-    whiteSpace: 'nowrap',
+    [theme.breakpoints.up('sm')]: {
+      whiteSpace: 'nowrap',
+    },
   },
 }));
 

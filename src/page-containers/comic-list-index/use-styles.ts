@@ -8,6 +8,11 @@ const useStyles = makeStyles(theme => ({
       maxWidth: '30%',
     },
   },
+  list: {
+    [theme.breakpoints.down('sm')]: {
+      paddingLeft: 0,
+    },
+  },
   listItem: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),

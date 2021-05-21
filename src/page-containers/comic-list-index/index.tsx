@@ -43,7 +43,7 @@ function ComicListIndex({
     <Grid container spacing={3}>
       <Grid item xs={12} className={classes.coverImageContainer}>
         {headerLabel && <Typography variant="h1">{headerLabel}</Typography>}
-        <ul>
+        <ul className={classes.list}>
           {listData.map(({ link, comic }, index) => (
             <li className={classes.listItem} key={link.pathname}>
               <div className={classes.flexCenter}>

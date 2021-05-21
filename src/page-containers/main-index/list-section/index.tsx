@@ -3,6 +3,7 @@ import { Box } from '@material-ui/core';
 import { MemoizedListIndex } from '@page-containers/comic-list-index/index';
 import { isAOneShot } from '@lib/constants';
 import { ComicWithMetadataListIssuesType } from '../helpers';
+import useStyles from './use-styles';
 
 const ListSection = ({
   groupData,
@@ -11,6 +12,7 @@ const ListSection = ({
   groupData: ComicWithMetadataListIssuesType;
   headerLabel: string;
 }) => {
+  const classes = useStyles();
   if (!groupData.issues.length) {
     return null;
   }
@@ -25,9 +27,9 @@ const ListSection = ({
   }));
 
   return (
-    <Box mt={3}>
+    <div className={classes.wrapper}>
       <MemoizedListIndex listData={listData} headerLabel={headerLabel} />
-    </Box>
+    </div>
   );
 };
 
