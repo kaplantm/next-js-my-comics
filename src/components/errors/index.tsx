@@ -62,7 +62,7 @@ const ErrorComponent = ({
       {setTitle && (
         <Head>
           <title>
-            Pelotonia | {statusCode}: {content}
+            Tonarie's Comics | {statusCode}: {content}
           </title>
         </Head>
       )}

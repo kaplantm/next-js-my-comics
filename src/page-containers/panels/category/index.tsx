@@ -3,6 +3,8 @@ import { Typography, Grid } from '@material-ui/core';
 import MasonryLayout from '@components/masonry-layout';
 import AppTextField from '@components/form-inputs/app-text-field';
 import useDebounce from '@lib/hooks/use-debounce';
+import DebugLinksMemo from '@components/debug-links';
+import { getPanelsCategoryRoute } from '@lib/constants/routes';
 
 type PanelsProps = {
   params: { category: string };
@@ -35,11 +37,16 @@ function Panels({ params, imagePaths, filterable }: PanelsProps) {
 
   return (
     <Grid container spacing={3}>
-      <Grid item xs={12}>
+      <Grid item container xs={12} alignItems="center">
         <Typography variant="h1" className="capitalize">
-          {params.category}
-        </Typography>
+          {params.category}{' '}
+        </Typography>{' '}
+        <DebugLinksMemo
+          baseLink={getPanelsCategoryRoute(params.category)}
+          noEdit
+        />
       </Grid>
+
       {filterable && (
         <Grid item xs={12}>
           <AppTextField

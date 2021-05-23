@@ -151,6 +151,9 @@ export async function getIssue(
   issueNumber: number
 ): Promise<ComicWithMetadata> {
   const comic = await getIssueData(series, issueNumber);
+  if (!comic?.frontMatter) {
+    throw new Error(`Failed to build issue: ${series}-${issueNumber}`);
+  }
   return {
     params: {
       series,

@@ -1,16 +1,11 @@
 import React, { useState, memo } from 'react';
 import { Typography, Grid, Collapse, IconButton } from '@material-ui/core';
 import AppLink from '@components/app-link';
-import {
-  Edit,
-  Image,
-  KeyboardArrowDown,
-  KeyboardArrowLeft,
-} from '@material-ui/icons';
+import { KeyboardArrowDown, KeyboardArrowLeft } from '@material-ui/icons';
 import ReactMarkdown from 'react-markdown';
 import { ComicWithMetadata } from '@lib/types';
 import ArcSpot from '@components/arc-spot';
-import { isDevMode } from '@lib/utils';
+import DebugLinksMemo from '@components/debug-links';
 import { getInitialState } from './helpers';
 import useStyles from './use-styles';
 
@@ -79,28 +74,7 @@ function ComicListIndex({
                         <KeyboardArrowLeft />
                       )}
                     </IconButton>
-                    {isDevMode && (
-                      <div>
-                        <AppLink
-                          nextProps={{ href: `${link.pathname}/debug/edit` }}
-                          isExternal
-                        >
-                          <IconButton component="div">
-                            <Edit />
-                          </IconButton>
-                        </AppLink>
-                        <AppLink
-                          nextProps={{
-                            href: `${link.pathname}/debug/edit/images`,
-                          }}
-                          isExternal
-                        >
-                          <IconButton component="div">
-                            <Image />
-                          </IconButton>
-                        </AppLink>
-                      </div>
-                    )}
+                    <DebugLinksMemo baseLink={link.pathname} />
                   </div>
                 </Typography>
               </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Checkbox,
   FormControlLabel,
@@ -6,6 +6,7 @@ import {
   MenuItem,
   Typography,
 } from '@material-ui/core';
+import DebugLinksMemo from '@components/debug-links';
 import { ComicPageParams, ComicWithMetadata } from '@lib/types';
 import AppTextField from '@components/form-inputs/app-text-field';
 import DebugOnlyWrapper from '@components/debug-only-wrapper';
@@ -15,6 +16,8 @@ import LoaderButton from '@components/loader-button';
 import { appAxios } from '@lib/utils';
 import { runValidatorsAndReturnErrorMessage } from '@lib/hooks/use-form-state/validator-functions';
 import { onlyRequiredConfigSet } from '@lib/hooks/use-form-state/validator-configs';
+import { getIssueRoute } from '@lib/constants/routes';
+import AppLink from '@components/app-link';
 
 const DebugAddComic = ({
   seriesTitles,
@@ -32,6 +35,7 @@ const DebugAddComic = ({
   editMode?: boolean;
 }) => {
   const isIssue = !!issue;
+  const [savedComicLink, setSavedComicLink] = useState(null);
   const { frontMatter, description } = issue?.comic || series?.comic || {};
   const { title, start, end, arc, link } = frontMatter || ({} as any);
   const {
@@ -84,6 +88,7 @@ const DebugAddComic = ({
   }
 
   async function onCreateComic() {
+    setSavedComicLink(null);
     setSubmissionInProgress(true);
     const result = await appAxios({
       method: editMode ? 'PUT' : 'POST',
@@ -101,7 +106,14 @@ const DebugAddComic = ({
           result.error?.response?.status || '?'
         })`
       );
+      setSavedComicLink(null);
     } else {
+      setSavedComicLink(
+        getIssueRoute(
+          formFieldValues.series,
+          formFieldValues.issueNumber as number
+        )
+      );
       setFormError(null);
     }
     setSubmissionInProgress(false);
@@ -200,14 +212,15 @@ const DebugAddComic = ({
                   freeSolo
                   options={allArcs}
                   getOptionLabel={option => option}
-                  renderInput={params => (
+                  renderInput={autoCompleteParams => (
                     <AppTextField
                       fullWidth
-                      {...params}
+                      {...autoCompleteParams}
                       label="Arcs"
                       variant="outlined"
                     />
                   )}
+                  onInputChange={handleArcInputChange}
                   value={arcInputProps.value}
                   onChange={handleArcInputChange}
                 />
@@ -254,6 +267,16 @@ const DebugAddComic = ({
               {formError}
             </Typography>
           </Grid>
+
+          {savedComicLink && (
+            <Grid item container xs={12} justify="center" alignItems="center">
+              Created:&nbsp;
+              <AppLink isExternal nextProps={{ href: savedComicLink }}>
+                {savedComicLink}
+              </AppLink>
+              <DebugLinksMemo baseLink={savedComicLink} />
+            </Grid>
+          )}
           <Grid item container xs={12} justify="center">
             <LoaderButton
               size="large"
