@@ -7,7 +7,7 @@ arc: "Batman: No Man's Land"
 link: 'https://dc.fandom.com/wiki/Batman:_Shadow_of_the_Bat_Vol_1_84'
 ---
 
-- Scarecrow collect rats and sets them upon the ARC’s food stores to create chaos and fear.
+- Scarecrow collects rats and sets them upon the ARC’s food stores to create chaos and fear.
 - Father Chris, unknown to Father Papaleo, makes a deal with Penguin for food for the ARC - in exchange, he lets Penguin store guns in their bunker.
 - Back at the center, former Black Masker Mikey seems to be a good dude.
 - Elsewhere, at the building where Penguin was previously storing his arsenal, the splinter group of the False Facers, try to steal the supplies (not know they were moved). Batman stops them, but they also notice the building was empty and rigged to catch fire so people would think the arsenal was gone.
