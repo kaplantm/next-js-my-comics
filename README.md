@@ -65,3 +65,7 @@ To revert S3:
 https://github.com/angeloc/s3-pit-restore
 Copy locally, then empty bucket in S3, then upload all (make sure to public and cache control metadata)
 s3-pit-restore -b comicassets.tonarie.com -d restored-bucket-local -t "04-09-2021 20:30:50 -5"
+
+How we incorporate next and cloudfront (2018-04-21)
+https://gist.github.com/rbalicki2/30e8ee5fb5bc2018923a06c5ea5e3ea5
+https://stackoverflow.com/a/33087418 How do you set a default root object for subdirectories for a statically hosted website on Cloudfront? (index.html in subdirectory)

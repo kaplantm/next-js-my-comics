@@ -16,7 +16,7 @@
     "lint": "npx eslint src --max-warnings 0 --ext .js,.ts,.jsx,.tsx",
     "prettier": "prettier --write {src/**/*.tsx,src/**/*.ts}",
     "lint:fix": "npx eslint --fix src --ext .js,.ts,.jsx,.tsx",
-    "publish": "rm -rf out/image-optimization && aws s3 sync out s3://comics.tonarie.com --delete --acl public-read"
+    "publish": "rm -rf out/image-optimization && aws s3 sync out s3://comics.tonarie.com --delete --acl public-read && aws s3 cp s3://comics.tonarie.com/  s3://comics.tonarie.com/_next/ --metadata-directive REPLACE --acl public-read --cache-control 31536000 --recursive"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
