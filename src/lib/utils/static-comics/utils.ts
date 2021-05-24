@@ -4,6 +4,7 @@ import { ComicWithMetadata } from '@lib/types';
 import { promises, mkdirSync, existsSync } from 'fs';
 import path from 'path';
 import { safeLoadFront } from 'yaml-front-matter';
+import { insert } from '../string-utils';
 
 const dataFileName = 'data.md';
 const omittedFiles = ['.DS_Store'];
@@ -17,7 +18,7 @@ export const getSeriesDirectory = (series: string) =>
   `${baseSeriesDirectory}/${series}`;
 const getIssuesDirectory = (series: string) =>
   `${getSeriesDirectory(series)}/issues`;
-export const getIssueDirectory = (series: string, issue: number) =>
+export const getIssueDirectory = (series: string, issue: number | string) =>
   `${getSeriesDirectory(series)}/issues/${issue}`;
 export const getPanelsCategoryDirectory = (category: string) =>
   `${basePanelsDirectory}/${category}`;
@@ -86,10 +87,7 @@ export const getSeriesTitles = async () =>
 export const getIssueNumbers = async (seriesTitle: string) => {
   const issuesDirectory = getIssuesDirectory(seriesTitle);
 
-  // We expect issue numbers to be numbers
-  return ((await getFileNamesInDirectory(
-    issuesDirectory
-  )) as any[]) as number[];
+  return getFileNamesInDirectory(issuesDirectory);
 };
 export const getPanelCategories = async () =>
   getFileNamesInDirectory(basePanelsDirectory);
@@ -115,7 +113,7 @@ const getSeriesData = async (
 
 const getIssueData = async (
   seriesTitle: string,
-  issueNumber: number
+  issueNumber: number | string
 ): Promise<{
   description: string;
   frontMatter: any;
@@ -148,12 +146,17 @@ export async function getPanelsInCategory(category: string): Promise<string[]> {
 
 export async function getIssue(
   series: string,
-  issueNumber: number
+  issueNumber: string
 ): Promise<ComicWithMetadata> {
   const comic = await getIssueData(series, issueNumber);
   if (!comic?.frontMatter) {
     throw new Error(`Failed to build issue: ${series}-${issueNumber}`);
   }
+
+  const issueNumberIsInt = parseInt(issueNumber);
+  const formattedIssueNumber = issueNumberIsInt
+    ? `#${issueNumber}`
+    : insert(issueNumber, issueNumber.search(/\d/), '#');
   return {
     params: {
       series,
@@ -161,7 +164,7 @@ export async function getIssue(
     },
     link: {
       pathname: getIssueRoute(series, issueNumber),
-      name: `${isAOneShot(series) ? '' : `#${issueNumber} - `}${
+      name: `${isAOneShot(series) ? '' : `${formattedIssueNumber} - `}${
         comic.frontMatter.title
       }`,
     },

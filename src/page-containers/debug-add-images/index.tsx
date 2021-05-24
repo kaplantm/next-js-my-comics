@@ -51,7 +51,7 @@ const DebugAddImages = ({
   }, []);
 
   async function onOptimizeImages(e: React.FormEvent) {
-    e.preventDefault;
+    e.preventDefault();
     setSubmissionInProgress(true);
 
     const formData = new FormData();
@@ -121,7 +121,6 @@ const DebugAddImages = ({
   }
 
   const handleSliderChange = (event: any, newValue: number) => {
-    console.log({ event, newValue });
     setMaxDimensionState(newValue);
   };
 

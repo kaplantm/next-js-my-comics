@@ -7,6 +7,7 @@ export const isBlank = (value?: any) => {
 };
 
 const savedColorStrings = {
+  'Four of a Kind0.25': 'hsla(160,55%,73%,0.25)',
   'Batman: Year One0.25': 'hsla(208,50%,66%,0.25)',
   'Shaman0.25': 'hsla(70,55%,83%,0.25)',
   'Gothic0.25': 'hsla(6,49.5%,71%,0.25)',
@@ -42,7 +43,6 @@ export function stringToHSLAColor(str: string, alpha?: number) {
     alpha || a + 0.2
   })`;
   savedColorStrings[key] = color;
-  console.log(JSON.stringify(savedColorStrings));
   return color;
 }
 
@@ -75,3 +75,7 @@ export const parseDateFromMarkdownString = (dateString: string): Date => {
   }
   return date;
 };
+
+export function insert(str: string, index: number, value: string) {
+  return str.substr(0, index) + value + str.substr(index);
+}

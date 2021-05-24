@@ -109,10 +109,7 @@ const DebugAddComic = ({
       setSavedComicLink(null);
     } else {
       setSavedComicLink(
-        getIssueRoute(
-          formFieldValues.series,
-          formFieldValues.issueNumber as number
-        )
+        getIssueRoute(formFieldValues.series, formFieldValues.issueNumber)
       );
       setFormError(null);
     }

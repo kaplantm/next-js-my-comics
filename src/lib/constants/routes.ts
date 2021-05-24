@@ -29,7 +29,7 @@ export const navRoutes = sortObjectArrayAlphabeticallyBy(
 );
 
 export const getSeriesRoute = (series: string) => `/series/${series}`;
-export const getIssueRoute = (series: string, issueNumber: number) =>
+export const getIssueRoute = (series: string, issueNumber: string) =>
   `${getSeriesRoute(series)}/issues/${issueNumber}`;
 export const getPanelsCategoryRoute = category => `/panels/${category}`;
 export const getReadingOrderRoute = (order: string): string =>

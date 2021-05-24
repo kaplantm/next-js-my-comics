@@ -1,16 +1,15 @@
 import {
   getPanelCategories,
   getPanelsInCategory,
-} from "@lib/utils/static-comics/utils";
-import React from "react";
-import Panels from "@page-containers/panels/category";
-import { shuffleArray } from "@lib/utils/array-utils";
-import { reactsPage } from "@lib/constants";
+} from '@lib/utils/static-comics/utils';
+import React from 'react';
+import Panels from '@page-containers/panels/category';
+import { reactsPage } from '@lib/constants';
 
 const fitlerablePages = [reactsPage];
 
 // TODO: arrows to move to next image
-const PanelsCategoryPage = (props) => (
+const PanelsCategoryPage = props => (
   <Panels
     {...props}
     filterable={fitlerablePages.includes(props.params.category)}
@@ -18,7 +17,7 @@ const PanelsCategoryPage = (props) => (
 );
 
 export const getStaticPaths = async () => {
-  const paths = (await getPanelCategories()).map((category) => ({
+  const paths = (await getPanelCategories()).map(category => ({
     params: { category },
   }));
   return {
@@ -37,7 +36,8 @@ export async function getStaticProps({
   return {
     props: {
       params,
-      imagePaths: shuffleArray(imagePaths || []),
+      // imagePaths: shuffleArray(imagePaths || []), //shuffled order at build time
+      imagePaths: imagePaths.reverse(),
     },
   };
 }

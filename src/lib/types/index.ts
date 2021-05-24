@@ -1,4 +1,4 @@
-import { AxiosError, AxiosResponse } from "axios";
+import { AxiosError, AxiosResponse } from 'axios';
 
 export interface AppAxiosResponse<T> {
   response: AxiosResponse<T>;
@@ -7,7 +7,7 @@ export interface AppAxiosResponse<T> {
 
 export type ComicPageParams = {
   series: string;
-  issueNumber?: number;
+  issueNumber?: string;
 };
 
 export type ComicType = {
@@ -19,7 +19,7 @@ export type ComicType = {
     arc: string;
     start: string | number;
     end: string | number;
-    issueNumber: string | number;
+    issueNumber: string;
     link: string;
   };
 };
@@ -29,7 +29,7 @@ export type ComicWithMetadata = {
   params: ComicPageParams;
   comic: ComicType;
   issues?: {
-    [issueNumber: number]: ComicWithMetadata;
+    [issueNumber: string]: ComicWithMetadata;
   };
 };
 

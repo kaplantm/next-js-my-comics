@@ -1,8 +1,8 @@
-import { ComicWithMetadata } from "@lib/types";
-import React from "react";
-import { getSeries, getSeriesTitles } from "@lib/utils/static-comics/utils";
-import ComicBody from "@page-containers/comic-body";
-import ListIndex from "@page-containers/comic-list-index/index";
+import { ComicWithMetadata } from '@lib/types';
+import React from 'react';
+import { getSeries, getSeriesTitles } from '@lib/utils/static-comics/utils';
+import ComicBody from '@page-containers/comic-body';
+import ListIndex from '@page-containers/comic-list-index/index';
 
 const SeriesPage = ({
   listData,
@@ -10,7 +10,7 @@ const SeriesPage = ({
 }: {
   listData: ComicWithMetadata[];
   series: ComicWithMetadata;
-  params: { series: string; issueNumber: number };
+  params: { series: string; issueNumber: string };
 }) => (
   <>
     <ComicBody {...rest}>
@@ -21,7 +21,7 @@ const SeriesPage = ({
 
 export const getStaticPaths = async () => {
   const seriesTitles = await getSeriesTitles();
-  const paths = seriesTitles.map((series) => ({ params: { series } }));
+  const paths = seriesTitles.map(series => ({ params: { series } }));
 
   return {
     paths,
