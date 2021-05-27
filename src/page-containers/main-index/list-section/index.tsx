@@ -1,5 +1,4 @@
 import { memo } from 'react';
-import { Box } from '@material-ui/core';
 import { MemoizedListIndex } from '@page-containers/comic-list-index/index';
 import { isAOneShot } from '@lib/constants';
 import { ComicWithMetadataListIssuesType } from '../helpers';
@@ -8,9 +7,11 @@ import useStyles from './use-styles';
 const ListSection = ({
   groupData,
   headerLabel,
+  skipDescription,
 }: {
   groupData: ComicWithMetadataListIssuesType;
   headerLabel: string;
+  skipDescription?: boolean;
 }) => {
   const classes = useStyles();
   if (!groupData.issues.length) {
@@ -28,7 +29,11 @@ const ListSection = ({
 
   return (
     <div className={classes.wrapper}>
-      <MemoizedListIndex listData={listData} headerLabel={headerLabel} />
+      <MemoizedListIndex
+        listData={listData}
+        headerLabel={headerLabel}
+        skipDescription={skipDescription}
+      />
     </div>
   );
 };

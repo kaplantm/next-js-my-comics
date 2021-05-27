@@ -13,6 +13,7 @@ type ComicListIndexProps = {
   headerLabel: string;
   listData: ComicWithMetadata[];
   skipArcColorTooltip?: boolean;
+  skipDescription?: boolean;
 };
 
 // TODO: page head
@@ -22,6 +23,7 @@ function ComicListIndex({
   headerLabel,
   listData,
   skipArcColorTooltip,
+  skipDescription,
 }: ComicListIndexProps) {
   const [expandedState, setExpandedState] = useState(getInitialState(listData));
   const classes = useStyles();
@@ -64,29 +66,33 @@ function ComicListIndex({
                       {link.name}
                     </AppLink>
 
-                    <IconButton
-                      className={classes.expandButton}
-                      onClick={() => toggleExpanded(index)}
-                    >
-                      {expandedState[index] ? (
-                        <KeyboardArrowDown />
-                      ) : (
-                        <KeyboardArrowLeft />
-                      )}
-                    </IconButton>
+                    {!skipDescription && (
+                      <IconButton
+                        className={classes.expandButton}
+                        onClick={() => toggleExpanded(index)}
+                      >
+                        {expandedState[index] ? (
+                          <KeyboardArrowDown />
+                        ) : (
+                          <KeyboardArrowLeft />
+                        )}
+                      </IconButton>
+                    )}
                     <DebugLinksMemo baseLink={link.pathname} />
                   </div>
                 </Typography>
               </div>
-              <Collapse in={expandedState[index]}>
-                {comic?.description && (
-                  <div className={classes.markdownWrapper}>
-                    {expandedState[index] && (
-                      <ReactMarkdown>{comic.description}</ReactMarkdown>
-                    )}
-                  </div>
-                )}
-              </Collapse>
+              {!skipDescription && (
+                <Collapse in={expandedState[index]}>
+                  {comic?.description && (
+                    <div className={classes.markdownWrapper}>
+                      {expandedState[index] && (
+                        <ReactMarkdown>{comic.description}</ReactMarkdown>
+                      )}
+                    </div>
+                  )}
+                </Collapse>
+              )}
             </li>
           ))}
         </ul>
