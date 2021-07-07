@@ -3,7 +3,13 @@ import React from 'react';
 import { useDropzone } from 'react-dropzone';
 import useStyles from './use-styles';
 
-function MyDropzone({ onDrop }: { onDrop: (files: any) => void }) {
+function MyDropzone({
+  onDrop,
+  currentFileCount,
+}: {
+  onDrop: (files: any) => void;
+  currentFileCount?: number;
+}) {
   const classes = useStyles();
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
@@ -15,13 +21,19 @@ function MyDropzone({ onDrop }: { onDrop: (files: any) => void }) {
       aria-label="Upload Images"
     >
       <input {...getInputProps()} />
-      {isDragActive ? (
-        <Typography variant="h4">Drop the files here ...</Typography>
-      ) : (
-        <Typography variant="h4">
-          Drag 'n' drop some files here, or click to select files
-        </Typography>
-      )}
+      <Typography variant="h4">
+        {isDragActive ? (
+          <>Drop the files here ...</>
+        ) : (
+          <>Drag 'n' drop some files here, or click to select files</>
+        )}
+        {!!currentFileCount && (
+          <Typography variant="h4" className="demiBold" component="span">
+            {' '}
+            ({currentFileCount} file{currentFileCount > 1 ? 's' : ''} queued)
+          </Typography>
+        )}
+      </Typography>
     </div>
   );
 }

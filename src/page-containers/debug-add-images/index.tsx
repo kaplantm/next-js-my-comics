@@ -161,7 +161,10 @@ const DebugAddImages = ({
                   />
                 </Grid>
                 <Grid item xs={8}>
-                  <MyDropzone onDrop={onDrop} />
+                  <MyDropzone
+                    onDrop={onDrop}
+                    currentFileCount={filesToOptimize.length}
+                  />
                 </Grid>
 
                 <Grid item container xs={4} justify="center">
