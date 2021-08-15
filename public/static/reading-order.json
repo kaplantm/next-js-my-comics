@@ -121,8 +121,8 @@
     "Batgirl Year One/issues/8",
     "Batgirl Year One/issues/9"
   ],
-  "batman_batgirl": ["One Shots/issues/9"],
-  "night_cries": ["One Shots/issues/10"],
+  "batman_batgirl": ["One Shots/issues/11"],
+  "night_cries": ["One Shots/issues/12"],
   "the_cat_and_the_bat": [
     "Batman Confidential/issues/17",
     "Batman Confidential/issues/18",
@@ -436,5 +436,6 @@
     "Detective Comics Volume 1/issues/741",
     "Azrael Volume 1/issues/61",
     "Batman Shadow of the Bat/issues/94"
-  ]
+  ],
+  "elseworlds": ["One Shots/issues/9", "One Shots/issues/10"]
 }

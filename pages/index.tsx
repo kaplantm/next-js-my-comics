@@ -9,10 +9,14 @@ const IndexPage = props => <MainIndex {...props} />;
 export const getStaticProps = async () => {
   const readingOrder = await getReadingOrder();
   const comics = await getAllSeries(true);
+  // Omit issue descriptions to reduce JSON data size
   const allIssues = Object.keys(comics)
     .map(seriesTitle => {
       const issuesInSeries = comics[seriesTitle].issues;
-      return Object.values(issuesInSeries);
+      return Object.values(issuesInSeries).map(issue => ({
+        ...issue,
+        comic: { ...issue.comic, description: '' },
+      }));
     })
     .flat();
 
