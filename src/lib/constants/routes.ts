@@ -3,6 +3,11 @@ import { MappedRouteType } from '../types';
 import { sortObjectArrayAlphabeticallyBy } from '../utils/array-utils';
 
 export const routeMap: { [key: string]: MappedRouteType } = {
+  newComic: {
+    pathname: '/debug/new',
+    name: 'Add Comic',
+    dev: true,
+  },
   home: {
     pathname: '/',
     name: 'Home',
@@ -16,6 +21,7 @@ export const routeMap: { [key: string]: MappedRouteType } = {
     name: 'Panels',
   },
   readingOrderIndex: {
+    // This route omitted from nav
     pathname: '/reading-order',
     name: 'Reading Order',
   },

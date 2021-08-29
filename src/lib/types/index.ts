@@ -37,6 +37,7 @@ export type MappedRouteType = {
   pathname: string;
   name: string;
   query?: { [key: string]: string | boolean | number };
+  dev?: boolean; // only appear in nav in dev mode
 };
 
 export interface FormValidatorConfigType {

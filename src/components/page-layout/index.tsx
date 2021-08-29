@@ -1,18 +1,13 @@
 import {
   AppBar,
-  Box,
-  IconButton,
   Toolbar,
   Typography,
   List,
   ListItem,
   Container,
-  Divider,
-  Drawer,
 } from '@material-ui/core';
 import clsx from 'clsx';
 import React from 'react';
-import { Menu, ChevronLeft } from '@material-ui/icons';
 import AppLink from '../app-link';
 import useStyles from './use-styles';
 import { routeMap, navRoutes } from '../../lib/constants/routes';
@@ -40,22 +35,25 @@ function Page({ children }: { children: any }) {
           </AppLink>
           <nav>
             <List className={classes.navList}>
-              {navRoutes.map((route: MappedRouteType) => (
-                <AppLink
-                  nextProps={{
-                    href: {
-                      pathname: route.pathname,
-                      query: route.query,
-                    },
-                  }}
-                  className={classes.link}
-                  key={`${route.pathname}${
-                    route.query ? JSON.stringify(route.query) : ''
-                  }${route.name}`}
-                >
-                  <ListItem button>{route.name}</ListItem>
-                </AppLink>
-              ))}
+              {navRoutes.map(
+                (route: MappedRouteType) =>
+                  (!route.dev || process.env.NODE_ENV === 'development') && (
+                    <AppLink
+                      nextProps={{
+                        href: {
+                          pathname: route.pathname,
+                          query: route.query,
+                        },
+                      }}
+                      className={classes.link}
+                      key={`${route.pathname}${
+                        route.query ? JSON.stringify(route.query) : ''
+                      }${route.name}`}
+                    >
+                      <ListItem button>{route.name}</ListItem>
+                    </AppLink>
+                  )
+              )}
             </List>
           </nav>
         </Toolbar>

@@ -43,7 +43,10 @@ const MainIndex = ({
               const inDescription = issue.comic.description
                 .toLowerCase()
                 .includes(lowercaseSearchTerm);
-              return inDescription || inTitle;
+              const inNumber = `${
+                issue.comic.frontMatter.issueNumber || ''
+              }`.includes(lowercaseSearchTerm);
+              return inDescription || inTitle || inNumber;
             }),
           };
           return acc;
