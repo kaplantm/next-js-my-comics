@@ -1,10 +1,10 @@
 ---
-title: "Unity of Purpose"
-start: "May, 2000"
+title: 'Unity of Purpose'
+start: 'May, 2000'
 end: null
-issue: 744
-arc: "Evolution"
-link: "https://dc.fandom.com/wiki/Detective_Comics_Vol_1_744"
+issueNumber: 744
+arc: 'Evolution'
+link: 'https://dc.fandom.com/wiki/Detective_Comics_Vol_1_744'
 ---
 
 - Whisper and Abbott tell gang leaders Ekin Tzu and Able Crown that it was their rivals, the Odessa Mob and the Escabedo Cartel, who killed Tzu's wife and destroyed Crown's youth center.

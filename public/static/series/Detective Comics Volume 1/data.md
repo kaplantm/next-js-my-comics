@@ -1,8 +1,8 @@
 ---
-title: "Detective Comics Volume 1"
+title: 'Detective Comics Volume 1'
 start: 1937
-end: "Ongoing"
-issue: null
+end: 'Ongoing'
+issueNumber: null
 arc: null
 link: https://dc.fandom.com/wiki/Detective_Comics_Vol_1
 ---

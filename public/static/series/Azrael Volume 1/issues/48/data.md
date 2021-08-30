@@ -1,10 +1,10 @@
 ---
-title: "Scratching The Surface"
-start: "January, 1999"
+title: 'Scratching The Surface'
+start: 'January, 1999'
 end: null
-issue: 48
+issueNumber: 48
 arc: "Batman: Road to No Man's Land"
-link: "https://dc.fandom.com/wiki/Azrael:_Agent_of_the_Bat_Vol_1_48"
+link: 'https://dc.fandom.com/wiki/Azrael:_Agent_of_the_Bat_Vol_1_48'
 ---
 
 - Scratch’s henchmen enter and tell him about Azrael.

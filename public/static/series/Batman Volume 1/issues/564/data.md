@@ -2,7 +2,7 @@
 title: 'Fear of Faith, Part Three: Life in Hell'
 start: 'April, 1999'
 end: null
-issue: 564
+issueNumber: 564
 arc: "Batman: No Man's Land"
 link: 'https://dc.fandom.com/wiki/Batman_Vol_1_564'
 ---

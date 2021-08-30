@@ -2,7 +2,7 @@
 title: 'Batman: Master of the Future'
 start: 'February, 1992'
 end: null
-issue: 10
+issueNumber: 10
 arc: 'Elseworlds'
 link: 'https://dc.fandom.com/wiki/Batman:_Master_of_the_Future'
 ---

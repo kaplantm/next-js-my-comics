@@ -1,10 +1,10 @@
 ---
-title: "Gotham City Must Die!"
-start: "February, 1999"
+title: 'Gotham City Must Die!'
+start: 'February, 1999'
 end: null
-issue: 49
+issueNumber: 49
 arc: "Batman: Road to No Man's Land"
-link: "https://dc.fandom.com/wiki/Azrael:_Agent_of_the_Bat_Vol_1_49"
+link: 'https://dc.fandom.com/wiki/Azrael:_Agent_of_the_Bat_Vol_1_49'
 ---
 
 - Nicholas Scratch bribes some senators to vote against the reconstruction funding for Gotham.

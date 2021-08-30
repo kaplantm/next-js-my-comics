@@ -2,7 +2,7 @@
 title: 'Miracle Run'
 start: 'April, 1999'
 end: null
-issue: 51
+issueNumber: 51
 arc: "Batman: No Man's Land"
 link: 'https://dc.fandom.com/wiki/Azrael:_Agent_of_the_Bat_Vol_1_51'
 ---

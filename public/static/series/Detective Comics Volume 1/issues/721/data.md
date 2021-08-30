@@ -1,10 +1,10 @@
 ---
-title: "Part 14: Shifting Ground"
-start: "May, 1998"
+title: 'Part 14: Shifting Ground'
+start: 'May, 1998'
 end: null
-issue: 721
-arc: "Batman: Cataclysm"
-link: "https://dc.fandom.com/wiki/Detective_Comics_Vol_1_721"
+issueNumber: 721
+arc: 'Batman: Cataclysm'
+link: 'https://dc.fandom.com/wiki/Detective_Comics_Vol_1_721'
 ---
 
 - Batman and Nightwing join rescue efforts, Robin searches for clues in the Quakemaster's videos.

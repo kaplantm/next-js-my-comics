@@ -1,10 +1,10 @@
 ---
 title: "Goin' Downtown, Part One: The Vault"
-start: "November, 1999"
+start: 'November, 1999'
 end: null
-issue: 571
+issueNumber: 571
 arc: "Batman: No Man's Land"
-link: "https://dc.fandom.com/wiki/Batman_Vol_1_571"
+link: 'https://dc.fandom.com/wiki/Batman_Vol_1_571'
 ---
 
 - Bane kills some street punks, leaving one girl alive - he needs a “sacrificial lamb” to test the a hidden basement vault for traps. Luckily they had all already been triggered by other intruders, and the girl lives. The vault (created by Lex Luthor) has weapons and ammunition. They take as much as they can carry.

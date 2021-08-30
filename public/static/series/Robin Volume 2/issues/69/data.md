@@ -1,10 +1,10 @@
 ---
-title: "War Beneath the Streets!, Part Two: Wolflings"
-start: "October, 1999"
+title: 'War Beneath the Streets!, Part Two: Wolflings'
+start: 'October, 1999'
 end: null
-issue: 69
+issueNumber: 69
 arc: "Batman: No Man's Land"
-link: "https://dc.fandom.com/wiki/Robin_Vol_2_69"
+link: 'https://dc.fandom.com/wiki/Robin_Vol_2_69'
 ---
 
 - Crystal Brown confronts her daughter Stephanie about the costume she found while arranging her clothes. Ms. Brown was worried that Stephanie is following in her father's footsteps but Stephanie assured her that The Spoiler was one of the good guys. They talk more about her work as Spoiler, but her mother says she is forbidden to go out as Spoiler again.

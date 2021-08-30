@@ -32,6 +32,7 @@ const MainIndex = ({
     const lowercaseSearchTerm = debouncedSearchTerm.toLowerCase();
     const filtered = lowercaseSearchTerm
       ? Object.keys(groupData.groups).reduce((acc, key) => {
+          // console.log({ issues: groupData.groups[key].issues });
           acc[key] = {
             comic: null,
             link: null,

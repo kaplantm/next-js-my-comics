@@ -1,10 +1,10 @@
 ---
-title: "Batman and the Mad Monk, Part 3"
-start: "December, 2006"
+title: 'Batman and the Mad Monk, Part 3'
+start: 'December, 2006'
 end: null
-issue: 3
-arc: "Dark Moon Rising"
-link: "https://dc.fandom.com/wiki/Batman_and_the_Mad_Monk_Vol_1_3"
+issueNumber: 3
+arc: 'Dark Moon Rising'
+link: 'https://dc.fandom.com/wiki/Batman_and_the_Mad_Monk_Vol_1_3'
 ---
 
 - Batman is interrogating on of the low-life members of the Brotherhood of Eternal Night, but they are too afraid of the Monk to talk.

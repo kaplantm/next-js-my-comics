@@ -2,7 +2,7 @@
 title: 'Shellgame, Part 1: Gambits'
 start: 'January, 2000'
 end: null
-issue: 573
+issueNumber: 573
 arc: "Batman: No Man's Land"
 link: 'https://dc.fandom.com/wiki/Batman_Vol_1_573'
 ---

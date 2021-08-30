@@ -2,7 +2,7 @@
 title: 'A Romance, Volume Two: The Death Ship'
 start: 'May, 1990'
 end: null
-issue: 7
+issueNumber: 7
 arc: 'Gothic'
 link: 'https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_7'
 ---

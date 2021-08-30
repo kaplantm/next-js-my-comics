@@ -1,10 +1,10 @@
 ---
-title: "...A Man of Wealth and Taste..."
-start: "December, 1998"
+title: '...A Man of Wealth and Taste...'
+start: 'December, 1998'
 end: null
-issue: 47
+issueNumber: 47
 arc: "Batman: Road to No Man's Land"
-link: "https://dc.fandom.com/wiki/Azrael:_Agent_of_the_Bat_Vol_1_47"
+link: 'https://dc.fandom.com/wiki/Azrael:_Agent_of_the_Bat_Vol_1_47'
 ---
 
 - Batman asks a favor of Azrael; to check on senator Halivan (one of the few senators would argue for Gotham emergency funding) in Washington, D.C.

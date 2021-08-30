@@ -2,7 +2,7 @@
 title: 'No Law and a New Order Part Four: Language'
 start: 'March, 1999'
 end: null
-issue: 730
+issueNumber: 730
 arc: "Batman: No Man's Land"
 link: 'https://dc.fandom.com/wiki/Detective_Comics_Vol_1_730'
 ---

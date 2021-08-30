@@ -2,7 +2,7 @@
 title: 'Fight or Flight, Part 1: Nest of Vipers'
 start: 'December, 1998'
 end: null
-issue: 727
+issueNumber: 727
 arc: "Batman: Road to No Man's Land"
 link: 'https://dc.fandom.com/wiki/Detective_Comics_Vol_1_727'
 ---

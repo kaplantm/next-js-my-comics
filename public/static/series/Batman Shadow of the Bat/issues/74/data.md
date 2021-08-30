@@ -1,10 +1,10 @@
 ---
-title: "Part 9: The Naked City"
-start: "May, 1998"
+title: 'Part 9: The Naked City'
+start: 'May, 1998'
 end: null
-issue: 74
-arc: "Batman: Cataclysm"
-link: "https://dc.fandom.com/wiki/Batman:_Shadow_of_the_Bat_Vol_1_74"
+issueNumber: 74
+arc: 'Batman: Cataclysm'
+link: 'https://dc.fandom.com/wiki/Batman:_Shadow_of_the_Bat_Vol_1_74'
 ---
 
 - Bats worries this disaster is an enemy that he can't fight. Bats helps in rescue efforts.

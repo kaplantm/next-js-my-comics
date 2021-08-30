@@ -1,10 +1,10 @@
 ---
-title: "Falling Back"
-start: "January, 2000"
+title: 'Falling Back'
+start: 'January, 2000'
 end: null
-issue: 125
+issueNumber: 125
 arc: "Batman: No Man's Land"
-link: "https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_125"
+link: 'https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_125'
 ---
 
 - Robin and Oracle are waiting at Oracle's Watchtower for Batman and James Gordon to discuss the future of their alliance. Meanwhile they try to discover who was responsible for the construction supplies that have been getting into Gotham City.

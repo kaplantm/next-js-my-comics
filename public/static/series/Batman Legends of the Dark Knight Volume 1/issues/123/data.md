@@ -1,10 +1,10 @@
 ---
-title: "Underground Railroad: Part One"
-start: "November, 1999"
+title: 'Underground Railroad: Part One'
+start: 'November, 1999'
 end: null
-issue: 123
+issueNumber: 123
 arc: "Batman: No Man's Land"
-link: "https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_123"
+link: 'https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_123'
 ---
 
 - Former police officer Mackenzie "Hardback" Bock leads his old neighborhood, an area of 100 square blocks.

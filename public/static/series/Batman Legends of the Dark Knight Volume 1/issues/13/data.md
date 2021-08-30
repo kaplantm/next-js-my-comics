@@ -1,10 +1,10 @@
 ---
-title: "Prey, Part Three: Night Scourge!"
-start: "December, 1990"
+title: 'Prey, Part Three: Night Scourge!'
+start: 'December, 1990'
 end: null
-issue: 13
-arc: "Prey"
-link: "https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_13"
+issueNumber: 13
+arc: 'Prey'
+link: 'https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_13'
 ---
 
 - After a disastrous dinner-date with Catherine Klass, Hugo Strange retreats to his penthouse and reconvenes with Sgt. Cort to discuss their next move against Batman. Strange has been physically and demographically profiling Batman, and Strange's key hypothesis is that Batman is driven by trauma from some recent crime.

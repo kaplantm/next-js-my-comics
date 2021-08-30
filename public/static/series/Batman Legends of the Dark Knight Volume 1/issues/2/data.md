@@ -1,10 +1,10 @@
 ---
-title: "Shaman - Book Two"
-start: "December, 1989"
+title: 'Shaman - Book Two'
+start: 'December, 1989'
 end: null
-issue: 2
-arc: "Shaman"
-link: "https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_2"
+issueNumber: 2
+arc: 'Shaman'
+link: 'https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_2'
 ---
 
 - Six months later, two GCPD officers stumble upon the Chubala Cult in the middle of a human sacrifice. One is killed and the other barely escapes. Gordon and Batman check out the scene.

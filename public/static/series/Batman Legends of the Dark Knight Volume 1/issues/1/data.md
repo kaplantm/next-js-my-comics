@@ -1,10 +1,10 @@
 ---
-title: "Shaman - Book One"
-start: "November, 1989"
+title: 'Shaman - Book One'
+start: 'November, 1989'
 end: null
-issue: 1
-arc: "Shaman"
-link: "https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_1"
+issueNumber: 1
+arc: 'Shaman'
+link: 'https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_1'
 ---
 
 - Before he was Batman, Bruce trained with tracker/bounty hunter Willy Doggett.

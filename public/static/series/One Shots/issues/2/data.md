@@ -1,10 +1,10 @@
 ---
-title: "Batman: Blackgate - Part 8: Tribunal: Isle of Men"
-start: "April, 1998"
+title: 'Batman: Blackgate - Part 8: Tribunal: Isle of Men'
+start: 'April, 1998'
 end: null
-issue: 2
-arc: "Batman: Cataclysm"
-link: "https://dc.fandom.com/wiki/Batman:_Blackgate_-_Isle_of_Men_Vol_1_1"
+issueNumber: 2
+arc: 'Batman: Cataclysm'
+link: 'https://dc.fandom.com/wiki/Batman:_Blackgate_-_Isle_of_Men_Vol_1_1'
 ---
 
 - Jared Manx sentenced to death at Blackgate Penitentiary for murders of two kids and their mother; to be executed at midnight.

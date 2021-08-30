@@ -1,10 +1,10 @@
 ---
-title: "Low Road to Golden Mountain: ...Where the Lights are Burning Low"
-start: "October, 1999"
+title: 'Low Road to Golden Mountain: ...Where the Lights are Burning Low'
+start: 'October, 1999'
 end: null
-issue: 122
+issueNumber: 122
 arc: "Batman: No Man's Land"
-link: "https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_122"
+link: 'https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_122'
 ---
 
 - Batman realizes that Gotham City's Chinatown has electricity, despite Freeze’s plant getting blown up. He goes to investigate how that is possible.

@@ -1,13 +1,13 @@
 ---
-title: "Ms. Direction"
-start: "October, 1999"
+title: 'Ms. Direction'
+start: 'October, 1999'
 end: null
-issue: 73
+issueNumber: 73
 arc: "Batman: No Man's Land"
-link: "https://dc.fandom.com/wiki/Catwoman_Vol_2_73"
+link: 'https://dc.fandom.com/wiki/Catwoman_Vol_2_73'
 ---
 
-- Catwoman and two of the men, Al and Lewis, reach a gate at the end of the tunnel. They work together to open it and are swept outside. 
+- Catwoman and two of the men, Al and Lewis, reach a gate at the end of the tunnel. They work together to open it and are swept outside.
 - Catwoman threatens Al, Lewis and Mookie, forcing them to be her crew for this job.
 - They travel to Manhattan. Unfortunately Selina is known as both Selina Kyle, dead mayoral candidate, and Catwoman, Selina Kyle's murderer, in New York, so they must disguise themselves. Mookie is dressed up as the Countess Angora while Selina becomes Miss Venite, her traveling companion and secretary, and Al and Lewis serve as their bodyguards.
 - Selina studies the info Batman gave her. The discs she is going to steal were meant for Bruce Wayne, but after he was embarrassed in Washington, D.C., he took off to Europe and no one can find him to pick the discs up.

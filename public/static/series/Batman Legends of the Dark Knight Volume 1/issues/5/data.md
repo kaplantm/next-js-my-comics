@@ -1,10 +1,10 @@
 ---
-title: "Shaman - Book Five"
-start: "March, 1990"
+title: 'Shaman - Book Five'
+start: 'March, 1990'
 end: null
-issue: 5
-arc: "Shaman"
-link: "https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_5"
+issueNumber: 5
+arc: 'Shaman'
+link: 'https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_5'
 ---
 
 - Bruce arrives at Wayne Manor. Woodley attacks, they fight but Woodley escapes.

@@ -1,10 +1,10 @@
 ---
-title: "Batman and the Mad Monk, Part 2"
-start: "November, 2006"
+title: 'Batman and the Mad Monk, Part 2'
+start: 'November, 2006'
 end: null
-issue: 2
-arc: "Dark Moon Rising"
-link: "https://dc.fandom.com/wiki/Batman_and_the_Mad_Monk_Vol_1_2"
+issueNumber: 2
+arc: 'Dark Moon Rising'
+link: 'https://dc.fandom.com/wiki/Batman_and_the_Mad_Monk_Vol_1_2'
 ---
 
 - Dala is leading the blood communion for the Brotherhood of Eternal Night. The Mad Monk enters and bites the victims neck, draining the blood into a chalice for the Brotherhood to drink.

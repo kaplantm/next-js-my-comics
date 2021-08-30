@@ -1,10 +1,10 @@
 ---
-title: "Batman and the Mad Monk, Part 6"
-start: "March, 2007"
+title: 'Batman and the Mad Monk, Part 6'
+start: 'March, 2007'
 end: null
-issue: 6
-arc: "Dark Moon Rising"
-link: "https://dc.fandom.com/wiki/Batman_and_the_Mad_Monk_Vol_1_6"
+issueNumber: 6
+arc: 'Dark Moon Rising'
+link: 'https://dc.fandom.com/wiki/Batman_and_the_Mad_Monk_Vol_1_6'
 ---
 
 - The Mad Monk's vampire cult has captured Julie Madison and is preparing her for sacrifice. Batman arrives with knockout gas pouring from the Batmobile, greating thinning the attacking crowd.

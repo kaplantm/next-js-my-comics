@@ -2,7 +2,7 @@
 title: 'Wax Man and the Clown, Part 3'
 start: 'February, 1999'
 end: null
-issue: 82
+issueNumber: 82
 arc: "Batman: Road to No Man's Land"
 link: 'https://dc.fandom.com/wiki/Batman:_Shadow_of_the_Bat_Vol_1_82'
 ---

@@ -2,7 +2,7 @@
 title: 'Ground Zero'
 start: 'December, 1999'
 end: null
-issue: 0
+issueNumber: 0
 arc: "Batman: No Man's Land"
 link: 'https://dc.fandom.com/wiki/Batman:_No_Man%27s_Land_Vol_1_0'
 ---

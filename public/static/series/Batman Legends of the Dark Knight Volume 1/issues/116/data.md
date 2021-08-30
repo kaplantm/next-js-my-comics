@@ -2,7 +2,7 @@
 title: 'Fear of Faith, Part One: Fanning the Flames'
 start: 'April, 1999'
 end: null
-issue: 116
+issueNumber: 116
 arc: "Batman: No Man's Land"
 link: 'https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_116'
 ---

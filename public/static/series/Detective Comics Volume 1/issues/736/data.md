@@ -1,10 +1,10 @@
 ---
-title: "Homecoming"
-start: "September, 1999"
+title: 'Homecoming'
+start: 'September, 1999'
 end: null
-issue: 736
+issueNumber: 736
 arc: "Batman: No Man's Land"
-link: "https://dc.fandom.com/wiki/Detective_Comics_Vol_1_736"
+link: 'https://dc.fandom.com/wiki/Detective_Comics_Vol_1_736'
 ---
 
 - Bane steals some trucks and dynamite, heads back to Gotham. He launches his truck over the bridge, evading U.S. Marshalls to get into the city.

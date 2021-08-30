@@ -1,10 +1,10 @@
 ---
-title: "Batman: Legends of the Dark Knight Volume 1"
+title: 'Batman: Legends of the Dark Knight Volume 1'
 start: 1989
 end: 2007
-issue: null
+issueNumber: null
 arc: null
-link: "https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1"
+link: 'https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1'
 ---
 
 A comic book anthology series featuring Batman. Its deliberately geared toward new and 'casual' fans, the series consists almost entirely of self-contained stories - which may run anywhere from one to five issues - from a wide variety of creative teams. No two consecutive stories feature the same writer or artist(s).

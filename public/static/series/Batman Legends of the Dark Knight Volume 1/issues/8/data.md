@@ -2,7 +2,7 @@
 title: ' A Romance, Volume Three: The Burning Nun'
 start: 'June, 1990'
 end: null
-issue: 8
+issueNumber: 8
 arc: 'Gothic'
 link: 'https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_8'
 ---

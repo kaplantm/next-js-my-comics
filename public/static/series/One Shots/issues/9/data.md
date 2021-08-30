@@ -2,7 +2,7 @@
 title: 'Batman: Gotham by Gaslight'
 start: 'January, 1990'
 end: null
-issue: 9
+issueNumber: 9
 arc: 'Elseworlds'
 link: 'https://dc.fandom.com/wiki/Batman:_Gotham_by_Gaslight'
 ---

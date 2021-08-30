@@ -1,10 +1,10 @@
 ---
-title: "Spiritual Currency"
-start: "September, 1999"
+title: 'Spiritual Currency'
+start: 'September, 1999'
 end: null
-issue: 18
+issueNumber: 18
 arc: "Batman: No Man's Land"
-link: "https://dc.fandom.com/wiki/Batman_Chronicles_Vol_1_18"
+link: 'https://dc.fandom.com/wiki/Batman_Chronicles_Vol_1_18'
 ---
 
 - Leslie Thompkins wakes up after having a nightmare.

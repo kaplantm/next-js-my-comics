@@ -1,10 +1,10 @@
 ---
-title: "The Honored Dead"
-start: "March, 2000"
+title: 'The Honored Dead'
+start: 'March, 2000'
 end: null
-issue: 742
-arc: "Evolution"
-link: "https://dc.fandom.com/wiki/Detective_Comics_Vol_1_742"
+issueNumber: 742
+arc: 'Evolution'
+link: 'https://dc.fandom.com/wiki/Detective_Comics_Vol_1_742'
 ---
 
 - James Gordon returned to duty after time off for mourning his wife.

@@ -2,7 +2,7 @@
 title: 'Fear of Faith, Part Two: To Serve and Protect'
 start: 'April, 1999'
 end: null
-issue: 84
+issueNumber: 84
 arc: "Batman: No Man's Land"
 link: 'https://dc.fandom.com/wiki/Batman:_Shadow_of_the_Bat_Vol_1_84'
 ---

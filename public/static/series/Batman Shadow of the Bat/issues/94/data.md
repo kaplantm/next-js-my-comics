@@ -1,10 +1,10 @@
 ---
-title: "Endgame Epilogue: Days of Auld Lang Syne"
-start: "February, 2000"
+title: 'Endgame Epilogue: Days of Auld Lang Syne'
+start: 'February, 2000'
 end: null
-issue: 94
+issueNumber: 94
 arc: "Batman: No Man's Land"
-link: "https://dc.fandom.com/wiki/Batman:_Shadow_of_the_Bat_Vol_1_94"
+link: 'https://dc.fandom.com/wiki/Batman:_Shadow_of_the_Bat_Vol_1_94'
 ---
 
 - December 31: James Gordon, Barbara Gordon, Richard Grayson, Lex Luthor and the Gotham City Police Department are at the funeral ceremony for Sarah Essen. Batman shows up in front of them and Jim asks him if it was all worth it. Batman doesn't answer.

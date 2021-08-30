@@ -2,7 +2,7 @@
 title: 'A Romance, Volume Five: Walpurgisnacht'
 start: 'August, 1990'
 end: null
-issue: 10
+issueNumber: 10
 arc: 'Gothic'
 link: 'https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_10'
 ---

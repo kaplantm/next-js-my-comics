@@ -1,10 +1,10 @@
 ---
-title: "War Beneath the Streets!, Part One: Rats!"
-start: "September, 1999"
+title: 'War Beneath the Streets!, Part One: Rats!'
+start: 'September, 1999'
 end: null
-issue: 68
+issueNumber: 68
 arc: "Batman: No Man's Land"
-link: "https://dc.fandom.com/wiki/Robin_Vol_2_68"
+link: 'https://dc.fandom.com/wiki/Robin_Vol_2_68'
 ---
 
 - Outside in Gotham, Batman gives Robin a job: to find the source of the food that has been circulating in Gotham for the last few days.

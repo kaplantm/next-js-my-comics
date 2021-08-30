@@ -2,7 +2,7 @@
 title: 'Fear of Faith, Part Four: Be Not Afraid'
 start: 'April, 1999'
 end: null
-issue: 731
+issueNumber: 731
 arc: "Batman: No Man's Land"
 link: 'https://dc.fandom.com/wiki/Detective_Comics_Vol_1_731'
 ---

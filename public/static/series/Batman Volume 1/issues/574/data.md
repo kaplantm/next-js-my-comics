@@ -1,10 +1,10 @@
 ---
-title: "Endgame, Part Two: ...Tender and Mild..."
-start: "February, 2000"
+title: 'Endgame, Part Two: ...Tender and Mild...'
+start: 'February, 2000'
 end: null
-issue: 574
+issueNumber: 574
 arc: "Batman: No Man's Land"
-link: "https://dc.fandom.com/wiki/Batman_Vol_1_574"
+link: 'https://dc.fandom.com/wiki/Batman_Vol_1_574'
 ---
 
 - Pettit’s camp is attacked during Christmas dinner. Pettit tells everyone to stand and fight but Huntress tries to tell them that it is a trap. Pettit refuses to listen.

@@ -1,10 +1,10 @@
 ---
-title: "Part 12: Master of Destruction"
-start: "May, 1998"
+title: 'Part 12: Master of Destruction'
+start: 'May, 1998'
 end: null
-issue: 554
-arc: "Batman: Cataclysm"
-link: "https://dc.fandom.com/wiki/Batman_Vol_1_554"
+issueNumber: 554
+arc: 'Batman: Cataclysm'
+link: 'https://dc.fandom.com/wiki/Batman_Vol_1_554'
 ---
 
 - GCPD watches Quakemaster's video and decides to give into his demands (can’t risk another quake).

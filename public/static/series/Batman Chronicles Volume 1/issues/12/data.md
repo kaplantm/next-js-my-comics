@@ -1,10 +1,10 @@
 ---
-title: "Part 10: The Contract • House of Cards • Trapped • A Bird With a Hand • Love Me 2 Times • Little Orphan Andy"
-start: "March, 1998"
+title: 'Part 10: The Contract • House of Cards • Trapped • A Bird With a Hand • Love Me 2 Times • Little Orphan Andy'
+start: 'March, 1998'
 end: null
-issue: 12
-arc: "Batman: Cataclysm"
-link: "https://dc.fandom.com/wiki/Batman_Chronicles_Vol_1_12"
+issueNumber: 12
+arc: 'Batman: Cataclysm'
+link: 'https://dc.fandom.com/wiki/Batman_Chronicles_Vol_1_12'
 ---
 
 ### The Contract

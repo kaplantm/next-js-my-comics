@@ -1,10 +1,10 @@
 ---
-title: "Batman and the Mad Monk, Part 1"
-start: "October, 2006"
+title: 'Batman and the Mad Monk, Part 1'
+start: 'October, 2006'
 end: null
-issue: 1
-arc: "Dark Moon Rising"
-link: "https://dc.fandom.com/wiki/Batman_and_the_Mad_Monk_Vol_1_1"
+issueNumber: 1
+arc: 'Dark Moon Rising'
+link: 'https://dc.fandom.com/wiki/Batman_and_the_Mad_Monk_Vol_1_1'
 ---
 
 - Batman comes across Catwoman committing another burglary. Bruce worries that Batman encourages dramatic villainy.

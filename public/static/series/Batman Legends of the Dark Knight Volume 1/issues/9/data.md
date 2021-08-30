@@ -2,7 +2,7 @@
 title: "A Romance, Volume Four: The Hangman's Tale"
 start: 'July, 1990'
 end: null
-issue: 9
+issueNumber: 9
 arc: 'Gothic'
 link: 'https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_9'
 ---

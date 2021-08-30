@@ -1,10 +1,10 @@
 ---
-title: "Shaman - Book Three"
-start: "January, 1990"
+title: 'Shaman - Book Three'
+start: 'January, 1990'
 end: null
-issue: 3
-arc: "Shaman"
-link: "https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_3"
+issueNumber: 3
+arc: 'Shaman'
+link: 'https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_3'
 ---
 
 - Bruce starts looking around the crime scene and discovers that some of the tribal artifacts in the exhibition had been taken. Suddenly, Bruce is attacked with an arrow that he manages to catch before it reaches him but he is unable to find the shooter.

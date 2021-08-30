@@ -1,10 +1,10 @@
 ---
-title: "Assembly"
-start: "August, 1999"
+title: 'Assembly'
+start: 'August, 1999'
 end: null
-issue: 120
+issueNumber: 120
 arc: "Batman: No Man's Land"
-link: "https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_120"
+link: 'https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_120'
 ---
 
 - Batman visits James Gordon, who tells him to leave and punches him. Before leaving, Batman tells Gordon that Two-Face is not the best person to trust as an ally. Gordon replies that he can't trust Batman either.

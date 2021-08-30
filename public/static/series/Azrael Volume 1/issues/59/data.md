@@ -1,10 +1,10 @@
 ---
 title: "Pilgrim's Return"
-start: "December, 1999"
+start: 'December, 1999'
 end: null
-issue: 59
+issueNumber: 59
 arc: "Batman: No Man's Land"
-link: "https://dc.fandom.com/wiki/Azrael:_Agent_of_the_Bat_Vol_1_59"
+link: 'https://dc.fandom.com/wiki/Azrael:_Agent_of_the_Bat_Vol_1_59'
 ---
 
 - Batman wanted Azrael to provide protection to Catwoman and guard Robinson park awaiting her return and Azrael agreed.

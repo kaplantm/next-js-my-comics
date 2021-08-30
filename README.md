@@ -11,14 +11,14 @@ Add new issue or series
 http://localhost/debug/new/
 
 Edit issue
-http://localhost/series/Batman%20Volume%201/issues/404/debug/edit/
+http://localhost/series/Batman Volume 1/issues/404/debug/edit/
 Add issue images
-http://localhost/series/Batman%20Volume%201/issues/404/debug/edit/images/
+http://localhost/series/Batman Volume 1/issues/404/debug/edit/images/
 
 Edit series
-http://localhost/series/Azrael%20Volume%201/debug/edit/
+http://localhost/series/Azrael Volume 1/debug/edit/
 Add series images
-http://localhost/series/Azrael%20Volume%201/debug/edit/images
+http://localhost/series/Azrael Volume 1/debug/edit/images
 
 Add category images
 http://localhost/panels/ears/debug/edit/images

@@ -1,10 +1,10 @@
 ---
-title: "Shaman - Book Four"
-start: "February, 1990"
+title: 'Shaman - Book Four'
+start: 'February, 1990'
 end: null
-issue: 4
-arc: "Shaman"
-link: "https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_4"
+issueNumber: 4
+arc: 'Shaman'
+link: 'https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_4'
 ---
 
 - Bruce saves the shaman and the girl from the sunk car, but the girl’s body temperature is dangerously low. Bruce tells the shaman to save the girl by telling her the tale of the bat but the shaman refuses and instead he tells Bruce to do it. Bruce is unsure about it, but the shaman tells him that he has the mark in his eyes and that all he needed was to put on the Batman cowl. Bruce obeys and puts on the cowl, tells the story and the girl quickly recovers.

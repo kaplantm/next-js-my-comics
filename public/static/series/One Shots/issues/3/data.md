@@ -1,10 +1,10 @@
 ---
-title: "Batman: Huntress & Spoiler - Part 13: Blunt Trauma"
-start: "May, 1998"
+title: 'Batman: Huntress & Spoiler - Part 13: Blunt Trauma'
+start: 'May, 1998'
 end: null
-issue: 3
-arc: "Batman: Cataclysm"
-link: "https://dc.fandom.com/wiki/Batman:_Huntress_%26_Spoiler_Vol_1_1"
+issueNumber: 3
+arc: 'Batman: Cataclysm'
+link: 'https://dc.fandom.com/wiki/Batman:_Huntress_%26_Spoiler_Vol_1_1'
 ---
 
 - Stephanie Brown on a date at the Westerberg Mall when the quake hits. Her date bails but she stays to help people.

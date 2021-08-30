@@ -1,8 +1,8 @@
 ---
-title: "One Shots"
+title: 'One Shots'
 start: null
 end: null
-issue: null
+issueNumber: null
 arc: null
 link: null
 ---

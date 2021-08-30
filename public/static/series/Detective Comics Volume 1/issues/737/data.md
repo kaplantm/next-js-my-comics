@@ -1,10 +1,10 @@
 ---
-title: "The Code, Part 2"
-start: "October, 1999"
+title: 'The Code, Part 2'
+start: 'October, 1999'
 end: null
-issue: 737
+issueNumber: 737
 arc: "Batman: No Man's Land"
-link: "https://dc.fandom.com/wiki/Detective_Comics_Vol_1_737"
+link: 'https://dc.fandom.com/wiki/Detective_Comics_Vol_1_737'
 ---
 
 - The Joker plans his election campaign with the help of Harley and Josh, who is cartoonist; but Joker notices that Harley is still not caring for him and Josh is strangely close to her.

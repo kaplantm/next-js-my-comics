@@ -2,7 +2,7 @@
 title: Batman Volume 1
 start: 1940
 end: 2011
-issue: null
+issueNumber: null
 arc: null
 link: https://dc.fandom.com/wiki/Batman_Vol_1
 ---

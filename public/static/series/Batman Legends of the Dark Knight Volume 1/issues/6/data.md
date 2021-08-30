@@ -2,7 +2,7 @@
 title: 'A Romance, Volume One: Man Without a Shadow'
 start: 'April, 1990'
 end: null
-issue: 6
+issueNumber: 6
 arc: 'Gothic'
 link: 'https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_6'
 ---

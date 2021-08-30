@@ -1,10 +1,10 @@
 ---
-title: "Batman and the Mad Monk, Part 5"
-start: "February, 2007"
+title: 'Batman and the Mad Monk, Part 5'
+start: 'February, 2007'
 end: null
-issue: 5
-arc: "Dark Moon Rising"
-link: "https://dc.fandom.com/wiki/Batman_and_the_Mad_Monk_Vol_1_5"
+issueNumber: 5
+arc: 'Dark Moon Rising'
+link: 'https://dc.fandom.com/wiki/Batman_and_the_Mad_Monk_Vol_1_5'
 ---
 
 - The Mad Monk and Dala are looking at the trap, but they cannot see who is in it. Meanwhile, in the trap, Batman wedges batarangs under the sliding walls to slow them, then blows open the trapdoor with plastique and escapes (although with injuries from the spikes). He sees that Julie Madison's car is gone, and he leaves.

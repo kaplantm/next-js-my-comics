@@ -1,10 +1,10 @@
 ---
-title: "Road Trip"
-start: "July, 1999"
+title: 'Road Trip'
+start: 'July, 1999'
 end: null
-issue: "1 Special"
+issueNumber: '1 Special'
 arc: "Batman: No Man's Land"
-link: "https://dc.fandom.com/wiki/Young_Justice_Special_Vol_1_1"
+link: 'https://dc.fandom.com/wiki/Young_Justice_Special_Vol_1_1'
 ---
 
 - In the Young Justice HQ, Robin is brooding about how Batman forced him to leave Gotham and now he has to live in Keystone City while Batman handles No Man's Land alone.

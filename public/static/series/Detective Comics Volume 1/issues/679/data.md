@@ -2,7 +2,7 @@
 title: 'The Vermin Factor'
 start: 'November, 1994'
 end: null
-issue: 679
+issueNumber: 679
 arc: 'Batman: Prodigal'
 link: 'https://dc.fandom.com/wiki/Detective_Comics_Vol_1_679'
 ---
