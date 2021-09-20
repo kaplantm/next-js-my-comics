@@ -59,9 +59,9 @@
     "Batman Legends of the Dark Knight Volume 1/issues/20"
   ],
   "haunted_knight": [
-    "Batman Legends of the Dark Knight Volume Halloween Special/issues/1",
-    "Batman Legends of the Dark Knight Volume Halloween Special/issues/2",
-    "Batman Legends of the Dark Knight Volume Halloween Special/issues/3"
+    "Batman Legends of the Dark Knight Volume 1/issues/Halloween Special 1",
+    "Batman Legends of the Dark Knight Volume 1/issues/Halloween Special 2",
+    "Batman Legends of the Dark Knight Volume 1/issues/Halloween Special 3"
   ],
   "the_man_who_laughs": ["One Shots/issues/12"],
   "the_long_halloween": [
@@ -436,6 +436,18 @@
     "Detective Comics Volume 1/issues/741",
     "Azrael Volume 1/issues/61",
     "Batman Shadow of the Bat/issues/94"
+  ],
+
+  "evolution": [
+    "Detective Comics Volume 1/issues/742",
+    "Detective Comics Volume 1/issues/743",
+    "Detective Comics Volume 1/issues/744",
+    "Detective Comics Volume 1/issues/745",
+    "Detective Comics Volume 1/issues/746",
+    "Detective Comics Volume 1/issues/747",
+    "Detective Comics Volume 1/issues/748",
+    "Detective Comics Volume 1/issues/749",
+    "Detective Comics Volume 1/issues/750"
   ],
   "elseworlds": ["One Shots/issues/9", "One Shots/issues/10"]
 }
