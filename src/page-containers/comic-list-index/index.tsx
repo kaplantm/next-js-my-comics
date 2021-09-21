@@ -44,7 +44,7 @@ function ComicListIndex({
           {listData.map(({ link, comic }, index) => (
             <li className={classes.listItem} key={link.pathname}>
               <div className={classes.flexCenter}>
-                {!skipArcColorTooltip && (
+                {!skipArcColorTooltip && comic.frontMatter.arc && (
                   <Typography
                     variant="body1"
                     component="div"
@@ -52,9 +52,7 @@ function ComicListIndex({
                   >
                     <ArcSpot
                       tooltipText={
-                        skipArcColorTooltip
-                          ? null
-                          : comic.frontMatter.arc || 'No Arc / Unknown'
+                        skipArcColorTooltip ? null : comic.frontMatter.arc
                       }
                       colorString={comic.frontMatter.arc}
                     />
