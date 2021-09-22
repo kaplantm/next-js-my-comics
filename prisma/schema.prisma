@@ -13,12 +13,30 @@ generator client {
 // Custom scheme below this line
 // https://vercel.com/guides/nextjs-prisma-postgres
 // https://www.prisma.io/docs/guides/database/developing-with-prisma-migrate#first-migration-initialize-migration-history
+// https://www.prisma.io/docs/concepts/components/prisma-client/crud
+
+model ImageCollection {
+ id Int @default(autoincrement()) @id
+ images ComicImage[]
+ issues ComicIssue[]
+}
+
+model ComicImage {
+ id Int @default(autoincrement()) @id
+ imageUrl String @db.VarChar(2048) @unique 
+ collections ImageCollection[]
+ series ComicSeries[]
+ arcs ComicArc[]
+ issues ComicIssue[]
+}
 
 model ComicSeries {
  id Int @default(autoincrement()) @id
  title String @db.VarChar(500)
+ coverImageId Int?
+ coverImage ComicImage? @relation(fields: [coverImageId], references: [id])
  startCoverDate Int
- endCoverDate Int
+ endCoverDate Int?
  description String @db.VarChar(50000)
  link String
  issues ComicIssue[]
@@ -27,8 +45,10 @@ model ComicSeries {
 model ComicArc {
  id Int @default(autoincrement()) @id
  title String @db.VarChar(500)
+ coverImageId Int
+ coverImage ComicImage @relation(fields: [coverImageId], references: [id])
  startCoverDate Int
- endCoverDate Int
+ endCoverDate Int?
  link String
  description String @db.VarChar(50000)
  issues ComicIssue[]
@@ -37,6 +57,8 @@ model ComicArc {
 model ComicIssue {
  id Int @default(autoincrement()) @id
  title String @db.VarChar(500)
+ coverImageId Int?
+ coverImage ComicImage? @relation(fields: [coverImageId], references: [id])
  coverDate Int
  number Int
  link String
@@ -45,4 +67,7 @@ model ComicIssue {
  arc ComicArc? @relation(fields: [arcId], references: [id])
  seriesId Int
  series ComicSeries @relation(fields: [seriesId], references: [id])
+ imageCollectionId Int
+ imageCollection ImageCollection @relation(fields: [imageCollectionId], references: [id])
 }
+
