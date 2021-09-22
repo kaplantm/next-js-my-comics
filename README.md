@@ -197,8 +197,8 @@ Batman: The Long Halloween #11
 
 Batman: The Long Halloween #12
 
-- Harvey Dent has been missing for a month since he escaped the hospital and murdered his surgeon. Harvey is now hiding in the sewers after having suffered a mental breakdown. His face is still covered in bandages and on a certain night, he comes across Solomon Grundy. The zombie attacks Harvey at first, but Harvey starts singing him the nursery rhyme he was named after and Grundy becomes quiet and mild. Harvey realizes that the story in the rhyme is exactly what happened to Grundy and he wonders if a man can actually live two lives.
-- On Labor Day, James Gordon and Batman discover that Harvey Dent was carrying a .22 gun in his briefcase along with a ledger with Falcone's names and records. They come to the conclusion that Dent is the Holiday killer. Gordon wants to find Harvey but Batman won't believe that Dent committed all those crimes.
+- Harvey Dent has been missing for a month. Harvey is now hiding in the sewers after having suffered a mental breakdown.
+- On Labor Day, James Gordon and Batman discover that Harvey Dent was carrying a .22 gun in his briefcase along with a ledger with Falcone's names. This leads to the conclusion that Dent is the Holiday killer. Gordon wants to find Harvey but Batman can't believe that Dent committed all those crimes.
 - Batman goes to the penthouse of Carmine Falcone and asks him about Dent. Falcone doesn't know and he blames Batman and the police for the deaths of his family members. Batman leaves the place just when Sofia Falcone entered the penthouse.
 - Batman noticed that he was being spied all the time and he confronts Catwoman, who was just a few buildings across. Batman wants to know the truth about why she is always nearby Falcone. Catwoman tricks Batman and she leaves the man alone, wondering about her real motivation.
 - Time grows short and Batman is desperately looking for Dent. He goes to Dent's house and finds Gilda Dent. He asks her about her husband's whereabouts but she doesn't know. Batman tells her that Dent is Holiday and that there is enough evidence to prove it. Gilda is worried and asks Batman to find "her" Harvey.
@@ -209,7 +209,6 @@ Batman: The Long Halloween #12
 Batman: The Long Halloween #13
 
 - Alberto Falcone reveals himself as Holiday and prepares to shoot James Gordon. The fallen guard rises and attacks Falcone, beats him to a pulp and when he is done, he takes off his armor and reveals himself as Batman. Gordon arrests Alberto for the murder of Salvatore Maroni.
-
 - When the word is known about the identity of Holiday, Carmine Falcone visits his son Alberto in prison and offers him help getting out with no consequences. Alberto refuses, given the fact that he has made a name for himself and that he is now bigger than any member of the Falcone Crime Family. Gordon and Batman analyze the situation and realize that it all makes sense: Alberto faked his own death to throw them off while he continued killing people. However, Batman feels guilty because he always suspected his friend, the district attorney, Harvey Dent.
 - On Halloween night, James and Barbara visit Gilda at her home. The woman is still worried for his husband, as there has been no signs of him.
 - Later, in Arkham Asylum, someone is setting some of the most dangerous inmates free. The mysterious man approaches Calendar Man's cell and flips a coin to decide wether to set him free or not. In the end, the man leaves Calendar Man in his cell.

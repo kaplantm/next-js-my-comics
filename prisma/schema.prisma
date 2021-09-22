@@ -1,0 +1,48 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+ provider = "postgresql"
+ url = env("DATABASE_URL")
+}
+
+generator client {
+ provider = "prisma-client-js"
+}
+
+// Custom scheme below this line
+// https://vercel.com/guides/nextjs-prisma-postgres
+// https://www.prisma.io/docs/guides/database/developing-with-prisma-migrate#first-migration-initialize-migration-history
+
+model ComicSeries {
+ id Int @default(autoincrement()) @id
+ title String @db.VarChar(500)
+ startCoverDate Int
+ endCoverDate Int
+ description String @db.VarChar(50000)
+ link String
+ issues ComicIssue[]
+}
+
+model ComicArc {
+ id Int @default(autoincrement()) @id
+ title String @db.VarChar(500)
+ startCoverDate Int
+ endCoverDate Int
+ link String
+ description String @db.VarChar(50000)
+ issues ComicIssue[]
+}
+
+model ComicIssue {
+ id Int @default(autoincrement()) @id
+ title String @db.VarChar(500)
+ coverDate Int
+ number Int
+ link String
+ description String @db.VarChar(50000)
+ arcId Int?
+ arc ComicArc? @relation(fields: [arcId], references: [id])
+ seriesId Int
+ series ComicSeries @relation(fields: [seriesId], references: [id])
+}
