@@ -70,6 +70,15 @@ How we incorporate next and cloudfront (2018-04-21)
 https://gist.github.com/rbalicki2/30e8ee5fb5bc2018923a06c5ea5e3ea5
 https://stackoverflow.com/a/33087418 How do you set a default root object for subdirectories for a statically hosted website on Cloudfront? (index.html in subdirectory)
 
+# prisma
+
+https://vercel.com/guides/nextjs-prisma-postgres
+https://www.prisma.io/dataguide/
+
+`npx prisma db push`
+`npx prisma studio`
+`npx prisma generate`
+
 - Falcone and Maroni are rival crime bosses. Falcone’s thugs beat up DA Harvey Dent. Dent, bats and Gordon make a pact to end Falcones reign.
 - Johnny Viti (Falcone’s nephew) is killed on Halloween. A jack o lantern is left behind. Tipped off by Cats, Bats and Dent set fire to the Falcones money stash.
 - Falcone hires "The Irish" gang for revenge on Dent. Bomb his house, Dent and his wife live.

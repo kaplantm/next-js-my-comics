@@ -1,6 +1,11 @@
 // https://vercel.com/guides/nextjs-prisma-postgres
 import { PrismaClient } from '@prisma/client';
 
+// eslint-disable-next-line no-extend-native
+(BigInt.prototype as any).toJSON = function () {
+  return this.toString();
+};
+
 // eslint-disable-next-line import/no-mutable-exports
 let prisma: PrismaClient;
 
