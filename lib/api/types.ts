@@ -1,5 +1,3 @@
-import prisma from '../prisma';
-
 export type Identifier = {
   id: number;
 };

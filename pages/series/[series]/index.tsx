@@ -1,27 +1,25 @@
-import { ComicWithMetadata } from '@lib/types';
 import React from 'react';
-import { getSeries, getSeriesTitles } from '@lib/utils/static-comics/utils';
 import ComicBody from '@page-containers/comic-body';
 import ListIndex from '@page-containers/comic-list-index/index';
+import { getAllSeries, getSeries } from '@lib/utils/api-client';
+import { ComicSeries, ComicIssue } from '.prisma/client';
 
 const SeriesPage = ({
-  listData,
-  ...rest
+  series,
 }: {
-  listData: ComicWithMetadata[];
-  series: ComicWithMetadata;
-  params: { series: string; issueNumber: string };
+  series: ComicSeries & { issues: ComicIssue[] };
 }) => (
   <>
-    <ComicBody {...rest}>
-      <ListIndex listData={listData} headerLabel="Comics" />
+    <ComicBody series={series}>
+      <ListIndex listData={series.issues} headerLabel="Comics" isIssueList />
     </ComicBody>
   </>
 );
 
 export const getStaticPaths = async () => {
-  const seriesTitles = await getSeriesTitles();
-  const paths = seriesTitles.map(series => ({ params: { series } }));
+  const series =
+    (await getAllSeries())?.response?.data || ([] as ComicSeries[]);
+  const paths = series.map(({ id }) => ({ params: { series: `${id}` } }));
 
   return {
     paths,
@@ -34,14 +32,13 @@ export async function getStaticProps({
 }: {
   params: { series: string };
 }) {
-  const series = await getSeries(params.series, true);
-  const listData = Object.values(series.issues);
+  const series =
+    (await getSeries(params.series, { issues: true }))?.response.data ||
+    ([] as ComicSeries[]);
 
   return {
     props: {
-      params,
-      series: series,
-      listData,
+      series,
     },
   };
 }

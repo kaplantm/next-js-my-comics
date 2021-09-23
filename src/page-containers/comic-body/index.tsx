@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography, Grid } from '@material-ui/core';
 import ReactMarkdown from 'react-markdown';
-import { ComicPageParams, ComicWithMetadata } from '@lib/types';
+import { extendedComicIssue, extendedComicSeries } from '@lib/types';
 import MasonryLayout from '@components/masonry-layout';
 import { getScaledImageWidthHeight } from '@lib/utils/image-utils';
 import useStyles from './use-styles';
@@ -9,28 +9,25 @@ import ViewableImage from '../../components/viewable-image';
 import { getDisplaySubtitle, getDisplayTitle } from './helpers';
 
 type ComicBodyProps = {
-  params: ComicPageParams;
-  issue?: ComicWithMetadata;
-  series: ComicWithMetadata;
+  issue?: extendedComicIssue;
+  series: extendedComicSeries;
   children: React.ReactNode;
 };
 
-function ComicBody({ params, issue, series, children }: ComicBodyProps) {
-  const { frontMatter: seriesFrontMatter } = series.comic;
-  const { frontMatter: issueFrontMatter } = issue?.comic || {};
+function ComicBody({ issue, series, children }: ComicBodyProps) {
   const isIssue = !!issue;
 
-  const { link: titleLink, title } = isIssue
-    ? issueFrontMatter
-    : seriesFrontMatter;
-  const { description, coverPath, imagePaths } = isIssue
-    ? issue.comic
-    : series.comic;
-  const { width: coverWidth, height: coverHeight } = getScaledImageWidthHeight(
-    coverPath,
-    400,
-    600
-  );
+  const { link: titleLink, title, coverImage } = issue || series;
+  const images = issue?.imageCollection?.images;
+  const imagePaths = images?.length
+    ? images.map(({ imageUrl }) => imageUrl)
+    : null;
+
+  const { description } = issue || series;
+  const { width: coverWidth, height: coverHeight } = coverImage?.imageUrl
+    ? getScaledImageWidthHeight(coverImage.imageUrl, 400, 600)
+    : { width: 0, height: 0 };
+  const seriesToUse = issue?.series || series;
   const classes = useStyles({ coverWidth, coverHeight });
 
   return (
@@ -40,23 +37,22 @@ function ComicBody({ params, issue, series, children }: ComicBodyProps) {
           titleLink,
           title,
           isIssue,
-          seriesFrontMatter.start,
-          seriesFrontMatter.end
+          new Date(seriesToUse.startCoverDate),
+          new Date(seriesToUse.endCoverDate)
         )}
         {isIssue &&
           getDisplaySubtitle(
-            params.series,
-            seriesFrontMatter.title,
-            issueFrontMatter.issueNumber,
-            issueFrontMatter.start,
-            issueFrontMatter.end
+            seriesToUse.id,
+            seriesToUse.title,
+            issue.number,
+            new Date(issue.coverDate)
           )}
       </Grid>
 
       <Grid item xs={12} className={classes.coverImageContainer}>
-        {coverPath && (
+        {coverImage?.imageUrl && (
           <ViewableImage
-            src={coverPath}
+            src={coverImage.imageUrl}
             width={coverWidth}
             height={coverHeight}
           />
@@ -69,7 +65,7 @@ function ComicBody({ params, issue, series, children }: ComicBodyProps) {
         )}
       </Grid>
 
-      {!!imagePaths?.length && (
+      {imagePaths && (
         <>
           <Grid item xs={12} className={classes.imagesContainer}>
             <Grid item xs={12} container spacing={3}>

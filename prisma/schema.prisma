@@ -21,6 +21,7 @@ model ImageCollection {
  id Int @default(autoincrement()) @id
  images ComicImage[]
  issues ComicIssue[]
+ standalone Boolean @default(false)
 }
 
 model ComicImage {

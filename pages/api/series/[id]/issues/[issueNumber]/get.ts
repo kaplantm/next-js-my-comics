@@ -1,17 +1,21 @@
 import { NextApiResponse } from 'next';
-import { IdentifierQuery } from '../../../../lib/api/types';
-import prisma from '../../../../lib/prisma';
+import { IdentifierQuery } from '../../../../../../lib/api/types';
+import prisma from '../../../../../../lib/prisma';
 
-const handleGetMethod = async (data: IdentifierQuery, res: NextApiResponse) => {
+const handleGetMethod = async (
+  data: { issueNumber: string } & IdentifierQuery,
+  res: NextApiResponse
+) => {
   const id = parseInt(data?.id);
-  if (!id) {
+  const issueNumber = parseInt(data?.issueNumber);
+  if (!id || !issueNumber) {
     return res.status(400).json({
-      error: { message: 'Missing or invalid id' },
+      error: { message: 'Missing or invalid series id or issueNumber' },
     });
   }
   try {
     const result = await prisma.comicIssue.findFirst({
-      where: { id },
+      where: { seriesId: id, number: issueNumber },
       include: {
         series: true,
         arc: true,

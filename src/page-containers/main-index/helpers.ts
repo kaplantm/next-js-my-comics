@@ -1,15 +1,17 @@
-import { ComicWithMetadata, ComicType } from '@lib/types';
+/* eslint-disable import/prefer-default-export */
+import { ComicType, extendedComicIssue } from '@lib/types';
+import { getMonthYear } from '@lib/utils/date-utils';
 import { parseDateFromMarkdownString } from '@lib/utils/string-utils';
 
-export type ComicWithMetadataListIssuesType = Omit<
-  ComicWithMetadata,
-  'issues'
-> & {
-  issues: ComicWithMetadata[];
-};
+// export type extendedComicIssueListIssuesType = Omit<
+//   extendedComicIssue,
+//   'issues'
+// > & {
+//   issues: extendedComicIssue[];
+// };
 
 export type GroupedComicsType = {
-  [key: string]: ComicWithMetadataListIssuesType;
+  [key: string]: { issues: extendedComicIssue[] };
 };
 
 export enum sortingEnum {
@@ -24,11 +26,11 @@ export enum sortingDirectionEnum {
 }
 
 export const getSortByReadingOrder = readingOrder => (
-  a: ComicWithMetadata,
-  b: ComicWithMetadata
+  a: extendedComicIssue,
+  b: extendedComicIssue
 ) => {
-  const readingOrderPathA = `${a.params.series}/issues/${a.params.issueNumber}`;
-  const readingOrderPathB = `${b.params.series}/issues/${b.params.issueNumber}`;
+  const readingOrderPathA = `${a.series.title}/issues/${a.number}`;
+  const readingOrderPathB = `${b.series.title}/issues/${b.number}`;
   const readingOrderIndexA = readingOrder.indexOf(readingOrderPathA);
   const readingOrderIndexB = readingOrder.indexOf(readingOrderPathB);
 
@@ -44,30 +46,31 @@ export const sortByDate = (a, b) => {
   return dateValueA.getTime() - dateValueB.getTime();
 };
 
-export const getSortByDateFrontMatterKey = (numericKey: 'end' | 'start') => (
-  a,
-  b
-) => {
-  const valueA = a.comic.frontMatter[numericKey] || 0;
-  const valueB = b.comic.frontMatter[numericKey] || 0;
+// export const getSortByDateFrontMatterKey = (numericKey: 'end' | 'start') => (
+//   a,
+//   b
+// ) => {
+//   const valueA = a.comic.frontMatter[numericKey] || 0;
+//   const valueB = b.comic.frontMatter[numericKey] || 0;
 
-  return sortByDate(valueA, valueB);
-};
+//   return sortByDate(valueA, valueB);
+// };
 
-export const getSortByNumericFrontMatterKey = (numericKey: 'issueNumber') => (
-  a,
-  b
-) => {
-  const valueA = a.comic.frontMatter[numericKey] || 0;
-  const valueB = b.comic.frontMatter[numericKey] || 0;
+// export const getSortByNumericFrontMatterKey = (numericKey: 'issueNumber') => (
+//   a,
+//   b
+// ) => {
+//   const valueA = a.comic.frontMatter[numericKey] || 0;
+//   const valueB = b.comic.frontMatter[numericKey] || 0;
 
-  return valueA - valueB;
-};
+//   return valueA - valueB;
+// };
 
 const sortComicGroupIssues = (
   comicGroups: GroupedComicsType,
   sortFunction: (a, b) => number
 ) => {
+  console.log({ comicGroups });
   const keys = Object.keys(comicGroups);
   return keys.reduce((acc, key) => {
     const issuesClone = [...comicGroups[key].issues];
@@ -125,28 +128,33 @@ export const getDirectionallySortedData = (
   return { groups: directionalSortedGroupedComics, order: reverseKeys };
 };
 
+const getCoverDateFromIssue = (issue: extendedComicIssue) =>
+  getMonthYear(issue.coverDate);
+
+const getArcTitleFromIssue = (issue: extendedComicIssue) => issue?.arc?.title;
+
 const groupIssuesBy = (
-  issues: ComicWithMetadata[],
-  frontMatterKey: keyof ComicType['frontMatter'],
+  issues: extendedComicIssue[],
+  valueGetter: (issue: extendedComicIssue) => string,
   fallbackKey = 'Unknown'
 ): GroupedComicsType =>
-  issues.reduce((acc, val) => {
-    const key = val.comic.frontMatter[frontMatterKey] || fallbackKey;
+  issues.reduce((acc, issue) => {
+    const key = valueGetter(issue) || fallbackKey;
     if (acc[key] && acc[key].issues) {
-      acc[key].issues.push(val);
+      acc[key].issues.push(issue);
     } else {
-      acc[key] = { issues: [val] };
+      acc[key] = { issues: [issue] };
     }
     return acc;
   }, {});
 
 const groupIssuesByReadingOrder = (
-  issues: ComicWithMetadata[],
+  issues: extendedComicIssue[],
   readingOrder: string[]
 ): GroupedComicsType =>
   issues.reduce(
     (acc, val) => {
-      const readingOrderPath = `${val.params.series}/issues/${val.params.issueNumber}`;
+      const readingOrderPath = `${val.series.title}/issues/${val.number}`;
       if (readingOrder.indexOf(readingOrderPath) !== -1) {
         acc['My Reading Order'].issues.push(val);
       } else {
@@ -161,19 +169,21 @@ const groupIssuesByReadingOrder = (
   );
 
 export const getGroupedComics = (
-  allIssues: ComicWithMetadata[],
+  allIssues: extendedComicIssue[],
   readingOrder: string[],
   sorting: sortingEnum
 ): GroupedComicsType => {
   switch (sorting) {
     case sortingEnum.ARC:
       return getSortedData(
-        groupIssuesBy(allIssues, 'arc', 'No Arc / Unknown'),
+        groupIssuesBy(allIssues, getArcTitleFromIssue, 'No Arc / Unknown'),
         readingOrder
       );
     case sortingEnum.YEAR:
-      return getSortedData(groupIssuesBy(allIssues, 'start'), readingOrder);
-
+      return getSortedData(
+        groupIssuesBy(allIssues, getCoverDateFromIssue),
+        readingOrder
+      );
     case sortingEnum.READING_ORDER:
     default:
       return getSortedData(

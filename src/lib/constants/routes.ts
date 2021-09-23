@@ -34,9 +34,11 @@ export const navRoutes = sortObjectArrayAlphabeticallyBy(
   'name'
 );
 
-export const getSeriesRoute = (series: string) => `/series/${series}`;
-export const getIssueRoute = (series: string, issueNumber: string) =>
-  `${getSeriesRoute(series)}/issues/${issueNumber}`;
+export const getSeriesRoute = (series: string | number) => `/series/${series}`;
+export const getIssueRoute = (
+  series: string | number,
+  issueNumber: string | number
+) => `${getSeriesRoute(series)}/issues/${issueNumber}`;
 export const getPanelsCategoryRoute = category => `/panels/${category}`;
 export const getReadingOrderRoute = (order: string): string =>
   `${routeMap.readingOrderIndex.pathname}/${

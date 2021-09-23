@@ -1,29 +1,24 @@
-import {
-  getIssueNumbers,
-  getSeriesTitles,
-  getSeries,
-  getIssue,
-} from "@lib/utils/static-comics/utils";
-import ComicBody from "@page-containers/comic-body";
-import React from "react";
-import { ComicPageParams } from "@lib/types";
+import ComicBody from '@page-containers/comic-body';
+import React from 'react';
+import { extendedComicSeries } from '@lib/types';
+import { getAllSeries, getIssueBySeriesAndNumber } from '@lib/utils/api-client';
 
 // TODO: right arrow - next in series
 // TODO: down arrow - next in reading order
-const IssuePage = (props) => <ComicBody {...props} />;
+const IssuePage = props => <ComicBody {...props} />;
 
 export const getStaticPaths = async () => {
-  const seriesTitles = await getSeriesTitles();
-  const paths = (
-    await Promise.all(
-      seriesTitles.map(async (series) => {
-        const issueNumbers = await getIssueNumbers(series);
-        return issueNumbers.map((issueNumber) => ({
-          params: { series, issueNumber },
-        }));
-      })
+  const series =
+    (await getAllSeries({ issues: true }))?.response?.data ||
+    ([] as extendedComicSeries[]);
+
+  const paths = series
+    .map(s =>
+      (s.issues || []).map(issue => ({
+        params: { series: `${s.id}`, issueNumber: `${issue.number}` },
+      }))
     )
-  ).flat();
+    .flat();
 
   return {
     paths,
@@ -31,14 +26,20 @@ export const getStaticPaths = async () => {
   };
 };
 
-export async function getStaticProps({ params }: { params: ComicPageParams }) {
-  const series = await getSeries(params.series);
-  const issue = await getIssue(params.series, params.issueNumber);
+export async function getStaticProps({
+  params,
+}: {
+  params: {
+    series: string;
+    issueNumber: string;
+  };
+}) {
+  const issue = (
+    await getIssueBySeriesAndNumber(params.series, params.issueNumber)
+  )?.response?.data;
 
   return {
     props: {
-      params,
-      series,
       issue,
     },
   };

@@ -31,16 +31,6 @@ const handlePutMethod = async (
     });
   }
   try {
-    const exists = await prisma.comicIssue.findFirst({
-      where: { number: issueNumber, seriesId },
-    });
-    if (exists) {
-      return res.status(409).json({
-        error: {
-          message: `IssueNumber ${issueNumber} already exists for seriesId ${seriesId}.`,
-        },
-      });
-    }
     const data = {
       title,
       coverDate: start,

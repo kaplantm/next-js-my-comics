@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { ComicWithMetadata } from '@lib/types';
+import { ComicWithMetadata, extendedComicIssue } from '@lib/types';
 import {
   getDirectionallySortedData,
   getGroupedComics,
@@ -13,7 +13,7 @@ export const getReadingOrderGroupData = ({
   readingOrder,
   sorting,
 }: {
-  allIssues: ComicWithMetadata[];
+  allIssues: extendedComicIssue[];
   readingOrder: string[];
   sorting: sortingEnum;
 }): { groups: GroupedComicsType; order: string[] } => {

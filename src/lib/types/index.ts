@@ -1,4 +1,5 @@
 import { AxiosError, AxiosResponse } from 'axios';
+import { ComicSeries, ComicArc, ComicIssue, ComicImage } from '.prisma/client';
 
 export interface AppAxiosResponse<T> {
   response: AxiosResponse<T>;
@@ -44,3 +45,16 @@ export interface FormValidatorConfigType {
   validator: (value: string | number | boolean, formFields?: any) => boolean;
   message: string;
 }
+
+// using includes we can get data from db the returns relation
+export type extendedComicSeries = ComicSeries & {
+  issues?: extendedComicIssue[];
+  coverImage: ComicImage;
+};
+export type extendedComicIssue = ComicIssue & {
+  series?: ComicSeries;
+  arc?: ComicArc;
+  coverImage: ComicImage;
+  imageCollection: { id: number; images: ComicImage[] };
+};
+export type extendedComicArc = ComicArc;

@@ -3,17 +3,19 @@ import { Typography, Grid, Collapse, IconButton } from '@material-ui/core';
 import AppLink from '@components/app-link';
 import { KeyboardArrowDown, KeyboardArrowLeft } from '@material-ui/icons';
 import ReactMarkdown from 'react-markdown';
-import { ComicWithMetadata } from '@lib/types';
 import ArcSpot from '@components/arc-spot';
+import { getIssueRoute, getSeriesRoute } from '@lib/constants/routes';
 import DebugLinksMemo from '@components/debug-links';
+import { extendedComicIssue, extendedComicSeries } from '@lib/types';
 import { getInitialState } from './helpers';
 import useStyles from './use-styles';
 
 type ComicListIndexProps = {
   headerLabel: string;
-  listData: ComicWithMetadata[];
+  listData: extendedComicIssue[] | extendedComicSeries[];
   skipArcColorTooltip?: boolean;
   skipDescription?: boolean;
+  isIssueList?: boolean;
 };
 
 // TODO: page head
@@ -24,7 +26,9 @@ function ComicListIndex({
   listData,
   skipArcColorTooltip,
   skipDescription,
+  isIssueList,
 }: ComicListIndexProps) {
+  console.log({ listData });
   const [expandedState, setExpandedState] = useState(getInitialState(listData));
   const classes = useStyles();
 
@@ -41,60 +45,85 @@ function ComicListIndex({
       <Grid item xs={12} className={classes.coverImageContainer}>
         {headerLabel && <Typography variant="h1">{headerLabel}</Typography>}
         <ul className={classes.list}>
-          {listData.map(({ link, comic }, index) => (
-            <li className={classes.listItem} key={link.pathname}>
-              <div className={classes.flexCenter}>
-                {!skipArcColorTooltip && (
-                  <Typography
-                    variant="body1"
-                    component="div"
-                    className={classes.arcSpotWrapper}
-                  >
-                    <ArcSpot
-                      tooltipText={
-                        skipArcColorTooltip
-                          ? null
-                          : comic.frontMatter.arc || 'No Arc / Unknown'
-                      }
-                      colorString={comic.frontMatter.arc}
-                    />
-                  </Typography>
-                )}
-                <Typography variant="body1" component="div">
-                  <div className={classes.flexCenter}>
-                    <AppLink nextProps={{ href: link.pathname }}>
-                      {link.name}
-                    </AppLink>
-
-                    {!skipDescription && (
-                      <IconButton
-                        className={classes.expandButton}
-                        onClick={() => toggleExpanded(index)}
-                      >
-                        {expandedState[index] ? (
-                          <KeyboardArrowDown />
-                        ) : (
-                          <KeyboardArrowLeft />
-                        )}
-                      </IconButton>
-                    )}
-                    <DebugLinksMemo baseLink={link.pathname} />
-                  </div>
-                </Typography>
-              </div>
-              {!skipDescription && (
-                <Collapse in={expandedState[index]}>
-                  {comic?.description && (
-                    <div className={classes.markdownWrapper}>
-                      {expandedState[index] && (
-                        <ReactMarkdown>{comic.description}</ReactMarkdown>
-                      )}
-                    </div>
+          {listData.map(
+            (comic: extendedComicIssue | extendedComicSeries, index) => (
+              <li className={classes.listItem} key={comic.id}>
+                <div className={classes.flexCenter}>
+                  {!skipArcColorTooltip && (
+                    <Typography
+                      variant="body1"
+                      component="div"
+                      className={classes.arcSpotWrapper}
+                    >
+                      <ArcSpot
+                        tooltipText={
+                          skipArcColorTooltip
+                            ? null
+                            : (comic as extendedComicIssue)?.arc?.title ||
+                              'No Arc / Unknown'
+                        }
+                        colorString={(comic as extendedComicIssue)?.arc?.title}
+                      />
+                    </Typography>
                   )}
-                </Collapse>
-              )}
-            </li>
-          ))}
+                  <Typography variant="body1" component="div">
+                    <div className={classes.flexCenter}>
+                      {/* TODO: now check if this is causing full relaod */}
+                      <AppLink
+                        nextProps={{
+                          href: isIssueList
+                            ? getIssueRoute(
+                                (comic as extendedComicIssue).seriesId,
+                                (comic as extendedComicIssue).number
+                              )
+                            : getSeriesRoute(comic.id),
+                        }}
+                      >
+                        {(comic as extendedComicIssue).number
+                          ? `#${(comic as extendedComicIssue).number} - `
+                          : ''}
+                        {comic.title}
+                      </AppLink>
+
+                      {!skipDescription && (
+                        <IconButton
+                          className={classes.expandButton}
+                          onClick={() => toggleExpanded(index)}
+                        >
+                          {expandedState[index] ? (
+                            <KeyboardArrowDown />
+                          ) : (
+                            <KeyboardArrowLeft />
+                          )}
+                        </IconButton>
+                      )}
+                      <DebugLinksMemo
+                        baseLink={
+                          isIssueList
+                            ? getIssueRoute(
+                                (comic as extendedComicIssue).number,
+                                (comic as extendedComicIssue).seriesId
+                              )
+                            : getSeriesRoute(comic.id)
+                        }
+                      />
+                    </div>
+                  </Typography>
+                </div>
+                {!skipDescription && (
+                  <Collapse in={expandedState[index]}>
+                    {comic?.description && (
+                      <div className={classes.markdownWrapper}>
+                        {expandedState[index] && (
+                          <ReactMarkdown>{comic.description}</ReactMarkdown>
+                        )}
+                      </div>
+                    )}
+                  </Collapse>
+                )}
+              </li>
+            )
+          )}
         </ul>
       </Grid>
     </Grid>

@@ -13,8 +13,11 @@ export async function appAxios<T>(
 ): Promise<AppAxiosResponse<T>> {
   await sleep();
   try {
-    return { response: await axios(config), error: null };
+    const response = await axios(config);
+    // console.log('appAxios', { response, config });
+    return { response, error: null };
   } catch (e) {
+    // console.log('appAxios', { e, config });
     return { response: null, error: e };
   }
 }

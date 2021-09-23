@@ -27,7 +27,7 @@ const MainIndex = ({
   const [groupsState, setGroupsState] = useState(groupData);
   const [searchTerm, setSearchTerm] = useState('');
   const debouncedSearchTerm = useDebounce(searchTerm, 250);
-
+  console.log({ sorting, groupData });
   useEffect(() => {
     const lowercaseSearchTerm = debouncedSearchTerm.toLowerCase();
     const filtered = lowercaseSearchTerm
@@ -38,15 +38,15 @@ const MainIndex = ({
             link: null,
             params: null,
             issues: groupData.groups[key].issues.filter(issue => {
-              const inTitle = issue.comic.frontMatter.title
+              const inTitle = issue.title
                 .toLowerCase()
                 .includes(lowercaseSearchTerm);
-              const inDescription = issue.comic.description
+              const inDescription = issue.description
                 .toLowerCase()
                 .includes(lowercaseSearchTerm);
-              const inNumber = `${
-                issue.comic.frontMatter.issueNumber || ''
-              }`.includes(lowercaseSearchTerm);
+              const inNumber = `${issue.number || ''}`.includes(
+                lowercaseSearchTerm
+              );
               return inDescription || inTitle || inNumber;
             }),
           };

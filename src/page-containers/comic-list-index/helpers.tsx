@@ -1,4 +1,5 @@
-import { ComicWithMetadata } from '@lib/types';
+/* eslint-disable import/prefer-default-export */
+import { ComicIssue, ComicSeries } from '.prisma/client';
 
-export const getInitialState = (listData: ComicWithMetadata[]) =>
-  listData.map(item => false);
+export const getInitialState = (listData: ComicIssue[] | ComicSeries[]) =>
+  listData.map(() => false);
