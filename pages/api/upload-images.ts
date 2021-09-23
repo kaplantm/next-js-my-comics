@@ -1,15 +1,15 @@
 import prisma from '../../lib/prisma';
 
 export default async function handler(req, res) {
-  const { paths, folder, jsonPath } = req.body;
-  // if (!paths || !folder || !jsonPath) {
-  //   return res
-  //     .status(400)
-  //     .json('Missing required param. Required params: paths, folder, jsonPath');
-  // }
-  // if (!paths.length) {
-  //   return res.status(400).json('Paths array cannot be empty');
-  // }
+  const { paths } = req.body;
+
+  if (!paths.length) {
+    return res.status(400).json({
+      error: {
+        message: 'Paths  is required  and cannot be empty',
+      },
+    });
+  }
 
   const uploadedImages = [
     'Batman: The Long Halloween/1/bats batman_106x66.png',
@@ -18,6 +18,7 @@ export default async function handler(req, res) {
     'Batman: The Long Halloween/1/trick or treat halloween_184x84.png',
   ];
   try {
+    // TODO: uncomment to do upload
     // await Promise.all(
     //   paths.map(async imagePath => {
     //     const pathInS3 = `${folder}/${imagePath.split('/').slice(-1)}`;
@@ -59,10 +60,15 @@ export default async function handler(req, res) {
               pathInS3 => `${process.env.S3_URL}/${pathInS3}`
             ),
           }
-        : { error: 'Something went wrong' }
+        : { error: { message: 'Something went wrong}' } }
     );
   } catch (e) {
-    console.log('upload-images', e);
-    return res.status(500).json('Failed to upload images');
+    return res.status(500).json({
+      error: {
+        message: e?.message,
+        meta: e?.meta,
+        code: e?.code,
+      },
+    });
   }
 }
