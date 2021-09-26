@@ -2,7 +2,8 @@
 title: 'Scarecrow - Masters of Fear'
 start: '1995'
 end: null
-issueNumber: Annual #19
+issueNumber: 19
+issueType: ANNUAL
 arc: 'Four of a Kind'
 link: 'https://dc.fandom.com/wiki/Batman_Annual_Vol_1_19'
 ---

@@ -1,10 +1,11 @@
 ---
-title: "Ghosts"
-start: "December, 1995"
+title: 'Ghosts'
+start: 'December, 1995'
 end: null
-issue: Halloween Special 3
-arc: "Haunted Knight"
-link: "https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Halloween_Special_Vol_1_3"
+issueNumber: 3
+issueType: HALLOWEEN_SPECIAL
+arc: 'Haunted Knight'
+link: 'https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Halloween_Special_Vol_1_3'
 ---
 
 - The Penguin (Oswald Chesterfield Cobblepot) crashes a Wayne Enterprises dinner party and Batman fights him off.

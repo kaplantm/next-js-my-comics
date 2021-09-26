@@ -1,10 +1,10 @@
 ---
 title: "Chapter Six: St. Patrick's Day"
-start: "May, 1997"
+start: 'May, 1997'
 end: null
-issue: 6
-arc: null
-link: "https://dc.fandom.com/wiki/Batman:_The_Long_Halloween_Vol_1_6"
+issueNumber: 6
+arc: The Long Halloween
+link: 'https://dc.fandom.com/wiki/Batman:_The_Long_Halloween_Vol_1_6'
 ---
 
 - Sofia Gigante, Falcone's daughter, is released from Gotham Penitentiary.

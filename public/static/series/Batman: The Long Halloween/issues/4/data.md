@@ -1,10 +1,10 @@
 ---
 title: "Chapter Four: New Year's Eve"
-start: "March, 1997"
+start: 'March, 1997'
 end: null
-issue: 4
-arc: null
-link: "https://dc.fandom.com/wiki/Batman:_The_Long_Halloween_Vol_1_4"
+issueNumber: 4
+arc: The Long Halloween
+link: 'https://dc.fandom.com/wiki/Batman:_The_Long_Halloween_Vol_1_4'
 ---
 
 - On New Year's Eve, Batman stops the Joker from killing everyone in Gotham Square, as the Joker says that there is not enough room for two homicidal maniacs.

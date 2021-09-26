@@ -1,3 +1,5 @@
+import { IssueType } from '.prisma/client';
+
 /** True if value is null, undefined or a whitespace only string */
 export const isBlank = (value?: any) => {
   if (typeof value === 'string') {
@@ -79,3 +81,17 @@ export const parseDateFromMarkdownString = (dateString: string): Date => {
 export function insert(str: string, index: number, value: string) {
   return str.substr(0, index) + value + str.substr(index);
 }
+
+export function toTitleCase(str: string) {
+  return str.replace(
+    /\w\S*/g,
+    txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+  );
+}
+
+const underScoreRegex = /_/g;
+export function unSnake(str: string) {
+  return str.replace(underScoreRegex, ' ');
+}
+
+export const unSnakeTitleCase = (str: string) => toTitleCase(unSnake(str));

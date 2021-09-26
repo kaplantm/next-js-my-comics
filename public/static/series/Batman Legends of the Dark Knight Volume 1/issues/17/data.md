@@ -1,10 +1,10 @@
 ---
-title: "Venom: Part 2"
-start: "April, 1991"
+title: 'Venom: Part 2'
+start: 'April, 1991'
 end: null
-issue: 17
-arc: "Venom"
-link: "https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_17"
+issueNumber: 17
+arc: 'Venom'
+link: 'https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_17'
 ---
 
 - Batman is still using Porter's drug to improve his strength. But he is acting strangely. He's been patrolling with violent impudence, without the Batsuit - "It just doesn't feel comfortable anymore". Alfred accuses him of being ashamed to wear the suit.

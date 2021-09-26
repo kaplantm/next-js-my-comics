@@ -1,10 +1,10 @@
 ---
-title: "Chapter Ten: Independence Day"
-start: "September, 1997"
+title: 'Chapter Ten: Independence Day'
+start: 'September, 1997'
 end: null
-issue: 10
-arc: null
-link: "https://dc.fandom.com/wiki/Batman:_The_Long_Halloween_Vol_1_10"
+issueNumber: 10
+arc: The Long Halloween
+link: 'https://dc.fandom.com/wiki/Batman:_The_Long_Halloween_Vol_1_10'
 ---
 
 - The 4th of July. Holiday strikes again and murders the Gotham City Coroner, leaving his gun and a mini replica of the Statue of Liberty.

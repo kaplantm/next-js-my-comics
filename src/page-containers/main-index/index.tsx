@@ -112,6 +112,7 @@ const MainIndex = ({
           groupData={groupsState.groups[key]}
           headerLabel={key}
           skipDescription
+          isIssueList
         />
       ))}
     </>

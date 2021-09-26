@@ -1,10 +1,10 @@
 ---
-title: "Chapter Three: Christmas"
-start: "February, 1997"
+title: 'Chapter Three: Christmas'
+start: 'February, 1997'
 end: null
-issue: 3
-arc: null
-link: "https://dc.fandom.com/wiki/Batman:_The_Long_Halloween_Vol_1_3"
+issueNumber: 3
+arc: The Long Halloween
+link: 'https://dc.fandom.com/wiki/Batman:_The_Long_Halloween_Vol_1_3'
 ---
 
 - It is Christmas and The Joker is on the loose. As he is terrorizing a family, he see a newspaper headline about the serial killer now labeled as "Holiday" and feels rage.

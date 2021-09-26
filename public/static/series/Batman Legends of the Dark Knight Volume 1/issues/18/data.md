@@ -1,10 +1,10 @@
 ---
-title: "Venom: Part 3"
-start: "May, 1991"
+title: 'Venom: Part 3'
+start: 'May, 1991'
 end: null
-issue: 18
-arc: "Venom"
-link: "https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_18"
+issueNumber: 18
+arc: 'Venom'
+link: 'https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_18'
 ---
 
 - Batman goes to Gordon and warns him that Porter and Slaycroft want him to kill him. Batman says he will try to handle them that night, but if he fails, passes the responsibility to Gordon.

@@ -2,8 +2,9 @@
 title: 'Wings'
 start: '1995'
 end: null
-issueNumber: Annual #5
+issueNumber: 5
 arc: 'Four of a Kind'
+issueType: ANNUAL
 link: 'https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Annual_Vol_1_5'
 ---
 

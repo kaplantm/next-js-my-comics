@@ -45,7 +45,8 @@ function ComicBody({ issue, series, children }: ComicBodyProps) {
             seriesToUse.id,
             seriesToUse.title,
             issue.number,
-            new Date(issue.coverDate)
+            new Date(issue.coverDate),
+            issue.issueType
           )}
       </Grid>
 

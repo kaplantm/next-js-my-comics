@@ -1,5 +1,12 @@
 import { AxiosError, AxiosResponse } from 'axios';
-import { ComicSeries, ComicArc, ComicIssue, ComicImage } from '.prisma/client';
+import {
+  ComicSeries,
+  ComicArc,
+  ComicIssue,
+  ComicImage,
+  IssueType,
+  ImageCollection,
+} from '.prisma/client';
 
 export interface AppAxiosResponse<T> {
   response: AxiosResponse<T>;
@@ -22,6 +29,7 @@ export type ComicType = {
     end: string | number;
     issueNumber: string;
     link: string;
+    issueType?: IssueType;
   };
 };
 
@@ -51,10 +59,15 @@ export type extendedComicSeries = ComicSeries & {
   issues?: extendedComicIssue[];
   coverImage: ComicImage;
 };
+
+export type extendedImageCollection = ImageCollection & {
+  images: ComicImage[];
+};
+
 export type extendedComicIssue = ComicIssue & {
   series?: ComicSeries;
   arc?: ComicArc;
   coverImage: ComicImage;
-  imageCollection: { id: number; images: ComicImage[] };
+  imageCollection: extendedImageCollection;
 };
 export type extendedComicArc = ComicArc;

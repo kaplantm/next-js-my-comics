@@ -1,10 +1,10 @@
 ---
-title: "Venom: Part 4"
-start: "June, 1991"
+title: 'Venom: Part 4'
+start: 'June, 1991'
 end: null
-issue: 19
-arc: "Venom"
-link: "https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_19"
+issueNumber: 19
+arc: 'Venom'
+link: 'https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Vol_1_19'
 ---
 
 - Batman is back. He tells Gordon he is tracking Porter and the General to Santa Prisca.

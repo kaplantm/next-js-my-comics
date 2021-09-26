@@ -8,10 +8,12 @@ const ListSection = ({
   groupData,
   headerLabel,
   skipDescription,
+  isIssueList,
 }: {
   groupData: GroupedComicsType[keyof GroupedComicsType];
   headerLabel: string;
   skipDescription?: boolean;
+  isIssueList?: boolean;
 }) => {
   const classes = useStyles();
   if (!groupData) {
@@ -24,6 +26,7 @@ const ListSection = ({
         listData={groupData.issues}
         headerLabel={headerLabel}
         skipDescription={skipDescription}
+        isIssueList={isIssueList}
       />
     </div>
   );

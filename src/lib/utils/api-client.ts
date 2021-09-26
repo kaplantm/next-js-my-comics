@@ -3,21 +3,23 @@ import {
   allIssuesEndpoint,
   allSeriesEndpoint,
   getSeriesEndpoint,
-  getIssueEndpoint,
   getIssueBySeriesAndNumberEndpoint,
+  allPanelsEndpoint,
+  getPanelsEndpoint,
 } from '@lib/constants/api-endpoints';
 import {
   AppAxiosResponse,
   extendedComicArc,
   extendedComicIssue,
   extendedComicSeries,
+  extendedImageCollection,
 } from '@lib/types';
 import { appAxios } from '.';
 
 export async function getAllSeries(
   params: {
-    issues?: true;
-    arcs?: true;
+    issues?: boolean;
+    arcs?: boolean;
   } = {}
 ): Promise<AppAxiosResponse<extendedComicSeries[]>> {
   return appAxios<extendedComicSeries[]>({
@@ -28,7 +30,7 @@ export async function getAllSeries(
 
 export async function getSeries(
   id: string,
-  params: { issues?: true } = {}
+  params: { issues?: boolean } = {}
 ): Promise<AppAxiosResponse<extendedComicSeries[]>> {
   return appAxios<extendedComicSeries[]>({
     url: getSeriesEndpoint(id),
@@ -59,5 +61,24 @@ export async function getAllArcs(): Promise<
 > {
   return appAxios<extendedComicArc[]>({
     url: allArcsEndpoint,
+  });
+}
+
+export async function getAllStandalonePanels(
+  params: {
+    images?: boolean;
+  } = {}
+): Promise<AppAxiosResponse<extendedImageCollection[]>> {
+  return appAxios<extendedImageCollection[]>({
+    url: allPanelsEndpoint,
+    params,
+  });
+}
+
+export async function getStandalonePanels(
+  id: string
+): Promise<AppAxiosResponse<extendedImageCollection>> {
+  return appAxios<extendedImageCollection>({
+    url: getPanelsEndpoint(id),
   });
 }

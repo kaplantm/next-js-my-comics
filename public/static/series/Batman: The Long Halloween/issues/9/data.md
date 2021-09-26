@@ -1,10 +1,10 @@
 ---
 title: "Chapter Nine: Father's Day"
-start: "August, 1997"
+start: 'August, 1997'
 end: null
-issue: 9
-arc: null
-link: "https://dc.fandom.com/wiki/Batman:_The_Long_Halloween_Vol_1_9"
+issueNumber: 9
+arc: The Long Halloween
+link: 'https://dc.fandom.com/wiki/Batman:_The_Long_Halloween_Vol_1_9'
 ---
 
 - Many years ago, Vincent Falcone took his wounded son, Carmine to Wayne Manor. Dr. Thomas Wayne to saved his son's life.
@@ -14,5 +14,5 @@ link: "https://dc.fandom.com/wiki/Batman:_The_Long_Halloween_Vol_1_9"
 - James Gordon arrives home and receives a gift his wife and son made for him.
 - Meanwhile, at the Dent's house, Gilda finds Harvey alone in the basement. Harvey went to visit his father, who gave him a gift - a lucky coin. Harvey reflects on the recent events and he believes that the justice system is controlled by chance rather than ethics and hard work. He also feels bitter towards Bruce Wayne and the high society which he represents.
 - Meanwhile, in the Gotham Central Park, Carmine has recruited Scarecrow and The Mad Hatter to take care of the Gotham City Bank business.
-- Back in Wayne Manor, Bruce wonders what would have happened if his father refused to help Carmine Falcone all those years ago. 
+- Back in Wayne Manor, Bruce wonders what would have happened if his father refused to help Carmine Falcone all those years ago.
 - Late that night, Vernon Wells urgently calls Harvey Dent to the D.A.'s office. When he enters, Sal Maroni is there, and offers Harvey a deal in order to stop Carmine Falcone once and for all.

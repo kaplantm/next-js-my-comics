@@ -2,8 +2,9 @@
 title: 'Choices / Fears'
 start: 'December, 1993'
 end: null
-issue: Halloween Special 1
+issueNumber: 1
 arc: 'Haunted Knight'
+issueType: HALLOWEEN_SPECIAL
 link: 'https://dc.fandom.com/wiki/Batman:_Legends_of_the_Dark_Knight_Halloween_Special_Vol_1_1'
 ---
 

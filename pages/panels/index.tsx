@@ -1,15 +1,15 @@
-import React from "react";
-import PanelsIndex from "@page-containers/panels";
-import { getPanelCategories } from "@lib/utils/static-comics/utils";
+import React from 'react';
+import PanelsIndex from '@page-containers/panels';
+import { getAllStandalonePanels } from '@lib/utils/api-client';
 
-const PanelsIndexPage = (props) => <PanelsIndex {...props} />;
+const PanelsIndexPage = props => <PanelsIndex {...props} />;
 
 export async function getStaticProps() {
-  const categories = await getPanelCategories();
+  const categories = (await getAllStandalonePanels())?.response?.data;
 
   return {
     props: {
-      categories,
+      categories: categories?.length ? categories.map(c => c.name) : [],
     },
   };
 }

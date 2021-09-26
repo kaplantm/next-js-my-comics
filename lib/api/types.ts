@@ -36,6 +36,10 @@ export type CreateIssueRequestType = {
   seriesId: number;
 };
 
+export type CreateImageCollectionRequestType = {
+  name: string;
+};
+
 export type UpdateIssueRequestType = CreateIssueRequestType & Identifier;
 
 // https://www.prisma.io/docs/reference/api-reference/error-reference

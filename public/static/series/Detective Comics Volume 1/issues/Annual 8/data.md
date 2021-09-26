@@ -2,7 +2,8 @@
 title: 'Questions Multiply the Mystery'
 start: '1995'
 end: null
-issueNumber: Annual #8
+issueNumber: 8
+issueType: ANNUAL
 arc: 'Four of a Kind'
 link: 'https://dc.fandom.com/wiki/Detective_Comics_Annual_Vol_1_8'
 ---

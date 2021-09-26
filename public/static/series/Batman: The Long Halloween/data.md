@@ -1,10 +1,10 @@
 ---
-title: "Batman: The Long Halloween"
-start: "December, 1996"
-end: "December, 1997"
-issue: null
+title: 'Batman: The Long Halloween'
+start: 'December, 1996'
+end: 'December, 1997'
+issueNumber: null
 arc: null
-link: "https://dc.fandom.com/wiki/Batman:_The_Long_Halloween"
+link: 'https://dc.fandom.com/wiki/Batman:_The_Long_Halloween'
 ---
 
 - Follows Batman: Year One

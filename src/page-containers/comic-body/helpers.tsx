@@ -1,4 +1,6 @@
+import { IssueType } from '.prisma/client';
 import { getMonthYear } from '@lib/utils/date-utils';
+import { unSnakeTitleCase } from '@lib/utils/string-utils';
 import { Typography } from '@material-ui/core';
 import AppLink from '../../components/app-link';
 import { getSeriesRoute } from '../../lib/constants/routes';
@@ -39,12 +41,19 @@ export const getDisplaySubtitle = (
   seriesId: number,
   seriesTitle: string,
   issueNumber: string | number,
-  issueStart: Date
+  issueStart: Date,
+  issueType: IssueType
 ) => (
   <AppLink nextProps={{ href: getSeriesRoute(seriesId) }}>
     <Typography variant="h2">
       {seriesTitle}
-      {issueNumber ? ` - #${issueNumber} ` : ''}
+      {issueNumber
+        ? ` - ${
+            issueType && issueType !== IssueType.STANDARD
+              ? `${unSnakeTitleCase(issueType)} `
+              : ''
+          }#${issueNumber} `
+        : ''}
       {getStartEnd(issueStart, null)}
     </Typography>
   </AppLink>

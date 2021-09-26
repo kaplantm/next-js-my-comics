@@ -1,6 +1,11 @@
 import React, { useCallback, useState } from 'react';
 import { Grid, Slider, Typography } from '@material-ui/core';
-import { ComicPageParams, ComicWithMetadata } from '@lib/types';
+import {
+  ComicPageParams,
+  ComicWithMetadata,
+  extendedComicIssue,
+  extendedComicSeries,
+} from '@lib/types';
 import DebugOnlyWrapper from '@components/debug-only-wrapper';
 import MasonryLayout from '@components/masonry-layout';
 import MyDropzone from '@components/my-dropzone';
@@ -14,13 +19,16 @@ const DebugAddImages = ({
   params = { series: null, issueNumber: null, category: null },
   imagePaths: imagePathsProp,
   maxDimension = 1500,
+  id,
 }: {
-  issue?: ComicWithMetadata;
-  series?: ComicWithMetadata;
-  params?: ComicPageParams & { category: string };
+  issue?: extendedComicIssue;
+  series?: extendedComicSeries;
+  params?: ComicPageParams & { category: string }; // TODO: get rid of?
   imagePaths?: string[];
   maxDimension?: number;
+  id?: number;
 }) => {
+  const collectionId = id || issue?.imageCollectionId;
   const classes = useStyles();
   const isCategory = !!params.category;
   const [submissionInProgress, setSubmissionInProgress] = useState(false);
@@ -33,8 +41,13 @@ const DebugAddImages = ({
     [key: string]: string | Blob;
   }>({});
   const filesToOptimize = Object.values(filesToOptimizeData);
-  const { frontMatter, imagePaths, coverPath } = issue?.comic ||
-    series?.comic || { imagePaths: imagePathsProp, fontMatter: null };
+  const imagePaths =
+    imagePathsProp ||
+    issue?.imageCollection.images ||
+    [].map(img => img.imageUrl);
+  const coverPath = (issue || series)?.coverImage.imageUrl;
+  // const { frontMatter, imagePaths, coverPath } = issue?.comic ||
+  //   series?.comic || { imagePaths: imagePathsProp, fontMatter: null };
   const formRef = React.useRef<HTMLFormElement | null>(null);
   const [savedImagePaths, setSavedImagePaths] = useState([
     ...imagePaths,
@@ -99,7 +112,7 @@ const DebugAddImages = ({
         folder: params.issueNumber
           ? `${params.series}/${params.issueNumber}`
           : params.category || params.series,
-        jsonPath,
+        collectionId,
       },
     });
 
@@ -130,7 +143,7 @@ const DebugAddImages = ({
         <Grid item xs={12}>
           <Typography variant="h4">{params.series}</Typography>
           <Typography variant="h1">
-            {params.category} {params.issueNumber} {frontMatter?.title}
+            {params.category} {params.issueNumber} {issue?.title}
           </Typography>
           <br />
         </Grid>

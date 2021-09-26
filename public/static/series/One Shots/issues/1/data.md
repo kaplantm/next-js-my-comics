@@ -1,10 +1,10 @@
 ---
 title: "Secret Origins of the World's Greatest Super-Heroes"
-start: "March, 1990"
+start: 'March, 1990'
 end: null
-issueNumber: null
+issueNumber: 1
 arc: null
-link: "https://dc.fandom.com/wiki/Secret_Origins_of_the_World%27s_Greatest_Super-Heroes"
+link: 'https://dc.fandom.com/wiki/Secret_Origins_of_the_World%27s_Greatest_Super-Heroes'
 ---
 
 #### Batman: The Man Who Falls

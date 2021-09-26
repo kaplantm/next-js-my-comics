@@ -2,7 +2,8 @@
 title: 'Year One: Poison Ivy'
 start: '1995'
 end: null
-issueNumber: Annual 3
+issueNumber: 3
+issueType: ANNUAL
 arc: 'Four of a Kind'
 link: 'https://dc.fandom.com/wiki/Batman:_Shadow_of_the_Bat_Annual_Vol_1_3'
 ---

@@ -11,3 +11,6 @@ export const getMonthYear = (date: string | Date, short?: boolean) => {
   );
   return `${month}, ${year}`;
 };
+
+export const isValidDate = (date: Date) =>
+  date instanceof Date && !Number.isNaN(date.valueOf());
