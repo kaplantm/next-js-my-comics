@@ -80,20 +80,20 @@
     "Batman: The Long Halloween/issues/13"
   ],
   "dark_victory": [
-    "Batman/Dark Victory/issues/0",
-    "Batman/Dark Victory/issues/1",
-    "Batman/Dark Victory/issues/2",
-    "Batman/Dark Victory/issues/3",
-    "Batman/Dark Victory/issues/4",
-    "Batman/Dark Victory/issues/5",
-    "Batman/Dark Victory/issues/6",
-    "Batman/Dark Victory/issues/7",
-    "Batman/Dark Victory/issues/8",
-    "Batman/Dark Victory/issues/9",
-    "Batman/Dark Victory/issues/1",
-    "Batman/Dark Victory/issues/1",
-    "Batman/Dark Victory/issues/1",
-    "Batman/Dark Victory/issues/1"
+    "Batman: Dark Victory Vol 1/issues/0",
+    "Batman: Dark Victory Vol 1/issues/1",
+    "Batman: Dark Victory Vol 1/issues/2",
+    "Batman: Dark Victory Vol 1/issues/3",
+    "Batman: Dark Victory Vol 1/issues/4",
+    "Batman: Dark Victory Vol 1/issues/5",
+    "Batman: Dark Victory Vol 1/issues/6",
+    "Batman: Dark Victory Vol 1/issues/7",
+    "Batman: Dark Victory Vol 1/issues/8",
+    "Batman: Dark Victory Vol 1/issues/9",
+    "Batman: Dark Victory Vol 1/issues/10",
+    "Batman: Dark Victory Vol 1/issues/11",
+    "Batman: Dark Victory Vol 1/issues/12",
+    "Batman: Dark Victory Vol 1/issues/13"
   ],
   "year_two": [
     "Detective Comics Volume 1/issues/574",
@@ -102,7 +102,7 @@
     "Detective Comics Volume 1/issues/577",
     "Detective Comics Volume 1/issues/578"
   ],
-  "the_gauntlet": [],
+  "the_gauntlet": ["One Shots/issues/12"],
   "robin_year_one": [
     "Robin Year One/issues/1",
     "Robin Year One/issues/2",
@@ -121,8 +121,8 @@
     "Batgirl Year One/issues/8",
     "Batgirl Year One/issues/9"
   ],
-  "batman_batgirl": ["One Shots/issues/12"],
-  "night_cries": ["One Shots/issues/13"],
+  "batman_batgirl": ["One Shots/issues/13"],
+  "night_cries": ["One Shots/issues/14"],
   "the_cat_and_the_bat": [
     "Batman Confidential/issues/17",
     "Batman Confidential/issues/18",
@@ -161,7 +161,7 @@
     "Batman Legends of the Dark Knight Volume 1/issues/67",
     "Batman Legends of the Dark Knight Volume 1/issues/68"
   ],
-  "the_killing_joke": ["One Shots/issues/14"],
+  "the_killing_joke": ["One Shots/issues/15"],
   "the_cult": [
     "Batman The Cult/issues/1",
     "Batman The Cult/issues/2",
@@ -180,7 +180,7 @@
     "Detective Comics Volume 1/issues/599",
     "Detective Comics Volume 1/issues/600"
   ],
-  "arkham_asylum_a_serious_house_on_serious_earth": ["One Shots/issues/15"],
+  "arkham_asylum_a_serious_house_on_serious_earth": ["One Shots/issues/16"],
   "a_lonely_place_of_dying": [
     "Batman Volume 1/issues/440",
     "Batman Volume 1/issues/440",
