@@ -104,10 +104,10 @@
   ],
   "the_gauntlet": ["One Shots/issues/12"],
   "robin_year_one": [
-    "Robin Year One/issues/1",
-    "Robin Year One/issues/2",
-    "Robin Year One/issues/3",
-    "Robin Year One/issues/4"
+    "Robin: Year One Vol 1/issues/1",
+    "Robin: Year One Vol 1/issues/2",
+    "Robin: Year One Vol 1/issues/3",
+    "Robin: Year One Vol 1/issues/4"
   ],
   "robin_first_appearance": ["Detective Comics Volume 1/issues/38"],
   "batgirl_year_one": [
@@ -437,7 +437,6 @@
     "Azrael Volume 1/issues/61",
     "Batman Shadow of the Bat/issues/94"
   ],
-
   "evolution": [
     "Detective Comics Volume 1/issues/742",
     "Detective Comics Volume 1/issues/743",
@@ -448,6 +447,13 @@
     "Detective Comics Volume 1/issues/748",
     "Detective Comics Volume 1/issues/749",
     "Detective Comics Volume 1/issues/750"
+  ],
+  "turningPointed": [
+    "Batman: Turning Points/issues/1",
+    "Batman: Turning Points/issues/2",
+    "Batman: Turning Points/issues/3",
+    "Batman: Turning Points/issues/4",
+    "Batman: Turning Points/issues/5"
   ],
   "elseworlds": ["One Shots/issues/9", "One Shots/issues/10"]
 }
