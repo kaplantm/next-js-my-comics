@@ -448,12 +448,22 @@
     "Detective Comics Volume 1/issues/749",
     "Detective Comics Volume 1/issues/750"
   ],
-  "turningPointed": [
+  "turningPoints": [
     "Batman: Turning Points/issues/1",
     "Batman: Turning Points/issues/2",
     "Batman: Turning Points/issues/3",
     "Batman: Turning Points/issues/4",
     "Batman: Turning Points/issues/5"
+  ],
+  "officerDown": [
+    "Batman Volume 1/issues/587",
+    "Robin Volume 2/issues/86",
+    "Batgirl Volume 1/issues/12",
+    "Birds of Prey/issues/27",
+    "Catwoman Volume 2/issues/90",
+    "Nightwing Volume 2/issues/53",
+    "Detective Comics Volume 1/issues/754",
+    "Batman: Gotham Knights Volume 1/issues/13"
   ],
   "elseworlds": ["One Shots/issues/9", "One Shots/issues/10"]
 }

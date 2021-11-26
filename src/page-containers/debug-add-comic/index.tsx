@@ -54,6 +54,7 @@ const DebugAddComic = ({
       end: end || '',
       issueNumber: params.issueNumber || '',
       arc: arc || '',
+      arcRawInput: arc || '',
       link: link || '',
       series: params.series || '',
       description: (description || '').trim(),
@@ -84,6 +85,12 @@ const DebugAddComic = ({
   function handleArcInputChange(event, newInputValue) {
     arcInputProps.onChange({
       target: { value: newInputValue, name: arcInputProps.name },
+    });
+  }
+
+  function handleArcInputBlur(event) {
+    arcInputProps.onChange({
+      target: { value: event.target.value, name: arcInputProps.name },
     });
   }
 
@@ -208,7 +215,6 @@ const DebugAddComic = ({
                 <Autocomplete
                   freeSolo
                   options={allArcs}
-                  getOptionLabel={option => option}
                   renderInput={autoCompleteParams => (
                     <AppTextField
                       fullWidth
@@ -217,9 +223,9 @@ const DebugAddComic = ({
                       variant="outlined"
                     />
                   )}
-                  onInputChange={handleArcInputChange}
                   value={arcInputProps.value}
                   onChange={handleArcInputChange}
+                  onBlur={handleArcInputBlur}
                 />
               </Grid>
             </>
