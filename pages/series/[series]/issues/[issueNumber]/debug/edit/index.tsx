@@ -3,6 +3,7 @@ import {
   getIssue,
   getSeriesTitles,
   getIssueNumbers,
+  getAllSeries,
 } from '@lib/utils/static-comics/utils';
 import DebugAddComic from '@page-containers/debug-add-comic';
 import { ComicPageParams } from '@lib/types';
@@ -30,11 +31,29 @@ export const getStaticPaths = async () => {
 
 export async function getStaticProps({ params }: { params: ComicPageParams }) {
   const issue = await getIssue(params.series, params.issueNumber);
+  const comics = await getAllSeries(true);
+  const seriesTitles = Object.keys(comics);
+  const allIssues = seriesTitles
+    .map(seriesTitle => {
+      const issuesInSeries = comics[seriesTitle].issues;
+      return Object.values(issuesInSeries);
+    })
+    .flat();
+  const allArcs = allIssues.reduce((acc, { comic }) => {
+    if (comic.frontMatter.arc) {
+      const index = acc.indexOf(comic.frontMatter.arc);
+      if (index === -1) {
+        acc.push(comic.frontMatter.arc);
+      }
+    }
+    return acc;
+  }, []);
 
   return {
     props: {
       params,
       issue,
+      allArcs,
     },
   };
 }
