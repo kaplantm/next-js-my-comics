@@ -111,15 +111,15 @@
   ],
   "robin_first_appearance": ["Detective Comics Volume 1/issues/38"],
   "batgirl_year_one": [
-    "Batgirl Year One/issues/1",
-    "Batgirl Year One/issues/2",
-    "Batgirl Year One/issues/3",
-    "Batgirl Year One/issues/4",
-    "Batgirl Year One/issues/5",
-    "Batgirl Year One/issues/6",
-    "Batgirl Year One/issues/7",
-    "Batgirl Year One/issues/8",
-    "Batgirl Year One/issues/9"
+    "Batgirl: Year One/issues/1",
+    "Batgirl: Year One/issues/2",
+    "Batgirl: Year One/issues/3",
+    "Batgirl: Year One/issues/4",
+    "Batgirl: Year One/issues/5",
+    "Batgirl: Year One/issues/6",
+    "Batgirl: Year One/issues/7",
+    "Batgirl: Year One/issues/8",
+    "Batgirl: Year One/issues/9"
   ],
   "batman_batgirl": ["One Shots/issues/13"],
   "night_cries": ["One Shots/issues/14"],
@@ -141,6 +141,7 @@
     "Batman Volume 1/issues/244",
     "DC Special Series/issues/15",
     "Detective Comics Volume 1/issues/485",
+    "Detective Comics Volume 1/issues/489",
     "Detective Comics Volume 1/issues/490",
     "Detective Comics Volume 1/issues/27"
   ],
@@ -163,10 +164,10 @@
   ],
   "the_killing_joke": ["One Shots/issues/15"],
   "the_cult": [
-    "Batman The Cult/issues/1",
-    "Batman The Cult/issues/2",
-    "Batman The Cult/issues/3",
-    "Batman The Cult/issues/4"
+    "Batman: The Cult/issues/1",
+    "Batman: The Cult/issues/2",
+    "Batman: The Cult/issues/3",
+    "Batman: The Cult/issues/4"
   ],
   "the_caped_crusader_1": [],
   "a_death_in_the_family": [
@@ -464,6 +465,14 @@
     "Nightwing Volume 2/issues/53",
     "Detective Comics Volume 1/issues/754",
     "Batman: Gotham Knights Volume 1/issues/13"
+  ],
+  "batmanHuntressACryForBlood": [
+    "Batman | Huntress: Cry For Blood/issues/1",
+    "Batman | Huntress: Cry For Blood/issues/2",
+    "Batman | Huntress: Cry For Blood/issues/3",
+    "Batman | Huntress: Cry For Blood/issues/4",
+    "Batman | Huntress: Cry For Blood/issues/5",
+    "Batman | Huntress: Cry For Blood/issues/6"
   ],
   "elseworlds": ["One Shots/issues/9", "One Shots/issues/10"]
 }
