@@ -3,10 +3,11 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
   arcSpotWrapper: {
     marginTop: 4,
-    marginRight: theme.spacing(2),
-    [theme.breakpoints.down('sm')]: {
-      maxWidth: '30%',
-    },
+    flexShrink: 1,
+    textAlign: 'center',
+  },
+  comicLabel: {
+    flexGrow: 1,
   },
   list: {
     [theme.breakpoints.down('sm')]: {
@@ -23,6 +24,7 @@ const useStyles = makeStyles(theme => ({
   flexCenter: {
     display: 'flex',
     alignItems: 'center',
+    gap: theme.spacing(2),
   },
   expandButton: {
     margin: theme.spacing(-2, 1),

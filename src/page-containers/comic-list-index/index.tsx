@@ -58,7 +58,11 @@ function ComicListIndex({
                     />
                   </Typography>
                 )}
-                <Typography variant="body1" component="div">
+                <Typography
+                  variant="body1"
+                  component="div"
+                  className={classes.comicLabel}
+                >
                   <div className={classes.flexCenter}>
                     <AppLink nextProps={{ href: link.pathname }}>
                       {link.name}
