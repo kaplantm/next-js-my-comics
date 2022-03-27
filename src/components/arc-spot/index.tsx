@@ -2,18 +2,49 @@ import { stringToHSLAColor } from '@lib/utils/string-utils';
 import { iceBlue, transparentBlackpt25 } from 'src/theme/colors';
 import { memo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import clsx from 'clsx';
 
 const useStyles = makeStyles(theme => ({
+  '@keyframes fadeInAnimation': {
+    '0%': {
+      opacity: 0,
+    },
+    '100%': {
+      opacity: 1,
+    },
+  },
   main: {
+    position: 'relative',
+    zIndex: 1,
     borderRadius: '1rem',
     border: `1px solid ${transparentBlackpt25}`,
-    paddingLeft: theme.spacing(1),
-    paddingRight: theme.spacing(1),
-    [theme.breakpoints.up('sm')]: {
-      whiteSpace: 'nowrap',
-      paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(2),
+    width: '1rem',
+    height: '1rem',
+
+    '&:hover': {
+      '& .full': {
+        display: 'block',
+      },
     },
+  },
+  full: {
+    animation: '$fadeInAnimation ease .25s',
+    'animation-iteration-count': 1,
+    'animation-fill-mode': 'forwards',
+    display: 'none',
+    top: 0,
+    transform: 'translate(-1px,-25%)',
+    position: 'absolute',
+    borderRadius: '1rem',
+    whiteSpace: 'nowrap',
+    backgroundColor: 'white',
+    boxShadow: '0 0 4px 6px white',
+  },
+  fullInner: {
+    borderRadius: '1rem',
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+    border: `1px solid ${transparentBlackpt25}`,
   },
 }));
 
@@ -29,7 +60,11 @@ const ArcSpotToolTip = ({
 
   return (
     <div className={classes.main} style={{ backgroundColor: color }}>
-      {tooltipText}
+      <div className={clsx(classes.full, 'full')}>
+        <div className={classes.fullInner} style={{ backgroundColor: color }}>
+          {tooltipText}
+        </div>
+      </div>
     </div>
   );
 };
