@@ -16,10 +16,10 @@ const useStyles = makeStyles(theme => ({
   main: {
     position: 'relative',
     zIndex: 1,
-    borderRadius: '1rem',
+    borderRadius: '.25rem',
     border: `1px solid ${transparentBlackpt25}`,
     width: '1rem',
-    height: '1rem',
+    height: '2rem',
 
     '&:hover': {
       '& .full': {
@@ -32,16 +32,21 @@ const useStyles = makeStyles(theme => ({
     'animation-iteration-count': 1,
     'animation-fill-mode': 'forwards',
     display: 'none',
-    top: 0,
-    transform: 'translate(-1px,-25%)',
+    top: -1,
+    // left: -1,
+
+    left: '2rem',
     position: 'absolute',
-    borderRadius: '1rem',
+    borderRadius: '.25rem',
     whiteSpace: 'nowrap',
     backgroundColor: 'white',
-    boxShadow: '0 0 4px 6px white',
+    boxShadow: `0 0 0px 5px white`,
   },
   fullInner: {
-    borderRadius: '1rem',
+    display: 'flex',
+    alignItems: 'center',
+    borderRadius: '.25rem',
+    height: '2rem',
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2),
     border: `1px solid ${transparentBlackpt25}`,

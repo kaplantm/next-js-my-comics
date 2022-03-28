@@ -1,14 +1,16 @@
-import { useEffect } from "react";
-import Head from "next/head";
-import { ThemeProvider } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import theme from "../src/theme";
-import Page from "../src/components/page-layout";
+import { useEffect } from 'react';
+import Head from 'next/head';
+import { QueryClientProvider } from 'react-query';
+import { ThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { queryClient } from '@lib/react-query/setup';
+import theme from '../src/theme';
+import Page from '../src/components/page-layout';
 
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
     // Remove the server-side injected CSS.
-    const jssStyles = document.querySelector("#jss-server-side");
+    const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
@@ -27,7 +29,9 @@ function MyApp({ Component, pageProps }) {
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         <Page>
-          <Component {...pageProps} />
+          <QueryClientProvider client={queryClient}>
+            <Component {...pageProps} />
+          </QueryClientProvider>
         </Page>
       </ThemeProvider>
     </>

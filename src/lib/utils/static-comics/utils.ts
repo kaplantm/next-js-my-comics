@@ -113,7 +113,8 @@ const getSeriesData = async (
 
 const getIssueData = async (
   seriesTitle: string,
-  issueNumber: number | string
+  issueNumber: number | string,
+  skipDescription?: boolean // reduce inital data size, can do request to get data
 ): Promise<{
   description: string;
   frontMatter: any;
@@ -129,6 +130,7 @@ const getIssueData = async (
 
   return {
     ...parsedData,
+    description: skipDescription ? '' : parsedData?.description,
     coverPath: coverPath || null,
     imagePaths,
   };
@@ -146,9 +148,10 @@ export async function getPanelsInCategory(category: string): Promise<string[]> {
 
 export async function getIssue(
   series: string,
-  issueNumber: string
+  issueNumber: string,
+  skipDescription?: boolean // reduce inital data size, can do request to get data
 ): Promise<ComicWithMetadata> {
-  const comic = await getIssueData(series, issueNumber);
+  const comic = await getIssueData(series, issueNumber, skipDescription);
   if (!comic?.frontMatter) {
     throw new Error(`Failed to build issue: ${series}-${issueNumber}`);
   }
@@ -178,7 +181,7 @@ async function getAllIssuesInSeries(
   const issueNumbersInSeries = await getIssueNumbers(series);
   return issueNumbersInSeries.reduce(async (acc, issueNumber) => {
     const newAcc = await acc;
-    newAcc[issueNumber] = await getIssue(series, issueNumber);
+    newAcc[issueNumber] = await getIssue(series, issueNumber, true);
     return Promise.resolve(newAcc);
   }, Promise.resolve({}));
 }
