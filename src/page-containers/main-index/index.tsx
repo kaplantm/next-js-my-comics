@@ -111,7 +111,7 @@ const MainIndex = ({
           key={key}
           groupData={groupsState.groups[key]}
           headerLabel={key}
-          skipDescription
+          // skipDescription
         />
       ))}
     </>

@@ -16,10 +16,10 @@ const useStyles = makeStyles(theme => ({
   main: {
     position: 'relative',
     zIndex: 1,
-    borderRadius: '1rem',
+    borderRadius: '.25rem',
     border: `1px solid ${transparentBlackpt25}`,
     width: '1rem',
-    height: '1rem',
+    height: '2rem',
 
     '&:hover': {
       '& .full': {
@@ -31,9 +31,9 @@ const useStyles = makeStyles(theme => ({
     animation: '$fadeInAnimation ease .25s',
     'animation-iteration-count': 1,
     'animation-fill-mode': 'forwards',
-    display: 'none',
-    top: 0,
-    transform: 'translate(-1px,-25%)',
+    // display: 'none',
+    top: -1,
+    left: 0,
     position: 'absolute',
     borderRadius: '1rem',
     whiteSpace: 'nowrap',
@@ -41,7 +41,10 @@ const useStyles = makeStyles(theme => ({
     boxShadow: '0 0 4px 6px white',
   },
   fullInner: {
-    borderRadius: '1rem',
+    display: 'flex',
+    alignItems: 'center',
+    borderRadius: '.25rem',
+    height: '2rem',
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2),
     border: `1px solid ${transparentBlackpt25}`,
