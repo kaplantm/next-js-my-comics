@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useMemo, useState } from 'react';
 import { Box, Button, ButtonGroup, Grid } from '@material-ui/core';
 import useDebounce from '@lib/hooks/use-debounce';
 import AppTextField from '@components/form-inputs/app-text-field';
@@ -15,47 +15,54 @@ import {
   sortingEnumValues,
 } from './helpers';
 
-const MainIndex = ({
-  sorting = sortingEnum.READING_ORDER,
-  groupData,
+const AllSections = ({
+  groupsState,
 }: {
-  groupData: {
-    groups: GroupedComicsType;
-    order: string[];
-  };
+  groupsState: { groups: GroupedComicsType; order: string[] };
+}) => (
+  <>
+    {groupsState.order.map(key => (
+      <MemoizedListSection
+        key={key}
+        groupData={groupsState.groups[key]}
+        headerLabel={key}
+      />
+    ))}
+  </>
+);
+const AllSectionsMemo = memo(AllSections);
+
+const SearchResults = ({
+  groupData,
+  debouncedSearchTerm,
+  sorting,
+}: {
+  groupData: { groups: GroupedComicsType; order: string[] };
+  debouncedSearchTerm: string;
   sorting: sortingEnum;
 }) => {
-  const router = useRouter();
   const [groupsState, setGroupsState] = useState(groupData);
-  const searchTermParam = router?.query?.searchTerm || '';
-  const [searchTerm, setSearchTerm] = useState(undefined);
   const [searchReady, setSearchReady] = useState(false);
-  const debouncedSearchTerm = useDebounce(searchTerm, 250);
-  // console.log('***currentSearchTerm', {
-  //   searchTermParam,
-  //   ready: router.isReady,
-  //   debouncedSearchTerm,
-  //   searchTerm,
-  //   searchReady,
-  // });
+  const router = useRouter();
+  const routerIsReady = router.isReady;
+  const groupKeys = useMemo(() => Object.keys(groupData.groups), [
+    groupData.groups,
+  ]);
 
   useEffect(() => {
-    if (router.isReady) {
-      setSearchTerm((searchTermParam as string) || '');
-    }
-  }, [router.isReady, searchTermParam]);
-
-  useEffect(() => {
-    if (debouncedSearchTerm !== undefined && router.isReady) {
+    if (debouncedSearchTerm !== null && routerIsReady) {
       const lowercaseSearchTerm = (debouncedSearchTerm || '').toLowerCase();
       const filtered = lowercaseSearchTerm
-        ? Object.keys(groupData.groups).reduce((acc, key) => {
+        ? groupKeys.reduce((acc, key) => {
             acc[key] = {
               comic: null,
               link: null,
               params: null,
               issues: groupData.groups[key].issues.filter(issue => {
                 const inArc = (issue.comic.frontMatter.arc || '')
+                  .toLowerCase()
+                  .includes(lowercaseSearchTerm);
+                const inSeries = (issue.params.series || '')
                   .toLowerCase()
                   .includes(lowercaseSearchTerm);
                 const inTitle = issue.comic.frontMatter.title
@@ -67,32 +74,63 @@ const MainIndex = ({
                 const inNumber = `${
                   issue.comic.frontMatter.issueNumber || ''
                 }`.includes(lowercaseSearchTerm);
-                return inDescription || inTitle || inNumber || inArc;
+                return (
+                  inDescription || inTitle || inNumber || inArc || inSeries
+                );
               }),
             };
             return acc;
           }, {})
         : groupData.groups;
-
       const { groups: newGroups, order: newOrder } = getDirectionallySortedData(
         filtered,
         sortingDirectionEnum.ASC,
         sorting
       );
-
       setGroupsState({
         groups: newGroups,
         order: newOrder,
       });
-      setSearchReady(true);
-      if (debouncedSearchTerm !== searchTermParam) {
-        // pushCurrentPageWithUpdatedQueryParams(
-        //   { searchTerm: debouncedSearchTerm || undefined },
-        //   { shallow: true }
-        // );
-      }
+      setSearchReady(prev => prev || true);
     }
-  }, [debouncedSearchTerm, sorting, groupData.groups, router, searchTermParam]);
+  }, [
+    routerIsReady,
+    debouncedSearchTerm,
+    sorting,
+    groupData.groups,
+    groupKeys,
+  ]);
+
+  return searchReady ? <AllSectionsMemo groupsState={groupsState} /> : null;
+};
+
+const SearchResultsMemo = memo(SearchResults);
+
+const MainIndex = ({
+  sorting = sortingEnum.READING_ORDER,
+  groupData,
+}: {
+  groupData: {
+    groups: GroupedComicsType;
+    order: string[];
+  };
+  sorting: sortingEnum;
+}) => {
+  const router = useRouter();
+  const searchTermParam = router?.query?.searchTerm || '';
+  const [searchTerm, setSearchTerm] = useState(null);
+  const debouncedSearchTerm = useDebounce(searchTerm, 250);
+
+  useEffect(() => {
+    if (router.isReady && searchTerm === null) {
+      setSearchTerm((searchTermParam as string) || '');
+    } else if (searchTerm != null && searchTerm !== searchTermParam) {
+      pushCurrentPageWithUpdatedQueryParams(
+        { searchTerm: searchTerm || undefined },
+        { shallow: true }
+      );
+    }
+  }, [router.isReady, searchTermParam, searchTerm]);
 
   function onFilterUpdate({ target }) {
     const newFilter = target.value;
@@ -129,19 +167,18 @@ const MainIndex = ({
               label="Search"
               variant="outlined"
               onChange={onFilterUpdate}
-              value={searchTerm}
+              value={searchTerm || ''}
             />
           </Grid>
         </Grid>
       </Box>
-      {searchReady &&
-        groupsState.order.map(key => (
-          <MemoizedListSection
-            key={key}
-            groupData={groupsState.groups[key]}
-            headerLabel={key}
-          />
-        ))}
+      {/* TODO: now flicker */}
+      <SearchResultsMemo
+        groupData={groupData}
+        debouncedSearchTerm={debouncedSearchTerm}
+        sorting={sorting}
+      />
+      {/* {searchReady && <SearchResults groupsState={groupsState} />} */}
     </>
   );
 };

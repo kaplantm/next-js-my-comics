@@ -13,7 +13,7 @@ function useDebounce<T>(
   value: T,
   delay = 500,
   constantInteractionLag = 500,
-  initialDelay = 0
+  initialDelay = 100
 ): T {
   // State and setters for debounced value
   const [debouncedValue, setDebouncedValue] = useState(value);

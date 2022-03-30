@@ -82,7 +82,11 @@ const ComicIndexListItem = ({
         </Typography>
       </div>
       {!skipDescription && (
-        <Collapse in={expanded && !!loadedDescription && !error}>
+        <Collapse
+          in={expanded && !!loadedDescription && !error}
+          mountOnEnter
+          unmountOnExit
+        >
           <div className={classes.markdownWrapper}>
             {isLoading ? (
               'Loading...'

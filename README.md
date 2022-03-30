@@ -70,5 +70,19 @@ How we incorporate next and cloudfront (2018-04-21)
 https://gist.github.com/rbalicki2/30e8ee5fb5bc2018923a06c5ea5e3ea5
 https://stackoverflow.com/a/33087418 How do you set a default root object for subdirectories for a statically hosted website on Cloudfront? (index.html in subdirectory)
 
+<!-- TODO:
+
 // TODO:
 panels from a lonely place of dying
+favorites
+year one
+year two
+dark victory
+robin year 1
+batgirl year 1
+lonely place of dying
+dc vs vampires
+robin & batman
+the imposter
+
+ -->
