@@ -15,28 +15,42 @@ const useStyles = makeStyles(theme => ({
   },
   main: {
     position: 'relative',
+    display: 'flex',
+    alignItems: 'stretch',
     zIndex: 1,
     borderRadius: '.25rem',
     border: `1px solid ${transparentBlackpt25}`,
     width: '1rem',
-    height: '2rem',
+    userSelect: 'none',
 
-    '&:hover': {
-      '& .full': {
-        display: 'block',
+    '@media (pointer: coarse)': {
+      width: '2rem',
+      '&:active, &:hover': {
+        '& .full': {
+          left: '3rem',
+          visibility: 'visible',
+        },
       },
     },
+
+    // '@media (pointer: fine)': {
+    '&:hover': {
+      '& .full': {
+        visibility: 'visible',
+      },
+    },
+    // },
   },
   full: {
+    display: 'flex',
+    position: 'absolute',
     animation: '$fadeInAnimation ease .25s',
     'animation-iteration-count': 1,
     'animation-fill-mode': 'forwards',
-    display: 'none',
+    visibility: 'hidden',
     top: -1,
-    // left: -1,
-
+    bottom: -1,
     left: '2rem',
-    position: 'absolute',
     borderRadius: '.25rem',
     whiteSpace: 'nowrap',
     backgroundColor: 'white',
@@ -46,7 +60,8 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     borderRadius: '.25rem',
-    height: '2rem',
+    top: -1,
+    // height: '2rem',
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2),
     border: `1px solid ${transparentBlackpt25}`,

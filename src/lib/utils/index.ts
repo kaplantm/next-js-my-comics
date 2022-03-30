@@ -4,7 +4,7 @@ import { AppAxiosResponse } from '../types';
 
 export const isDevMode = process.env.NODE_ENV === 'development';
 
-export function sleep(ms: number = 1000) {
+export function sleep(ms = 1000) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 

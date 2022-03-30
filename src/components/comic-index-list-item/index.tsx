@@ -48,7 +48,7 @@ const ComicIndexListItem = ({
 
   return (
     <li className={classes.listItem} key={link.pathname}>
-      <div className={classes.flexCenter}>
+      <div className={classes.flexCenter} style={{ alignItems: 'stretch' }}>
         {!skipArcColorTooltip && comic.frontMatter.arc && (
           <Typography
             variant="body1"
@@ -77,7 +77,7 @@ const ComicIndexListItem = ({
                 {expanded ? <KeyboardArrowDown /> : <KeyboardArrowLeft />}
               </IconButton>
             )}
-            <DebugLinksMemo baseLink={link.pathname} />
+            {/* <DebugLinksMemo baseLink={link.pathname} /> */}
           </div>
         </Typography>
       </div>

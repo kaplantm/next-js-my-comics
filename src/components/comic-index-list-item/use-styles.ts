@@ -2,6 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   arcSpotWrapper: {
+    display: 'flex',
     marginTop: 4,
     flexShrink: 1,
     textAlign: 'center',

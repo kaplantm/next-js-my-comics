@@ -32,12 +32,14 @@ const MainIndex = ({
     const lowercaseSearchTerm = debouncedSearchTerm.toLowerCase();
     const filtered = lowercaseSearchTerm
       ? Object.keys(groupData.groups).reduce((acc, key) => {
-          // console.log({ issues: groupData.groups[key].issues });
           acc[key] = {
             comic: null,
             link: null,
             params: null,
             issues: groupData.groups[key].issues.filter(issue => {
+              const inArc = (issue.comic.frontMatter.arc || '')
+                .toLowerCase()
+                .includes(lowercaseSearchTerm);
               const inTitle = issue.comic.frontMatter.title
                 .toLowerCase()
                 .includes(lowercaseSearchTerm);
@@ -47,7 +49,7 @@ const MainIndex = ({
               const inNumber = `${
                 issue.comic.frontMatter.issueNumber || ''
               }`.includes(lowercaseSearchTerm);
-              return inDescription || inTitle || inNumber;
+              return inDescription || inTitle || inNumber || inArc;
             }),
           };
           return acc;
