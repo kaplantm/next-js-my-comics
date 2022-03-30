@@ -5,12 +5,14 @@ import useDebounce from '@lib/hooks/use-debounce';
 import AppTextField from '@components/form-inputs/app-text-field';
 import { useRouter } from 'next/router';
 import { getReadingOrderRoute } from '@lib/constants/routes';
+import { pushCurrentPageWithUpdatedQueryParams } from '@lib/utils';
 import MemoizedListSection from './list-section';
 import {
   sortingEnum,
   sortingDirectionEnum,
   GroupedComicsType,
   getDirectionallySortedData,
+  sortingEnumValues,
 } from './helpers';
 
 const MainIndex = ({
@@ -25,48 +27,72 @@ const MainIndex = ({
 }) => {
   const router = useRouter();
   const [groupsState, setGroupsState] = useState(groupData);
-  const [searchTerm, setSearchTerm] = useState('');
+  const searchTermParam = router?.query?.searchTerm || '';
+  const [searchTerm, setSearchTerm] = useState(undefined);
+  const [searchReady, setSearchReady] = useState(false);
   const debouncedSearchTerm = useDebounce(searchTerm, 250);
+  // console.log('***currentSearchTerm', {
+  //   searchTermParam,
+  //   ready: router.isReady,
+  //   debouncedSearchTerm,
+  //   searchTerm,
+  //   searchReady,
+  // });
 
   useEffect(() => {
-    const lowercaseSearchTerm = debouncedSearchTerm.toLowerCase();
-    const filtered = lowercaseSearchTerm
-      ? Object.keys(groupData.groups).reduce((acc, key) => {
-          acc[key] = {
-            comic: null,
-            link: null,
-            params: null,
-            issues: groupData.groups[key].issues.filter(issue => {
-              const inArc = (issue.comic.frontMatter.arc || '')
-                .toLowerCase()
-                .includes(lowercaseSearchTerm);
-              const inTitle = issue.comic.frontMatter.title
-                .toLowerCase()
-                .includes(lowercaseSearchTerm);
-              const inDescription = issue.comic.description
-                .toLowerCase()
-                .includes(lowercaseSearchTerm);
-              const inNumber = `${
-                issue.comic.frontMatter.issueNumber || ''
-              }`.includes(lowercaseSearchTerm);
-              return inDescription || inTitle || inNumber || inArc;
-            }),
-          };
-          return acc;
-        }, {})
-      : groupData.groups;
+    if (router.isReady) {
+      setSearchTerm((searchTermParam as string) || '');
+    }
+  }, [router.isReady, searchTermParam]);
 
-    const { groups: newGroups, order: newOrder } = getDirectionallySortedData(
-      filtered,
-      sortingDirectionEnum.ASC,
-      sorting
-    );
+  useEffect(() => {
+    if (debouncedSearchTerm !== undefined && router.isReady) {
+      const lowercaseSearchTerm = (debouncedSearchTerm || '').toLowerCase();
+      const filtered = lowercaseSearchTerm
+        ? Object.keys(groupData.groups).reduce((acc, key) => {
+            acc[key] = {
+              comic: null,
+              link: null,
+              params: null,
+              issues: groupData.groups[key].issues.filter(issue => {
+                const inArc = (issue.comic.frontMatter.arc || '')
+                  .toLowerCase()
+                  .includes(lowercaseSearchTerm);
+                const inTitle = issue.comic.frontMatter.title
+                  .toLowerCase()
+                  .includes(lowercaseSearchTerm);
+                const inDescription = issue.comic.description
+                  .toLowerCase()
+                  .includes(lowercaseSearchTerm);
+                const inNumber = `${
+                  issue.comic.frontMatter.issueNumber || ''
+                }`.includes(lowercaseSearchTerm);
+                return inDescription || inTitle || inNumber || inArc;
+              }),
+            };
+            return acc;
+          }, {})
+        : groupData.groups;
 
-    setGroupsState({
-      groups: newGroups,
-      order: newOrder,
-    });
-  }, [debouncedSearchTerm, sorting, groupData.groups]);
+      const { groups: newGroups, order: newOrder } = getDirectionallySortedData(
+        filtered,
+        sortingDirectionEnum.ASC,
+        sorting
+      );
+
+      setGroupsState({
+        groups: newGroups,
+        order: newOrder,
+      });
+      setSearchReady(true);
+      if (debouncedSearchTerm !== searchTermParam) {
+        // pushCurrentPageWithUpdatedQueryParams(
+        //   { searchTerm: debouncedSearchTerm || undefined },
+        //   { shallow: true }
+        // );
+      }
+    }
+  }, [debouncedSearchTerm, sorting, groupData.groups, router, searchTermParam]);
 
   function onFilterUpdate({ target }) {
     const newFilter = target.value;
@@ -87,7 +113,7 @@ const MainIndex = ({
               color="primary"
               aria-label="outlined primary button group"
             >
-              {Object.values(sortingEnum).map(sort => (
+              {sortingEnumValues.map(sort => (
                 <Button
                   key={sort}
                   disabled={sorting === sort}
@@ -108,14 +134,14 @@ const MainIndex = ({
           </Grid>
         </Grid>
       </Box>
-      {groupsState.order.map(key => (
-        <MemoizedListSection
-          key={key}
-          groupData={groupsState.groups[key]}
-          headerLabel={key}
-          // skipDescription
-        />
-      ))}
+      {searchReady &&
+        groupsState.order.map(key => (
+          <MemoizedListSection
+            key={key}
+            groupData={groupsState.groups[key]}
+            headerLabel={key}
+          />
+        ))}
     </>
   );
 };

@@ -17,6 +17,7 @@ export enum sortingEnum {
   YEAR = 'Date',
   ARC = 'Arc',
 }
+export const sortingEnumValues = Object.values(sortingEnum);
 
 export enum sortingDirectionEnum {
   ASC = 'asc',
