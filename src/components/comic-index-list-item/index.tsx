@@ -77,7 +77,7 @@ const ComicIndexListItem = ({
                 {expanded ? <KeyboardArrowDown /> : <KeyboardArrowLeft />}
               </IconButton>
             )}
-            {/* <DebugLinksMemo baseLink={link.pathname} /> */}
+            <DebugLinksMemo baseLink={link.pathname} />
           </div>
         </Typography>
       </div>
