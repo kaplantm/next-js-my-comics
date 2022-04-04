@@ -6,4 +6,7 @@ module.exports = {
   },
   // https://nextjs.org/docs/api-reference/next.config.js/exportPathMap#adding-a-trailing-slash
   trailingSlash: true,
+  experimental: {
+    concurrentFeatures: true,
+  },
 };

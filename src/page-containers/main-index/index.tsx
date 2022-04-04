@@ -1,6 +1,18 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import React, { memo, useEffect, useMemo, useState } from 'react';
-import { Box, Button, ButtonGroup, Grid } from '@material-ui/core';
+import React, {
+  memo,
+  useEffect,
+  useMemo,
+  useState,
+  useTransition,
+} from 'react';
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  CircularProgress,
+  Grid,
+} from '@material-ui/core';
 import useDebounce from '@lib/hooks/use-debounce';
 import AppTextField from '@components/form-inputs/app-text-field';
 import { useRouter } from 'next/router';
@@ -22,14 +34,17 @@ const AllSections = ({
 }) => (
   <>
     {groupsState.order.map(key => (
-      <MemoizedListSection
-        key={key}
-        groupData={groupsState.groups[key]}
-        headerLabel={key}
-      />
+      <div key={key}>
+        <MemoizedListSection
+          key={key}
+          groupData={groupsState.groups[key]}
+          headerLabel={key}
+        />
+      </div>
     ))}
   </>
 );
+
 const AllSectionsMemo = memo(AllSections);
 
 const SearchResults = ({
@@ -48,9 +63,15 @@ const SearchResults = ({
   const groupKeys = useMemo(() => Object.keys(groupData.groups), [
     groupData.groups,
   ]);
+  const [isPending, startTransition] = useTransition({
+    timeoutMs: 3000,
+  });
 
   useEffect(() => {
-    if (debouncedSearchTerm !== null && routerIsReady) {
+    if (
+      (debouncedSearchTerm?.length >= 3 || debouncedSearchTerm === '') &&
+      routerIsReady
+    ) {
       const lowercaseSearchTerm = (debouncedSearchTerm || '').toLowerCase();
       const filtered = lowercaseSearchTerm
         ? groupKeys.reduce((acc, key) => {
@@ -87,11 +108,14 @@ const SearchResults = ({
         sortingDirectionEnum.ASC,
         sorting
       );
-      setGroupsState({
-        groups: newGroups,
-        order: newOrder,
+
+      startTransition(() => {
+        setGroupsState({
+          groups: newGroups,
+          order: newOrder,
+        });
+        setSearchReady(prev => prev || true);
       });
-      setSearchReady(prev => prev || true);
     }
   }, [
     routerIsReady,
@@ -101,6 +125,13 @@ const SearchResults = ({
     groupKeys,
   ]);
 
+  // if (isPending) {
+  return (
+    <Box alignItems="center" id="foo">
+      <CircularProgress color="secondary" />
+    </Box>
+  );
+  // }
   return searchReady ? <AllSectionsMemo groupsState={groupsState} /> : null;
 };
 

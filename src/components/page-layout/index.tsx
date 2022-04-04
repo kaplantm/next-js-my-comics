@@ -18,7 +18,7 @@ function Page({ children }: { children: any }) {
 
   return (
     <div className={classes.root}>
-      <AppBar position="fixed" className={classes.appBar}>
+      {/* <AppBar position="fixed" className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
           <AppLink
             nextProps={{
@@ -57,7 +57,7 @@ function Page({ children }: { children: any }) {
             </List>
           </nav>
         </Toolbar>
-      </AppBar>
+      </AppBar> */}
       <main className={clsx(classes.content)}>
         <Container>{children}</Container>
       </main>

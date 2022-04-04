@@ -46,6 +46,7 @@ const ComicIndexListItem = ({
     setExpanded(prev => !prev);
   }
 
+  console.log('item', link.name);
   return (
     <li className={classes.listItem} key={link.pathname}>
       <div className={classes.flexCenter} style={{ alignItems: 'stretch' }}>
@@ -67,37 +68,21 @@ const ComicIndexListItem = ({
           className={classes.comicLabel}
         >
           <div className={classes.flexCenter}>
-            <AppLink nextProps={{ href: link.pathname }}>{link.name}</AppLink>
+            {link.name}
+            {/* <AppLink nextProps={{ href: link.pathname }}>{link.name}</AppLink> */}
 
-            {!skipDescription && !error && (
+            {/* {!skipDescription && !error && (
               <IconButton
                 className={classes.expandButton}
                 onClick={toggleExpanded}
               >
                 {expanded ? <KeyboardArrowDown /> : <KeyboardArrowLeft />}
               </IconButton>
-            )}
+            )} */}
             <DebugLinksMemo baseLink={link.pathname} />
           </div>
         </Typography>
       </div>
-      {!skipDescription && (
-        <Collapse
-          in={expanded && !!loadedDescription && !error}
-          mountOnEnter
-          unmountOnExit
-        >
-          <div className={classes.markdownWrapper}>
-            {isLoading ? (
-              'Loading...'
-            ) : (
-              <MemoReactMarkdown>
-                {loadedDescription || 'No Description Found'}
-              </MemoReactMarkdown>
-            )}
-          </div>
-        </Collapse>
-      )}
     </li>
   );
 };
