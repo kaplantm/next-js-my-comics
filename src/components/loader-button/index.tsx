@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@mui/styles/makeStyles';
 import { Button, ButtonProps, CircularProgress } from '@mui/material';
 import clsx from 'clsx';
 import { green } from '@mui/material/colors';

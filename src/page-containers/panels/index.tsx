@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Grid } from '@material-ui/core';
+import { Typography, Grid } from '@mui/material';
 import AppLink from '@components/app-link';
 import { getPanelsCategoryRoute } from '@lib/constants/routes';
 import useStyles from './use-styles';

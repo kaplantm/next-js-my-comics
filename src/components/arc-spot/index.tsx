@@ -1,7 +1,7 @@
 import { stringToHSLAColor } from '@lib/utils/string-utils';
 import { iceBlue, transparentBlackpt25 } from 'src/theme/colors';
 import { memo } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@mui/styles/makeStyles';
 import clsx from 'clsx';
 
 const useStyles = makeStyles(theme => ({

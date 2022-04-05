@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material';
+import { adaptV4Theme } from '@mui/material/styles';
 import {
   white,
   cherryRed,
@@ -10,7 +11,7 @@ import {
 } from './colors';
 
 // Create a theme instance.
-const theme = createTheme({
+const theme = createTheme(adaptV4Theme({
   spacing: (factor: number) => `${0.5 * factor}rem`,
   palette: {
     primary: {
@@ -130,6 +131,6 @@ const theme = createTheme({
       },
     },
   },
-} as any);
+} as any));
 
 export default theme;

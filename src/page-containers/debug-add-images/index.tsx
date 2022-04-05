@@ -126,7 +126,7 @@ const DebugAddImages = ({
 
   return (
     <DebugOnlyWrapper>
-      <Grid container spacing={3} justify="center">
+      <Grid container spacing={3} justifyContent="center">
         <Grid item xs={12}>
           <Typography variant="h4">{params.series}</Typography>
           <Typography variant="h1">
@@ -167,7 +167,7 @@ const DebugAddImages = ({
                   />
                 </Grid>
 
-                <Grid item container xs={4} justify="center">
+                <Grid item container xs={4} justifyContent="center">
                   <LoaderButton
                     size="large"
                     disabled={!filesToOptimize.length || submissionInProgress}
@@ -179,12 +179,12 @@ const DebugAddImages = ({
                   </LoaderButton>
                 </Grid>
                 {optimizeFormError && (
-                  <Grid item container xs={12} justify="center">
+                  <Grid item container xs={12} justifyContent="center">
                     <Typography color="error">{optimizeFormError}</Typography>
                   </Grid>
                 )}
                 {!!bytesSaved && (
-                  <Grid item container xs={12} justify="center">
+                  <Grid item container xs={12} justifyContent="center">
                     <Typography>Saved {bytesSaved / 1000000}MB</Typography>
                   </Grid>
                 )}
@@ -204,7 +204,7 @@ const DebugAddImages = ({
             </Grid>
           )}
         </Grid>
-        <Grid item container xs={4} justify="center">
+        <Grid item container xs={4} justifyContent="center">
           <LoaderButton
             size="large"
             disabled={!optimizedFilePaths.length || submissionInProgress}
@@ -215,7 +215,7 @@ const DebugAddImages = ({
             Upload
           </LoaderButton>
           {uploadFormError && (
-            <Grid item container xs={12} justify="center">
+            <Grid item container xs={12} justifyContent="center">
               <Typography color="error">{uploadFormError}</Typography>
             </Grid>
           )}

@@ -55,10 +55,8 @@ const MasonryLayout = ({
     <div className={classes.showMoreButtonContainer} key="showMoreItem">
       <Button
         variant="contained"
-        color="default"
         onClick={onShowMore}
-        className={classes.showMoreButton}
-      >
+        className={classes.showMoreButton}>
         Show More
       </Button>
     </div>

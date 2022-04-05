@@ -131,7 +131,7 @@ const DebugAddComic = ({
 
   return (
     <DebugOnlyWrapper>
-      <Grid container spacing={3} justify="center">
+      <Grid container spacing={3} justifyContent="center">
         <Grid
           container
           item
@@ -263,7 +263,7 @@ const DebugAddComic = ({
               {...getPropsForFormField('description')}
             />
           </Grid>
-          <Grid item container xs={12} justify="center">
+          <Grid item container xs={12} justifyContent="center">
             <Typography
               color={submissionInProgress ? 'textSecondary' : 'error'}
             >
@@ -272,7 +272,7 @@ const DebugAddComic = ({
           </Grid>
 
           {savedComicLink && (
-            <Grid item container xs={12} justify="center" alignItems="center">
+            <Grid item container xs={12} justifyContent="center" alignItems="center">
               Created:&nbsp;
               <AppLink isExternal nextProps={{ href: savedComicLink }}>
                 {savedComicLink}
@@ -280,7 +280,7 @@ const DebugAddComic = ({
               <DebugLinksMemo baseLink={savedComicLink} />
             </Grid>
           )}
-          <Grid item container xs={12} justify="center">
+          <Grid item container xs={12} justifyContent="center">
             <LoaderButton
               size="large"
               disabled={disableSubmitButton || submissionInProgress}

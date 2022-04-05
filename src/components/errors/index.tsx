@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@mui/styles/makeStyles';
 
 // TODO: now swap icons source
 const statusCodes: { [key: string]: string } = {

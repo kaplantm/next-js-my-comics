@@ -67,10 +67,7 @@ const ComicIndexListItem = ({
             <AppLink nextProps={{ href: link.pathname }}>{link.name}</AppLink>
 
             {!skipDescription && !error && (
-              <IconButton
-                className={classes.expandButton}
-                onClick={toggleExpanded}
-              >
+              <IconButton className={classes.expandButton} onClick={toggleExpanded} size="large">
                 {expanded ? <KeyboardArrowDown /> : <KeyboardArrowLeft />}
               </IconButton>
             )}

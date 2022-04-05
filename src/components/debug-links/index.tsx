@@ -18,7 +18,7 @@ const DebugLinks = ({
     <div>
       {!noEdit && (
         <AppLink nextProps={{ href: `${baseLink}/debug/edit` }} isExternal>
-          <IconButton component="div">
+          <IconButton component="div" size="large">
             <Edit />
           </IconButton>
         </AppLink>
@@ -29,7 +29,7 @@ const DebugLinks = ({
         }}
         isExternal
       >
-        <IconButton component="div">
+        <IconButton component="div" size="large">
           <Image />
         </IconButton>
       </AppLink>

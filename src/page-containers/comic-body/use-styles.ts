@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core/styles";
+import makeStyles from '@mui/styles/makeStyles';
 
 type styleConfigType = {
   coverWidth: number;
@@ -7,7 +7,7 @@ type styleConfigType = {
 
 const useStyles = makeStyles(theme => ({
   coverImageContainer: {
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('md')]: {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
         width: ({ coverWidth }: styleConfigType) => coverWidth,
         height: ({ coverHeight }: styleConfigType) => coverHeight,
       },
-      [theme.breakpoints.down("sm")]: {
+      [theme.breakpoints.down('md')]: {
         margin: 0,
         "& img": {
           width: ({ coverWidth }: styleConfigType) => coverWidth * 0.75,
@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
   childrenContainer: {
     marginTop: theme.spacing(6),
     maxWidth: "60%",
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down('sm')]: {
       maxWidth: "100%",
     },
   },

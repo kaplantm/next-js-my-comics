@@ -1,4 +1,4 @@
-import { makeStyles } from "@material-ui/core/styles";
+import makeStyles from '@mui/styles/makeStyles';
 import { iceBlue, softBlueLight } from "src/theme/colors";
 
 const useStyles = makeStyles(theme => ({
