@@ -1,23 +1,28 @@
-import { useEffect } from 'react';
+import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { QueryClientProvider } from 'react-query';
-import { ThemeProvider } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import { ThemeProvider } from '@mui/material';
+import CssBaseline from '@mui/material/CssBaseline';
 import { queryClient } from '@lib/react-query/setup';
+import { CacheProvider, EmotionCache } from '@emotion/react';
 import theme from '../src/theme';
 import Page from '../src/components/page-layout';
+import createEmotionCache from '../src/createEmotionCache';
 
-function MyApp({ Component, pageProps }) {
-  useEffect(() => {
-    // Remove the server-side injected CSS.
-    const jssStyles = document.querySelector('#jss-server-side');
-    if (jssStyles) {
-      jssStyles.parentElement.removeChild(jssStyles);
-    }
-  }, []);
+// Client-side cache, shared for the whole session of the user in the browser.
+const clientSideEmotionCache = createEmotionCache();
 
+interface MyAppProps extends AppProps {
+  emotionCache?: EmotionCache;
+}
+
+function MyApp({
+  Component,
+  emotionCache = clientSideEmotionCache,
+  pageProps,
+}: MyAppProps) {
   return (
-    <>
+    <CacheProvider value={emotionCache}>
       <Head>
         <title>Comics</title>
         <meta
@@ -33,8 +38,8 @@ function MyApp({ Component, pageProps }) {
             <Component {...pageProps} />
           </QueryClientProvider>
         </Page>
-      </ThemeProvider>
-    </>
+      </ThemeProvider>{' '}
+    </CacheProvider>
   );
 }
 

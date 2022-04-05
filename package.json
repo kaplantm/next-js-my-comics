@@ -19,9 +19,13 @@
     "publish": "rm -rf out/image-optimization && aws s3 sync out s3://comics.tonarie.com --delete --acl public-read && aws s3 cp s3://comics.tonarie.com/  s3://comics.tonarie.com/_next/ --metadata-directive REPLACE --acl public-read --cache-control 31536000 --recursive"
   },
   "dependencies": {
-    "@material-ui/core": "^4.11.3",
-    "@material-ui/icons": "^4.11.2",
+    "@emotion/cache": "^11.7.1",
+    "@emotion/react": "^11.8.2",
+    "@emotion/server": "^11.4.0",
+    "@emotion/styled": "^11.8.1",
     "@material-ui/lab": "^4.0.0-alpha.57",
+    "@mui/icons-material": "^5.5.1",
+    "@mui/material": "^5.5.3",
     "axios": "^0.21.1",
     "clsx": "^1.1.1",
     "front-matter-markdown": "^0.4.5",
