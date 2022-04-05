@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Typography, Grid } from '@material-ui/core';
+import { Typography, Grid } from '@mui/material';
 import { ComicWithMetadata } from '@lib/types';
 import ComicIndexListItem from '@components/comic-index-list-item';
 import useStyles from './use-styles';

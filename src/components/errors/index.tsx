@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Head from 'next/head';
-import { Typography, Box } from '@material-ui/core';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
+// TODO: now swap icons source
 const statusCodes: { [key: string]: string } = {
   401: 'Forbidden',
   400: 'Bad Request',

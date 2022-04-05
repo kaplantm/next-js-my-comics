@@ -1,6 +1,6 @@
-import { Dialog, Typography } from '@material-ui/core';
+import { Dialog } from '@mui/material';
 import clsx from 'clsx';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import useStyles from './use-styles';
 

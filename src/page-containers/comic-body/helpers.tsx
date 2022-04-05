@@ -1,4 +1,4 @@
-import { Typography } from '@material-ui/core';
+import { Typography } from '@mui/material';
 import AppLink from '../../components/app-link';
 import { getSeriesRoute } from '../../lib/constants/routes';
 

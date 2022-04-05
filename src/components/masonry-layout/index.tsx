@@ -1,6 +1,6 @@
 import ViewableImage from '@components/viewable-image';
 import useKeyPress from '@lib/hooks/use-key-press';
-import { Button, useMediaQuery } from '@material-ui/core';
+import { Button, useMediaQuery } from '@mui/material';
 import { useCallback, useEffect, useState } from 'react';
 import useStyles from './use-styles';
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Typography, Grid } from '@material-ui/core';
+import { Typography, Grid } from '@mui/material';
 import MasonryLayout from '@components/masonry-layout';
 import AppTextField from '@components/form-inputs/app-text-field';
 import useDebounce from '@lib/hooks/use-debounce';

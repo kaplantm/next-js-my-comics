@@ -1,4 +1,4 @@
-import { Typography } from '@material-ui/core';
+import { Typography } from '@mui/material';
 import React from 'react';
 import { useDropzone } from 'react-dropzone';
 import useStyles from './use-styles';

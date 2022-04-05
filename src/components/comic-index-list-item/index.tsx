@@ -1,16 +1,13 @@
 import React, { useState, memo, useMemo } from 'react';
-import { Typography, Collapse, IconButton } from '@material-ui/core';
+import { Typography, IconButton } from '@mui/material';
 import AppLink from '@components/app-link';
-import { KeyboardArrowDown, KeyboardArrowLeft } from '@material-ui/icons';
-import ReactMarkdown from 'react-markdown';
+import { KeyboardArrowDown, KeyboardArrowLeft } from '@mui/icons-material';
 import { safeLoadFront } from 'yaml-front-matter';
 import { ComicType, MappedRouteType } from '@lib/types';
 import ArcSpot from '@components/arc-spot';
 import DebugLinksMemo from '@components/debug-links';
 import { useQuery } from 'react-query';
 import useStyles from './use-styles';
-
-const MemoReactMarkdown = memo(ReactMarkdown);
 
 const ComicIndexListItem = ({
   link,
@@ -46,7 +43,6 @@ const ComicIndexListItem = ({
     setExpanded(prev => !prev);
   }
 
-  console.log('item', link.name);
   return (
     <li className={classes.listItem} key={link.pathname}>
       <div className={classes.flexCenter} style={{ alignItems: 'stretch' }}>
@@ -68,17 +64,16 @@ const ComicIndexListItem = ({
           className={classes.comicLabel}
         >
           <div className={classes.flexCenter}>
-            {link.name}
-            {/* <AppLink nextProps={{ href: link.pathname }}>{link.name}</AppLink> */}
+            <AppLink nextProps={{ href: link.pathname }}>{link.name}</AppLink>
 
-            {/* {!skipDescription && !error && (
+            {!skipDescription && !error && (
               <IconButton
                 className={classes.expandButton}
                 onClick={toggleExpanded}
               >
                 {expanded ? <KeyboardArrowDown /> : <KeyboardArrowLeft />}
               </IconButton>
-            )} */}
+            )}
             <DebugLinksMemo baseLink={link.pathname} />
           </div>
         </Typography>

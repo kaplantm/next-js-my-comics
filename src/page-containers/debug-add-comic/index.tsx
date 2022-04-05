@@ -5,13 +5,13 @@ import {
   Grid,
   MenuItem,
   Typography,
-} from '@material-ui/core';
+  Autocomplete,
+} from '@mui/material';
 import DebugLinksMemo from '@components/debug-links';
 import { ComicPageParams, ComicWithMetadata } from '@lib/types';
 import AppTextField from '@components/form-inputs/app-text-field';
 import DebugOnlyWrapper from '@components/debug-only-wrapper';
 import { useFormState } from '@lib/hooks/use-form-state';
-import Autocomplete from '@material-ui/lab/Autocomplete';
 import LoaderButton from '@components/loader-button';
 import { appAxios } from '@lib/utils';
 import { runValidatorsAndReturnErrorMessage } from '@lib/hooks/use-form-state/validator-functions';

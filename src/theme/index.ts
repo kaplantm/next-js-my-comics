@@ -1,4 +1,4 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@mui/material';
 import {
   white,
   cherryRed,
@@ -10,7 +10,7 @@ import {
 } from './colors';
 
 // Create a theme instance.
-const theme = createMuiTheme({
+const theme = createTheme({
   spacing: (factor: number) => `${0.5 * factor}rem`,
   palette: {
     primary: {

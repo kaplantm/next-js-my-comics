@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { Grid, Slider, Typography } from '@material-ui/core';
+import { Grid, Slider, Typography } from '@mui/material';
 import { ComicPageParams, ComicWithMetadata } from '@lib/types';
 import DebugOnlyWrapper from '@components/debug-only-wrapper';
 import MasonryLayout from '@components/masonry-layout';

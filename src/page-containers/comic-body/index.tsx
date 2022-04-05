@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Grid } from '@material-ui/core';
+import { Typography, Grid } from '@mui/material';
 import ReactMarkdown from 'react-markdown';
 import { ComicPageParams, ComicWithMetadata } from '@lib/types';
 import MasonryLayout from '@components/masonry-layout';

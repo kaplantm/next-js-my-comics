@@ -12,7 +12,7 @@ import {
   ButtonGroup,
   CircularProgress,
   Grid,
-} from '@material-ui/core';
+} from '@mui/material';
 import useDebounce from '@lib/hooks/use-debounce';
 import AppTextField from '@components/form-inputs/app-text-field';
 import { useRouter } from 'next/router';
@@ -127,7 +127,8 @@ const SearchResults = ({
 
   // if (isPending) {
   return (
-    <Box alignItems="center" id="foo">
+    <Box display="flex" justifyItems="center">
+      {/* hey */}
       <CircularProgress color="secondary" />
     </Box>
   );

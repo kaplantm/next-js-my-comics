@@ -1,8 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, ButtonProps, CircularProgress } from '@material-ui/core';
+import { Button, ButtonProps, CircularProgress } from '@mui/material';
 import clsx from 'clsx';
-import { green } from '@material-ui/core/colors';
+import { green } from '@mui/material/colors';
 
 const useStyles = makeStyles(theme => ({
   root: {

@@ -1,5 +1,5 @@
 import { getWidthHeightFromImagePath } from '@lib/utils/image-utils';
-import { Paper } from '@material-ui/core';
+import { Paper } from '@mui/material';
 import clsx from 'clsx';
 import React, { useState, useRef, useEffect } from 'react';
 import ImageDialog from './image-dialog';

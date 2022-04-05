@@ -23,7 +23,6 @@
     "@emotion/react": "^11.8.2",
     "@emotion/server": "^11.4.0",
     "@emotion/styled": "^11.8.1",
-    "@material-ui/lab": "^4.0.0-alpha.57",
     "@mui/icons-material": "^5.5.1",
     "@mui/material": "^5.5.3",
     "axios": "^0.21.1",
