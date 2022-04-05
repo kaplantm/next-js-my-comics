@@ -10,7 +10,7 @@ function MyDropzone({
   onDrop: (files: any) => void;
   currentFileCount?: number;
 }) {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   return (

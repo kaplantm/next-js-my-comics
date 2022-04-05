@@ -21,7 +21,7 @@ const ComicIndexListItem = ({
   skipDescription: boolean;
 }) => {
   const [expanded, setExpanded] = useState(false);
-  const classes = useStyles();
+  const { classes } = useStyles();
   const queryPath = `/static${link.pathname}/data.md`;
   const { data, isLoading, error } = useQuery(queryPath, {
     enabled: expanded && !comic.description && !skipDescription,
@@ -67,7 +67,11 @@ const ComicIndexListItem = ({
             <AppLink nextProps={{ href: link.pathname }}>{link.name}</AppLink>
 
             {!skipDescription && !error && (
-              <IconButton className={classes.expandButton} onClick={toggleExpanded} size="large">
+              <IconButton
+                className={classes.expandButton}
+                onClick={toggleExpanded}
+                size="large"
+              >
                 {expanded ? <KeyboardArrowDown /> : <KeyboardArrowLeft />}
               </IconButton>
             )}

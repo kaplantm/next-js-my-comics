@@ -1,10 +1,10 @@
 import React from 'react';
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import { Button, ButtonProps, CircularProgress } from '@mui/material';
-import clsx from 'clsx';
+import { cx } from '@emotion/css';
 import { green } from '@mui/material/colors';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   root: {
     display: 'flex',
     alignItems: 'center',
@@ -30,10 +30,10 @@ function LoaderButton({
   loading?: boolean;
   children: React.ReactNode;
 } & ButtonProps) {
-  const classes = useStyles();
+  const { classes } = useStyles();
   return (
-    <div className={clsx(classes.root, 'loaderButtonRoot')}>
-      <div className={clsx(classes.wrapper, 'loaderButtonWrapper')}>
+    <div className={cx(classes.root, 'loaderButtonRoot')}>
+      <div className={cx(classes.wrapper, 'loaderButtonWrapper')}>
         <Button className="margin1" {...props}>
           {children}
         </Button>

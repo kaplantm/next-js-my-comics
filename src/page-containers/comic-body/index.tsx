@@ -31,7 +31,7 @@ function ComicBody({ params, issue, series, children }: ComicBodyProps) {
     400,
     600
   );
-  const classes = useStyles({ coverWidth, coverHeight });
+  const { classes } = useStyles({ coverWidth, coverHeight });
 
   return (
     <Grid container spacing={3}>

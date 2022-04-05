@@ -125,14 +125,13 @@ const SearchResults = ({
     groupKeys,
   ]);
 
-  // if (isPending) {
-  return (
-    <Box display="flex" justifyItems="center">
-      {/* hey */}
-      <CircularProgress color="secondary" />
-    </Box>
-  );
-  // }
+  if (isPending) {
+    return (
+      <Box display="flex" justifyItems="center">
+        <CircularProgress color="secondary" />
+      </Box>
+    );
+  }
   return searchReady ? <AllSectionsMemo groupsState={groupsState} /> : null;
 };
 

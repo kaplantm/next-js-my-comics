@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 
 // TODO: now swap icons source
 const statusCodes: { [key: string]: string } = {
@@ -13,7 +13,7 @@ const statusCodes: { [key: string]: string } = {
   500: 'Internal Server Error',
 };
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   wrapper: {
     height: '100vh',
     textAlign: 'center',
@@ -47,7 +47,7 @@ const ErrorComponent = ({
   /** String representing the source of the error  */
   errorSource: string;
 }) => {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const content: string =
     info ||
     statusCodes[statusCode as string] ||

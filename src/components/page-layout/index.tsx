@@ -1,4 +1,11 @@
-import { AppBar, Toolbar, List, ListItem, Container } from '@mui/material';
+import {
+  AppBar,
+  Toolbar,
+  List,
+  ListItem,
+  Container,
+  Typography,
+} from '@mui/material';
 import React from 'react';
 import AppLink from '../app-link';
 import useStyles from './use-styles';
@@ -6,7 +13,7 @@ import { routeMap, navRoutes } from '../../lib/constants/routes';
 import { MappedRouteType } from '../../lib/types';
 
 function Page({ children }: { children: any }) {
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   return (
     <div className={classes.root}>
@@ -50,7 +57,7 @@ function Page({ children }: { children: any }) {
           </nav>
         </Toolbar>
       </AppBar>
-      <main className={clsx(classes.content)}>
+      <main className={classes.content}>
         <Container>{children}</Container>
       </main>
     </div>

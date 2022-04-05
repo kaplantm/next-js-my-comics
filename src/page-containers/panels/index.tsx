@@ -9,7 +9,7 @@ export type PanelsIndexProps = {
 };
 
 function PanelsIndex({ categories }: PanelsIndexProps) {
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   return (
     <Grid container spacing={3}>

@@ -1,7 +1,7 @@
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 import { iceBlue } from '../../theme/colors';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles()(() => ({
   viewableImageWrapper: {
     display: 'flex',
     alignItems: 'center',

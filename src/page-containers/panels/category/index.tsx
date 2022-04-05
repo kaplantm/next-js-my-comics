@@ -15,7 +15,7 @@ type PanelsProps = {
 function Panels({ params, imagePaths, filterable }: PanelsProps) {
   const [currentImagePaths, setCurrentImagePaths] = useState(imagePaths);
   const [searchTerm, setSearchTerm] = useState('');
-  const debouncedSearchTerm = useDebounce(searchTerm, 250);
+  const debouncedSearchTerm = useDebounce(searchTerm, 300);
 
   useEffect(() => {
     setCurrentImagePaths(

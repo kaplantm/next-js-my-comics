@@ -21,7 +21,7 @@ const DebugAddImages = ({
   imagePaths?: string[];
   maxDimension?: number;
 }) => {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const isCategory = !!params.category;
   const [submissionInProgress, setSubmissionInProgress] = useState(false);
   const [maxDimensionState, setMaxDimensionState] = useState(maxDimension);

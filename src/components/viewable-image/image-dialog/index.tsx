@@ -1,5 +1,5 @@
 import { Dialog } from '@mui/material';
-import clsx from 'clsx';
+import { cx } from '@emotion/css';
 import { useEffect, useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import useStyles from './use-styles';
@@ -14,7 +14,7 @@ function ImageDialog(props) {
     rawImageWidth,
     changeOpenIndex,
   } = props;
-  const classes = useStyles({ rawImageHeight, rawImageWidth });
+  const { classes } = useStyles({ rawImageHeight, rawImageWidth });
   const [fullsize, setFullsize] = useState(false);
   const [canZoom, setCanZoom] = useState(false);
   const handlers = changeOpenIndex
@@ -58,7 +58,7 @@ function ImageDialog(props) {
     >
       <img
         src={src}
-        className={clsx(
+        className={cx(
           classes.dialogImage,
           canZoom && classes.zoomable,
           fullsize && classes.fullsize

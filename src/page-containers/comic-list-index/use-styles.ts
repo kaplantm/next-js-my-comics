@@ -1,6 +1,6 @@
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   list: {
     [theme.breakpoints.down('md')]: {
       paddingLeft: 0,

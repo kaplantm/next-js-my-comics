@@ -1,35 +1,35 @@
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 
 type styleConfigType = {
   coverWidth: number;
   coverHeight: number;
 };
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   coverImageContainer: {
     [theme.breakpoints.down('md')]: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      flexDirection: "column",
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexDirection: 'column',
     },
-    "& ul": {
+    '& ul': {
       paddingInlineStart: theme.spacing(2),
     },
-    "& li": {
+    '& li': {
       marginTop: theme.spacing(1),
       marginBottom: theme.spacing(1),
     },
-    "& .viewableImageWrapper": {
-      float: "right",
+    '& .viewableImageWrapper': {
+      float: 'right',
       margin: theme.spacing(2, 0, 2, 2),
-      "& img": {
+      '& img': {
         width: ({ coverWidth }: styleConfigType) => coverWidth,
         height: ({ coverHeight }: styleConfigType) => coverHeight,
       },
       [theme.breakpoints.down('md')]: {
         margin: 0,
-        "& img": {
+        '& img': {
           width: ({ coverWidth }: styleConfigType) => coverWidth * 0.75,
           height: ({ coverHeight }: styleConfigType) => coverHeight * 0.75,
         },
@@ -38,9 +38,9 @@ const useStyles = makeStyles(theme => ({
   },
   childrenContainer: {
     marginTop: theme.spacing(6),
-    maxWidth: "60%",
+    maxWidth: '60%',
     [theme.breakpoints.down('sm')]: {
-      maxWidth: "100%",
+      maxWidth: '100%',
     },
   },
   imagesContainer: {

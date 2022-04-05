@@ -1,6 +1,6 @@
 import { getWidthHeightFromImagePath } from '@lib/utils/image-utils';
 import { Paper } from '@mui/material';
-import clsx from 'clsx';
+import { cx } from '@emotion/css';
 import React, { useState, useRef, useEffect } from 'react';
 import ImageDialog from './image-dialog';
 import useStyles from './use-styles';
@@ -21,7 +21,7 @@ function ViewableImage({
   index?: number;
   changeOpenIndex?: (delta: number) => void;
 }) {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const [openModal, setOpenModal] = useState(false);
   const isOpen = setOpenIndex ? open : openModal; // can use internal or external state
   const [loaded, setLoaded] = useState(false);
@@ -60,16 +60,13 @@ function ViewableImage({
 
   return (
     <div
-      className={clsx(
+      className={cx(
         classes.viewableImageWrapper,
         !loaded && classes.loading,
         'viewableImageWrapper'
       )}
     >
-      <Paper
-        className={clsx(classes.paper, 'viewableImagePaper')}
-        elevation={2}
-      >
+      <Paper className={cx(classes.paper, 'viewableImagePaper')} elevation={2}>
         <img
           ref={imageRef}
           // Use this for testing image loading styles
@@ -79,7 +76,7 @@ function ViewableImage({
           onClick={handleOpenModal}
           role="button"
           onLoad={onLoad}
-          className={clsx(classes.image, 'viewableImage')}
+          className={cx(classes.image, 'viewableImage')}
         />
       </Paper>
 

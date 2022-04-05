@@ -1,37 +1,37 @@
-import makeStyles from '@mui/styles/makeStyles';
-import { iceBlue, softBlue } from "src/theme/colors";
+import { makeStyles } from 'tss-react/mui';
+import { iceBlue, softBlue } from 'src/theme/colors';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   masonryResultContainer: {
-    display: "flex",
+    display: 'flex',
     flex: 1,
   },
   imageMatte: {
     backgroundColor: iceBlue,
     borderRadius: 6,
     padding: theme.spacing(3),
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
 
-    minHeight: "200px",
-    "& img": {
-      maxWidth: "100%",
-      maxHeight: "500px",
+    minHeight: '200px',
+    '& img': {
+      maxWidth: '100%',
+      maxHeight: '500px',
     },
   },
   showMoreButtonContainer: {
-    display: "flex",
+    display: 'flex',
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   showMoreButton: {
-    display: "flex",
+    display: 'flex',
     flex: 1,
     backgroundColor: softBlue,
     padding: theme.spacing(3),
-    fontSize: "1.25rem",
+    fontSize: '1.25rem',
     fontWeight: 800,
     color: theme.palette.text.secondary,
   },

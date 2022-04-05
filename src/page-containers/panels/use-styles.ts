@@ -1,17 +1,17 @@
-import makeStyles from '@mui/styles/makeStyles';
+import { makeStyles } from 'tss-react/mui';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   coverImageContainer: {
-    "& ul": {
+    '& ul': {
       paddingInlineStart: theme.spacing(2),
     },
-    "& li": {
+    '& li': {
       marginTop: theme.spacing(1),
       marginBottom: theme.spacing(1),
     },
   },
   categoryLink: {
-    textTransform: "capitalize",
+    textTransform: 'capitalize',
   },
 }));
 

@@ -1,10 +1,10 @@
 import { stringToHSLAColor } from '@lib/utils/string-utils';
 import { iceBlue, transparentBlackpt25 } from 'src/theme/colors';
 import { memo } from 'react';
-import makeStyles from '@mui/styles/makeStyles';
-import clsx from 'clsx';
+import { makeStyles } from 'tss-react/mui';
+import { cx } from '@emotion/css';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles()(theme => ({
   '@keyframes fadeInAnimation': {
     '0%': {
       opacity: 0,
@@ -45,8 +45,8 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     position: 'absolute',
     animation: '$fadeInAnimation ease .25s',
-    'animation-iteration-count': 1,
-    'animation-fill-mode': 'forwards',
+    animationIterationCount: 1,
+    animationFillMode: 'forwards',
     visibility: 'hidden',
     top: -1,
     bottom: -1,
@@ -75,12 +75,12 @@ const ArcSpotToolTip = ({
   tooltipText: string;
   colorString?: string;
 }) => {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const color = colorString ? stringToHSLAColor(colorString, 0.25) : iceBlue;
 
   return (
     <div className={classes.main} style={{ backgroundColor: color }}>
-      <div className={clsx(classes.full, 'full')}>
+      <div className={cx(classes.full, 'full')}>
         <div className={classes.fullInner} style={{ backgroundColor: color }}>
           {tooltipText}
         </div>

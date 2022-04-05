@@ -13,7 +13,7 @@ const ListSection = ({
   headerLabel: string;
   skipDescription?: boolean;
 }) => {
-  const classes = useStyles();
+  const { classes } = useStyles();
   const listData = useMemo(
     () =>
       groupData.issues.length

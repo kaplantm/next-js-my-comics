@@ -20,7 +20,7 @@ function ComicListIndex({
   skipArcColorTooltip,
   skipDescription,
 }: ComicListIndexProps) {
-  const classes = useStyles();
+  const { classes } = useStyles();
 
   return (
     <Grid container spacing={3}>

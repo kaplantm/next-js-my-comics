@@ -26,7 +26,7 @@ const MasonryLayout = ({
     ArrowLeft: isLeftArrowPressed,
   } = useKeyPress(['ArrowRight', 'ArrowLeft']);
   const [openIndex, setOpenIndex] = useState(null);
-  const classes = useStyles();
+  const { classes } = useStyles();
   const columnWrapper = {};
   const result = [];
   const isSmallWindow = useMediaQuery('(max-width:600px)');
@@ -56,7 +56,8 @@ const MasonryLayout = ({
       <Button
         variant="contained"
         onClick={onShowMore}
-        className={classes.showMoreButton}>
+        className={classes.showMoreButton}
+      >
         Show More
       </Button>
     </div>
