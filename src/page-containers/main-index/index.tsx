@@ -12,6 +12,7 @@ import {
   ButtonGroup,
   CircularProgress,
   Grid,
+  LinearProgress,
 } from '@mui/material';
 import useDebounce from '@lib/hooks/use-debounce';
 import AppTextField from '@components/form-inputs/app-text-field';
@@ -25,6 +26,7 @@ import {
   GroupedComicsType,
   getDirectionallySortedData,
   sortingEnumValues,
+  getGroupedListData,
 } from './helpers';
 
 const AllSections = ({
@@ -67,6 +69,10 @@ const SearchResults = ({
     timeoutMs: 3000,
   });
 
+  const groupedListData = useMemo(() => getGroupedListData(groupData), [
+    groupData,
+  ]);
+  console.log('***groupedListData', groupedListData);
   useEffect(() => {
     if (
       (debouncedSearchTerm?.length >= 3 || debouncedSearchTerm === '') &&
@@ -79,7 +85,7 @@ const SearchResults = ({
               comic: null,
               link: null,
               params: null,
-              issues: groupData.groups[key].issues.filter(issue => {
+              issues: groupedListData.groups[key].issues.filter(issue => {
                 const inArc = (issue.comic.frontMatter.arc || '')
                   .toLowerCase()
                   .includes(lowercaseSearchTerm);
@@ -102,7 +108,7 @@ const SearchResults = ({
             };
             return acc;
           }, {})
-        : groupData.groups;
+        : groupedListData.groups;
       const { groups: newGroups, order: newOrder } = getDirectionallySortedData(
         filtered,
         sortingDirectionEnum.ASC,
@@ -121,18 +127,26 @@ const SearchResults = ({
     routerIsReady,
     debouncedSearchTerm,
     sorting,
-    groupData.groups,
+    groupedListData.groups,
     groupKeys,
+    startTransition,
   ]);
 
-  if (isPending) {
-    return (
-      <Box display="flex" justifyItems="center">
-        <CircularProgress color="secondary" />
+  // if (isPending) {
+  //   return (
+  //     <Box display="flex" justifyItems="center">
+  //       <CircularProgress color="secondary" />
+  //     </Box>
+  //   );
+  // }
+  return searchReady ? (
+    <>
+      <Box display="flex" justifyItems="center" style={{ height: '2rem' }}>
+        {isPending && <CircularProgress color="secondary" size="2rem" />}
       </Box>
-    );
-  }
-  return searchReady ? <AllSectionsMemo groupsState={groupsState} /> : null;
+      <AllSectionsMemo groupsState={groupsState} />
+    </>
+  ) : null;
 };
 
 const SearchResultsMemo = memo(SearchResults);
@@ -175,7 +189,7 @@ const MainIndex = ({
 
   return (
     <>
-      <Box mb={3}>
+      <Box>
         <Grid container spacing={3} alignItems="center">
           <Grid item>
             <ButtonGroup

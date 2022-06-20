@@ -1,5 +1,7 @@
+import { isAOneShot } from '@lib/constants';
 import { ComicWithMetadata, ComicType } from '@lib/types';
 import { parseDateFromMarkdownString } from '@lib/utils/string-utils';
+import { Groups } from '@mui/icons-material';
 
 export type ComicWithMetadataListIssuesType = Omit<
   ComicWithMetadata,
@@ -183,3 +185,35 @@ export const getGroupedComics = (
       );
   }
 };
+
+export const getIssuesAsList = (data: ComicWithMetadataListIssuesType) =>
+  data.issues.length
+    ? Object.values(data.issues).map(item => ({
+        ...item,
+        link: {
+          pathname: item.link.pathname,
+          name: `${isAOneShot(item.params.series) ? '' : item.params.series} ${
+            item.link.name
+          }`,
+        },
+      }))
+    : [];
+
+export const getGroupedListData = ({
+  groups,
+  order,
+}: {
+  groups: GroupedComicsType;
+  order: string[];
+}) => ({
+  groups: Object.keys(groups).reduce((acc, key) => {
+    acc[key] = {
+      comic: null,
+      link: null,
+      params: null,
+      issues: getIssuesAsList(groups[key]),
+    };
+    return acc;
+  }, {}),
+  order,
+});
