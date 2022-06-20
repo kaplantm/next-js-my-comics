@@ -15,7 +15,6 @@ const ComicIndexListItem = ({
   skipArcColorTooltip: boolean;
   skipDescription: boolean;
 }) => {
-
   const [expanded, setExpanded] = useState(false);
   const { classes } = useStyles();
 

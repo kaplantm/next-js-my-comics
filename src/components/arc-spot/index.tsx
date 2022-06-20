@@ -22,6 +22,7 @@ const useStyles = makeStyles()(theme => ({
     border: `1px solid ${transparentBlackpt25}`,
     width: '1rem',
     userSelect: 'none',
+    height: '2rem',
 
     '@media (pointer: coarse)': {
       width: '2rem',
@@ -42,7 +43,6 @@ const useStyles = makeStyles()(theme => ({
     // },
   },
   full: {
-    display: 'flex',
     position: 'absolute',
     animation: '$fadeInAnimation ease .25s',
     animationIterationCount: 1,
@@ -60,8 +60,7 @@ const useStyles = makeStyles()(theme => ({
     display: 'flex',
     alignItems: 'center',
     borderRadius: '.25rem',
-    top: -1,
-    // height: '2rem',
+    height: '2rem',
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2),
     border: `1px solid ${transparentBlackpt25}`,

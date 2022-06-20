@@ -272,7 +272,13 @@ const DebugAddComic = ({
           </Grid>
 
           {savedComicLink && (
-            <Grid item container xs={12} justifyContent="center" alignItems="center">
+            <Grid
+              item
+              container
+              xs={12}
+              justifyContent="center"
+              alignItems="center"
+            >
               Created:&nbsp;
               <AppLink isExternal nextProps={{ href: savedComicLink }}>
                 {savedComicLink}
