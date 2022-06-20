@@ -1,13 +1,16 @@
 import React, { useState, memo, useMemo } from 'react';
-import { Typography, IconButton } from '@mui/material';
+import { Typography, IconButton, Collapse } from '@mui/material';
 import AppLink from '@components/app-link';
 import { KeyboardArrowDown, KeyboardArrowLeft } from '@mui/icons-material';
+import ReactMarkdown from 'react-markdown';
 import { safeLoadFront } from 'yaml-front-matter';
 import { ComicType, MappedRouteType } from '@lib/types';
 import ArcSpot from '@components/arc-spot';
 import DebugLinksMemo from '@components/debug-links';
 import { useQuery } from 'react-query';
 import useStyles from './use-styles';
+
+const MemoReactMarkdown = memo(ReactMarkdown);
 
 const ComicIndexListItem = ({
   link,
@@ -23,9 +26,10 @@ const ComicIndexListItem = ({
   const [expanded, setExpanded] = useState(false);
   const { classes } = useStyles();
   const queryPath = `/static${link.pathname}/data.md`;
-  const { data, isLoading, error } = useQuery(queryPath, {
+  const { data, error } = useQuery(queryPath, {
     enabled: expanded && !comic.description && !skipDescription,
   });
+
   const loadedDescription = useMemo(() => {
     if (comic.description) {
       return comic.description;
@@ -78,7 +82,24 @@ const ComicIndexListItem = ({
             <DebugLinksMemo baseLink={link.pathname} />
           </div>
         </Typography>
-      </div>
+      </div>{' '}
+      {!skipDescription && (
+        <Collapse
+          in={expanded && !!loadedDescription && !error}
+          mountOnEnter
+          unmountOnExit
+        >
+          <div className={classes.markdownWrapper}>
+            {!data ? (
+              'Loading...'
+            ) : (
+              <MemoReactMarkdown>
+                {loadedDescription || 'No Description Found'}
+              </MemoReactMarkdown>
+            )}
+          </div>
+        </Collapse>
+      )}
     </li>
   );
 };

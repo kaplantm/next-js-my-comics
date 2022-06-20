@@ -28,6 +28,11 @@ function MyApp({ Component, pageProps }) {
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8363507937716618"
+          crossOrigin="anonymous"
+        />
       </Head>
       <CacheProvider value={muiCache ?? createMuiCache()}>
         <ThemeProvider theme={theme}>
