@@ -34,15 +34,18 @@ function AppLink({
         href={
           typeof nextProps.href === 'object' ? nextProps.href.pathname : href
         }
-        underline="hover">
+        underline="hover"
+      >
         {children}
       </MatLink>
     );
   }
 
   return (
-    <NextLink {...nextProps} passHref>
-      <MatLink {...combinedMatLinkProps} underline="hover">{children}</MatLink>
+    <NextLink {...nextProps} passHref shallow>
+      <MatLink {...combinedMatLinkProps} underline="hover">
+        {children}
+      </MatLink>
     </NextLink>
   );
 }

@@ -3,6 +3,7 @@ import React, {
   memo,
   useEffect,
   useMemo,
+  useRef,
   useState,
   useTransition,
 } from 'react';
@@ -72,7 +73,7 @@ const SearchResults = ({
   const groupedListData = useMemo(() => getGroupedListData(groupData), [
     groupData,
   ]);
-  console.log('***groupedListData', groupedListData);
+
   useEffect(() => {
     if (
       (debouncedSearchTerm?.length >= 3 || debouncedSearchTerm === '') &&
@@ -132,13 +133,6 @@ const SearchResults = ({
     startTransition,
   ]);
 
-  // if (isPending) {
-  //   return (
-  //     <Box display="flex" justifyItems="center">
-  //       <CircularProgress color="secondary" />
-  //     </Box>
-  //   );
-  // }
   return searchReady ? (
     <>
       <Box display="flex" justifyItems="center" style={{ height: '2rem' }}>
@@ -151,33 +145,46 @@ const SearchResults = ({
 
 const SearchResultsMemo = memo(SearchResults);
 
+type groupDataType = {
+  groups: GroupedComicsType;
+  order: string[];
+};
+
 const MainIndex = ({
   sorting = sortingEnum.READING_ORDER,
   groupData,
 }: {
-  groupData: {
-    groups: GroupedComicsType;
-    order: string[];
-  };
+  groupData: groupDataType;
   sorting: sortingEnum;
 }) => {
   const router = useRouter();
+  const hasSynchedParamsWithEntry = useRef(false);
   const searchTermParam = router?.query?.searchTerm || '';
   const [searchTerm, setSearchTerm] = useState(null);
   const debouncedSearchTerm = useDebounce(searchTerm, 250);
   const queryPath = '/api/all-data.json';
-  const { data, error } = useQuery(queryPath);
+  const { data, error } = useQuery<groupDataType>(queryPath);
+
+  console.log('router', { router, ready: router.isReady });
 
   useEffect(() => {
-    if (router.isReady && searchTerm === null) {
-      setSearchTerm((searchTermParam as string) || '');
-    } else if (searchTerm != null && searchTerm !== searchTermParam) {
-      pushCurrentPageWithUpdatedQueryParams(
-        { searchTerm: searchTerm || undefined },
-        { shallow: true }
+    if (router.isReady) {
+      setSearchTerm(prev =>
+        prev === searchTermParam ? prev : searchTermParam
       );
     }
-  }, [router.isReady, searchTermParam, searchTerm]);
+  }, [searchTermParam, router.isReady]);
+
+  useEffect(() => {
+    if (router.isReady) {
+      if (searchTerm != null) {
+        pushCurrentPageWithUpdatedQueryParams(
+          { searchTerm: searchTerm || undefined },
+          { shallow: true }
+        );
+      }
+    }
+  }, [router.isReady, searchTerm]);
 
   function onFilterUpdate({ target }) {
     const newFilter = target.value;

@@ -15,9 +15,7 @@ const ComicIndexListItem = ({
   skipArcColorTooltip: boolean;
   skipDescription: boolean;
 }) => {
-  if (link.pathname === '/series/Robin Volume 2/issues/53') {
-    console.log('*** ComicIndexListItem render');
-  }
+
   const [expanded, setExpanded] = useState(false);
   const { classes } = useStyles();
 
