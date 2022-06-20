@@ -1,4 +1,5 @@
-import { useEffect, useRef, useCallback } from "react";
+/* eslint-disable import/prefer-default-export */
+import { useEffect, useRef, useCallback } from 'react';
 
 // Based on https://gist.github.com/jaydenseric/a67cfb1b809b1b789daa17dfe6f83daa
 

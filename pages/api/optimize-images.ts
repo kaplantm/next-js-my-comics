@@ -1,9 +1,9 @@
-import { runMiddleware } from "@lib/utils/api-middleware";
-import { ensureDirectoryExistence } from "@lib/utils/static-comics/utils";
-import multer from "multer";
-import { optimize } from "../../src/lib/utils/content-creation/utils";
+import { runMiddleware } from '@lib/utils/api-middleware';
+import { ensureDirectoryExistence } from '@lib/utils/static-comics/utils';
+import multer from 'multer';
+import { optimize } from '../../src/lib/utils/content-creation/utils';
 
-const inputOutputDir = "public/image-optimization/input-output";
+const inputOutputDir = 'public/image-optimization/input-output';
 export const config = {
   api: {
     bodyParser: false,
@@ -11,10 +11,10 @@ export const config = {
 };
 
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
+  destination(req, file, cb) {
     cb(null, (req as any).multerDestination);
   },
-  filename: function (req, file, cb) {
+  filename(req, file, cb) {
     cb(null, file.originalname);
   },
 });
@@ -33,7 +33,7 @@ export default async function handler(req, res) {
     const time = new Date().getTime();
     req.multerDestination = `${inputOutputDir}/${time}`;
     ensureDirectoryExistence(`${req.multerDestination}/newFile.png`);
-    await runMiddleware(req, res, multerInstance.array("images", 30));
+    await runMiddleware(req, res, multerInstance.array('images', 30));
     const optimizedResult = await optimize(
       `/${req.multerDestination}`,
       parseInt(req.body?.maxDimension) || 1500,
@@ -41,7 +41,7 @@ export default async function handler(req, res) {
     );
     return res.status(200).json(optimizedResult);
   } catch (e) {
-    console.log("optimize-images", e);
-    return res.status(500).json("Failed to optimize images");
+    console.log('optimize-images', e);
+    return res.status(500).json('Failed to optimize images');
   }
 }

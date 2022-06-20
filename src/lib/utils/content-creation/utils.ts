@@ -1,3 +1,5 @@
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable no-await-in-loop */
 import sharp from 'sharp';
 import { resolve } from 'path';
 import { promises } from 'fs';

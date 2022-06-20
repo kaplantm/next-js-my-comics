@@ -1,5 +1,6 @@
-import { isBlank } from "@lib/utils/string-utils";
-import { useEffect, useState } from "react";
+/* eslint-disable import/prefer-default-export */
+import { isBlank } from '@lib/utils/string-utils';
+import { useEffect, useState } from 'react';
 
 type FormFieldKey<T> = keyof T;
 type PartialFormFields<T> = Partial<{ [key in FormFieldKey<T>]: string }>;
@@ -75,9 +76,11 @@ export function useFormState<T>(
     const name = event.target.name as FormFieldKey<T>;
     if (Object.keys(initialFormFields).indexOf(name as string) === -1) {
       console.warn(
-        `${name} is missing from your list of initial formFieldValues: ${Object.keys(
+        `${
+          name as string
+        } is missing from your list of initial formFieldValues: ${Object.keys(
           initialFormFields
-        ).join(", ")}`
+        ).join(', ')}`
       );
     }
     if (

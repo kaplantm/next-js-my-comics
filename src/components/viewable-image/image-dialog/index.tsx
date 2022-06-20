@@ -1,3 +1,6 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+// todo: accessibility
 import { Dialog } from '@mui/material';
 import { cx } from '@emotion/css';
 import { useEffect, useState } from 'react';
@@ -17,16 +20,15 @@ function ImageDialog(props) {
   const { classes } = useStyles({ rawImageHeight, rawImageWidth });
   const [fullsize, setFullsize] = useState(false);
   const [canZoom, setCanZoom] = useState(false);
-  const handlers = changeOpenIndex
-    ? useSwipeable({
-        onSwipedLeft: () => {
-          changeOpenIndex(1);
-        },
-        onSwipedRight: () => {
-          changeOpenIndex(-1);
-        },
-      })
-    : {};
+  const swipeHandler = useSwipeable({
+    onSwipedLeft: () => {
+      changeOpenIndex(1);
+    },
+    onSwipedRight: () => {
+      changeOpenIndex(-1);
+    },
+  });
+  const handlers = changeOpenIndex ? swipeHandler : {};
 
   useEffect(() => {
     if (!open) {
@@ -57,6 +59,7 @@ function ImageDialog(props) {
       {...handlers}
     >
       <img
+        alt="Comic book panel"
         src={src}
         className={cx(
           classes.dialogImage,

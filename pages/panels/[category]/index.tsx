@@ -12,6 +12,7 @@ const fitlerablePages = [reactsPage];
 const PanelsCategoryPage = props => (
   <Panels
     {...props}
+    // eslint-disable-next-line react/destructuring-assignment
     filterable={fitlerablePages.includes(props.params.category)}
   />
 );

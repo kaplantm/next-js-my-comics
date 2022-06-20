@@ -5,6 +5,8 @@ import React, {
   useMemo,
   useRef,
   useState,
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   useTransition,
 } from 'react';
 import {

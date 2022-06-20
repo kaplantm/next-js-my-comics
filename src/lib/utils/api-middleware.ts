@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 export function runMiddleware(req, res, fn) {
   return new Promise((resolve, reject) => {
     fn(req, res, result => {

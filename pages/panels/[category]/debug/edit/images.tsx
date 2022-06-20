@@ -10,6 +10,7 @@ import { reactsPage } from '@lib/constants';
 const PanelsCategoryPage = props => (
   <DebugAddImages
     {...props}
+    // eslint-disable-next-line react/destructuring-assignment
     maxDimension={props.params.category === reactsPage ? 150 : null}
   />
 );

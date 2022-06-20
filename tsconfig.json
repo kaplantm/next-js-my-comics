@@ -1,42 +1,19 @@
 {
   "compilerOptions": {
-    "types": [
-      "@emotion/core",
-      "@emotion/react/types/css-prop"
-    ],
+    "types": ["@emotion/react/types/css-prop"],
     "baseUrl": ".",
     "paths": {
-      "@components/*": [
-        "./src/components/*"
-      ],
-      "@page-containers/*": [
-        "./src/page-containers/*"
-      ],
-      "@page-layouts/*": [
-        "./src/page-layouts/*"
-      ],
-      "@hoc-components/*": [
-        "./src/hoc-components/*"
-      ],
-      "@lib/*": [
-        "./src/lib/*"
-      ],
-      "@redux/*": [
-        "./src/redux/*"
-      ],
-      "@app-types/*": [
-        "./src/types/*"
-      ],
-      "@mocks/*": [
-        "./src/mocks/*"
-      ]
+      "@components/*": ["./src/components/*"],
+      "@page-containers/*": ["./src/page-containers/*"],
+      "@page-layouts/*": ["./src/page-layouts/*"],
+      "@hoc-components/*": ["./src/hoc-components/*"],
+      "@lib/*": ["./src/lib/*"],
+      "@redux/*": ["./src/redux/*"],
+      "@app-types/*": ["./src/types/*"],
+      "@mocks/*": ["./src/mocks/*"]
     },
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -48,14 +25,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsxImportSource": "@emotion/react",
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "incremental": true
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }

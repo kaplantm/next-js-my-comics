@@ -1,6 +1,8 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import AWS from 'aws-sdk';
 import { promises } from 'fs';
 import { exec } from 'child_process';
+
 const { readFile, writeFile } = promises;
 
 AWS.config.credentials = {
@@ -58,7 +60,7 @@ export default async function handler(req, res) {
       imagesJsonFilePath,
       JSON.stringify([...imagesArrayFileData, ...uploadedImages])
     );
-    exec(`npm run prettier "${imagesJsonFilePath}"`, () => {});
+    exec(`npm run prettier "${imagesJsonFilePath}"`);
 
     return res.status(200).json({
       filePaths: uploadedImages.map(
