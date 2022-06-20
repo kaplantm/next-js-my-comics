@@ -1,21 +1,17 @@
-import React from 'react';
 import { getAllSeries, getReadingOrder } from '@lib/utils/static-comics/utils';
-import MainIndex from '@page-containers/main-index';
 import { getReadingOrderGroupData } from '@page-containers/main-index/build-helpers';
 import { sortingEnum } from '@page-containers/main-index/helpers';
 
-const IndexPage = props => <MainIndex {...props} />;
-
-export const getStaticProps = async () => {
+export default async function handler(req, res) {
   const readingOrder = await getReadingOrder();
-  const comics = await getAllSeries(true, true);
+  const comics = await getAllSeries(true);
   // Omit unneeded data to reduce JSON data size
   const allIssues = Object.keys(comics)
     .map(seriesTitle => {
       const issuesInSeries = comics[seriesTitle].issues;
       return Object.values(issuesInSeries).map(issue => ({
         ...issue,
-        comic: { ...issue.comic, description: '', imagePaths: [] },
+        comic: { ...issue.comic, imagePaths: [] },
       }));
     })
     .flat();
@@ -26,12 +22,5 @@ export const getStaticProps = async () => {
     sorting: sortingEnum.READING_ORDER,
   });
 
-  return {
-    props: {
-      groupData,
-      readingOrder,
-    },
-  };
-};
-
-export default IndexPage;
+  return res.status(200).json(groupData);
+}

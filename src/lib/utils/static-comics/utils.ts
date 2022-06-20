@@ -176,19 +176,21 @@ export async function getIssue(
 }
 
 async function getAllIssuesInSeries(
-  series: string
+  series: string,
+  skipDescription?: boolean
 ): Promise<{ [key: number]: ComicWithMetadata }> {
   const issueNumbersInSeries = await getIssueNumbers(series);
   return issueNumbersInSeries.reduce(async (acc, issueNumber) => {
     const newAcc = await acc;
-    newAcc[issueNumber] = await getIssue(series, issueNumber, true);
+    newAcc[issueNumber] = await getIssue(series, issueNumber, skipDescription);
     return Promise.resolve(newAcc);
   }, Promise.resolve({}));
 }
 
 export async function getSeries(
   seriesTitle: string,
-  includeIssues?: boolean
+  includeIssues?: boolean,
+  skipDescription?: boolean
 ): Promise<ComicWithMetadata> {
   const comic = await getSeriesData(seriesTitle);
   if (!comic?.frontMatter) {
@@ -203,18 +205,25 @@ export async function getSeries(
       name: comic.frontMatter.title,
     },
     comic,
-    issues: includeIssues ? await getAllIssuesInSeries(seriesTitle) : [],
+    issues: includeIssues
+      ? await getAllIssuesInSeries(seriesTitle, skipDescription)
+      : [],
   };
 }
 
 export async function getAllSeries(
-  includeIssues?: boolean
+  includeIssues?: boolean,
+  skipDescription?: boolean
 ): Promise<{ [key: string]: ComicWithMetadata }> {
   const seriesTitles = await getSeriesTitles();
   return seriesTitles.reduce(async (acc, seriesTitle) => {
     const newAcc = await acc;
     // TODO: update types w/ link
-    newAcc[seriesTitle] = await getSeries(seriesTitle, includeIssues);
+    newAcc[seriesTitle] = await getSeries(
+      seriesTitle,
+      includeIssues,
+      skipDescription
+    );
     return Promise.resolve(newAcc);
   }, Promise.resolve({}));
 }

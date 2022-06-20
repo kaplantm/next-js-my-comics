@@ -12,13 +12,13 @@ import {
   ButtonGroup,
   CircularProgress,
   Grid,
-  LinearProgress,
 } from '@mui/material';
 import useDebounce from '@lib/hooks/use-debounce';
 import AppTextField from '@components/form-inputs/app-text-field';
 import { useRouter } from 'next/router';
 import { getReadingOrderRoute } from '@lib/constants/routes';
 import { pushCurrentPageWithUpdatedQueryParams } from '@lib/utils';
+import { useQuery } from 'react-query';
 import MemoizedListSection from './list-section';
 import {
   sortingEnum,
@@ -165,6 +165,8 @@ const MainIndex = ({
   const searchTermParam = router?.query?.searchTerm || '';
   const [searchTerm, setSearchTerm] = useState(null);
   const debouncedSearchTerm = useDebounce(searchTerm, 250);
+  const queryPath = '/api/all-data.json';
+  const { data, error } = useQuery(queryPath);
 
   useEffect(() => {
     if (router.isReady && searchTerm === null) {
@@ -219,7 +221,7 @@ const MainIndex = ({
       </Box>
       {/* TODO: now flicker */}
       <SearchResultsMemo
-        groupData={groupData}
+        groupData={data && !error ? data : groupData}
         debouncedSearchTerm={debouncedSearchTerm}
         sorting={sorting}
       />
