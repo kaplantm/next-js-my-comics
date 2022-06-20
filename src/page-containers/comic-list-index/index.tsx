@@ -3,6 +3,7 @@ import { Typography, Grid } from '@mui/material';
 import { ComicWithMetadata } from '@lib/types';
 import ComicIndexListItem from '@components/comic-index-list-item';
 import useStyles from './use-styles';
+import ShowMoreArea from '@page-containers/show-more-area';
 
 type ComicListIndexProps = {
   headerLabel: string;
@@ -27,21 +28,23 @@ function ComicListIndex({
       <Grid item xs={12} className={classes.coverImageContainer}>
         {headerLabel && <Typography variant="h1">{headerLabel}</Typography>}
         <ul className={classes.list}>
-          {listData.map(({ link, comic }) => (
-            <ComicIndexListItem
-              key={link.pathname}
-              link={link}
-              comic={comic}
-              skipArcColorTooltip={skipArcColorTooltip}
-              skipDescription={skipDescription}
-            />
-          ))}
+          <ShowMoreArea>
+            {listData.map(({ link, comic }) => (
+              <ComicIndexListItem
+                key={link.pathname}
+                link={link}
+                comic={comic}
+                skipArcColorTooltip={skipArcColorTooltip}
+                skipDescription={skipDescription}
+              />
+            ))}
+          </ShowMoreArea>
         </ul>
       </Grid>
     </Grid>
   );
 }
 
-export default ComicListIndex;
-
 export const MemoizedListIndex = memo(ComicListIndex);
+
+export default MemoizedListIndex;
