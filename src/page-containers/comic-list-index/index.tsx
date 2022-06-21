@@ -1,9 +1,11 @@
 import React, { memo } from 'react';
+import dynamic from 'next/dynamic';
 import { Typography, Grid } from '@mui/material';
 import { ComicWithMetadata } from '@lib/types';
 import ComicIndexListItem from '@components/comic-index-list-item';
 import useStyles from './use-styles';
-import ShowMoreArea from '@page-containers/show-more-area';
+
+const DynamicShowMoreArea = dynamic(() => import('@components/show-more-area'));
 
 type ComicListIndexProps = {
   headerLabel: string;
@@ -28,7 +30,7 @@ function ComicListIndex({
       <Grid item xs={12} className={classes.coverImageContainer}>
         {headerLabel && <Typography variant="h1">{headerLabel}</Typography>}
         <ul className={classes.list}>
-          <ShowMoreArea>
+          <DynamicShowMoreArea>
             {listData.map(({ link, comic }) => (
               <ComicIndexListItem
                 key={link.pathname}
@@ -38,7 +40,7 @@ function ComicListIndex({
                 skipDescription={skipDescription}
               />
             ))}
-          </ShowMoreArea>
+          </DynamicShowMoreArea>
         </ul>
       </Grid>
     </Grid>

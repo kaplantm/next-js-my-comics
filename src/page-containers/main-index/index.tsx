@@ -3,7 +3,6 @@ import React, {
   memo,
   useEffect,
   useMemo,
-  useRef,
   useState,
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
@@ -231,7 +230,6 @@ const MainIndex = ({
         debouncedSearchTerm={debouncedSearchTerm}
         sorting={sorting}
       />
-      {/* {searchReady && <SearchResults groupsState={groupsState} />} */}
     </>
   );
 };

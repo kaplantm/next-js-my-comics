@@ -1,7 +1,6 @@
 import { isAOneShot } from '@lib/constants';
 import { getIssueRoute, getSeriesRoute } from '@lib/constants/routes';
 import { ComicWithMetadata } from '@lib/types';
-import { exec } from 'child_process';
 import { promises, mkdirSync, existsSync } from 'fs';
 import { writeFile } from 'fs/promises';
 import path from 'path';
@@ -243,5 +242,4 @@ export function ensureDirectoryExistence(filePath) {
 export async function writeJSONToFile(filePath, data) {
   ensureDirectoryExistence(filePath);
   await writeFile(`${filePath}.json`, JSON.stringify(data));
-  exec(`npm run prettier "${filePath}".json`);
 }

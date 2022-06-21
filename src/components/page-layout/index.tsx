@@ -21,6 +21,7 @@ function Page({ children }: { children: any }) {
         <Toolbar className={classes.toolbar}>
           <AppLink
             nextProps={{
+              prefetch: false,
               href: {
                 pathname: routeMap.home.pathname,
               },
@@ -39,6 +40,7 @@ function Page({ children }: { children: any }) {
                   (!route.dev || process.env.NODE_ENV === 'development') && (
                     <AppLink
                       nextProps={{
+                        prefetch: false,
                         href: {
                           pathname: route.pathname,
                           query: route.query,
