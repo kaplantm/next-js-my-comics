@@ -1,7 +1,9 @@
 import { isAOneShot } from '@lib/constants';
 import { getIssueRoute, getSeriesRoute } from '@lib/constants/routes';
 import { ComicWithMetadata } from '@lib/types';
+import { exec } from 'child_process';
 import { promises, mkdirSync, existsSync } from 'fs';
+import { writeFile } from 'fs/promises';
 import path from 'path';
 import { safeLoadFront } from 'yaml-front-matter';
 import { insert } from '../string-utils';
@@ -51,7 +53,8 @@ export const getImagePaths = async (directory: string): Promise<string[]> => {
     const img = images.map(image => `${process.env.S3_CDN_URL}/${image}`);
     return img;
   } catch (e) {
-    console.log('getImagePaths', e);
+    // eslint-disable-next-line no-console
+    console.error('getImagePaths', e);
     return [];
   }
 };
@@ -235,4 +238,10 @@ export function ensureDirectoryExistence(filePath) {
   }
   ensureDirectoryExistence(dirname);
   mkdirSync(dirname);
+}
+
+export async function writeJSONToFile(filePath, data) {
+  ensureDirectoryExistence(filePath);
+  await writeFile(`${filePath}.json`, JSON.stringify(data));
+  exec(`npm run prettier "${filePath}".json`);
 }

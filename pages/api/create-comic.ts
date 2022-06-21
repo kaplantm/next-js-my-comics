@@ -2,8 +2,8 @@ import {
   getSeriesDirectory,
   getIssueDirectory,
   ensureDirectoryExistence,
-} from "@lib/utils/static-comics/utils";
-import { promises, existsSync } from "fs";
+} from '@lib/utils/static-comics/utils';
+import { promises, existsSync } from 'fs';
 
 // TODO: Optimize images - separate endpoint, save to public gitignored folder and return urls?
 
@@ -55,16 +55,16 @@ export default async function handler(req, res) {
       : getSeriesDirectory(body.series);
     const comicExists = existsSync(comicDirectory);
 
-    if (comicExists && req.method === "POST") {
-      return res.status(409).json("Comic already exists");
+    if (comicExists && req.method === 'POST') {
+      return res.status(409).json('Comic already exists');
     }
-    if (!comicExists && req.method === "PUT") {
-      return res.status(409).json("Comic not found");
+    if (!comicExists && req.method === 'PUT') {
+      return res.status(409).json('Comic not found');
     }
     if (body.isIssue) {
       const seriesExists = existsSync(getSeriesDirectory(body.series));
       if (!seriesExists) {
-        return res.status(404).json("Series not found");
+        return res.status(404).json('Series not found');
       }
     }
 
@@ -73,16 +73,17 @@ export default async function handler(req, res) {
       const fileLocation = `${comicDirectory}/data.md`;
       ensureDirectoryExistence(fileLocation);
       await promises.writeFile(fileLocation, markdownData);
-      return res.status(200).json("Comic Created");
+      return res.status(200).json('Comic Created');
     } catch (e) {
-      console.log("create-comic", e);
-      return res.status(500).json("Something went wrong. See server console.");
+      // eslint-disable-next-line no-console
+      console.error('create-comic', e);
+      return res.status(500).json('Something went wrong. See server console.');
     }
   } else {
     return res
       .status(400)
       .json(
-        "Missing required data. Series, title, issueNumber, link and description are required."
+        'Missing required data. Series, title, issueNumber, link and description are required.'
       );
   }
 }

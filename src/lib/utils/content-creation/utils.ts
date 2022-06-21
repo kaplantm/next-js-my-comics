@@ -151,7 +151,8 @@ async function optimizeFiles(
         bytesSaved += size - newSize;
         optimizedFiles.push(filePath);
       } catch (e) {
-        console.log('optimizeFiles', e);
+        // eslint-disable-next-line no-console
+        console.error('optimizeFiles', e);
         notOptimizedFiles.push(filePath);
       }
     })

@@ -41,7 +41,8 @@ export default async function handler(req, res) {
     );
     return res.status(200).json(optimizedResult);
   } catch (e) {
-    console.log('optimize-images', e);
+    // eslint-disable-next-line no-console
+    console.error('optimize-images', e);
     return res.status(500).json('Failed to optimize images');
   }
 }

@@ -68,7 +68,8 @@ export default async function handler(req, res) {
       ),
     });
   } catch (e) {
-    console.log('upload-images', e);
+    // eslint-disable-next-line no-console
+    console.error('upload-images', e);
     return res.status(500).json('Failed to optimize images');
   }
 }

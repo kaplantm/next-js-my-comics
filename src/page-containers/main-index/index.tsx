@@ -160,14 +160,11 @@ const MainIndex = ({
   sorting: sortingEnum;
 }) => {
   const router = useRouter();
-  const hasSynchedParamsWithEntry = useRef(false);
   const searchTermParam = router?.query?.searchTerm || '';
   const [searchTerm, setSearchTerm] = useState(null);
   const debouncedSearchTerm = useDebounce(searchTerm, 250);
-  const queryPath = '/api/all-data.json';
+  const queryPath = '/data/all-data.json';
   const { data, error } = useQuery<groupDataType>(queryPath);
-
-  console.log('router', { router, ready: router.isReady });
 
   useEffect(() => {
     if (router.isReady) {
