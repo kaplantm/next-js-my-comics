@@ -1,14 +1,14 @@
-import React from "react";
-import { getAllSeries } from "@lib/utils/static-comics/utils";
-import DebugAddComic from "@page-containers/debug-add-comic";
+import React from 'react';
+import { getAllSeries } from '@lib/utils/static-comics/utils';
+import DebugAddComic from '@page-containers/debug-add-comic';
 
-const DebugAddComicPage = (props) => <DebugAddComic {...props} />;
+const DebugAddComicPage = props => <DebugAddComic {...props} />;
 
 export const getStaticProps = async () => {
-  const comics = await getAllSeries(true);
+  const comics = await getAllSeries(true, true);
   const seriesTitles = Object.keys(comics);
   const allIssues = seriesTitles
-    .map((seriesTitle) => {
+    .map(seriesTitle => {
       const issuesInSeries = comics[seriesTitle].issues;
       return Object.values(issuesInSeries);
     })

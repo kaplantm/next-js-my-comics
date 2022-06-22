@@ -34,7 +34,7 @@ export async function getStaticProps({
 }: {
   params: { series: string };
 }) {
-  const series = await getSeries(params.series, true);
+  const series = await getSeries(params.series, true, true);
   const listData = Object.values(series.issues);
 
   return {

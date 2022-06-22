@@ -8,7 +8,7 @@ const IndexPage = props => <MainIndex sorting={sortingEnum.ARC} {...props} />;
 
 export const getStaticProps = async () => {
   const readingOrder = await getReadingOrder();
-  const comics = await getAllSeries(true);
+  const comics = await getAllSeries(true, true);
   const allIssues = Object.keys(comics)
     .map(seriesTitle => {
       const issuesInSeries = comics[seriesTitle].issues;

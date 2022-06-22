@@ -31,7 +31,7 @@ export const getStaticPaths = async () => {
 
 export async function getStaticProps({ params }: { params: ComicPageParams }) {
   const issue = await getIssue(params.series, params.issueNumber);
-  const comics = await getAllSeries(true);
+  const comics = await getAllSeries(true, true);
   const seriesTitles = Object.keys(comics);
   const allIssues = seriesTitles
     .map(seriesTitle => {
