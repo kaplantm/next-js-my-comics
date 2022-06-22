@@ -6,7 +6,7 @@ import {
 } from '@lib/utils/static-comics/utils';
 import MainIndex from '@page-containers/main-index';
 import { getReadingOrderGroupData } from '@page-containers/main-index/build-helpers';
-import { sortingEnum } from '@page-containers/main-index/helpers';
+import { sortingEnum } from '@components/search-results/helpers';
 
 const IndexPage = props => <MainIndex {...props} />;
 

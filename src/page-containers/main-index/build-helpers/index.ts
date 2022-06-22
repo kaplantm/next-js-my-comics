@@ -6,7 +6,7 @@ import {
   GroupedComicsType,
   sortingDirectionEnum,
   sortingEnum,
-} from '../helpers';
+} from '@components/search-results/helpers';
 
 export const getReadingOrderGroupData = ({
   allIssues,

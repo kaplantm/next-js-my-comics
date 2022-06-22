@@ -1,4 +1,4 @@
-import { sortingEnum } from '@page-containers/main-index/helpers';
+import { sortingEnum } from '@components/search-results/helpers';
 import { MappedRouteType } from '../types';
 import { sortObjectArrayAlphabeticallyBy } from '../utils/array-utils';
 

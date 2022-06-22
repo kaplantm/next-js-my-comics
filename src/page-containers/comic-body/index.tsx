@@ -1,12 +1,14 @@
 import React from 'react';
 import { Typography, Grid } from '@mui/material';
+import dynamic from 'next/dynamic';
 import ReactMarkdown from 'react-markdown';
 import { ComicPageParams, ComicWithMetadata } from '@lib/types';
-import MasonryLayout from '@components/masonry-layout';
 import { getScaledImageWidthHeight } from '@lib/utils/image-utils';
 import useStyles from './use-styles';
 import ViewableImage from '../../components/viewable-image';
 import { getDisplaySubtitle, getDisplayTitle } from './helpers';
+
+const MasonryLayout = dynamic(() => import('@components/masonry-layout'));
 
 type ComicBodyProps = {
   params: ComicPageParams;

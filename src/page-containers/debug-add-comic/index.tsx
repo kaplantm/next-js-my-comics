@@ -7,7 +7,7 @@ import {
   Typography,
   Autocomplete,
 } from '@mui/material';
-import DebugLinksMemo from '@components/debug-links';
+import dynamic from 'next/dynamic';
 import { ComicPageParams, ComicWithMetadata } from '@lib/types';
 import AppTextField from '@components/form-inputs/app-text-field';
 import DebugOnlyWrapper from '@components/debug-only-wrapper';
@@ -18,6 +18,8 @@ import { runValidatorsAndReturnErrorMessage } from '@lib/hooks/use-form-state/va
 import { onlyRequiredConfigSet } from '@lib/hooks/use-form-state/validator-configs';
 import { getIssueRoute } from '@lib/constants/routes';
 import AppLink from '@components/app-link';
+
+const DebugLinksMemo = dynamic(() => import('@components/debug-links'));
 
 const DebugAddComic = ({
   seriesTitles,

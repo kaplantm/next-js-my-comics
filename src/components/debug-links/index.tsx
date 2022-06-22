@@ -2,7 +2,8 @@ import { memo } from 'react';
 import AppLink from '@components/app-link';
 import { isDevMode } from '@lib/utils';
 import { IconButton } from '@mui/material';
-import { Edit, Image } from '@mui/icons-material';
+import Edit from '@mui/icons-material/Edit';
+import Image from '@mui/icons-material/Image';
 
 const DebugLinks = ({
   baseLink,

@@ -2,11 +2,13 @@ import React, { useCallback, useState } from 'react';
 import { Grid, Slider, Typography } from '@mui/material';
 import { ComicPageParams, ComicWithMetadata } from '@lib/types';
 import DebugOnlyWrapper from '@components/debug-only-wrapper';
-import MasonryLayout from '@components/masonry-layout';
+import dynamic from 'next/dynamic';
 import MyDropzone from '@components/my-dropzone';
 import LoaderButton from '@components/loader-button';
 import { appAxios } from '@lib/utils';
 import useStyles from './use-styles';
+
+const MasonryLayout = dynamic(() => import('@components/masonry-layout'));
 
 const DebugAddImages = ({
   issue,

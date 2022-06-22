@@ -1,10 +1,13 @@
 import React, { memo } from 'react';
 import { Typography, IconButton } from '@mui/material';
 import AppLink from '@components/app-link';
-import { KeyboardArrowDown, KeyboardArrowLeft } from '@mui/icons-material';
+import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import ArcSpot from '@components/arc-spot';
-import DebugLinksMemo from '@components/debug-links';
+import dynamic from 'next/dynamic';
 import useStyles from './use-styles';
+
+const DebugLinksMemo = dynamic(() => import('@components/debug-links'));
 
 const ListItemTitle = ({
   arc,
@@ -52,6 +55,8 @@ const ListItemTitle = ({
               className={classes.expandButton}
               onClick={toggleExpanded}
               size="large"
+              aria-label="expand"
+              aria-expanded={expanded}
             >
               {expanded ? <KeyboardArrowDown /> : <KeyboardArrowLeft />}
             </IconButton>

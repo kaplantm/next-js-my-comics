@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Typography, Grid } from '@mui/material';
-import MasonryLayout from '@components/masonry-layout';
+import dynamic from 'next/dynamic';
 import AppTextField from '@components/form-inputs/app-text-field';
 import useDebounce from '@lib/hooks/use-debounce';
-import DebugLinksMemo from '@components/debug-links';
 import { getPanelsCategoryRoute } from '@lib/constants/routes';
+
+const MasonryLayout = dynamic(() => import('@components/masonry-layout'));
+const DebugLinksMemo = dynamic(() => import('@components/debug-links'));
 
 type PanelsProps = {
   params: { category: string };
