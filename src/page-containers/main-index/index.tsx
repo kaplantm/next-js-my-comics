@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Box, Button, ButtonGroup, Grid } from '@mui/material';
 import useDebounce from '@lib/hooks/use-debounce';
 import AppTextField from '@components/form-inputs/app-text-field';
@@ -37,9 +37,12 @@ const MainIndex = ({
 
   useEffect(() => {
     if (router.isReady) {
-      setSearchTerm(prev =>
-        prev === searchTermParam ? prev : searchTermParam
-      );
+      setSearchTerm(prev => {
+        if (!searchTermParam && !prev) {
+          return prev;
+        }
+        return prev === searchTermParam ? prev : searchTermParam;
+      });
     }
   }, [searchTermParam, router.isReady]);
 
@@ -54,15 +57,18 @@ const MainIndex = ({
     }
   }, [router.isReady, searchTerm]);
 
-  function onFilterUpdate({ target }) {
+  const onFilterUpdate = useCallback(({ target }) => {
     const newFilter = target.value;
     setSearchTerm(newFilter);
-  }
+  }, []);
 
-  function handleSortingUpdate(newSorting: sortingEnum) {
-    const route = getReadingOrderRoute(newSorting);
-    return () => router.push(route);
-  }
+  const handleSortingUpdate = useCallback(
+    (newSorting: sortingEnum) => {
+      const route = getReadingOrderRoute(newSorting);
+      return () => router.push(route);
+    },
+    [router]
+  );
 
   return (
     <>

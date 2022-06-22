@@ -7,6 +7,7 @@ import {
 import MainIndex from '@page-containers/main-index';
 import { getReadingOrderGroupData } from '@page-containers/main-index/build-helpers';
 import { sortingEnum } from '@components/search-results/helpers';
+import { defaultItemsPerPage } from '@lib/hooks/use-paginate';
 
 const IndexPage = props => <MainIndex {...props} />;
 
@@ -33,16 +34,22 @@ export const getStaticProps = async () => {
   // write to file so we can make a request later
   await writeJSONToFile('./public/data/all-data', groupData);
 
+  let totalIssues = 0;
   const groupDataWithoutDescription = {
     order: groupData.order,
     groups: Object.keys(groupData.groups).reduce((acc, key) => {
+      const issues = groupData.groups[key].issues.slice(
+        0,
+        defaultItemsPerPage - totalIssues
+      );
       acc[key] = {
         ...groupData.groups[key],
-        issues: groupData.groups[key].issues.map(el => ({
+        issues: issues.map(el => ({
           ...el,
           description: '',
         })),
       };
+      totalIssues += issues.length;
       return acc;
     }, {}),
   };

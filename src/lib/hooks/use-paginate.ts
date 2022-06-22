@@ -1,10 +1,12 @@
 import { useEffect, useMemo, useState } from 'react';
 
+export const defaultItemsPerPage = 20;
+
 function usePaginate<T>(
   items: T[],
   currentPage = 0,
   showMoreMode?: boolean, // if true, return all items up to and include the current page. false, only return current page
-  itemsPerPage = 20
+  itemsPerPage = defaultItemsPerPage
 ) {
   // State and setters for debounced value
   const [page, setPage] = useState(currentPage);
