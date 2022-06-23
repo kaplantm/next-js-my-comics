@@ -93,6 +93,16 @@ export const getSortedData = (
   );
 };
 
+export const getGroupKeyOrder = (
+  comicGroups: GroupedComicsType,
+  sortingDirection: sortingDirectionEnum,
+  sorting: sortingEnum
+): string[] => {
+  const keySorter = sorting === sortingEnum.YEAR ? sortByDate : undefined;
+  const keys = Object.keys(comicGroups).sort(keySorter);
+  return sortingDirection === sortingDirectionEnum.ASC ? keys : keys.reverse();
+};
+
 export const getDirectionallySortedData = (
   comicGroups: GroupedComicsType,
   sortingDirection: sortingDirectionEnum,

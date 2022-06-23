@@ -3,31 +3,32 @@ import { makeStyles } from 'tss-react/mui';
 const useStyles = makeStyles()(theme => ({
   arcSpotWrapper: {
     display: 'flex',
-    marginTop: 4,
     flexShrink: 1,
     textAlign: 'center',
   },
   comicLabel: {
     flexGrow: 1,
   },
-  listItem: {
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
-    display: 'flex',
-    alignItems: 'flex-start',
-    flexDirection: 'column',
-  },
   flexCenter: {
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'stretch',
     gap: theme.spacing(2),
+  },
+  flexColumn: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: theme.spacing(0.5),
   },
   expandButton: {
     margin: theme.spacing(-2, 1),
   },
-  markdownWrapper: {
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
+  link: {
+    lineHeight: 1,
+  },
+  smallLink: {
+    fontStyle: 'italic',
+    fontSize: '.8em',
+    lineHeight: 0.75,
   },
 }));
 

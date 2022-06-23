@@ -7,7 +7,7 @@ const SeriesIndexPage = ({ listData }) => (
 );
 
 export const getStaticProps = async () => {
-  const series = await getAllSeries(false, true);
+  const series = await getAllSeries(false, false);
 
   return {
     props: {

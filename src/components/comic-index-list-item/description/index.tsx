@@ -41,7 +41,7 @@ const CollapsibleDescription = ({
       unmountOnExit
     >
       <div className={classes.markdownWrapper}>
-        {!data ? (
+        {!loadedDescription ? (
           'Loading...'
         ) : (
           <MemoReactMarkdown>

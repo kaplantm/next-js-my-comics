@@ -15,6 +15,10 @@ function usePaginate<T>(
     setPage(currentPage);
   }, [currentPage]);
 
+  useEffect(() => {
+    setPage(0);
+  }, [items]);
+
   const retVal = useMemo(
     () => ({
       page,

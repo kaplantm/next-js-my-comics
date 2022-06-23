@@ -60,7 +60,6 @@ const useStyles = makeStyles()(theme => ({
     display: 'flex',
     alignItems: 'center',
     borderRadius: '.25rem',
-    height: '2rem',
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2),
     border: `1px solid ${transparentBlackpt25}`,

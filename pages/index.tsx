@@ -25,14 +25,15 @@ export const getStaticProps = async () => {
     })
     .flat();
 
+  const sorting = sortingEnum.READING_ORDER;
   const groupData = getReadingOrderGroupData({
     allIssues,
     readingOrder,
-    sorting: sortingEnum.READING_ORDER,
+    sorting,
   });
 
   // write to file so we can make a request later
-  await writeJSONToFile('./public/data/all-data', groupData);
+  await writeJSONToFile(`./public/data/all-data-${sorting}`, groupData);
 
   let totalIssues = 0;
   const groupDataWithoutDescription = {

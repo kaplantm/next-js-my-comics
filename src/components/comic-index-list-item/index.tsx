@@ -1,19 +1,24 @@
 import React, { useState, memo } from 'react';
+import { Grid } from '@mui/material';
 import { ComicType, MappedRouteType } from '@lib/types';
+import dynamic from 'next/dynamic';
 import useStyles from './use-styles';
-import MemoCollapsibleDescription from './description';
 import MemoTitle from './title';
+
+const MemoCollapsibleDescription = dynamic(() => import('./description'));
 
 const ComicIndexListItem = ({
   link,
   comic,
   skipArcColorTooltip,
   skipDescription,
+  series,
 }: {
   link: MappedRouteType;
   comic: ComicType;
   skipArcColorTooltip: boolean;
   skipDescription: boolean;
+  series: string;
 }) => {
   const [expanded, setExpanded] = useState(false);
   const { classes } = useStyles();
@@ -23,8 +28,10 @@ const ComicIndexListItem = ({
   }
 
   return (
-    <li className={classes.listItem} key={link.pathname}>
+    <Grid item xs={12} component="li" className={classes.listItem}>
+      {/* TODO: now add series to this title */}
       <MemoTitle
+        series={series}
         arc={comic.frontMatter.arc}
         skipArcColorTooltip={skipArcColorTooltip}
         linkPath={link.pathname}
@@ -40,7 +47,7 @@ const ComicIndexListItem = ({
           expanded={expanded}
         />
       )}
-    </li>
+    </Grid>
   );
 };
 

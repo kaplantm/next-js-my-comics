@@ -10,6 +10,7 @@ import useStyles from './use-styles';
 const DebugLinksMemo = dynamic(() => import('@components/debug-links'));
 
 const ListItemTitle = ({
+  series,
   arc,
   skipArcColorTooltip,
   linkPath,
@@ -18,6 +19,7 @@ const ListItemTitle = ({
   toggleExpanded,
   expanded,
 }: {
+  series: string;
   arc: string;
   skipArcColorTooltip: boolean;
   linkPath: string;
@@ -27,6 +29,8 @@ const ListItemTitle = ({
   expanded: boolean;
 }) => {
   const { classes } = useStyles();
+  const isIssue = linkPath.includes('issues');
+  console.log({ linkPath, isIssue });
 
   return (
     <div className={classes.flexCenter} style={{ alignItems: 'stretch' }}>
@@ -48,7 +52,20 @@ const ListItemTitle = ({
         className={classes.comicLabel}
       >
         <div className={classes.flexCenter}>
-          <AppLink nextProps={{ href: linkPath }}>{linkName}</AppLink>
+          <div className={classes.flexColumn}>
+            {isIssue && (
+              <AppLink
+                nextProps={{ href: linkPath }}
+                className={classes.smallLink}
+              >
+                {series}
+              </AppLink>
+            )}
+            <AppLink nextProps={{ href: linkPath }} className={classes.link}>
+              {/* {isIssue && `${series} - `} */}
+              {linkName}
+            </AppLink>
+          </div>
 
           {!skipDescription && (
             <IconButton

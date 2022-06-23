@@ -38,7 +38,9 @@ export const getSeriesRoute = (series: string) => `/series/${series}`;
 export const getIssueRoute = (series: string, issueNumber: string) =>
   `${getSeriesRoute(series)}/issues/${issueNumber}`;
 export const getPanelsCategoryRoute = category => `/panels/${category}`;
-export const getReadingOrderRoute = (order: string): string =>
-  `${routeMap.readingOrderIndex.pathname}/${
-    order === sortingEnum.READING_ORDER ? '' : order.toLowerCase()
-  }`;
+export const getReadingOrderRoute = (order: string): string => {
+  if (order === sortingEnum.READING_ORDER) {
+    return routeMap.home.pathname;
+  }
+  return `${routeMap.readingOrderIndex.pathname}/${order.toLowerCase()}`;
+};

@@ -32,7 +32,7 @@ const MainIndex = ({
   const searchTermParam = router?.query?.searchTerm || '';
   const [searchTerm, setSearchTerm] = useState(null);
   const debouncedSearchTerm = useDebounce(searchTerm, 250);
-  const queryPath = '/data/all-data.json';
+  const queryPath = `/data/all-data-${sorting}.json`;
   const { data, error } = useQuery<groupDataType>(queryPath);
 
   useEffect(() => {
@@ -103,7 +103,6 @@ const MainIndex = ({
       <SearchResults
         groupData={data && !error ? data : groupData}
         debouncedSearchTerm={debouncedSearchTerm}
-        sorting={sorting}
       />
     </>
   );

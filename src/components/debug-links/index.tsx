@@ -12,14 +12,14 @@ const DebugLinks = ({
   baseLink: string;
   noEdit?: boolean;
 }) => {
-  if (!isDevMode) {
-    return null;
-  }
+  // if (!isDevMode) {
+  return null;
+  // }
   return (
     <div>
       {!noEdit && (
         <AppLink nextProps={{ href: `${baseLink}/debug/edit` }} isExternal>
-          <IconButton component="div" size="large">
+          <IconButton component="div" size="small">
             <Edit />
           </IconButton>
         </AppLink>
@@ -30,7 +30,7 @@ const DebugLinks = ({
         }}
         isExternal
       >
-        <IconButton component="div" size="large">
+        <IconButton component="div" size="small">
           <Image />
         </IconButton>
       </AppLink>
