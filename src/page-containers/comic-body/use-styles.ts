@@ -38,6 +38,7 @@ const useStyles = makeStyles<styleConfigType>()(theme => ({
   },
   childrenContainer: {
     marginTop: theme.spacing(6),
+    alignSelf: 'flex-start',
     maxWidth: '60%',
     [theme.breakpoints.down('sm')]: {
       maxWidth: '100%',

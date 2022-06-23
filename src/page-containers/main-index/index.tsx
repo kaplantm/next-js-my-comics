@@ -1,7 +1,14 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import React, { useCallback, useEffect, useState } from 'react';
-import { Box, Button, ButtonGroup, Grid } from '@mui/material';
-import useDebounce from '@lib/hooks/use-debounce';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import React, { useCallback, useEffect, useState, useTransition } from 'react';
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  CircularProgress,
+  Grid,
+} from '@mui/material';
 import AppTextField from '@components/form-inputs/app-text-field';
 import { useRouter } from 'next/router';
 import { getReadingOrderRoute } from '@lib/constants/routes';
@@ -31,9 +38,17 @@ const MainIndex = ({
   const router = useRouter();
   const searchTermParam = router?.query?.searchTerm || '';
   const [searchTerm, setSearchTerm] = useState(null);
-  const debouncedSearchTerm = useDebounce(searchTerm, 250);
+  const [isPending, startTransition] = useTransition();
+  const [transitionSearchTerm, setTransitionSearchTerm] = useState('');
   const queryPath = `/data/all-data-${sorting}.json`;
   const { data, error } = useQuery<groupDataType>(queryPath);
+
+  useEffect(() => {
+    startTransition(() => {
+      setTransitionSearchTerm(searchTerm);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchTerm]);
 
   useEffect(() => {
     if (router.isReady) {
@@ -90,20 +105,27 @@ const MainIndex = ({
               ))}
             </ButtonGroup>
           </Grid>
-          <Grid item xs={12}>
+          <Grid item container xs={12} alignItems="center">
             <AppTextField
               label="Search"
               variant="outlined"
               onChange={onFilterUpdate}
               value={searchTerm || ''}
             />
+            {isPending && (
+              <Box ml={3} display="inline">
+                <CircularProgress size={30} color="secondary" />
+              </Box>
+            )}
           </Grid>
         </Grid>
       </Box>
-      <SearchResults
-        groupData={data && !error ? data : groupData}
-        debouncedSearchTerm={debouncedSearchTerm}
-      />
+      {router.isReady && (
+        <SearchResults
+          groupData={data && !error ? data : groupData}
+          debouncedSearchTerm={transitionSearchTerm}
+        />
+      )}
     </>
   );
 };

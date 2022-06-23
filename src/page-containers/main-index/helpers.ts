@@ -46,16 +46,6 @@ export const sortByDate = (a, b) => {
   return dateValueA.getTime() - dateValueB.getTime();
 };
 
-export const getSortByDateFrontMatterKey = (numericKey: 'end' | 'start') => (
-  a,
-  b
-) => {
-  const valueA = a.comic.frontMatter[numericKey] || 0;
-  const valueB = b.comic.frontMatter[numericKey] || 0;
-
-  return sortByDate(valueA, valueB);
-};
-
 export const getSortByNumericFrontMatterKey = (numericKey: 'issueNumber') => (
   a,
   b
@@ -93,40 +83,6 @@ export const getSortedData = (
   );
 };
 
-export const getDirectionallySortedData = (
-  comicGroups: GroupedComicsType,
-  sortingDirection: sortingDirectionEnum,
-  sorting
-) => {
-  const keySorter = sorting === sortingEnum.YEAR ? sortByDate : undefined;
-  const keys = Object.keys(comicGroups).sort(keySorter);
-  if (sortingDirection === sortingDirectionEnum.ASC) {
-    // Exported a separate map for key order here since objects are not inherently ordered
-    return {
-      groups: comicGroups,
-      order: keys.filter(key => comicGroups[key].issues.length),
-    };
-  }
-  const reverseKeys = keys.reverse();
-  if (keys.length > 1) {
-    // If we have more than one key then only reverse the keys, not their content
-    return {
-      groups: keys.reduce((acc, key) => {
-        acc[key] = comicGroups[key];
-        return acc;
-      }, {}),
-      order: reverseKeys,
-    };
-  }
-  // Reverse the issue order
-  const directionalSortedGroupedComics = keys.reduce((acc, key) => {
-    const oldValue = comicGroups[key];
-    acc[key] = { ...oldValue, issues: [...oldValue.issues].reverse() };
-    return acc;
-  }, {});
-  return { groups: directionalSortedGroupedComics, order: reverseKeys };
-};
-
 const groupIssuesBy = (
   issues: ComicWithMetadata[],
   frontMatterKey: keyof ComicType['frontMatter'],
@@ -141,78 +97,3 @@ const groupIssuesBy = (
     }
     return acc;
   }, {});
-
-const groupIssuesByReadingOrder = (
-  issues: ComicWithMetadata[],
-  readingOrder: string[]
-): GroupedComicsType =>
-  issues.reduce(
-    (acc, val) => {
-      const readingOrderPath = `${val.params.series}/issues/${val.params.issueNumber}`;
-      if (readingOrder.indexOf(readingOrderPath) !== -1) {
-        acc['My Reading Order'].issues.push(val);
-      } else {
-        acc.Untracked.issues.push(val);
-      }
-      return acc;
-    },
-    {
-      'My Reading Order': { issues: [], params: null, link: null, comic: null },
-      Untracked: { issues: [], params: null, link: null, comic: null },
-    }
-  );
-
-export const getGroupedComics = (
-  allIssues: ComicWithMetadata[],
-  readingOrder: string[],
-  sorting: sortingEnum
-): GroupedComicsType => {
-  switch (sorting) {
-    case sortingEnum.ARC:
-      return getSortedData(
-        groupIssuesBy(allIssues, 'arc', 'No Arc / Unknown'),
-        readingOrder
-      );
-    case sortingEnum.YEAR:
-      return getSortedData(groupIssuesBy(allIssues, 'start'), readingOrder);
-
-    case sortingEnum.READING_ORDER:
-    default:
-      return getSortedData(
-        groupIssuesByReadingOrder(allIssues, readingOrder),
-        readingOrder
-      );
-  }
-};
-
-export const getIssuesAsList = (data: ComicWithMetadataListIssuesType) =>
-  data.issues.length
-    ? Object.values(data.issues).map(item => ({
-        ...item,
-        link: {
-          pathname: item.link.pathname,
-          name: `${isAOneShot(item.params.series) ? '' : item.params.series} ${
-            item.link.name
-          }`,
-        },
-      }))
-    : [];
-
-export const getGroupedListData = ({
-  groups,
-  order,
-}: {
-  groups: GroupedComicsType;
-  order: string[];
-}) => ({
-  groups: Object.keys(groups).reduce((acc, key) => {
-    acc[key] = {
-      comic: null,
-      link: null,
-      params: null,
-      issues: getIssuesAsList(groups[key]),
-    };
-    return acc;
-  }, {}),
-  order,
-});

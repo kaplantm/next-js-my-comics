@@ -1,10 +1,23 @@
 import React from 'react';
 import { getAllSeries } from '@lib/utils/static-comics/utils';
-import DebugAddComic from '@page-containers/debug-add-comic';
+import DebugOnlyWrapper from '@components/debug-only-wrapper';
+import { isDevMode } from '@lib/utils';
+import dynamic from 'next/dynamic';
 
-const DebugAddComicPage = props => <DebugAddComic {...props} />;
+const DebugAddComic = dynamic(() => import('@page-containers/debug-add-comic'));
+
+const DebugAddComicPage = props => (
+  <DebugOnlyWrapper>
+    <DebugAddComic {...props} />
+  </DebugOnlyWrapper>
+);
 
 export const getStaticProps = async () => {
+  if (!isDevMode) {
+    return {
+      props: {},
+    };
+  }
   const comics = await getAllSeries(true, true);
   const seriesTitles = Object.keys(comics);
   const allIssues = seriesTitles

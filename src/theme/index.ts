@@ -3,11 +3,11 @@ import { adaptV4Theme } from '@mui/material/styles';
 import {
   white,
   cherryRed,
-  slateGrey,
   black,
   medBlue,
   iceBlue,
   yellow,
+  stone,
 } from './colors';
 
 // Create a theme instance.
@@ -108,7 +108,7 @@ const theme = createTheme(
           fontWeight: 'normal',
         },
         subtitle2: {
-          color: slateGrey,
+          color: stone,
           fontWeight: 'normal',
         },
       },

@@ -33,6 +33,10 @@ function MyApp({ Component, pageProps }) {
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8363507937716618"
           crossOrigin="anonymous"
         />
+        <meta
+          name="description"
+          content="Tracking my DC Comics / Batfamily reading order and collecting favorite comic panels."
+        />
       </Head>
       <CacheProvider value={muiCache ?? createMuiCache()}>
         <ThemeProvider theme={theme}>

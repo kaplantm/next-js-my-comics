@@ -12,9 +12,9 @@ const DebugLinks = ({
   baseLink: string;
   noEdit?: boolean;
 }) => {
-  // if (!isDevMode) {
-  return null;
-  // }
+  if (!isDevMode) {
+    return null;
+  }
   return (
     <div>
       {!noEdit && (

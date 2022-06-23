@@ -1,3 +1,4 @@
+import { stone } from 'src/theme/colors';
 import { makeStyles } from 'tss-react/mui';
 
 const useStyles = makeStyles()(theme => ({
@@ -26,6 +27,7 @@ const useStyles = makeStyles()(theme => ({
     lineHeight: 1,
   },
   smallLink: {
+    color: stone,
     fontStyle: 'italic',
     fontSize: '.8em',
     lineHeight: 0.75,

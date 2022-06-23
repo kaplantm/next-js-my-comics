@@ -1,4 +1,3 @@
-import { isAOneShot } from '@lib/constants';
 import { ComicWithMetadata, ComicType } from '@lib/types';
 import { parseDateFromMarkdownString } from '@lib/utils/string-utils';
 
@@ -44,16 +43,6 @@ export const sortByDate = (a, b) => {
   const dateValueA = parseDateFromMarkdownString(a);
   const dateValueB = parseDateFromMarkdownString(b);
   return dateValueA.getTime() - dateValueB.getTime();
-};
-
-export const getSortByDateFrontMatterKey = (numericKey: 'end' | 'start') => (
-  a,
-  b
-) => {
-  const valueA = a.comic.frontMatter[numericKey] || 0;
-  const valueB = b.comic.frontMatter[numericKey] || 0;
-
-  return sortByDate(valueA, valueB);
 };
 
 export const getSortByNumericFrontMatterKey = (numericKey: 'issueNumber') => (
@@ -194,35 +183,3 @@ export const getGroupedComics = (
       );
   }
 };
-
-export const getIssuesAsList = (data: ComicWithMetadataListIssuesType) =>
-  data.issues.length
-    ? Object.values(data.issues).map(item => ({
-        ...item,
-        link: {
-          pathname: item.link.pathname,
-          name: `${isAOneShot(item.params.series) ? '' : item.params.series} ${
-            item.link.name
-          }`,
-        },
-      }))
-    : [];
-
-export const getGroupedListData = ({
-  groups,
-  order,
-}: {
-  groups: GroupedComicsType;
-  order: string[];
-}) => ({
-  groups: Object.keys(groups).reduce((acc, key) => {
-    acc[key] = {
-      comic: null,
-      link: null,
-      params: null,
-      issues: getIssuesAsList(groups[key]),
-    };
-    return acc;
-  }, {}),
-  order,
-});

@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import { Grid, Slider, Typography } from '@mui/material';
 import { ComicPageParams, ComicWithMetadata } from '@lib/types';
-import DebugOnlyWrapper from '@components/debug-only-wrapper';
 import dynamic from 'next/dynamic';
 import MyDropzone from '@components/my-dropzone';
 import LoaderButton from '@components/loader-button';
@@ -127,113 +126,111 @@ const DebugAddImages = ({
   };
 
   return (
-    <DebugOnlyWrapper>
-      <Grid container spacing={3} justifyContent="center">
-        <Grid item xs={12}>
-          <Typography variant="h4">{params.series}</Typography>
-          <Typography variant="h1">
-            {params.category} {params.issueNumber} {frontMatter?.title}
-          </Typography>
-          <br />
-        </Grid>
-        <Grid item xs={12}>
-          <form
-            onSubmit={onOptimizeImages}
-            ref={formRef}
-            className={classes.uploadForm}
-          >
-            <div>
-              <Grid item xs={12} container spacing={3}>
-                <Grid item xs={12}>
-                  <Typography variant="h3">Upload Images:</Typography>
-                </Grid>
-                <Grid item container xs={12} md={6}>
-                  <Typography id="discrete-slider-small-steps" gutterBottom>
-                    Max Dimension
-                  </Typography>
-                  <Slider
-                    value={maxDimensionState}
-                    onChange={handleSliderChange}
-                    step={25}
-                    marks
-                    min={50}
-                    max={2000}
-                    aria-labelledby="continuous-slider"
-                    valueLabelDisplay="auto"
-                  />
-                </Grid>
-                <Grid item xs={8}>
-                  <MyDropzone
-                    onDrop={onDrop}
-                    currentFileCount={filesToOptimize.length}
-                  />
-                </Grid>
-
-                <Grid item container xs={4} justifyContent="center">
-                  <LoaderButton
-                    size="large"
-                    disabled={!filesToOptimize.length || submissionInProgress}
-                    loading={submissionInProgress}
-                    fullWidth
-                    onClick={onOptimizeImages}
-                  >
-                    Optimize
-                  </LoaderButton>
-                </Grid>
-                {optimizeFormError && (
-                  <Grid item container xs={12} justifyContent="center">
-                    <Typography color="error">{optimizeFormError}</Typography>
-                  </Grid>
-                )}
-                {!!bytesSaved && (
-                  <Grid item container xs={12} justifyContent="center">
-                    <Typography>Saved {bytesSaved / 1000000}MB</Typography>
-                  </Grid>
-                )}
+    <Grid container spacing={3} justifyContent="center">
+      <Grid item xs={12}>
+        <Typography variant="h4">{params.series}</Typography>
+        <Typography variant="h1">
+          {params.category} {params.issueNumber} {frontMatter?.title}
+        </Typography>
+        <br />
+      </Grid>
+      <Grid item xs={12}>
+        <form
+          onSubmit={onOptimizeImages}
+          ref={formRef}
+          className={classes.uploadForm}
+        >
+          <div>
+            <Grid item xs={12} container spacing={3}>
+              <Grid item xs={12}>
+                <Typography variant="h3">Upload Images:</Typography>
               </Grid>
-            </div>
-          </form>
-        </Grid>
+              <Grid item container xs={12} md={6}>
+                <Typography id="discrete-slider-small-steps" gutterBottom>
+                  Max Dimension
+                </Typography>
+                <Slider
+                  value={maxDimensionState}
+                  onChange={handleSliderChange}
+                  step={25}
+                  marks
+                  min={50}
+                  max={2000}
+                  aria-labelledby="continuous-slider"
+                  valueLabelDisplay="auto"
+                />
+              </Grid>
+              <Grid item xs={8}>
+                <MyDropzone
+                  onDrop={onDrop}
+                  currentFileCount={filesToOptimize.length}
+                />
+              </Grid>
 
-        <Grid item xs={12}>
-          <br />
-          <Typography variant="h3">Optimized Images:</Typography>
-        </Grid>
-        <Grid item xs={8}>
-          {!!optimizedFilePaths?.length && (
-            <Grid item xs={12} container spacing={3}>
-              <MasonryLayout images={optimizedFilePaths} />
+              <Grid item container xs={4} justifyContent="center">
+                <LoaderButton
+                  size="large"
+                  disabled={!filesToOptimize.length || submissionInProgress}
+                  loading={submissionInProgress}
+                  fullWidth
+                  onClick={onOptimizeImages}
+                >
+                  Optimize
+                </LoaderButton>
+              </Grid>
+              {optimizeFormError && (
+                <Grid item container xs={12} justifyContent="center">
+                  <Typography color="error">{optimizeFormError}</Typography>
+                </Grid>
+              )}
+              {!!bytesSaved && (
+                <Grid item container xs={12} justifyContent="center">
+                  <Typography>Saved {bytesSaved / 1000000}MB</Typography>
+                </Grid>
+              )}
             </Grid>
-          )}
-        </Grid>
-        <Grid item container xs={4} justifyContent="center">
-          <LoaderButton
-            size="large"
-            disabled={!optimizedFilePaths.length || submissionInProgress}
-            loading={submissionInProgress}
-            fullWidth
-            onClick={onImageUpload}
-          >
-            Upload
-          </LoaderButton>
-          {uploadFormError && (
-            <Grid item container xs={12} justifyContent="center">
-              <Typography color="error">{uploadFormError}</Typography>
-            </Grid>
-          )}
-        </Grid>
-        <Grid item xs={12}>
-          <Typography variant="h3">Current Images:</Typography>
-        </Grid>
-        {!!savedImagePaths?.length && (
-          <Grid item xs={12}>
-            <Grid item xs={12} container spacing={3}>
-              <MasonryLayout images={savedImagePaths} />
-            </Grid>
+          </div>
+        </form>
+      </Grid>
+
+      <Grid item xs={12}>
+        <br />
+        <Typography variant="h3">Optimized Images:</Typography>
+      </Grid>
+      <Grid item xs={8}>
+        {!!optimizedFilePaths?.length && (
+          <Grid item xs={12} container spacing={3}>
+            <MasonryLayout images={optimizedFilePaths} />
           </Grid>
         )}
       </Grid>
-    </DebugOnlyWrapper>
+      <Grid item container xs={4} justifyContent="center">
+        <LoaderButton
+          size="large"
+          disabled={!optimizedFilePaths.length || submissionInProgress}
+          loading={submissionInProgress}
+          fullWidth
+          onClick={onImageUpload}
+        >
+          Upload
+        </LoaderButton>
+        {uploadFormError && (
+          <Grid item container xs={12} justifyContent="center">
+            <Typography color="error">{uploadFormError}</Typography>
+          </Grid>
+        )}
+      </Grid>
+      <Grid item xs={12}>
+        <Typography variant="h3">Current Images:</Typography>
+      </Grid>
+      {!!savedImagePaths?.length && (
+        <Grid item xs={12}>
+          <Grid item xs={12} container spacing={3}>
+            <MasonryLayout images={savedImagePaths} />
+          </Grid>
+        </Grid>
+      )}
+    </Grid>
   );
 };
 

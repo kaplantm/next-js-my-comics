@@ -42,7 +42,7 @@ function AppLink({
   }
 
   return (
-    <NextLink prefetch={false} {...nextProps} passHref shallow>
+    <NextLink {...nextProps} passHref shallow>
       <MatLink {...combinedMatLinkProps} underline="hover">
         {children}
       </MatLink>

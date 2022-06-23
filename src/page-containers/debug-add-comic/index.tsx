@@ -10,7 +10,6 @@ import {
 import dynamic from 'next/dynamic';
 import { ComicPageParams, ComicWithMetadata } from '@lib/types';
 import AppTextField from '@components/form-inputs/app-text-field';
-import DebugOnlyWrapper from '@components/debug-only-wrapper';
 import { useFormState } from '@lib/hooks/use-form-state';
 import LoaderButton from '@components/loader-button';
 import { appAxios } from '@lib/utils';
@@ -132,176 +131,172 @@ const DebugAddComic = ({
   }
 
   return (
-    <DebugOnlyWrapper>
-      <Grid container spacing={3} justifyContent="center">
-        <Grid
-          container
-          item
-          spacing={3}
-          xs={12}
-          md={10}
-          lg={8}
-          alignItems="center"
-        >
-          <Grid item xs={12}>
-            <FormControlLabel
-              disabled={editMode}
-              control={
-                <Checkbox
-                  checked={!formFieldValues.isIssue}
-                  color="primary"
-                  onChange={handleCheckboxChange}
-                  name="isIssue"
-                />
-              }
-              label="Series"
-            />
-          </Grid>
-          {!isNewSeries && (
-            <>
-              <Grid item xs={8}>
-                <AppTextField
-                  fullWidth
-                  label="Title"
-                  variant="outlined"
-                  disabled={editMode && !isIssue}
-                  {...getPropsForFormField('title')}
-                />
-              </Grid>
-              <Grid item xs={4}>
-                <AppTextField
-                  fullWidth
-                  disabled={editMode}
-                  label="Issue #"
-                  variant="outlined"
-                  {...getPropsForFormField('issueNumber')}
-                />
-              </Grid>
-            </>
-          )}
-
-          <Grid item xs={12} md={isNewSeries ? 12 : 8}>
-            {isNewSeries ? (
+    <Grid container spacing={3} justifyContent="center">
+      <Grid
+        container
+        item
+        spacing={3}
+        xs={12}
+        md={10}
+        lg={8}
+        alignItems="center"
+      >
+        <Grid item xs={12}>
+          <FormControlLabel
+            disabled={editMode}
+            control={
+              <Checkbox
+                checked={!formFieldValues.isIssue}
+                color="primary"
+                onChange={handleCheckboxChange}
+                name="isIssue"
+              />
+            }
+            label="Series"
+          />
+        </Grid>
+        {!isNewSeries && (
+          <>
+            <Grid item xs={8}>
               <AppTextField
                 fullWidth
-                label="Series"
+                label="Title"
                 variant="outlined"
-                {...getPropsForFormField('series')}
+                disabled={editMode && !isIssue}
+                {...getPropsForFormField('title')}
               />
-            ) : (
+            </Grid>
+            <Grid item xs={4}>
               <AppTextField
-                select
                 fullWidth
                 disabled={editMode}
-                label="Series"
+                label="Issue #"
                 variant="outlined"
-                {...getPropsForFormField('series')}
-              >
-                {editMode ? (
-                  <MenuItem key={params.series} value={params.series}>
-                    {params.series}
-                  </MenuItem>
-                ) : (
-                  seriesTitles.map(seriesTitle => (
-                    <MenuItem key={seriesTitle} value={seriesTitle}>
-                      {seriesTitle}
-                    </MenuItem>
-                  ))
-                )}
-              </AppTextField>
-            )}
-          </Grid>
-          {!isNewSeries && (
-            <>
-              <Grid item xs={12} md={4}>
-                <Autocomplete
-                  freeSolo
-                  options={allArcs}
-                  renderInput={autoCompleteParams => (
-                    <AppTextField
-                      fullWidth
-                      {...autoCompleteParams}
-                      label="Arcs"
-                      variant="outlined"
-                    />
-                  )}
-                  value={arcInputProps.value}
-                  onChange={handleArcInputChange}
-                  onBlur={handleArcInputBlur}
-                />
-              </Grid>
-            </>
-          )}
-          <Grid item xs={6}>
-            <AppTextField
-              fullWidth
-              label="Start"
-              variant="outlined"
-              {...getPropsForFormField('start')}
-            />
-          </Grid>
-          <Grid item xs={6}>
-            <AppTextField
-              fullWidth
-              label="End"
-              variant="outlined"
-              {...getPropsForFormField('end')}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <AppTextField
-              fullWidth
-              label="Link"
-              variant="outlined"
-              {...getPropsForFormField('link')}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <AppTextField
-              multiline
-              fullWidth
-              label="Description"
-              variant="outlined"
-              {...getPropsForFormField('description')}
-            />
-          </Grid>
-          <Grid item container xs={12} justifyContent="center">
-            <Typography
-              color={submissionInProgress ? 'textSecondary' : 'error'}
-            >
-              {formError}
-            </Typography>
-          </Grid>
-
-          {savedComicLink && (
-            <Grid
-              item
-              container
-              xs={12}
-              justifyContent="center"
-              alignItems="center"
-            >
-              Created:&nbsp;
-              <AppLink isExternal nextProps={{ href: savedComicLink }}>
-                {savedComicLink}
-              </AppLink>
-              <DebugLinksMemo baseLink={savedComicLink} />
+                {...getPropsForFormField('issueNumber')}
+              />
             </Grid>
-          )}
-          <Grid item container xs={12} justifyContent="center">
-            <LoaderButton
-              size="large"
-              disabled={disableSubmitButton || submissionInProgress}
-              loading={submissionInProgress}
+          </>
+        )}
+
+        <Grid item xs={12} md={isNewSeries ? 12 : 8}>
+          {isNewSeries ? (
+            <AppTextField
               fullWidth
-              onClick={onCreateComic}
+              label="Series"
+              variant="outlined"
+              {...getPropsForFormField('series')}
+            />
+          ) : (
+            <AppTextField
+              select
+              fullWidth
+              disabled={editMode}
+              label="Series"
+              variant="outlined"
+              {...getPropsForFormField('series')}
             >
-              Submit
-            </LoaderButton>
+              {editMode ? (
+                <MenuItem key={params.series} value={params.series}>
+                  {params.series}
+                </MenuItem>
+              ) : (
+                seriesTitles.map(seriesTitle => (
+                  <MenuItem key={seriesTitle} value={seriesTitle}>
+                    {seriesTitle}
+                  </MenuItem>
+                ))
+              )}
+            </AppTextField>
+          )}
+        </Grid>
+        {!isNewSeries && (
+          <>
+            <Grid item xs={12} md={4}>
+              <Autocomplete
+                freeSolo
+                options={allArcs}
+                renderInput={autoCompleteParams => (
+                  <AppTextField
+                    fullWidth
+                    {...autoCompleteParams}
+                    label="Arcs"
+                    variant="outlined"
+                  />
+                )}
+                value={arcInputProps.value}
+                onChange={handleArcInputChange}
+                onBlur={handleArcInputBlur}
+              />
+            </Grid>
+          </>
+        )}
+        <Grid item xs={6}>
+          <AppTextField
+            fullWidth
+            label="Start"
+            variant="outlined"
+            {...getPropsForFormField('start')}
+          />
+        </Grid>
+        <Grid item xs={6}>
+          <AppTextField
+            fullWidth
+            label="End"
+            variant="outlined"
+            {...getPropsForFormField('end')}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <AppTextField
+            fullWidth
+            label="Link"
+            variant="outlined"
+            {...getPropsForFormField('link')}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <AppTextField
+            multiline
+            fullWidth
+            label="Description"
+            variant="outlined"
+            {...getPropsForFormField('description')}
+          />
+        </Grid>
+        <Grid item container xs={12} justifyContent="center">
+          <Typography color={submissionInProgress ? 'textSecondary' : 'error'}>
+            {formError}
+          </Typography>
+        </Grid>
+
+        {savedComicLink && (
+          <Grid
+            item
+            container
+            xs={12}
+            justifyContent="center"
+            alignItems="center"
+          >
+            Created:&nbsp;
+            <AppLink isExternal nextProps={{ href: savedComicLink }}>
+              {savedComicLink}
+            </AppLink>
+            <DebugLinksMemo baseLink={savedComicLink} />
           </Grid>
+        )}
+        <Grid item container xs={12} justifyContent="center">
+          <LoaderButton
+            size="large"
+            disabled={disableSubmitButton || submissionInProgress}
+            loading={submissionInProgress}
+            fullWidth
+            onClick={onCreateComic}
+          >
+            Submit
+          </LoaderButton>
         </Grid>
       </Grid>
-    </DebugOnlyWrapper>
+    </Grid>
   );
 };
 

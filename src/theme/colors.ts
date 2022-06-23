@@ -4,7 +4,6 @@ export const softBlueLight = 'hsla(204, 30%, 93%, 1)';
 export const iceBlue = 'hsla(195, 22%, 96%, 1)';
 export const white = 'hsla(0, 100%, 100%, 1)';
 export const cherryRed = 'hsla(354, 100%, 45%, 1)';
-export const slateGrey = '#5b6770';
 export const stone = 'hsla(206, 10%, 40%, 1)';
 export const black = 'hsla(0, 0%, 0%, 1)';
 export const toxicGreen = 'hsla(117, 66%, 51%, 1)';

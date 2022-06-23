@@ -5,12 +5,23 @@ import {
   getIssueNumbers,
   getAllSeries,
 } from '@lib/utils/static-comics/utils';
-import DebugAddComic from '@page-containers/debug-add-comic';
+import dynamic from 'next/dynamic';
 import { ComicPageParams } from '@lib/types';
+import DebugOnlyWrapper from '@components/debug-only-wrapper';
+import { isDevMode } from '@lib/utils';
 
-const DebugEditComicPage = props => <DebugAddComic {...props} editMode />;
+const DebugAddComic = dynamic(() => import('@page-containers/debug-add-comic'));
+
+const DebugEditComicPage = props => (
+  <DebugOnlyWrapper>
+    <DebugAddComic {...props} editMode />
+  </DebugOnlyWrapper>
+);
 
 export const getStaticPaths = async () => {
+  if (!isDevMode) {
+    return { paths: [], fallback: false };
+  }
   const seriesTitles = await getSeriesTitles();
   const paths = (
     await Promise.all(
@@ -30,6 +41,11 @@ export const getStaticPaths = async () => {
 };
 
 export async function getStaticProps({ params }: { params: ComicPageParams }) {
+  if (!isDevMode) {
+    return {
+      props: {},
+    };
+  }
   const issue = await getIssue(params.series, params.issueNumber);
   const comics = await getAllSeries(true, true);
   const seriesTitles = Object.keys(comics);

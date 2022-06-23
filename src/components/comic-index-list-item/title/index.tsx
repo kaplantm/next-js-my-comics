@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import { Typography, IconButton } from '@mui/material';
+import { getSeriesRoute } from '@lib/constants/routes';
 import AppLink from '@components/app-link';
 import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
@@ -30,7 +31,6 @@ const ListItemTitle = ({
 }) => {
   const { classes } = useStyles();
   const isIssue = linkPath.includes('issues');
-  console.log({ linkPath, isIssue });
 
   return (
     <div className={classes.flexCenter} style={{ alignItems: 'stretch' }}>
@@ -55,7 +55,7 @@ const ListItemTitle = ({
           <div className={classes.flexColumn}>
             {isIssue && (
               <AppLink
-                nextProps={{ href: linkPath }}
+                nextProps={{ href: getSeriesRoute(series) }}
                 className={classes.smallLink}
               >
                 {series}

@@ -6,6 +6,7 @@ import {
   Container,
   Typography,
 } from '@mui/material';
+import { isDevMode } from '@lib/utils';
 import React from 'react';
 import AppLink from '../app-link';
 import useStyles from './use-styles';
@@ -21,7 +22,6 @@ function Page({ children }: { children: any }) {
         <Toolbar className={classes.toolbar}>
           <AppLink
             nextProps={{
-              prefetch: true,
               href: {
                 pathname: routeMap.home.pathname,
               },
@@ -37,7 +37,7 @@ function Page({ children }: { children: any }) {
             <List className={classes.navList}>
               {navRoutes.map(
                 (route: MappedRouteType) =>
-                  (!route.dev || process.env.NODE_ENV === 'development') && (
+                  (!route.dev || isDevMode) && (
                     <AppLink
                       nextProps={{
                         href: {
